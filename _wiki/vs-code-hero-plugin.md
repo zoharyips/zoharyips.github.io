@@ -19,6 +19,10 @@ keywords:
 
 扁平化风格的文件图标, 个人觉得十分美观
 
+### indent-rainbow
+
+彩虹缩进, 以彩虹般的缩进对齐帮助你赏心悦目地 coding with format
+
 ## 前端
 
 ### Auto Rename Tag
