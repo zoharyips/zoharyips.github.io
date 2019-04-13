@@ -1,0 +1,9 @@
+_site/
+.bundle/*
+vendor/*
+*.swp
+*.~vsd
+\#*\#
+*~
+.DS_Store
+Gemfile.lock

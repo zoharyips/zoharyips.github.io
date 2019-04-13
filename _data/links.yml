@@ -1,0 +1,52 @@
+# 格式
+# - name: 链接名
+#   url: 链接
+#   type: {blog|doc|tool|download}
+
+- name: 阮一峰的网络日志
+  url: http://www.ruanyifeng.com/blog/
+  type: blog
+
+- name: Liquid 模板语言官方中文文档
+  url: https://liquid.bootcss.com/
+  type: doc
+
+- name: postgresql 中文文档
+  url: http://www.postgres.cn/v2/document
+  type: doc
+
+- name: golang 标准库文档
+  url: https://studygolang.com/pkgdoc
+  type: doc
+  
+- name: angular 官方文档
+  url: https://angular.cn/docs
+  type: doc
+
+- name: linux 命令查询工具
+  url: http://man.linuxde.net/
+  type: tool
+  
+- name: 在线 POST 测试
+  url: http://coolaf.com/
+  type: tool
+
+- name: ★ 第八基地
+  url: http://doc.d8jd.com/
+  type: download
+  
+- name: 阿里 maven 仓库
+  url: https://maven.aliyun.com/mvn/view
+  type: download
+
+- name: android SDK 镜像服务器
+  url: http://tools.android-studio.org/index.php/proxy
+  type: download
+  
+- name: linux 中科大软件源
+  url: https://mirrors.ustc.edu.cn/repogen/
+  type: download
+  
+- name: 中科大开源镜像
+  url: http://mirrors.ustc.edu.cn/
+  type: download

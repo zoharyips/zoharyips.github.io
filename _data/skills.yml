@@ -1,0 +1,18 @@
+- name: Software Engineer Keywords
+  keywords:
+      - Java
+      - Golang
+      - C++
+      
+- name: Web Developer Keywords
+  keywords:
+      - JavaScript
+      - Angular
+
+- name: Mobile Developer Keywords
+  keywords:
+      - Android
+
+- name: Operations Engineer Keywords
+  keywords:
+      - Ubuntu
