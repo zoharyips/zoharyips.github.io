@@ -38,24 +38,26 @@ $ git remote add origin git@github.com:<YOUR ACCOUNT>/<YOUR REPOS>.git
 
 ### 获取 github ssh 连接认证
 
-1. 创建账号认证密钥
+* 创建账号认证密钥
 
-`$ ssh-keygen -t rsa -C "youremail@example.com"`
+```bash
+$ ssh-keygen -t rsa -C "youremail@example.com"`
+```
 
 > `youremail@example.com` 指你登录 github 的邮箱地址,  
 > 用于生成密钥, 询问密钥保存路径时直接回车确定保存于默认路径,  
 > 询问是否加密同样回车使用默认设置
 
-2. 
+* ssh 冗余模式连接 github 账户 
 
 ```bash
 $ ssh -v git@github.com
-...
+    ...
 No more authentication methods to try.
 Permission denied (publickey).
 ```
 
-3. 
+* ssh 认证模式
 
 ```bash
 $ ssh-agent -s
@@ -64,7 +66,7 @@ SSH_AGENT_PID=88888; export SSH_AGENT_PID;
 echo Agent pid 88888;
 ```
 
-4. 导入密钥
+* 导入密钥
 
 ```bash
 # 导入密钥
@@ -74,10 +76,13 @@ Identity added: /.../.../.ssh/id_rsa (密钥保存路径)
 
 > `~/.ssh/id_rsa` 指的是密钥的保存路径  
 > 若出现 `Could not open a connection to your authentication agent.`, 执行:  
-> `$ eval ``ssh-agent  -s`` `  
-> `$ ssh-add ~/.ssh/id_rsa`
 
-5. 查看复制密钥
+```bash
+$ eval `ssh-agent  -s`  
+$ ssh-add ~/.ssh/id_rsa
+```
+
+* 复制密钥
 
 ```bash
 $ cat ~/.ssh/id_rsa.pub
@@ -86,14 +91,14 @@ ssh-rsa AAAA....2aapZ youremail@example.com
 
 > 将终端显示的信息(密钥)全部复制下来, 从 `ssh-rsa` 到 `youremail@example.com`
 
-6. 录入密钥
+* 录入密钥
 
-登录 github , 进入 `settings` -> `SSH and GPG keys` -> `new SSH key`  
+登录 github , :point_right: `settings` :point_right: `SSH and GPG keys` :point_right: `new SSH key`  
 title : 自定义内容  
 content : 刚才复制的密钥  
--> `add SSH key`
+:point_right: `add SSH key`
 
-7. 测试 ssh 连接
+* 测试 ssh 连接
 
 ```bash
 $ ssh -T git@github.com
@@ -104,8 +109,8 @@ Hi ---! You've successfully authenticated, but GitHub does not provide shell acc
 
 ### 强制替换本地版本控制系统至 github 仓库
 
-`$ git push -u --force origin master`
-
--- End --
+```bash
+$ git push -u --force origin master
+```
 
 **********
