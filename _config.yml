@@ -1,30 +1,24 @@
-# ---------------- #
-#   Main Configs   #
-# ---------------- #
+# 站点配置
 baseurl:
 url: https://zoharyips.github.io
-date_format: "ordinal"
 title: zohar's blog
+name: zohar's blog
 subtitle: "Chinese by birth, Programmer by choice"
 description: "zohar's blog"
+repository: zoharyips/zoharyips.github.io
 keywords: zohar, zohar Yip
+date_format: "ordinal"
 timezone: Asia/Shanghai
 encoding: "utf-8"
 side_bar_repo_limit: 5
 
-# ---------------- #
-#      Author      #
-# ---------------- #
+# 个人信息
 author: zohar
-organization: 
-organization_url: 
 github_username: zoharyips
 location: Guangzhou, China
 email: zoharyips@outlook.com
 
-# ---------------- #
-#    Navigation    #
-# ---------------- #
+# 导航
 navs:
   -
     href: /
@@ -34,9 +28,9 @@ navs:
     href: /categories/
     label: 分类
 
-#   -
-#     href: /archives/
-#     label: 归档
+  -
+    href: /archives/
+    label: 归档
 
   -
     href: /wiki/
@@ -50,14 +44,10 @@ navs:
     href: /about/
     label: 关于
 
-# ---------------- #
-#       RSS        #
-# ---------------- #
+# rss 订阅
 subscribe_rss: /feed.xml
 
-# ---------------- #
-#      Jekyll      #
-# ---------------- #
+# jekyll 配置
 markdown: kramdown
 kramdown:
     input: GFM
@@ -81,28 +71,20 @@ collections:
         output: true
         permalink: /wiki/:path/
 
-repository: zoharyips/zoharyips.github.io
-
-# ---------------- #
-#      Comments    #
-# ---------------- #
+# 评论模块
 gitalk:
     owner: zoharyips
     repo: blog-comments
     clientID: 4f7905fa91963e1cb585
     clientSecret: 860aa59b9dac0ff81e468c3a67bec5a052e8b8ec
 
-# ---------------- #
-#      Search      #
-# ---------------- #
+# 搜索模块
 simple_jekyll_search:
     # 是否支持全文搜索
     fulltext: false
     # 最多显示多少条搜索结果
     limit: 10
 
-# ---------------- #
-#    Analytics     #
-# ---------------- #
+# 谷歌分析
 google:
     analytics_id: UA-80669434-1
