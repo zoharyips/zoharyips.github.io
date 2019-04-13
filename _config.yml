@@ -10,13 +10,37 @@ keywords: zohar, zohar Yip
 date_format: "ordinal"
 timezone: Asia/Shanghai
 encoding: "utf-8"
-side_bar_repo_limit: 5
+side_bar_repo_limit: 3
 
 # 个人信息
 author: zohar
 github_username: zoharyips
 location: Guangzhou, China
 email: zoharyips@outlook.com
+
+# jekyll 配置
+markdown: kramdown
+kramdown:
+    input: GFM
+highlighter: rouge
+paginate: 10
+lsi: false
+quiet: false
+excerpt_separator: "\n\n"
+permalink: /:year/:month/:day/:title/
+gems:
+    - jekyll-github-metadata
+    - rouge
+#     - jekyll-html-pipeline
+    - jekyll-paginate
+    - jekyll-feed
+    - jemoji
+    - jekyll-sitemap
+#     - jekyll-mentions
+collections:
+    wiki:
+        output: true
+        permalink: /wiki/:path/
 
 # 导航
 navs:
@@ -46,30 +70,6 @@ navs:
 
 # rss 订阅
 subscribe_rss: /feed.xml
-
-# jekyll 配置
-markdown: kramdown
-kramdown:
-    input: GFM
-highlighter: rouge
-paginate: 10
-lsi: false
-quiet: false
-excerpt_separator: "\n\n"
-permalink: /:year/:month/:day/:title/
-gems:
-    - jekyll-github-metadata
-    - rouge
-#     - jekyll-html-pipeline
-    - jekyll-paginate
-    - jekyll-feed
-    - jemoji
-    - jekyll-sitemap
-#     - jekyll-mentions
-collections:
-    wiki:
-        output: true
-        permalink: /wiki/:path/
 
 # 评论模块
 gitalk:
