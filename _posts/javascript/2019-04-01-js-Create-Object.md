@@ -1,7 +1,7 @@
 ---
 layout: post
 title: js 笔记 - 创建对象
-categories: [JavaScript, web]
+categories: JavaScript
 description: 创建对象的各种方法
 keywords: JavaScript
 ---
