@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 安全彻底地清空 github 仓库 commit 历史
-categories: [github, git]
+categories: git
 description: 不删除仓库, 不简单覆盖, 安全彻底地清洁仓库
 keywords: git, github
 ---
