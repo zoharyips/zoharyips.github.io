@@ -1,7 +1,7 @@
 ---
 layout: post
 title: js 笔记 - ECMAScript
-categories: [JavaScript, web]
+categories: JavaScript
 description: 从语法角度记录 ECMAScript 的主要内容
 keywords: JavaScript
 ---
@@ -146,7 +146,7 @@ boolean | 布尔 | false
 * if
 
 ```js
-if(<布尔表达式>) {
+if(<BOOL>) {
     ...
 }
 ```
@@ -154,7 +154,7 @@ if(<布尔表达式>) {
 * if... else
 
 ```js
-if(<布尔表达式>) {
+if(<BOOL>) {
     ...
 } else {
     ...
@@ -164,9 +164,9 @@ if(<布尔表达式>) {
 * if... else if...
 
 ```js
-if(<布尔表达式>) {
+if(<BOOL>) {
     ...
-} else if (<布尔表达式>) {
+} else if (<BOOL>) {
     ...
 } else ...
 ```
@@ -174,12 +174,12 @@ if(<布尔表达式>) {
 #### switch
 
 ```js
-switch(<被判断值>) {
-    case <情况>: {
+switch(<VALUE>) {
+    case <CASE>: {
         ...
         break;
         }
-    case <情况>: {
+    case <CASE>: {
         ...
         break;
         }
@@ -195,7 +195,7 @@ switch(<被判断值>) {
 * for
 
 ```js
-for(<初始化语句>; <判断语句>; <再循环执行语句>) {
+for(<INIT>; <JUDGEMENT>; <LOOP>) {
     ...
 }
 ```
@@ -203,7 +203,7 @@ for(<初始化语句>; <判断语句>; <再循环执行语句>) {
 * for/in
 
 ```js
-for(index : <对象名>) {
+for(index : <COMVAR>) {
     ...
 }
 ```
@@ -213,7 +213,7 @@ for(index : <对象名>) {
 * while 当循环
 
 ```js
-while(<判断语句>) {
+while(<JUDGEMENT>) {
     ...
 }
 ```
@@ -223,7 +223,7 @@ while(<判断语句>) {
 ```js
 do {
     ...
-} while(<判断语句>);
+} while(<JUDGEMENT>);
 ```
 
 ### 跳转
@@ -237,7 +237,7 @@ do {
 创建: 
 
 ```js
-function <函数名>(<参数一>, <参数二>, ...){
+function <funcName>(<arg1>, <arg2>, ...){
     ...
     return 返回值;
 }
@@ -245,8 +245,8 @@ function <函数名>(<参数一>, <参数二>, ...){
 
 调用:
 
-* js: `<函数名>(<参数一>, <参数二>, ...);`
-* Html: `onClick="<函数名>(<参数一>, <参数二>, ...)`
+* js: `<funcName>(<arg1>, <arg2>, ...);`
+* Html: `onClick="<funcName>(<arg1>, <arg2>, ...)`
 
 特点: 无需标注是否有返回值, 无需为参数限定类型
 注: 无返回值函数, 最终都会返回一个 `undefined` 类型
