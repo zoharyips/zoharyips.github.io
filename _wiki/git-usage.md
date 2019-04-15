@@ -23,6 +23,10 @@ keywords: Git
 `git clone username@host:/path/to/repository`<br>
 `git clone https://github.com/username/path/to/repository`
 
+浅复制, 克隆最新版本
+
+`git clone --depth 1 https://github.com/username/path/to/repository`
+
 ## 工作流
 
 * 工作区(wording directory)
