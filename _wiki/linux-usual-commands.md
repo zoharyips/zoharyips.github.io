@@ -30,5 +30,5 @@ keywords: linux
 例: `scp /home/zohar/Documents/md-note.md zohar@110.110.110.110:/home/zohar/md-note.md`
 
 * 下载文件
-`scp <userName>@<ipAddress>:<filePath> <localFilePath>`
+`scp <userName>@<ipAddress>:<filePath> <localFilePath>`  
 例: `scp zohar@110.110.110.110:/home/zohar/md-note.md /home/zohar/Download/md-note.md`
