@@ -105,7 +105,7 @@ call vundle#end()
 
 将插件从插件列表中删除或者注释掉, 更新 `.vimrc` 文件后使用 `:PluginClean` 命令即可自动卸载插件
 
-## <a name="vimrc">个人 Vimrc 配置文件</a>
+**<a name="vimrc">个人 Vimrc 配置文件</a>**
 
 应用方法: 
 
