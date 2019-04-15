@@ -23,8 +23,12 @@ keywords: linux
 
 * 远程连接  
 `ssh <userName>@<ipAddress>`  
-`ssh zohar@110.110.110.110`
+例: `ssh zohar@110.110.110.110`
 
 * 推送文件  
-`scp <filePath> <userName>@<ipAddress>:<filePath>`  
-`scp /home/zohar/Documents/md-note.md zohar@110.110.110.110:/home/zohar/md-note.md`
+`scp <localFilePath> <userName>@<ipAddress>:<filePath>`  
+例: `scp /home/zohar/Documents/md-note.md zohar@110.110.110.110:/home/zohar/md-note.md`
+
+* 下载文件
+`scp <userName>@<ipAddress>:<filePath> <localFilePath>`
+例: `scp zohar@110.110.110.110:/home/zohar/md-note.md /home/zohar/Download/md-note.md`
