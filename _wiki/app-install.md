@@ -18,3 +18,5 @@ keywords:
 ### [Ubuntu 安装 oracle 11g express](http://www.169it.com/tech-oracle/article-6404098922522300004.html)
 
 * [ORA-00119 错误: invalid specification for system parameter LOCAL_LISTENER](https://blog.csdn.net/hj419460467/article/details/50829569)
+
+### [CentOS 安装 oracle 11g express](https://www.linuxidc.com/Linux/2018-07/153066.htm)
