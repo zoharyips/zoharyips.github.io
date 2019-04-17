@@ -10,6 +10,8 @@ permalink: /categories/
 
 > 本站所有文章均为原创, 如需转载, 在文首附上原文地址即可
 
+### [按日期归档](https://zoharyips.github.io/archives/)
+
 <section class="container posts-content">
 {% assign sorted_categories = site.categories | sort %}
 {% for category in sorted_categories %}

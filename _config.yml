@@ -26,6 +26,7 @@ highlighter: rouge
 paginate: 10
 lsi: false
 quiet: false
+future: true
 excerpt_separator: "\n\n"
 permalink: /:year/:month/:day/:title/
 gems:
