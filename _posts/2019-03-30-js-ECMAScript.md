@@ -90,8 +90,9 @@ string | 字符串 |
 boolean | 布尔 | false
 
 >注:  
->`undefined` 既是一种类型, 也是一个值
->`null` 是一种类型, 但是会用 `object` 的方式表示出来(无奈)
+>`undefined` 是一种状态, 并非是一种真正的类型, 描述了一个变量只声明而未定义的状态  
+>`null` 表示空对象, 表示变量的值为空  
+> TODO: 测试 null 对象及 undefined 对于内存的占用情况
 
 ## 运算符
 
