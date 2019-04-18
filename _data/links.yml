@@ -15,19 +15,19 @@
   url: https://liquid.bootcss.com/
   type: doc
 
-- name: postgresql 中文文档
+- name: Postgresql 中文文档
   url: http://www.postgres.cn/v2/document
   type: doc
 
-- name: golang 标准库文档
+- name: Golang 标准库文档
   url: https://studygolang.com/pkgdoc
   type: doc
   
-- name: angular 官方文档
+- name: Angular 官方文档
   url: https://angular.cn/docs
   type: doc
 
-- name: linux 命令查询工具
+- name: Linux 命令查询工具
   url: http://man.linuxde.net/
   type: tool
   
@@ -43,11 +43,11 @@
   url: https://maven.aliyun.com/mvn/view
   type: download
 
-- name: android SDK 镜像服务器
+- name: Android SDK 镜像服务器
   url: http://tools.android-studio.org/index.php/proxy
   type: download
   
-- name: linux 中科大软件源
+- name: Linux 中科大软件源
   url: https://mirrors.ustc.edu.cn/repogen/
   type: download
   
