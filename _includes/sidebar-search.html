@@ -3,7 +3,6 @@
 <div id="site_search">
     <input type="text" id="search_box" placeholder="Search articles" style="margin-left: 50%;margin-right: auto;transform: translate(-50%, 0%)">
 </div>
-<br />
 <ul id="search_results" style="overflow: hide; padding: 10px"></ul>
 <script src="{{ site.url }}/assets/js/simple-jekyll-search.min.js"></script>
 <script>
@@ -15,7 +14,7 @@
                 }
             }
             var searchbar_width = $("#site_search").width();
-            $("#search_box").width(searchbar_width - 35);
+            $("#search_box").width(searchbar_width - 60);
         }
 
         adjust_search_box_width();
