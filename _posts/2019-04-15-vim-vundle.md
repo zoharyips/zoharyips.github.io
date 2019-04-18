@@ -1,9 +1,9 @@
 ---
 layout: post
 title: vim 笔记 - 插件管理
-categories: vim
+categories: Vim
 description: 关于 vim 的主题与插件
-keywords: vim
+keywords: Vim
 ---
 
 vim 并没有自带的插件管理模块, 所有插件散乱地散布在 `.vim` 文件夹中, 本篇介绍了如何使用 **Vundle** 对 vim 插件进行管理, 借鉴于文章: [vim 插件管理器](https://blog.csdn.net/zhangpower1993/article/details/52184581)

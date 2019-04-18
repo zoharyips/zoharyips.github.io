@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 数据结构 - 概述
-categories: datastruct
+categories: DataSturct
 description: 数据结构的整体认知
-keywords: datastruct
+keywords: DataSturct
 ---
 
 Pascal 之父 尼古拉斯·沃斯 的著名言论: **算法 + 数据结构 = 程序** 道出了程序最初设计的本质,  

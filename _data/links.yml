@@ -7,6 +7,10 @@
   url: http://www.ruanyifeng.com/blog/
   type: blog
 
+- name: Jekyll 官方中文文档
+  url: https://jekyllcn.com/docs/home/
+  type: doc
+
 - name: Liquid 模板语言官方中文文档
   url: https://liquid.bootcss.com/
   type: doc
