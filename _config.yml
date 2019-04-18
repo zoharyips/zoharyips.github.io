@@ -23,13 +23,13 @@ markdown: kramdown
 kramdown:
     input: GFM
 highlighter: rouge
-paginate: 10
+paginate: 7
 lsi: false
 quiet: false
 future: true
 excerpt_separator: "\n\n"
 permalink: /:year/:month/:day/:title/
-gems:
+plugins:
     - jekyll-github-metadata
     - rouge
 #     - jekyll-html-pipeline
@@ -48,7 +48,7 @@ navs:
 #  -
 #    href: /
 #    label: 首页
-#
+
   -
     href: /categories/
     label: 分类
