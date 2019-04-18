@@ -45,10 +45,10 @@ collections:
 
 # 导航
 navs:
-  -
-    href: /
-    label: 首页
-
+#  -
+#    href: /
+#    label: 首页
+#
   -
     href: /categories/
     label: 分类
