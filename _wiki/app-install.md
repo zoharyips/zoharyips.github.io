@@ -25,6 +25,13 @@ keywords:
 
     * [Linux下 和 Windows 下 Oracle Instant Client 的安装](https://blog.csdn.net/zklth/article/details/7190035)
 
+### Postgresql
+
+* [CentOS 安装任意版本 postgresql 服务器](https://www.jianshu.com/p/4da8b0405799)
+
+    * [postgresql 资源](https://download.postgresql.org/)  
+    根据教程下载指定版本 psql
+    
 ### Jekyll 环境搭建
 
 1. 安装 <abbr title="sudo apt-get install ruby">ruby</abbr> 和 ruby-dev

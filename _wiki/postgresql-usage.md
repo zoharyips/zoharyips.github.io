@@ -58,37 +58,44 @@ keywords: psql, postgresql
 | `\d <tableName>` | 列出表结构 |
 | `\c <dbName>` | 选择数据库 |
 | `\dt <dbName>` | 查看库中所有的表 |
+| `\password` | 修改当前用户数据库密码 |
+
+### 用户操作
+
+* 创建用户  
+`CREATE USER <dbuserName> WITH PASSWORD '<password>';`
+
+* 赋予用户操作数据库的权限
+`GRANT ALL PRIVILEGES ON DATABASE <dbname> to <dbuserName>;`
+
+### 数据库操作
+
+* 创建数据库  
+`CREATE DATABASE <dbname> OWNER <dbuserName>;`
 
 ### 表操作
 
-* 插入数据
-
+* 插入数据  
 `INSERT INTO <tableName>(...) VALUES(...);`
 
-* 删除数据
-
+* 删除数据  
 `DELETE FROM <tableName> WHERE <...>;`
 
-* 修改数据
-
+* 修改数据  
 `UPDATE FROM <tableName> WHERE <...>;`
 
 ### 字段操作
 
-* 删除字段
-
-`ALTER TABLE table_name DROP COLUMN column_name;`
+* 删除字段  
+`ALTER TABLE <tableName> DROP COLUMN <columnName>;`
 
 ### 字段约束
 
-* 设置主键
+* 设置主键  
+`ALTER TEBLE <tableName> ADD PRIMARY KEY(<columnName>);`
 
-`ALTER TEBLE table_name ADD PRIMARY KEY(column_name);`
+* 删除主键  
+`ALTER TABLE <tableName> DROP CONSTRAINT <primekeyName>;`
 
-* 删除主键
-
-`ALTER TABLE table_name DROP CONSTRAINT pk_name;`
-
-* 修改类型
-
-`ALTER TABLE tb_name ALTER COLUMN column_name TYPE value_type;`
+* 修改类型  
+`ALTER TABLE <tableName> ALTER COLUMN <columnName> TYPE <valueType>;`

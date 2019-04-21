@@ -56,18 +56,27 @@ keywords: oracle
 
 * 管理员登录  
   
-  在登录语句后加上参数 : `AS SYSDBA`  
+  系统账户有 `SYS` 和 `SYSTEM`, 登录需在登录语句后加上参数 : `AS SYSDBA`  
   
   ```oracle
-  $ sqlplus <adminName>/ AS SYSDBA
+  $ sqlplus {sys | system}/ AS SYSDBA
   Enter password: <password>
+  ```  
+
+* 管理员隐私登录  
+  
+  ```oracle
+  $ sqlplus /nolog
+  SQL> conn {sys | system}/ AS SYSDBA
+  Enter password:
   ```
 
 ### 远程登录
 
+* 使用 sqlplus 客户端远程登录  
   ```oracle
   sqlplus <userName>/<password>@//<IPAddress>:<portNo>/<sid>
-
+  
   /**
    * userName : 用户名
    * password : 密码
@@ -85,61 +94,143 @@ keywords: oracle
 
 ## oracle 控制台命令
 
-* exit : 退出登录
+* **退出登录**  
+`exit`  
+`quit`
 
-* quit : 退出登录
+* **启动**  
 
-* startup 启动命令
-    * nomount:  启动实例不挂载数据库
-    * mount:    实例加载数据库, 但数据库关闭
-    * open:     启动实例, 挂载数据库并打开数据库
-    * force:    强制启动数据库
+    ```oracle
+    SQL> startup {nomount | mount | open | force}
+    
+    nomount: 启动实例不挂载数据库  
+    mount:   实例加载数据库, 但数据库关闭  
+    open:    启动实例, 挂载数据库并打开数据库  
+    force:   强制启动数据库  
+    ```
 
-> 数据库启动过程:  
-> SHUTDOWN 状态 -> NoMount 状态 -> Mount 状态 -> Open 状态  
-> 1. SHUTDOWN: 数据库管理系统未启动
-> 2. NOMOUNT: 数据库管理系统启动并初始化系统, 未装载数据库
-> 3. MOUNT: 数据库管理系统开始装载各数据库并初始化数据库
-> 4. OPEN: 打开数据库, 上线数据库, 实时运行管理系统
+    数据库启动过程 | 描述
+    :-: | :-
+    SHUTDOWN | 数据库管理系统未启动
+    NOMOUNT | 数据库管理系统启动并初始化系统, 未装载数据库
+    MOUNT | 数据库管理系统开始装载各数据库并初始化数据库
+    OPEN | 打开数据库, 上线数据库, 实时运行管理系统
 
-* shutdown 关闭命令
-    * normal: 正常方式关闭数据库  
+* **关闭**
+
+    ```oracle
+    SQL> shutdown {normal | immediate | transactional | abort}
+
+    normal: 正常方式关闭数据库  
         1. 阻止任何用户建立新的连接  
-        2. 等待当前所有正在连接的用户主动断开连接(此方式下Oracle不会立即断掉当前用户的连接, 这些用户仍然操作相关的操作)
+        2. 等待当前所有正在连接的用户主动断开连接
         3. 用户都断开连接, 则立即关闭 卸载数据库, 并终止实例
-    * immediate: 立即关闭数据库  
+
+    immediate: 立即关闭数据库  
         1. 阻止任何用户建立新的连接, 阻止新建事务
         2. 强制终止当前事务, 撤销未提交事务
         3. 关闭, 卸载数据库, 终止实例
-    * transactional: 事务关闭方式
+
+    transactional: 事务关闭方式
         1. 阻止任何用户建立新的连接, 同时阻止当前连接的用户开始任何新的事务
         2. 等待所有未提交的活动事务提交完毕, 然后立即断开用户的连接
         3. 直接关闭 卸载数据库, 并终止实例
-    * abort: 终止关闭方式
+
+    abort: 终止关闭方式
         1. 阻止任何用户建立新的连接, 同时阻止当前连接的用户开始任何新的事务
         2. 立即终止当前正在执行的SQL语句
         3. 任何未提交的事务均不撤销
         4. 直接断开所有用户的连接, 关闭 卸载数据库 并终止实例
+    ```
 
+## 用户操作
 
-## 常用 oracle SQL 语句
+### 普通操作
 
-* 查询所有数据库 `select * from v$database`
+* 创建用户  
+`CREATE USER <dbuserName> IDENTIFIED BY <password>;`
 
-* 查询所有用户 `select * from dba_users`
+* 修改用户密码  
+`ALTER USER <dbuserName> IDENTIFIED BY <password>;`
 
-* 查询你所管理的用户 `select * from all_users`
+* 删除用户  
+`DROP USER <dbuserName>;`
 
-* 查询当前用户信息 `select * from user_users`
+* 删除用户及其所有数据库  
+`DROP USER <dbuserName> CASCADE;`
 
-* 查询所有表和视图 `select * from all_tab_comments`
+* 查询所用用户及其基本信息  
+`SELECT * FROM dba_users;`
 
-* 查询本用户表和视图 `select * from user_tab_comments`
+* 查询所有用户名  
+`SELECT * FROM all_users;`
 
-* 查询所有表的列名及注释 `select * from all_col_comments`
+* 查询当前用户信息  
+`SELECT * FROM user_users;`
 
-* 查询本用户表的列名及注释 `select * from user_col_comments`
+### 权限
 
-* 查询所有表列名 `select * from all_tab_columns`
+* 常见权限  
+  
+  权限 | 描述
+  :- | :-
+  `CREATE SESSION` | 连接数据库
+  `CREATE TABLE` | 建表
+  `CREATE TABLESPACE` | 建立表空间
+  `CREATE VIEW` | 建立视图
+  `CREATE SEQUENCE` | 建立序列
+  `CREATE USER` | 建立用户
 
-* 查询本用户表的列名 `select * from user_tab_columns`
+* 查看所有系统权限  
+`SELECT * FROM system_privilege_map;`
+
+* 所有用户所具有的系统权限  
+`SELECT * FROM dba_sys_privs;`
+
+* 当前用户所具有的系统权限  
+`SELECT * FROM user_sys_privs;`
+
+* 当前会话所具有的系统权限  
+`SELECT * FROM session_privs;`
+
+* <a name="privilege">授予权限</a>  
+  
+  ```oracle
+  GRANT privilege [, privilege...] 
+      TO user [, user| role, PUBLIC...]
+      [WITH ADMIN OPTION];
+  
+  PUBLIC            所有用户
+  WITH ADMIN OPTION 使用户同样具有分配权限的权利，可将此权限授予别人
+  ```
+  
+  例:  
+  `GRANT CREATE TABLE TO guest WITH ADMIN OPTIN;`
+
+* 撤销权限  
+  
+  ```oracle
+  REVOKE {privilege | role} FROM {user_name | role_name | PUBLIC}
+  ```
+
+### 角色授权
+
+* 默认角色  
+  
+    * CONNECT 权限:  
+    ALTER SESSION、CREATE CLUSTER、CREATE DATABASELINK、CREATE SEQUENCE、CREATE SESSION、CREATE SYNONYM、CREATE TABLE、CREATEVIEW
+  
+    * RESOURCE 权限:  
+    CREATE CLUSTER、CREATE PROCEDURE、CREATE SEQUENCE、CREATE TABLE、CREATE TRIGGR
+  
+    * DBA 权限:  
+    数据库管理员
+
+* 创建角色  
+`CREATE ROLE <roleName>;`
+
+* 删除角色  
+`DROP ROLE <roleName>;`
+
+* 为角色授权, 参照<a href="#privilege">权限授权</a>  
+`GRANT privilege [, privilege...] TO <roleName>;`
