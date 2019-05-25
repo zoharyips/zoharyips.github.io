@@ -13,6 +13,13 @@ keywords: oracle
 * TOC
 {:toc}
 
+## oracle 默认信息
+
+* 端口号: **1521**
+
+* 实例名: **orcl** (standard edition) 或 **xe** (express edition)
+
+
 ## 登录 oracle
 
 * sqlplus 登录用法  
@@ -90,6 +97,7 @@ keywords: oracle
   
   ```oracle
   sqlplus Amy/123456@110.110.110.110:1521
+  sqlplus sys/123456@110.110.110.110:1521 AS SYSDBA
   ```
 
 ## oracle 控制台命令
@@ -146,6 +154,9 @@ keywords: oracle
 ## 用户操作
 
 ### 普通操作
+
+* 显示当前用户  
+`SHOW USER;`
 
 * 创建用户  
 `CREATE USER <dbuserName> IDENTIFIED BY <password>;`
@@ -234,3 +245,24 @@ keywords: oracle
 
 * 为角色授权, 参照<a href="#privilege">权限授权</a>  
 `GRANT privilege [, privilege...] TO <roleName>;`
+
+## 表操作
+
+* 查看用户下所有的表  
+`SELECT * FROM TAB;`
+
+* 查看表结构  
+`DESC <tableName>;`
+
+* 查询数据  
+`SELECT * FROM <tableName>;`  
+oracle 的数据查询可以为列设置别名和使用算数表达式:  
+`SELECT ename "姓名", job "职务", sal "月薪", sal*12 "年薪" FROM emp;`
+
+* distinct 去重  
+`SELECT DISTINCT deptno "部门编号" FROM emp;`
+
+* 连接查询结果  
+    * **concat()** 函数  
+    `SELECT CONCAT(empno, ename) FROM emp;`
+    * **||** 连接符
