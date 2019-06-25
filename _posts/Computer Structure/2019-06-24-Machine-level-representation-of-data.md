@@ -182,17 +182,17 @@ R 进制数：(K<sub>n</sub>K<sub>n-1</sub>...K<sub>2</sub>K<sub>1</sub>K<sub>0<
 直接的加减运算和移位运算将存在溢出的问题，有三种方法判断溢出：
 
 * 溢出逻辑表达式：
-$$V=(AS_&BS_&\overline {SS_})|(\overline {AS_}&\overline {BS_}&SS_)$$  
+$$V=(A_S&B_S&\overline {S_S})|(\overline {A_S}&\overline {B_S}&S_S).$$  
 若 V 为 1，则溢出
 
 * 对比符号位与数值位的进位：  
   
-    情况 | 符号位是否进位$CS_$ | 数值位是否进位$C1_$
+    情况 | 符号位是否进位$$C_S$$ | 数值位是否进位$$C_1$$
     :-: | :-: | :-: 
     正溢出 | 否 | 是
     负溢出 | 是 | 否
   
-  $$V=CS_\oplus C1_$$，若 V 为 1，则溢出
+  $$V=C_S\oplus C_1$$，若 V 为 1，则溢出
 
 * 双符号位判断溢出：  
   
@@ -205,3 +205,4 @@ $$V=(AS_&BS_&\overline {SS_})|(\overline {AS_}&\overline {BS_}&SS_)$$
 
 #### 原码一位乘法
 
+* 符号位：
