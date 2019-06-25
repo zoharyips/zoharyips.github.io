@@ -182,7 +182,7 @@ R 进制数：(K<sub>n</sub>K<sub>n-1</sub>...K<sub>2</sub>K<sub>1</sub>K<sub>0<
 直接的加减运算和移位运算将存在溢出的问题，有三种方法判断溢出：
 
 * 溢出逻辑表达式：
-$$V=(A_S&B_S&\overline {S_S})|(\overline {A_S}&\overline {B_S}&S_S).$$  
+$$V=(A_SB_S\overline {S_S}) + (\overline {A_S}\overline {B_S}S_S).$$  
 若 V 为 1，则溢出
 
 * 对比符号位与数值位的进位：  
@@ -205,4 +205,15 @@ $$V=(A_S&B_S&\overline {S_S})|(\overline {A_S}&\overline {B_S}&S_S).$$
 
 #### 原码一位乘法
 
-* 符号位：
+* 符号位：$$P_S=x_S\oplus y_S$$
+
+* 数值位：采用 ACC 和 MQ 同时处理运算的方式求出 [|x| · |y|]<sub>原</sub>  
+  
+  ![原码一位乘法](https://zoharyips.github.io/images/posts/原码一位乘法.png "原码一位乘法")
+
+#### 补码一位乘法
+
+采用 [布斯(Booth)乘法](https://baike.baidu.com/item/布斯乘法算法)
+
+### 除法
+
