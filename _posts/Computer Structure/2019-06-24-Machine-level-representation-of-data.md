@@ -51,15 +51,23 @@ R 进制数：$$(K_nK_{n-1}\ \dots\ K_2K_1K_0K_{-1}K{-2}\ \dots\ K_{-m})_R$$
   $$(V)_{10}=K_n\times R^n+K_{n-1}\times R^{n-1}+\dots+K_2\times R^2+K_1\times R^1+K_0\times R^0+K_{-1}\times R^{-1}+K{-2}\times R^{-2}+\dots+K_{-m}\times R^{-m}$$
 
 * 除基取余法  
-  
-  (K<sub>n</sub>×R<sup>n</sup> + K<sub>n-1</sub>×R<sup>n-1</sup> + ... + K<sub>2</sub>×R<sup>2</sup> + K<sub>1</sub>×R<sup>1</sup> + K<sub>0</sub>×R<sup>0</sup>) ÷ R  
-  = K<sub>n</sub>×R<sup>n-1</sup> + K<sub>n-1</sub>×R<sup>n-2</sup> + ... + K<sub>2</sub>×R<sup>1</sup> + K<sub>1</sub>×R<sup>0</sup> -- 余 -- + **K<sub>0</sub>**  
+
+  $$
+  \begin{align}
+  & (K_n\times R^n+K_{n-1}\times R^{n-1}+\dots+K_2\times R^2+K_1\times R^1+K_0\times R^0) \div R\\
+  =& K_n\times R^{n-1}+K_{n-1}\times R^{n-2}+\dots+K_2\times R^1+K_1\times R^0\dots K_0
+  \end{align}
+  $$
 
 
 * 乘基取整法  
-  
-  K<sub>-1</sub>×R<sup>-1</sup> + K<sub>-2</sub>×R<sup>-2</sup> + ... + K<sub>-m</sub>×R<sup>-m</sup> × R  
-  = **K<sub>-1</sub>** + K<sub>-2</sub>×R<sup>-1</sup> + ... + K<sub>-m</sub>×R<sup>-m+1</sup>
+
+  $$
+  \begin{align}
+  & K_{-1}\times R^{-1}+K{-2}\times R^{-2}+\dots+K_{-m}\times R^{-m} \times R\\
+  =& K_{-1}\times R^{0}+K{-2}\times R^{-1}+\dots+K_{-m}\times R^{-m+1}
+  \end{align}
+  $$
 
 * 分组转换法  
   
