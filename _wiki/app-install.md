@@ -15,6 +15,12 @@ keywords:
 
 ## Linux
 
+### MySQL 5.7
+
+* [CentOS 安装 MySQL 5.7](https://www.jianshu.com/p/7cccdaa2d177)
+
+    * [解决 MySQL 5.7 中 Your password does not satisfy the current policy requirements. 问题](https://blog.csdn.net/maxsky/article/details/51171474)
+
 ### Oracle 11g express
 
 * [Ubuntu 安装 oracle 11g express](http://www.169it.com/tech-oracle/article-6404098922522300004.html)

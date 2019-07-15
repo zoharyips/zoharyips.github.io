@@ -67,13 +67,14 @@ linux 运行 `bin` 目录下的 `shutdown.sh`
 ## 标准 javaWeb 应用结构
 
     examples
-    ├── jsp
-    ├── servlets
+    ├── META-INFO
     ├── WEB-INF
     │   ├── ...
     │   ├── classes
     │   ├── lib
     │   └── web.xml
+    ├── jsp
+    ├── servlets
     ├── websocket
     └── index.html
 
@@ -148,3 +149,39 @@ linux 运行 `bin` 目录下的 `shutdown.sh`
 ```
 
 将 8080 改为 80 即可使用 http 默认端口
+
+## Tomcat 工作原理
+
+Tomcat 为各 servlet 的入口, 通过 tomcat 的主程序管理各个 servlet, 而为了节省资源和加快速度, 每个 servlet 都是单例的:
+
+* 在 web.xml 中读取已注册的 servlet, 存入 urlMapping 中, 通过键值对为各个 servlet 与各个 url 建立映射
+
+* 用户访问 url, 通过 urlMapping 获取 servlet 名称
+
+* 根据 servlet 名称访问 servletMapping, 判断是否已实例化
+
+    * 若已实例化, 则直接调用进行服务
+
+    * 若未实例化, 则根据 servlet 名称构造并实例化一个 servlet 对象, 并存入 servletMapping 中
+
+伪代码: 
+
+```java
+    class Tomcat {
+        static HashMap<String, String> urlMapping; // key: url, value: servlet-name
+        static HashMap<String, HttpServlet> servletMapping; // key: servlet-name, value: servlet-Obj
+
+        main() {
+            String servletName = urlMapping.get("url");
+            Servlet servlet = servletMapping.get("servletName");
+            if(null != servlet) {
+                servlet = class.forName("servletName").newInstant();
+                servlet.init();
+                servletMaping.put("servletName", servlet);
+            }
+            servlet.service();
+        }
+    }
+```
+
+由于单例将带来线程安全问题, 因此在 servlet 中不允许存储成员变量, 已
