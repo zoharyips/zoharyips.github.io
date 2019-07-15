@@ -5,5 +5,6 @@ categories:
 description: 
 keywords: 
 ---
-
-<img src="https://zoharyips.github.io/images/wechat.png" style="text-align:center" alt="zohar's wechat" />
+<div style="text-align:center">
+    <img src="https://zoharyips.github.io/images/wechat.png" alt="zohar's wechat" />
+</div>
