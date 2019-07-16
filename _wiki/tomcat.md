@@ -70,10 +70,10 @@ linux 运行 `bin` 目录下的 `shutdown.sh`
     ├── META-INFO
     ├── WEB-INF
     │   ├── ...
+    │   ├── jsp
     │   ├── classes
     │   ├── lib
     │   └── web.xml
-    ├── jsp
     ├── servlets
     ├── websocket
     └── index.html
@@ -152,7 +152,7 @@ linux 运行 `bin` 目录下的 `shutdown.sh`
 
 ## Tomcat 工作原理
 
-Tomcat 为各 servlet 的入口, 通过 tomcat 的主程序管理各个 servlet, 而为了节省资源和加快速度, 每个 servlet 都是单例的:
+Tomcat 为所有 servlet 的入口, 通过 tomcat 的主程序管理各个 servlet, 而为了节省资源和加快速度, servlet 使用单例模式工作:
 
 * 在 web.xml 中读取已注册的 servlet, 存入 urlMapping 中, 通过键值对为各个 servlet 与各个 url 建立映射
 
@@ -184,4 +184,4 @@ Tomcat 为各 servlet 的入口, 通过 tomcat 的主程序管理各个 servlet,
     }
 ```
 
-由于单例将带来线程安全问题, 因此在 servlet 中不允许存储成员变量, 已
+> 注：由于采用单例模式， servlet 中不可以使用成员变量

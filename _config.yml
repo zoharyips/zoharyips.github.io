@@ -23,7 +23,7 @@ markdown: kramdown
 kramdown:
     input: GFM
 highlighter: rouge
-paginate: 7
+paginate: 8
 lsi: false
 quiet: false
 future: true
@@ -82,7 +82,7 @@ gitalk:
 # 搜索模块
 simple_jekyll_search:
     # 是否支持全文搜索
-    fulltext: false
+    fulltext: true
     # 最多显示多少条搜索结果
     limit: 10
 

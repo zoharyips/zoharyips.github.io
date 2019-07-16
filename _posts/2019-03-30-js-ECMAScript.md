@@ -130,15 +130,25 @@ boolean | 布尔 | false
 
 * 条件运算符
 
-`[接收值] = <布尔表达式> ? <true返回值> : <false返回值>;`
+```js
+[接收值] = <布尔表达式> ? <true返回值> : <false返回值>;
+```
 
 * void 运算符
 
-使 void 中的内容返回为空(undefined): `void(函数())` 
+void 运算符通常只用于获取 undefined 的原始值，一般使用 `void(0)`（等同于`void 0`）。在上述情况中，也可以使用全局变量 undefined 来代替（假定其仍是默认值）。
 
 * delete 运算符
 
-删除对象中已定义的成员变量或成员方法的引用: `delete 对象.对象成员`
+返回值：boolean型
+
+主要用途：
+
+1. 删除一个对象的属性或方法。
+
+2. 删除数组中的一个元素。
+
+3. 删除一个没有 var 声明的全局变量。
 
 ## 控制语句
 
@@ -248,11 +258,37 @@ function <funcName>(<arg1>, <arg2>, ...){
 
 调用:
 
-* js: `<funcName>(<arg1>, <arg2>, ...);`
-* Html: `onClick="<funcName>(<arg1>, <arg2>, ...)`
+* js: 
+
+```js
+<funcName>(<arg1>, <arg2>, ...);
+```
+
+* Html:
+
+```js
+onClick="<funcName>(<arg1>, <arg2>, ...)"
+```
 
 特点: 无需标注是否有返回值, 无需为参数限定类型
-注: 无返回值函数, 最终都会返回一个 `undefined` 类型
+
+注意: 无返回值函数, 即 void 函数, 最终都会返回一个 `undefined` 类型
+
+### IIFE（立即调用函数表达式）
+
+IFE（ 立即调用函数表达式）是一个在定义时就会立即执行的  JavaScript 函数。
+
+```js
+(function () {
+    statements
+})();
+
+//Example:
+var result = (function () { 
+    var name = "Barry"; 
+    return name; 
+})(); 
+```
 
 ## 异常
 
