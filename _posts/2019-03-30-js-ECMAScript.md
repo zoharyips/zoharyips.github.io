@@ -19,20 +19,31 @@ JavaScript 之 ECMAScript
 
 ## 变量
 
+变量由 **变量类型** + **变量名** + **变量值** 三个要素组成，即 型、名、值，这三个元素缺一不可， 且都可以由我们所指定
+
+变量的值保存在内存中，而变量名实际上是一个指针，指向内存中其所对应的值，也就是变量名实际上仅保存变量值的地址。
+
 ### 声明变量
 
-* 声明: `var <变量名>;`
-* 声明类型: `var <变量名> = new <类型>;`
-* 声明且赋值: `var <变量名> = <值>;`
-* 同时声明(可跨行): `var <变量名> = <值>, <变量名> = <值>, ..., <变量名> = <值>; `
+声名方式 | 方法 | 备注
+:- | :- | :-
+ 名 | `var 变量名;` | 无指定类型，则为 undefined
+ 型 + 名 | `var 变量名 = new 类型;` | 无指定初始值，则自动赋予默认值
+ 名 + 值 | `var 变量名 = 值;` | 系统自动推导类型，为完整的变量声明方式
+ 名 + 值 | `变量名 = 值` | 与上一致，但为全局变量，即使是在函数内
+ 多个变量 | `var 变量名 = 值, 变量名 = 值, ..., 变量名 = 值;` | 多个变量同时声名
 
 示例:
 
 ```js
 var a;
+// undefined 状态，typeof(a) = undefined. 因为未指定该变量类型，该变量不可使用
 var a = new Number;
+// object 类型，typeof(a) = object. 因为 Number、String、Boolean等 都是 js 自带的类，其对象均解释为 object 类型
 var a = 0;
-var a = 11, b = "11", c = false;
+var a = [];
+// object 类型，数组同样视为类
+var a = 11, b = "11", c = false, e = [1, 2];
 var a = 11,
     b = "11",
     c = false;
@@ -40,67 +51,42 @@ var a = 11,
 
 ### 变量赋值
 
-赋值: `<变量> = <值>`, JS 可以不为声明的变量指定类型, 变量会通过 `<变量> = <值>` 后面的值的类型自动推导类型: 
+js 通过自动推导类型的方式为变量进行赋值，即 `变量名 = 值`
 
 ```js
-var b = 1024;`  
-```
-
-数据类型 - 值:  `b:	number - 1024`
-
-为指定类型变量赋其他类型值, 该变量将转化为其他类型:
-
-```js
-var a = 10;
-variableInfo(a);
-a = "10";
-variableInfo(a);
-a = false;
-variableInfo(a);
-a = null;
-variableInfo(a);
-a = undefined;
-variableInfo(a);
-```
-
-数据类型 - 值: 
-
-```
-number - 10
-string - 10
-boolean - false
-object - null
-undefined - undefined
+var a = 0; // number 类型
+var a = "11"; // string 类型
+var a = false; // boolean 类型
+var a = null; // object 类型
+var a = undefined; // undefined 状态
+var a = 16 + "aaa"; // string 类型
+var a = [1, 2, 3]; // object 类型
 ```
 
 注:  
-八进制如 `011` 将自动推导为十进制 number 类型 `9`  
-十六进制 `0x11` 将自动推导为十进制 number 类型 `17`  
-若以 `0` 开头, 且后面数字有 `8` 或 `9`, 则默认原数值为十进制, 如
-`var b = 09`, 则控制台输出 `b: number - 9`
+* 八进制如 `011` 将自动推导为十进制 number 类型 `9`  
+* 十六进制 `0x11` 将自动推导为十进制 number 类型 `17`  
+* 若以 `0` 开头, 且后面数字有 `8` 或 `9`, 则默认原数值为十进制, 如
+`var b = 09`, 则 b 的值为 9
 
 ## 原始数据类型
 
 类型 | 释义 | 默认值
 :--: | :-- | :--:
-undefined | 未定义 | undefined
-null(object) | 空 | null
+object | js 对象 | null
 number | 数值 | 0
 string | 字符串 |
 boolean | 布尔 | false
 
 注:  
-`undefined` 是变量的**状态**, 描述了变量<ins>只声明而未定义</ins>或者根本<ins>不存在</ins>的状态  
-`null` 是变量的**值**, 当一个变量的值为 null 时, 该变量为<ins>空对象</ins>, 其值为空  
-一个变量包含了变量的类型(变量本身)及变量保存的值, 该值的数据保存在内存中, 因此变量所真正记录的是其值在内存中的地址  
-当一个变量的值为 null 时, 该变量本身仍旧存在, 只是其值不存在, 并不指向某一块内存空间  
-而当一个变量状态为 undefined 时, 该变量本身不存在 
+* `undefined` 指变量的**状态**, 当变量为 undefined 时，表示这是个 <ins>未声名</ins> 或 <ins>只声明而未定义类型</ins> 的变量  
+* `null` 是变量的**值**, 只有 <ins>对象</ins> 才会出现有 null 值的情况，表示该对象为 <ins>空对象</ins> , 即该变量已声名但没有变量值，即变量名不指向任何地址空间，因此为 null(空指针)
 
 ## 运算符
 
 * 算术运算符
 
-|加 | 减 | 乘 | 除 | 余 | (左)自增 | (左)自减| 取相反 |
+|加 | 减 | 乘 | 除 | 余 | 左自增 | 左自减| 取相反 |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | + | - | * | / | % | ++ | -- | - |
 
@@ -136,7 +122,7 @@ boolean | 布尔 | false
 
 * void 运算符
 
-void 运算符通常只用于获取 undefined 的原始值，一般使用 `void(0)`（等同于`void 0`）。在上述情况中，也可以使用全局变量 undefined 来代替（假定其仍是默认值）。
+void 运算符通常只用于获取 undefined 的原始值，一般使用 `void(0)`（等同于`void 0`）。在上述情况中，也可以使用 undefined 来代替（假定其仍是默认值）。
 
 * delete 运算符
 
@@ -154,52 +140,9 @@ void 运算符通常只用于获取 undefined 的原始值，一般使用 `void(
 
 ### 判断
 
-#### if 类型
+* if 类型，支持 if...else...
 
-* if
-
-```js
-if(<BOOL>) {
-    ...
-}
-```
-
-* if... else
-
-```js
-if(<BOOL>) {
-    ...
-} else {
-    ...
-}
-```
-
-* if... else if...
-
-```js
-if(<BOOL>) {
-    ...
-} else if (<BOOL>) {
-    ...
-} else ...
-```
-
-#### switch
-
-```js
-switch(<VALUE>) {
-    case <CASE>: {
-        ...
-        break;
-        }
-    case <CASE>: {
-        ...
-        break;
-        }
-    ...
-    default;
-}
-```
+* switch
 
 ### 循环
 
@@ -207,42 +150,45 @@ switch(<VALUE>) {
 
 * for
 
-```js
-for(<INIT>; <JUDGEMENT>; <LOOP>) {
-    ...
-}
-```
+    ```js
+    for(初始化表达式; 判断表达式; 操作表达式) {
+        ...
+    }
+    for(var i = 0; i < 10; ++i) {
+        a += i;
+    }
+    ```
 
-* for/in
+* For/In 循环
 
-```js
-for(index : <COMVAR>) {
-    ...
-}
-```
+    循环遍历对象的**属性**，使用方法为 `对象名[迭代变量]`， 作用等同于 `对象名.属性`
+
+    ```js
+    var x, txt="";
+    var person={fname:"Bill",lname:"Gates",age:56}; 
+    for (x in person){
+        txt=txt + person[x];
+    }
+    document.write(txt + "<br />")
+    document.write(person.fname + person.lname + person.age + "<br />")
+
+    //输出：
+    BillGates56
+    BillGates56
+    ```
 
 #### while 类型
 
 * while 当循环
 
-```js
-while(<JUDGEMENT>) {
-    ...
-}
-```
-
 * do... while 直到循环
-
-```js
-do {
-    ...
-} while(<JUDGEMENT>);
-```
 
 ### 跳转
 
 * break: 跳出循环
+
 * continue: 跳过本次循环
+
 * label: 代码块标签, 不建议使用
 
 ## 函数
@@ -250,7 +196,7 @@ do {
 创建: 
 
 ```js
-function <funcName>(<arg1>, <arg2>, ...){
+function 函数名(arg1, arg2, ...){
     ...
     return 返回值;
 }
@@ -258,29 +204,42 @@ function <funcName>(<arg1>, <arg2>, ...){
 
 调用:
 
-* js: 
+* js 中调用: 
 
-```js
-<funcName>(<arg1>, <arg2>, ...);
-```
+    ```js
+    函数名(arg1, arg2, ...);
+    ```
 
-* Html:
+* Html 中调用:
 
-```js
-onClick="<funcName>(<arg1>, <arg2>, ...)"
-```
+    ```js
+    onClick="函数名(arg1, arg2, ...)"
+    ```
 
 特点: 无需标注是否有返回值, 无需为参数限定类型
 
 注意: 无返回值函数, 即 void 函数, 最终都会返回一个 `undefined` 类型
 
-### IIFE（立即调用函数表达式）
+### 内嵌函数
 
-IFE（ 立即调用函数表达式）是一个在定义时就会立即执行的  JavaScript 函数。
+所有函数都能访问全局变量。同时，JavaScript 支持嵌套函数，所有函数都能访问它们上一层的作用域。自然而然内嵌函数可以访问上一层的函数变量，多层内嵌函数依旧可以访问全局变量
 
 ```js
-(function () {
-    statements
+function add() {
+    var counter = 0;
+    function plus() {counter += 1;}
+    plus();    
+    return counter; 
+}
+```
+
+### 立即调用函数
+
+即 IFE（立即调用函数表达式）是一个在定义时就会立即执行的  JavaScript 函数。
+
+```js
+(function (args...) {
+    operations...
 })();
 
 //Example:
@@ -288,6 +247,48 @@ var result = (function () {
     var name = "Barry"; 
     return name; 
 })(); 
+
+//Output：
+result = Barry；
+```
+
+### 闭包
+
+即通过使用 **内嵌函数 ＋ IFE** 的方式返回一个函数，使函数拥有不被销毁的私有变量
+
+```js
+var a = (function(){
+    var timer = 0;
+    return function() {timer += 1;}
+})(); //a 此时为一个函数
+a();
+a();
+a();
+//Output:
+timer = 3
+//通过闭包的方式使函数拥有不销毁的私有变量
+
+/*------ 计数器困境 1 ------*/
+function a() {
+    var timer = 0;
+    return timer += 1;
+}
+a();
+a();
+a();
+//Output：
+timer = 1
+//普通函数无法实现计数器。
+
+/*------ 计数器困境 2 ------*/
+var timer = 0;
+function a() {return timer += 1;}
+a();
+a();
+a();
+//Output:
+timer = 3
+//其他函数的操作也可以改变计数器的值，不稳定。
 ```
 
 ## 异常
