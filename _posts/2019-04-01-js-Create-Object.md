@@ -1,6 +1,6 @@
 ---
 layout: post
-title: js 笔记 - 创建对象
+title: javascript - 创建对象
 categories: JavaScript
 description: 创建对象的各种方法
 keywords: JavaScript
