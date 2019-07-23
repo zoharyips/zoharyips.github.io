@@ -10,7 +10,11 @@ IDEA 大法好，Android studio 本身就是 IDEA
 
 ## 快捷键
 
-* <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>ENTER</kbd> ：将光标跳转至行尾同时添加分号
+注：`+` 表示同时按下，`→` 表示重复按下
+
+* <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>ENTER</kbd> ：快速补全分号
+
+    ![快速补全分号](https://zoharyips.github.io/images/posts/auto-generate-semicolon.gif "快速补全分号")
 
 * <kbd>SHIFT</kbd> + <kbd>ENTER</kbd> ：直接换行
 
@@ -18,14 +22,58 @@ IDEA 大法好，Android studio 本身就是 IDEA
 
 * <kbd>ALT</kbd> + <kbd>ENTER</kbd> ：
 
-    1. 补全调用方法返回的类型
+    1. 自动推导局部变量
 
-        ![补全调用](https://zoharyips.github.io/images\posts\Alt+Enter1.gif "补全调用")
+        ![自动推导局部变量](https://zoharyips.github.io/images/posts/introduce-local-variable.gif "自动推导局部变量")
 
     2. 快速修复
 
-* <kbd>CTRL</kbd> + <kbd>O</kbd> ：快速重写方法
+* <kbd>CTRL</kbd> + <kbd>O</kbd> ：快速重写/实现方法
 
-* <kbd>ALT</kbd> + <kbd>INSERT</kbd> ：快速生成方法
+    ![重写快速/实现方法](https://zoharyips.github.io/images/posts/override-or-implement.gif "快速选择重写或实现方法")
 
-* 
+* <kbd>CTRL</kbd> + <kbd>I</kbd> ：快速实现方法
+
+* <kbd>ALT</kbd> + <kbd>INSERT</kbd> ：快速生成常用方法方法
+
+* <kbd>SHIFT</kbd> → <kbd>SHIFT</kbd> ：快速搜索
+
+* <kbd>CONTROL</kbd> + <kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>U</kbd> ：类关系图
+
+    ![类关系图](https://zoharyips.github.io/images/posts/class-relation.gif "类关系图")
+
+## 快速补全代码段
+
+* 快速输出：`sout`
+
+    ![快速输出](https://zoharyips.github.io/images/posts/sout.gif "快速输出")
+
+* 快速定义局部变量：`*.var`
+
+    ![快速定义局部变量](https://zoharyips.github.io/images/posts/var.gif "快速定义局部变量")
+
+* 快速定义成员变量：`*.field`
+
+    ![快速定义局部变量](https://zoharyips.github.io/images/posts/field.gif "快速定义成员变量")
+
+* 快速格式化字符串：`*.format`
+
+    ![快速格式化字符串](https://zoharyips.github.io/images/posts/format.gif "快速格式化字符串")
+
+* 快速空判断：`*.null` 或 `*.notnull` 或 `*.nn`
+
+    ![快速空判断](https://zoharyips.github.io/images/posts/null.gif "快速空判断")
+
+* 快速是非判断：`*.if` 或 `*.not.if`
+
+    ![快速是非判断](https://zoharyips.github.io/images/posts/if.gif "快速是非判断")
+
+* 快速遍历：`*.for` 或 `*.fori` 或 `*.forr`
+
+    ![快速遍历](https://zoharyips.github.io/images/posts/for.gif "快速遍历")
+
+* 快速返回：`*.return`，该自动生成其实意义不大
+
+* 快速生成同步锁：`*.synchronized`
+
+    ![快速生成同步锁](https://zoharyips.github.io/images/posts/synchronized.gif "快速生成同步锁")
