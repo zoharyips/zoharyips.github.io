@@ -6,7 +6,12 @@ description: 一些快捷使用 IDEA 的常用技巧
 keywords: Git
 ---
 
-IDEA 大法好，Android studio 本身就是 IDEA
+IDEA 与 Eclipse 的区别，应该是智能与自动的区别
+
+* 目录
+
+* TOC
+{:toc}
 
 ## 快捷键
 
@@ -27,6 +32,8 @@ IDEA 大法好，Android studio 本身就是 IDEA
         ![自动推导局部变量](https://zoharyips.github.io/images/posts/introduce-local-variable.gif "自动推导局部变量")
 
     2. 快速修复
+
+        ![快速修复](https://zoharyips.github.io/images/posts/auto-error-correction.gif "快速修复")
 
 * <kbd>CTRL</kbd> + <kbd>O</kbd> ：快速重写/实现方法
 
@@ -54,19 +61,19 @@ IDEA 大法好，Android studio 本身就是 IDEA
 
 * 快速定义成员变量：`*.field`
 
-    ![快速定义局部变量](https://zoharyips.github.io/images/posts/field.gif "快速定义成员变量")
+    ![快速定义成员变量](https://zoharyips.github.io/images/posts/field.gif "快速定义成员变量")
 
 * 快速格式化字符串：`*.format`
 
     ![快速格式化字符串](https://zoharyips.github.io/images/posts/format.gif "快速格式化字符串")
 
-* 快速空判断：`*.null` 或 `*.notnull` 或 `*.nn`
+* 快速判空：`*.null` 或 `*.notnull` 或 `*.nn`
 
-    ![快速空判断](https://zoharyips.github.io/images/posts/null.gif "快速空判断")
+    ![快速判空](https://zoharyips.github.io/images/posts/null.gif "快速判空")
 
-* 快速是非判断：`*.if` 或 `*.not.if`
+* 快速 if 判断：`*.if` 或 `*.not.if`
 
-    ![快速是非判断](https://zoharyips.github.io/images/posts/if.gif "快速是非判断")
+    ![快速 if 判断](https://zoharyips.github.io/images/posts/if.gif "快速 if 判断")
 
 * 快速遍历：`*.for` 或 `*.fori` 或 `*.forr`
 

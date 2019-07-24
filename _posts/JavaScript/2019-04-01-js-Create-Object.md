@@ -1,6 +1,6 @@
 ---
 layout: post
-title: javascript - 类和对象
+title: JavaScript - 类和对象
 categories: JavaScript
 description: 创建对象的各种方法
 keywords: JavaScript

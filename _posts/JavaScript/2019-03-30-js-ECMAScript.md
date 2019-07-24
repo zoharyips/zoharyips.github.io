@@ -1,6 +1,6 @@
 ---
 layout: post
-title: javascript - ECMAScript
+title: JavaScript - ECMAScript
 categories: JavaScript
 description: 从语法角度记录 ECMAScript 的主要内容
 keywords: JavaScript
