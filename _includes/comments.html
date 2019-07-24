@@ -1,7 +1,7 @@
 <!-- 评论模块 -->
 {% if page.comments != false %}
 
-  {% if site.comments_provider != 'disqus' and site.lazy_load_disqus and site.disqus and site.disqus.username %}
+{% if site.comments_provider != 'disqus' and site.lazy_load_disqus and site.disqus and site.disqus.username %}
     <a href="#" class="show_disqus_comment" onclick="return false;">Show Disqus Comments</a>
     <div id="disqus_thread"></div>
     <script>
@@ -32,24 +32,24 @@
             $(that).remove();
         })
     })
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-  {% endif %}
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+{% endif %}
 
-  <div id="gitalk-container"></div>
-  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-  <script>
-  var gitalk = new Gitalk({
-      id: '{{ page.url | truncate: 50, '' }}',
-      clientID: '{{ site.gitalk.clientID }}',
-      clientSecret: '{{ site.gitalk.clientSecret }}',
-      repo: '{{ site.gitalk.repo }}',
-      owner: '{{ site.gitalk.owner }}',
-      admin: ['{{ site.gitalk.owner }}'],
-      labels: ['gitment'],
-      perPage: 50,
-  })
-  gitalk.render('gitalk-container')
-  </script>
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+var gitalk = new Gitalk({
+    id: '{{ page.url | truncate: 50, '' }}',
+    clientID: '{{ site.gitalk.clientID }}',
+    clientSecret: '{{ site.gitalk.clientSecret }}',
+    repo: '{{ site.gitalk.repo }}',
+    owner: '{{ site.gitalk.owner }}',
+    admin: ['{{ site.gitalk.owner }}'],
+    labels: ['gitment'],
+    perPage: 50,
+})
+gitalk.render('gitalk-container')
+</script>
 {% endif %}
