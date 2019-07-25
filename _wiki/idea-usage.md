@@ -55,39 +55,54 @@ IDEA 与 Eclipse 的区别，应该是智能与自动的区别
 
 ## 快速补全代码段
 
-* 快速输出：`sout`
+* 快速输出：`sout` 或 `*.sout`
 
-    ![快速输出](https://zoharyips.github.io/images/posts/sout.gif "快速输出")
+    ![快速](https://zoharyips.github.io/images/posts/sout.gif "输出")
+
+    ![输出2](https://zoharyips.github.io/images/posts/sout2.gif "输出2")
 
 * 快速定义局部变量：`*.var`
 
-    ![快速定义局部变量](https://zoharyips.github.io/images/posts/var.gif "快速定义局部变量")
+    ![定义局部变量](https://zoharyips.github.io/images/posts/var.gif "定义局部变量")
 
 * 快速定义成员变量：`*.field`
 
-    ![快速定义成员变量](https://zoharyips.github.io/images/posts/field.gif "快速定义成员变量")
+    ![定义成员变量](https://zoharyips.github.io/images/posts/field.gif "定义成员变量")
 
 * 快速格式化字符串：`*.format`
 
-    ![快速格式化字符串](https://zoharyips.github.io/images/posts/format.gif "快速格式化字符串")
+    ![格式化字符串](https://zoharyips.github.io/images/posts/format.gif "格式化字符串")
 
 * 快速判空：`*.null` 或 `*.notnull` 或 `*.nn`
 
-    ![快速判空](https://zoharyips.github.io/images/posts/null.gif "快速判空")
+    ![判空](https://zoharyips.github.io/images/posts/null.gif "判空")
 
 * 快速 if 判断：`*.if` 或 `*.not.if`
 
-    ![快速 if 判断](https://zoharyips.github.io/images/posts/if.gif "快速 if 判断")
+    ![if 判断](https://zoharyips.github.io/images/posts/if.gif "if 判断")
+
+* 快速 switch 判断：`*.switch`
+
+    ![switch 判断](https://zoharyips.github.io/images/posts/switch.gif "switch 判断")
 
 * 快速遍历：`*.for` 或 `*.fori` 或 `*.forr`
 
-    ![快速遍历](https://zoharyips.github.io/images/posts/for.gif "快速遍历")
+    ![遍历](https://zoharyips.github.io/images/posts/for.gif "遍历")
 
-* 快速返回：`*.return`，该自动生成其实意义不大
+* 快速类型转换：`*.cast` 或 `*.castvar`
+
+    ![类型转换](https://zoharyips.github.io/images/posts/cast.gif "类型转换")
+
+    
+    ![类型转换2](https://zoharyips.github.io/images/posts/castvar.gif "类型转换2")
+
+* 快速作为参数调用函数：`*.arg`，意义不大
+
+* 快速返回：`*.return`，意义不大
 
 * 快速生成同步锁：`*.synchronized`
 
-    ![快速生成同步锁](https://zoharyips.github.io/images/posts/synchronized.gif "快速生成同步锁")
+    ![生成同步锁](https://zoharyips.github.io/images/posts/synchronized.gif "生成同步锁")
 
 ## 便捷设置
 
