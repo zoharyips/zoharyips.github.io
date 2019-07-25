@@ -127,3 +127,8 @@ drwxr-xr-x  6 zohar zohar  4096 3月  13 23:04 .android
 ```
 
 第九个字段为文件名
+
+<br/><br/>
+<hr/>
+<blockquote style="text-align:center">I came, I saw, I conquered</blockquote>
+<blockquote style="text-align:center">铁蹄所至，目力所及，皆为王土</blockquote>

@@ -1,22 +1,49 @@
 # zoharyips.github.io
 
-### Filesystem hierarchy
+## Filesystem hierarchy
 
-* *_data*: some information store here
-* *_drafts*: articles store here before post
-* *_include*: website compounents define here
-* *_layouts*: layouts define here
-* *_posts*: the posted articles store here
-* *_wiki*: the wiki articles store here
-* *assets*: the stylesheet of pages and compounents
-* *images*: the images of articles store here
-* *pages*: the main pages in this site
-* .gitignore: the git configuration file
-* BingSiteAuth.xml : the verification of Bing
-* Gemfile: 
-* LICENCE: the copyright of this website and this web page making
-* **_config.yml**: the core setting of this blog(by jekyll)
-* favicon: the site icon
-* google124023de20bae199.html : the verification of Google
-* index.html: the entrance of this website
-* sitemap.xml: the sitemap of this site
+FileName | FileType | Inside | Comment
+:-: | :-: | :-: | :-
+_data | dir | .yml | some info data
+_dratfs | dir | .md | articles before post
+_include | dir | .H5 | website compounets
+_laytous | dir | .H5 | pages layout
+_posts | dir | .md | posted articles
+_wiki | dir | .md | wiki articles
+assets | dir |  | js & css
+images | dir | src | images
+pages | dir | .md | main pages content
+.gitignore | - | conf | configuration of ignoring files for git
+BingSiteAuth.xml | - | auth | authentication for Bing
+Gemfile | - | conf | dependencies for Jekyll
+LICENSE | - |  | license of this website
+README.md | - |  | this file
+_config.yml | - | conf | configuration for Jekyll
+favicon.ico | - | src | site icon
+google*..*.html | - | auth | authentication for Google
+index.html | - | index | site entrance
+sitemap.xml | - | map | sitemap for search engines
+
+## Usage
+
+Record what I learn & what I think
+
+## Func
+
+* Article post
+
+* Wiki articles
+
+* Article archive by time
+
+* Atricle sort by categories
+
+* Share articles
+
+* Search articles
+
+* Search by articles content
+
+* Links
+
+* Comments

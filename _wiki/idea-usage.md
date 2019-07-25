@@ -45,7 +45,7 @@ IDEA 与 Eclipse 的区别，应该是智能与自动的区别
 
 * <kbd>SHIFT</kbd> → <kbd>SHIFT</kbd> ：快速搜索
 
-* <kbd>CONTROL</kbd> + <kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>U</kbd> ：类关系图
+* <kbd>CONTROL</kbd> + <kbd>ALT</kbd> + <kbd>U</kbd> ：显示类关系图
 
     ![类关系图](https://zoharyips.github.io/images/posts/class-relation.gif "类关系图")
 
@@ -84,3 +84,18 @@ IDEA 与 Eclipse 的区别，应该是智能与自动的区别
 * 快速生成同步锁：`*.synchronized`
 
     ![快速生成同步锁](https://zoharyips.github.io/images/posts/synchronized.gif "快速生成同步锁")
+
+## 常用设置
+
+* 设置全局 IDEA maven 设置
+
+    IDEA 默认情况下每新建一个项目，都会使用其默认的 maven 软件及配置，我们需要不胜其烦地去更改配置，其实可以对其进行全局更改：
+
+    `File` → `Other Settings` → `Settings for New Projects...` → `Build, Execution, Deployment` → `Build Tools` → `Maven`
+
+    此时对 maven 进行配置，则将对所有新项目生效
+
+
+<br/><br/>
+<hr/>
+<blockquote style="text-align:center">此时相望不相闻，愿逐月华流照君</blockquote>

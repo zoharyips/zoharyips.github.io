@@ -8,9 +8,7 @@ menu: 关于
 permalink: /about/
 ---
 
-我是 zohar, 一名微不足道的学生程序员
-
-talk is cheap, show you my code.
+我是 zohar，肚子又饿了
 
 ## 联系
 
