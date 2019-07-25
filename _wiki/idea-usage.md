@@ -49,6 +49,10 @@ IDEA 与 Eclipse 的区别，应该是智能与自动的区别
 
     ![类关系图](https://zoharyips.github.io/images/posts/class-relation.gif "类关系图")
 
+* <kbd>CTRL</kbd> + <kbd>ALT</kbd> + <kbd>O</kbd> ：自动优化导入
+
+* <kbd>CTRL</kbd> + <kbd>ALT</kbd> + <kbd>L</kbd> ：自动格式化代码
+
 ## 快速补全代码段
 
 * 快速输出：`sout`
@@ -85,7 +89,7 @@ IDEA 与 Eclipse 的区别，应该是智能与自动的区别
 
     ![快速生成同步锁](https://zoharyips.github.io/images/posts/synchronized.gif "快速生成同步锁")
 
-## 常用设置
+## 便捷设置
 
 * 设置全局 IDEA maven 设置
 
@@ -95,7 +99,17 @@ IDEA 与 Eclipse 的区别，应该是智能与自动的区别
 
     此时对 maven 进行配置，则将对所有新项目生效
 
+* 设置保存自动格式化
+
+    下载 **save Actions** 插件，下载后重启 IDEA 并进入：
+
+    `File` → `Other Settings` → `Settings for New Projects...` → `Other Settings` → `Save Actions`
+
+    启动 Save Actions 同时进行设置，此时所有新建立项目都将可以在保存时自动格式化
+
+    ![保存时格式化](https://zoharyips.github.io/images/posts/)
+
 
 <br/><br/>
 <hr/>
-<blockquote style="text-align:center">此时相望不相闻，愿逐月华流照君</blockquote>
+<p style="text-align:center">此时相望不相闻，愿逐月华流照君</p>
