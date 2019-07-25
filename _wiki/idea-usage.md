@@ -107,7 +107,7 @@ IDEA 与 Eclipse 的区别，应该是智能与自动的区别
 
     启动 Save Actions 同时进行设置，此时所有新建立项目都将可以在保存时自动格式化
 
-    ![保存时格式化](https://zoharyips.github.io/images/posts/formating-with-save.png "保存时格式化")
+    ![保存时格式化](https://zoharyips.github.io/images/posts/formating-with-save.gif "保存时格式化")
 
 
 <br/><br/>
