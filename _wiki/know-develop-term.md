@@ -1,6 +1,6 @@
 ---
 layout: wiki
-title: 专业术语
+title: Know：专业术语
 categories: Computer
 description: 了解一些缩略词或者术语的由来, 有利于深刻理解
 keywords: Computer

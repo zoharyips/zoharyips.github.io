@@ -1,6 +1,6 @@
 ---
 layout: wiki
-title: 软件安装
+title:  Method：软件安装
 categories:
 description: 各种软件有效的安装方法
 keywords:

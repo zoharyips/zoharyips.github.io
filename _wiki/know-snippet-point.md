@@ -1,6 +1,6 @@
 ---
 layout: wiki
-title: 杂乱无章
+title: Know：杂乱无章的知识点
 categories:
 description: 各方面分散细碎的知识点
 keywords:

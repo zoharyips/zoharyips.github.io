@@ -1,6 +1,6 @@
 ---
 layout: wiki
-title: 使用笔记：redis
+title: Note：Redis
 categories: sql
 description: 基础 redis 语法集合
 keywords: redis

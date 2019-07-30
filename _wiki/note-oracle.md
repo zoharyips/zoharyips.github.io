@@ -1,6 +1,6 @@
 ---
 layout: wiki
-title: 使用笔记：Oracle
+title: Note：Oracle
 categories: sql
 description: 基础 oracle 语法集合
 keywords: oracle

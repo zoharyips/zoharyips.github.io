@@ -1,6 +1,6 @@
 ---
 layout: wiki
-title: 疑难杂症：Android studio
+title: Problems：Android studio 疑难杂症
 categories: editor
 description: 记录 android studio 使用中遇到的各种小问题
 keywords: Android

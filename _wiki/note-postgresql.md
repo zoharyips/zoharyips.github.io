@@ -1,6 +1,6 @@
 ---
 layout: wiki
-title: 使用笔记：Postgresql
+title: Note：Postgresql
 categories: sql
 description: 基础 psql 语法集合
 keywords: psql, postgresql

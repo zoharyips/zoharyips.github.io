@@ -1,6 +1,6 @@
 ---
 layout: wiki
-title: 疑难杂症：linux
+title: Problems：Linux 
 categories: linux
 description: 简单记录一些 linux 常见问题及其解决办法
 keywords: linux
