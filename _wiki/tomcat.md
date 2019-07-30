@@ -1,6 +1,6 @@
 ---
 layout: wiki
-title: Tomcat 的基本配置
+title: 使用笔记：Tomcat
 categories: web
 description:
 keywords:

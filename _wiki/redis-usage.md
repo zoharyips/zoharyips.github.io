@@ -1,6 +1,6 @@
 ---
 layout: wiki
-title: redis 基本操作
+title: 使用笔记：redis
 categories: sql
 description: 基础 redis 语法集合
 keywords: redis
@@ -262,5 +262,3 @@ Sorted Set | 元素拥有权重 | 数据插入时排序 | 排行榜
     redis> GET char
     "b"
     ```
-
-## 

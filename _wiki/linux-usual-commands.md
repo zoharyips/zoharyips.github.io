@@ -1,6 +1,6 @@
 ---
 layout: wiki
-title: linux 常用命令
+title: 使用笔记：linux
 categories: linux
 description: 简单记录一些 linux 常用命令
 keywords: linux

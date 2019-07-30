@@ -1,6 +1,6 @@
 ---
 layout: wiki
-title: 计算机相关术语
+title: 专业术语
 categories: Computer
 description: 了解一些缩略词或者术语的由来, 有利于深刻理解
 keywords: Computer

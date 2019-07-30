@@ -1,6 +1,6 @@
 ---
 layout: wiki
-title: vs code 插件英雄榜
+title: 使用笔记：vs code 插件英雄榜
 categories: editor
 description: vs code 各种优秀插件
 keywords: 

@@ -1,6 +1,6 @@
 ---
 layout: wiki
-title: IDEA 快捷使用
+title: 使用笔记：IDEA ★
 categories: editor
 description: 一些快捷使用 IDEA 的常用技巧
 keywords: Git

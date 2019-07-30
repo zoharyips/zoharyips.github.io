@@ -1,6 +1,6 @@
 ---
 layout: wiki
-title: Git 笔记
+title: 使用笔记：Git
 categories: Git
 description: 一些常用 git 命令的记录, 以备查阅
 keywords: Git

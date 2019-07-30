@@ -1,6 +1,6 @@
 ---
 layout: wiki
-title: 零散的知识点记录
+title: 杂乱无章
 categories:
 description: 各方面分散细碎的知识点
 keywords:
