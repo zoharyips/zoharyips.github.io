@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 《Vim 实用技巧》
+title: vim 笔记 - 《Vim 实用技巧》
 categories: Vim
 description: 《VIM 实用技巧笔记》
 keywords: vim
