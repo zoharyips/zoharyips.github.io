@@ -7,6 +7,14 @@
   url: http://www.ruanyifeng.com/blog/
   type: blog
 
+- name: 千峰-李卫民
+  url: https://www.funtl.com/
+  type: blog
+
+- name: 廖雪峰
+  url: https://www.liaoxuefeng.com/
+  type: blog
+
 - name: Jekyll 官方中文文档
   url: https://jekyllcn.com/docs/home/
   type: doc
