@@ -1,4 +1,4 @@
-# zoharyips.github.io
+# zoharyip.club
 
 ## Filesystem hierarchy
 

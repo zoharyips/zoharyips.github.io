@@ -11,7 +11,7 @@ permalink: /categories/
 > 本站所有文章均为原创, 如需转载, 在文首附上原文地址即可
 
 <section class="container posts-content">
-    <a href="https://zoharyips.github.io/archives/" style="color: #333"><h3 style="display: inline">Archive by date</h3></a>
+    <a href="https://zoharyip.club/archives/" style="color: #333"><h3 style="display: inline">Archive by date</h3></a>
     <span class="post-list-item" style="font-size: 12px;margin-left: 12px">按照日期归档</span>
     <!-- {% comment %} sort: 按照首字母的 ASCII 表顺序排序, 对各类别进行排序 {% endcomment %} -->
     {% assign sorted_categories = site.categories | sort %}

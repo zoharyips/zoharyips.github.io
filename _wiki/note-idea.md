@@ -64,7 +64,7 @@ IDEA 与 Eclipse 的区别，应该是智能与自动的区别
 
 * 快速输出：`sout` 或 `*.sout`
 
-    ![快速](https://zoharyip.club/images/posts/sout.gif "输出")
+    ![快速](/images/posts/sout.gif "输出")
 
     ![输出2](https://zoharyip.club/images/posts/sout2.gif "输出2")
 
