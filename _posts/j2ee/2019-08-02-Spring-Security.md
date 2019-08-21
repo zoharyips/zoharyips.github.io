@@ -17,7 +17,7 @@ IDEA Spring Security 多模块聚合工程最基本的搭建过程
 
 项目分为五个模块：
 
-![项目结构](https://zoharyips.github.io/images/posts/spring-security/structure.png "项目结构")
+![项目结构](https://zoharyip.club/images/posts/spring-security/structure.png "项目结构")
 
 模块 | 说明
 :-: | :-
@@ -46,29 +46,29 @@ demo | 示例程序
     `GroupId(com.zohar)` 
 → `ArtifactId(security)` → `Next`
 
-    ![项目信息](https://zoharyips.github.io/images/posts/spring-security/new-project-1.png "项目信息")
+    ![项目信息](https://zoharyip.club/images/posts/spring-security/new-project-1.png "项目信息")
 
 4. 项目目录： 
 
     `Project name(SpringSecurityDemo)` → `Finish`
     
-    ![项目目录](https://zoharyips.github.io/images/posts/spring-security/new-project-2.png "项目目录")
+    ![项目目录](https://zoharyip.club/images/posts/spring-security/new-project-2.png "项目目录")
 
 ## 建立模块
 
 右键新建的项目名，`New` → `Module`，步骤与 [新建maven](#新建项目) 基本一致
 
-![建立模块](https://zoharyips.github.io/images/posts/spring-security/new-project-3.gif "建立模块")
+![建立模块](https://zoharyip.club/images/posts/spring-security/new-project-3.gif "建立模块")
 
 完成后项目结构：
 
-![项目结构](https://zoharyips.github.io/images/posts/spring-security/project-structure.png "项目结构")
+![项目结构](https://zoharyip.club/images/posts/spring-security/project-structure.png "项目结构")
 
 ## 配置 POM 文件
 
 配置结束通过 maven 导入依赖结果大致为：
 
-![maven依赖](https://zoharyips.github.io/images/posts/spring-security/maven-structure.png "maven依赖")
+![maven依赖](https://zoharyip.club/images/posts/spring-security/maven-structure.png "maven依赖")
 
 ### 父模块 security
 
@@ -347,14 +347,14 @@ demo | 示例程序
 
 启动服务后访问 `http://localhost:8080/hello` 即可访问 Hello 控制器，但此处会弹出登录请求
 
-![登录请求](https://zoharyips.github.io/images/posts/spring-security/hello.png "登录请求")
+![登录请求](https://zoharyip.club/images/posts/spring-security/hello.png "登录请求")
 
 账号默认为 user
 
 密码在控制台中有输出：
 
-![登录密码](https://zoharyips.github.io/images/posts/spring-security/password.png "登录密码")
+![登录密码](https://zoharyip.club/images/posts/spring-security/password.png "登录密码")
 
 ## 成功登录
 
-![成功登录](https://zoharyips.github.io/images/posts/spring-security/login.gif "成功登录")
+![成功登录](https://zoharyip.club/images/posts/spring-security/login.gif "成功登录")

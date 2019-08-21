@@ -1,6 +1,6 @@
 # 站点配置
 baseurl:
-url: https://zoharyips.github.io
+url: https://zoharyip.club
 title: zohar's blog
 name: zohar's blog
 subtitle: "Chinese by birth, Programmer by choice"
@@ -45,9 +45,9 @@ collections:
 
 # 导航
 navs:
-#  -
-#    href: /
-#    label: 首页
+  -
+    href: /
+    label: 首页
 
   -
     href: /categories/

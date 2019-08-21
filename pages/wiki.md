@@ -17,7 +17,6 @@ permalink: /wiki/
   {% for wiki in sorted_wiki %}
     {% if wiki.title != "Wiki Template" %}
       <li class="listing-item"><a href="{{ site.url }}{{ wiki.url }}">{{ wiki.title }}</a></li>
-      <br>
     {% endif %}
 {% endfor %}
 </ul>

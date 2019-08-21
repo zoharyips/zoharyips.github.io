@@ -66,7 +66,7 @@ $$N=r^E\times M$$
 
 ## 浮点数的溢出
 
-![浮点溢出](https://zoharyips.github.io/images/posts/浮点溢出.png "浮点溢出")
+![浮点溢出](https://zoharyip.club/images/posts/浮点溢出.png "浮点溢出")
 
 ## IEEE 754 标准
 

@@ -138,7 +138,7 @@ $$V=(A_SB_S\overline {S_S}) + (\overline {A_S}\overline {B_S}S_S).$$
 
 * 数值位：采用 ACC 和 MQ 同时处理运算的方式求出  
   
-  ![原码一位乘法](https://zoharyips.github.io/images/posts/原码一位乘法.png "原码一位乘法")
+  ![原码一位乘法](https://zoharyip.club/images/posts/原码一位乘法.png "原码一位乘法")
 
 #### 补码一位乘法
 
