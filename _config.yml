@@ -26,8 +26,11 @@ highlighter: rouge
 paginate: 8
 lsi: false
 quiet: false
+# 可以发布未来时间的博文
 future: true
+# 摘录的分隔符
 excerpt_separator: "\n\n"
+# 博文发布的 URL
 permalink: /:year/:month/:day/:title/
 plugins:
     - jekyll-github-metadata
@@ -41,6 +44,7 @@ plugins:
 collections:
     wiki:
         output: true
+        # wiki 发布的 URL
         permalink: /wiki/:path/
 
 # 导航

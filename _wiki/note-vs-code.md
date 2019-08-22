@@ -1,7 +1,7 @@
 ---
 layout: wiki
-title: Note：VS Code 插件英雄榜
-categories: editor
+title: VS Code 插件英雄榜
+categories: 笔记
 description: vs code 各种优秀插件
 keywords: 
 ---

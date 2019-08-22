@@ -1,7 +1,7 @@
 ---
 layout: wiki
-title: Note：Git
-categories: Git
+title: Git
+categories: 笔记
 description: 一些常用 git 命令的记录, 以备查阅
 keywords: Git
 ---

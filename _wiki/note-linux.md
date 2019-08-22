@@ -1,7 +1,7 @@
 ---
 layout: wiki
-title: Note：Linux
-categories: linux
+title: Linux
+categories: 笔记
 description: 简单记录一些 linux 常用命令
 keywords: linux
 ---

@@ -78,7 +78,7 @@ ENIAC，全称为Electronic Numerical Integrator And Computer，即电子数字�
 
 ## 五大逻辑模块
 
-![五大逻辑模块](https://zoharyip.club/images/posts/计算机五大逻辑模块.png "五大逻辑模块")  
+![五大逻辑模块](/images/posts/计算机五大逻辑模块.png "五大逻辑模块")  
 
 ## CPU
 

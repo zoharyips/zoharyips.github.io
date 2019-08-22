@@ -370,8 +370,8 @@ public class OrderController {
 
 * 浏览器端
 
-    ![运行结果](https://zoharyip.club/images/posts/deferred-result-message-queue/browser.gif "运行结果")
+    ![运行结果](/images/posts/deferred-result-message-queue/browser.gif "运行结果")
 
 * 控制台端
 
-    ![运行结果](https://zoharyip.club/images/posts/deferred-result-message-queue/console.png "运行结果")
+    ![运行结果](/images/posts/deferred-result-message-queue/console.png "运行结果")

@@ -1,7 +1,7 @@
 ---
 layout: wiki
-title: Note：Tomcat
-categories: web
+title: Tomcat
+categories: 笔记
 description:
 keywords:
 ---

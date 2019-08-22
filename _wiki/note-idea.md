@@ -1,7 +1,7 @@
 ---
 layout: wiki
-title: Note：IDEA ★
-categories: editor
+title: IDEA ★
+categories: 笔记
 description: 一些快捷使用 IDEA 的常用技巧
 keywords: Git
 ---
@@ -19,7 +19,7 @@ IDEA 与 Eclipse 的区别，应该是智能与自动的区别
 
 * <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>ENTER</kbd> ：快速补全分号
 
-    ![快速补全分号](https://zoharyip.club/images/posts/auto-generate-semicolon.gif "快速补全分号")
+    ![快速补全分号](/images/posts/auto-generate-semicolon.gif "快速补全分号")
 
 * <kbd>SHIFT</kbd> + <kbd>ENTER</kbd> ：直接换行
 
@@ -36,15 +36,15 @@ IDEA 与 Eclipse 的区别，应该是智能与自动的区别
 
     1. 自动推导局部变量
 
-        ![自动推导局部变量](https://zoharyip.club/images/posts/introduce-local-variable.gif "自动推导局部变量")
+        ![自动推导局部变量](/images/posts/introduce-local-variable.gif "自动推导局部变量")
 
     2. 快速修复
 
-        ![快速修复](https://zoharyip.club/images/posts/auto-error-correction.gif "快速修复")
+        ![快速修复](/images/posts/auto-error-correction.gif "快速修复")
 
 * <kbd>CTRL</kbd> + <kbd>O</kbd> ：快速重写/实现方法
 
-    ![重写快速/实现方法](https://zoharyip.club/images/posts/override-or-implement.gif "快速选择重写或实现方法")
+    ![重写快速/实现方法](/images/posts/override-or-implement.gif "快速选择重写或实现方法")
 
 * <kbd>CTRL</kbd> + <kbd>I</kbd> ：快速实现方法
 
@@ -54,7 +54,7 @@ IDEA 与 Eclipse 的区别，应该是智能与自动的区别
 
 * <kbd>CONTROL</kbd> + <kbd>ALT</kbd> + <kbd>U</kbd> ：显示类关系图
 
-    ![类关系图](https://zoharyip.club/images/posts/class-relation.gif "类关系图")
+    ![类关系图](/images/posts/class-relation.gif "类关系图")
 
 * <kbd>CTRL</kbd> + <kbd>ALT</kbd> + <kbd>O</kbd> ：自动优化导入
 
@@ -66,42 +66,42 @@ IDEA 与 Eclipse 的区别，应该是智能与自动的区别
 
     ![快速](/images/posts/sout.gif "输出")
 
-    ![输出2](https://zoharyip.club/images/posts/sout2.gif "输出2")
+    ![输出2](/images/posts/sout2.gif "输出2")
 
 * 快速定义局部变量：`*.var`
 
-    ![定义局部变量](https://zoharyip.club/images/posts/var.gif "定义局部变量")
+    ![定义局部变量](/images/posts/var.gif "定义局部变量")
 
 * 快速定义成员变量：`*.field`
 
-    ![定义成员变量](https://zoharyip.club/images/posts/field.gif "定义成员变量")
+    ![定义成员变量](/images/posts/field.gif "定义成员变量")
 
 * 快速格式化字符串：`*.format`
 
-    ![格式化字符串](https://zoharyip.club/images/posts/format.gif "格式化字符串")
+    ![格式化字符串](/images/posts/format.gif "格式化字符串")
 
 * 快速判空：`*.null` 或 `*.notnull` 或 `*.nn`
 
-    ![判空](https://zoharyip.club/images/posts/null.gif "判空")
+    ![判空](/images/posts/null.gif "判空")
 
 * 快速 if 判断：`*.if` 或 `*.not.if`
 
-    ![if 判断](https://zoharyip.club/images/posts/if.gif "if 判断")
+    ![if 判断](/images/posts/if.gif "if 判断")
 
 * 快速 switch 判断：`*.switch`
 
-    ![switch 判断](https://zoharyip.club/images/posts/switch.gif "switch 判断")
+    ![switch 判断](/images/posts/switch.gif "switch 判断")
 
 * 快速遍历：`*.for` 或 `*.fori` 或 `*.forr`
 
-    ![遍历](https://zoharyip.club/images/posts/for.gif "遍历")
+    ![遍历](/images/posts/for.gif "遍历")
 
 * 快速类型转换：`*.cast` 或 `*.castvar`
 
-    ![类型转换](https://zoharyip.club/images/posts/cast.gif "类型转换")
+    ![类型转换](/images/posts/cast.gif "类型转换")
 
     
-    ![类型转换2](https://zoharyip.club/images/posts/castvar.gif "类型转换2")
+    ![类型转换2](/images/posts/castvar.gif "类型转换2")
 
 * 快速作为参数调用函数：`*.arg`，意义不大
 
@@ -109,7 +109,7 @@ IDEA 与 Eclipse 的区别，应该是智能与自动的区别
 
 * 快速生成同步锁：`*.synchronized`
 
-    ![生成同步锁](https://zoharyip.club/images/posts/synchronized.gif "生成同步锁")
+    ![生成同步锁](/images/posts/synchronized.gif "生成同步锁")
 
 ## 便捷设置
 
@@ -129,7 +129,7 @@ IDEA 与 Eclipse 的区别，应该是智能与自动的区别
 
     启动 Save Actions 同时进行设置，此时所有新建立项目都将可以在保存时自动格式化
 
-    ![保存时格式化](https://zoharyip.club/images/posts/formating-with-save.gif "保存时格式化")
+    ![保存时格式化](/images/posts/formating-with-save.gif "保存时格式化")
 
 
 <br/><br/>

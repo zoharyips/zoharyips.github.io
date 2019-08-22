@@ -1,7 +1,7 @@
 ---
 layout: wiki
-title: Know：杂乱无章的知识点
-categories:
+title: 杂乱无章的知识点
+categories: 知识
 description: 各方面分散细碎的知识点
 keywords:
 ---
