@@ -37,7 +37,6 @@ permalink: /wiki/
         </ol>
       {% endif %}
       <h3>{{ article.categories }} ({{ counts[category_index] }})</h3>
-      {% endif %}
       <ol class="posts-list">
       {% assign category_index = category_index | plus: 1 %}
     {% endif %}
