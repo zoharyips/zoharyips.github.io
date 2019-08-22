@@ -3,10 +3,7 @@ layout: wiki
 title: Oracle
 categories: 笔记
 description: 基础 oracle 语法集合
-keywords: oracle
 ---
-
-
 
 **目录**
 

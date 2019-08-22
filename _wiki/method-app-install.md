@@ -2,11 +2,8 @@
 layout: wiki
 title:  软件安装
 categories: 方法
-description: 各种软件有效的安装方法
-keywords:
+description: 在此汇总各种行之有效的软件安装方案
 ---
-
-在此汇总各种行之有效的软件安装方案
 
 * TOC
 {:toc}

@@ -8,19 +8,6 @@ permalink: /wiki/
 ---
 
 <section class="container posts-content">
-  <!-- 计算每个分类中文章的数量 -->
-  {% assign count = 1 %}
-  {% for wiki in site.wiki sorted %}
-    {% if wiki.title != "Personal Info" %}
-      {% if wiki.categories != wiki.posts.categories %}
-        {% assign count = count | append: ', ' %}
-        {% assign counts = counts | append: count %}
-        {% assign count = 1 %}
-      {% else %}
-        {% assign count = count | plus: 1 %}
-      {% endif %}
-    {% endif %}
-  {% endfor %}
 
   <!-- 生成分类数组 -->
   {% assign counts = counts | split: ', ' %}
@@ -34,7 +21,7 @@ permalink: /wiki/
       {% if category_index != 0 %}
         </ol>
       {% endif %}
-      <h3>{{ article.categories }} ({{ counts[category_index] }})</h3>
+      <h3>{{ article.categories }}</h3>
       <ol class="posts-list">
       {% assign category_index = category_index | plus: 1 %}
     {% endif %}

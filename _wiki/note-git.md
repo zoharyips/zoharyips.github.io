@@ -2,11 +2,8 @@
 layout: wiki
 title: Git
 categories: 笔记
-description: 一些常用 git 命令的记录, 以备查阅
-keywords: Git
+description: 一些常用 git 命令的记录, 以备查阅 ^_^
 ---
-
-接触 linux 不接触 git 天理难容, 接触 git 不接触 linux 不太方便. ^_^
 
 ## 创建新仓库
 

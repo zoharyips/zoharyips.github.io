@@ -3,7 +3,6 @@ layout: wiki
 title: Redis
 categories: 笔记
 description: 基础 redis 语法集合
-keywords: redis
 ---
 
 **目录**

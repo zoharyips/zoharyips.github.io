@@ -2,11 +2,8 @@
 layout: wiki
 title: IDEA ★
 categories: 笔记
-description: 一些快捷使用 IDEA 的常用技巧
-keywords: Git
+description: IDEA 与 Eclipse 的区别，应该是智能与自动的区别
 ---
-
-IDEA 与 Eclipse 的区别，应该是智能与自动的区别
 
 * 目录
 

@@ -2,11 +2,8 @@
 layout: wiki
 title: VS Code 插件英雄榜
 categories: 笔记
-description: vs code 各种优秀插件
-keywords: 
+description: 收集爱不释手的 VS code 插件
 ---
-
-收集一些使用过的 优秀的 vs code 插件
 
 **目录**
 

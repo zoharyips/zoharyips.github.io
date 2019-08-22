@@ -3,10 +3,7 @@ layout: wiki
 title: Android studio
 categories: 疑难杂症
 description: 记录 android studio 使用中遇到的各种小问题
-keywords: Android
 ---
-
-关于 android studio 使用过程中遇到的较麻烦的问题会单独记录, 此处记录各种小问题
 
 **目录**
 
