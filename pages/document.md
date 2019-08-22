@@ -8,4 +8,4 @@ menu: 文档
 permalink: /doc/
 ---
 
-{% include README.md %}
+{% site.README.md %}
