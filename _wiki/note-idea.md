@@ -5,7 +5,7 @@ categories: 笔记
 description: IDEA 与 Eclipse 的区别，应该是智能与自动的区别
 ---
 
-* 目录
+**目录**
 
 * TOC
 {:toc}
