@@ -8,8 +8,6 @@ menu: 链接
 permalink: /links/
 ---
 
-> 在此收集一些优秀的网站, 让博客不再孤独
-
 <br>
 <h3>Blogs</h3>
 {% for link in site.data.links %}

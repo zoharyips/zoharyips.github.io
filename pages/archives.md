@@ -2,7 +2,6 @@
 layout: page
 title: 归档
 description: 按年份归档
-keywords: 归档
 comments: false
 menu: 归档
 permalink: /archives/
@@ -32,6 +31,7 @@ permalink: /archives/
     {% assign nyear = post.next.date | date: '%Y' %}
     {% if year != nyear %}
         {% if thisyear != 1 %}
+            </ol>
         {% endif %}
 <h3>{{ post.date | date: '%Y' }} ({{ counts[i] }})</h3>
         {% if thisyear != 0 %}

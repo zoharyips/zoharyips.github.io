@@ -1,21 +1,17 @@
 ---
 layout: page
 title: Wiki
-description: 人越学越觉得自己无知
-keywords: 维基, Wiki
+description: 人越学越觉得自己无知，知识点又多又零碎，你吃得完吗？
 comments: false
 menu: 维基
 permalink: /wiki/
 ---
 
-这里记录的是大部分软件的用法和命令, 或是一些繁杂零散的知识点
-
-
 <section class="container posts-content">
 <!-- 计算每个分类中文章的数量 -->
 {% assign count = 1 %}
 {% for wiki in site.wiki %}
-  {% if wiki.title != "Wiki Template" %}
+  {% if wiki.title != "Personal Info" %}
     {% assign categories = wiki.categories %}
     {% assign ncategories = wiki.next.categories %}
     {% if categories != ncategories %}
@@ -28,17 +24,18 @@ permalink: /wiki/
   {% endif %}
 {% endfor %}
 
-{% assign counts = counts | split: ', ' | reverse %}
+{% assign counts = counts | split: ', ' %}
 {% assign i = 0 %}
 
 {% assign thiscategory = 1 %}
 
 {% for wiki in site.wiki %}
-  {% if wiki.title != "Wiki Template" %}
+  {% if wiki.title != "Personal Info" %}
     {% assign categories = wiki.categories %}
     {% assign ncategories = wiki.next.categories %}
     {% if categories != ncategories %}
         {% if thiscategory != 1 %}
+            </ol>
         {% endif %}
 <h3>{{ wiki.categories }} ({{ counts[i] }})</h3>
         {% if thiscategory != 0 %}

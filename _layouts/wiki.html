@@ -8,6 +8,13 @@ layout: default
     <div class="column three-fourths">
       <div class="collection-title">
         <h1 class="collection-header">{{ page.title }}</h1>
+        {% if page.description %}
+        <div class="collection-info">
+          <span class="meta-info">
+            {{ page.description }}
+          </span>
+        </div>
+        {% endif %}
       </div>
     </div>
   </div>

@@ -30,7 +30,11 @@
 - name: Golang 标准库文档
   url: https://studygolang.com/pkgdoc
   type: doc
-  
+
+- name: 本站文档
+  url: /doc/
+  type: doc
+
 - name: Angular 官方文档
   url: https://angular.cn/docs
   type: doc

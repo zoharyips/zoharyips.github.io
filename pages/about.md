@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-description: 既然选择远方, 便只顾风雨兼程
+description: 既然选择远方，便只顾风雨兼程\n\n哈... 我又肚子饿了
 keywords: zohar
 comments: true
 menu: 关于

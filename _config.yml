@@ -49,29 +49,29 @@ collections:
 
 # 导航
 navs:
-  -
-    href: /
-    label: 首页
+    -
+        href: /
+        label: 首页
 
-  -
-    href: /categories/
-    label: 分类
+    -
+        href: /categories/
+        label: 分类
 
-  -
-    href: /archives/
-    label: 归档
+# -
+#   href: /archives/
+#   label: 归档
 
-  -
-    href: /wiki/
-    label: 维基
+    -
+        href: /wiki/
+        label: 维基
 
-  -
-    href: /links/
-    label: 链接
+    -
+        href: /links/
+        label: 链接
 
-  -
-    href: /about/
-    label: 关于
+    -
+        href: /about/
+        label: 关于
 
 # rss 订阅
 subscribe_rss: /feed.xml
@@ -89,6 +89,10 @@ simple_jekyll_search:
     fulltext: true
     # 最多显示多少条搜索结果
     limit: 10
+
+# 百度推送
+baidu：
+    push: true
 
 # 谷歌分析
 google:

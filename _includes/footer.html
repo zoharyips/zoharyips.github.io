@@ -44,11 +44,13 @@
       });
     </script>
 
+  <!-- 如果本页面开启 mermaid -->
     {% if page.mermaid %}
     <script src="{{ site.url }}/assets/js/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     {% endif %}
 
+  <!-- 如果本页面开启 sequence -->
     {% if page.sequence %}
     <script src="{{ site.url }}/assets/js/webfont.js"></script>
     <script src="{{ site.url }}/assets/js/snap.svg-min.js"></script>
@@ -60,16 +62,35 @@
     </script>
     {% endif %}
 
+  <!-- 如果本页面开启 flow -->
     {% if page.flow %}
     <script src="{{ site.url }}/assets/js/raphael.min.js"></script>
     <script src="{{ site.url }}/assets/vendor/flowchart.js/dist/flowchart.min.js"></script>
     <script src="{{ site.url }}/assets/js/flow.js"></script>
     {% endif %}
 
+    <!-- 如果本页面开启 mathjax -->
     {% if page.mathjax %}
     <script type="text/javascript" src="https://basis-learning.github.io/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     {% endif %}
-
+    <!-- 百度自动推送脚本 -->
+    {% if site.baidu.push %}
+      <script>
+        (function(){
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+        })();
+      </script>
+    {% endif %}
+    <!-- 若网站开启谷歌分析 -->
     {% if site.google.analytics_id %}
     <div style="display:none">
       <script>
@@ -77,10 +98,8 @@
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
         ga('create', '{{ site.google.analytics_id }}', 'auto');
         ga('send', 'pageview');
-
       </script>
     </div>
     {% endif %}
