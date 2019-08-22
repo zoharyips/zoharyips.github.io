@@ -21,7 +21,7 @@ email: zoharyips@outlook.com
 # jekyll 配置
 markdown: kramdown
 kramdown:
-    input: GFM
+  input: GFM
 highlighter: rouge
 paginate: 8
 lsi: false
@@ -33,45 +33,45 @@ excerpt_separator: "\n\n"
 # 博文发布的 URL
 permalink: /:year/:month/:day/:title/
 plugins:
-    - jekyll-github-metadata
-    - rouge
-#     - jekyll-html-pipeline
-    - jekyll-paginate
-    - jekyll-feed
-    - jemoji
-    - jekyll-sitemap
-#     - jekyll-mentions
+  - jekyll-github-metadata
+  - rouge
+#   - jekyll-html-pipeline
+  - jekyll-paginate
+  - jekyll-feed
+  - jemoji
+  - jekyll-sitemap
+#   - jekyll-mentions
 collections:
-    wiki:
-        output: true
-        # wiki 发布的 URL
-        permalink: /wiki/:path/
+  wiki:
+    output: true
+    # wiki 发布的 URL
+    permalink: /wiki/:path/
 
 # 导航
 navs:
-    -
-        href: /
-        label: 首页
+  -
+    href: /
+    label: 首页
 
-    -
-        href: /categories/
-        label: 分类
+  -
+    href: /categories/
+    label: 分类
 
 # -
 #   href: /archives/
 #   label: 归档
 
-    -
-        href: /wiki/
-        label: 维基
+  -
+    href: /wiki/
+    label: 维基
 
-    -
-        href: /links/
-        label: 链接
+  -
+    href: /links/
+    label: 链接
 
-    -
-        href: /about/
-        label: 关于
+  -
+    href: /about/
+    label: 关于
 
 # rss 订阅
 subscribe_rss: /feed.xml

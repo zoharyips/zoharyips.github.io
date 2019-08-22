@@ -10,16 +10,14 @@ permalink: /wiki/
 <section class="container posts-content">
   <!-- 计算每个分类中文章的数量 -->
   {% assign count = 1 %}
-  {% for wiki in site.wiki %}
+  {% for wiki in site.wiki sorted %}
     {% if wiki.title != "Personal Info" %}
-      {% assign categories = wiki.categories %}
-      {% assign post_category = wiki.posts.categories %}
-      {% if categories != post_category %}
-          {% assign count = count | append: ', ' %}
-          {% assign counts = counts | append: count %}
-          {% assign count = 1 %}
+      {% if wiki.categories != wiki.posts.categories %}
+        {% assign count = count | append: ', ' %}
+        {% assign counts = counts | append: count %}
+        {% assign count = 1 %}
       {% else %}
-          {% assign count = count | plus: 1 %}
+        {% assign count = count | plus: 1 %}
       {% endif %}
     {% endif %}
   {% endfor %}
@@ -29,7 +27,7 @@ permalink: /wiki/
   <!-- 分类数组下标 -->
   {% assign category_index = 0 %}
 
-  {% for article in site.wiki %}
+  {% for article in site.wiki sorted %}
     <!-- 若该文章类别与上一文章类别不同 -->
     {% if article.categories != article.posts.categories %}
       <!-- 如果不是第一个类别，则划分区分标志 -->
