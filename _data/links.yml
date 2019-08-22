@@ -1,68 +1,85 @@
 # 格式
-# - name: 链接名
+# -  
+#   name: 链接名
 #   url: 链接
 #   type: {blog|doc|tool|download}
 
-- name: 阮一峰的网络日志
+-
+  name: 阮一峰的网络日志
   url: http://www.ruanyifeng.com/blog/
   type: blog
 
-- name: 有道无术，术尚可求，有术无道，止于术 - 李卫民
+-
+  name: 有道无术，术尚可求，有术无道，止于术 - 李卫民
   url: https://www.funtl.com/
   type: blog
 
-- name: 廖雪峰
+-
+  name: 廖雪峰
   url: https://www.liaoxuefeng.com/
   type: blog
 
-- name: Jekyll 官方中文文档
+-
+  name: Jekyll 官方中文文档
   url: https://jekyllcn.com/docs/home/
   type: doc
 
-- name: Liquid 模板语言官方中文文档
+-
+  name: Liquid 模板语言官方中文文档
   url: https://liquid.bootcss.com/
   type: doc
 
-- name: Postgresql 中文文档
+-
+  name: Postgresql 中文文档
   url: http://www.postgres.cn/v2/document
   type: doc
 
-- name: Golang 标准库文档
+-
+  name: Golang 标准库文档
   url: https://studygolang.com/pkgdoc
   type: doc
 
-- name: 本站文档
+-
+  name: 本站文档
   url: /doc/
   type: doc
 
-- name: Angular 官方文档
+-
+  name: Angular 官方文档
   url: https://angular.cn/docs
   type: doc
 
-- name: Linux 命令查询工具
+-
+  name: Linux 命令查询工具
   url: http://man.linuxde.net/
   type: tool
   
-- name: 在线 POST 测试
+-
+  name: 在线 POST 测试
   url: http://coolaf.com/
   type: tool
 
-- name: ★ 第八基地
+-
+  name: ★ 第八基地
   url: http://doc.d8jd.com/
   type: download
   
-- name: 阿里 maven 仓库
+-
+  name: 阿里 maven 仓库
   url: https://maven.aliyun.com/mvn/view
   type: download
 
-- name: Android SDK 镜像服务器
+-
+  name: Android SDK 镜像服务器
   url: http://tools.android-studio.org/index.php/proxy
   type: download
   
-- name: Linux 中科大软件源
+-
+  name: Linux 中科大软件源
   url: https://mirrors.ustc.edu.cn/repogen/
   type: download
   
-- name: 中科大开源镜像
+-
+  name: 中科大开源镜像
   url: http://mirrors.ustc.edu.cn/
   type: download
