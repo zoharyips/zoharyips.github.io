@@ -9,14 +9,12 @@ permalink: /wiki/
 
 <section class="container posts-content">
 
-  <!-- 生成分类数组 -->
-  {% assign counts = counts | split: ', ' %}
   <!-- 分类数组下标 -->
   {% assign category_index = 0 %}
 
-  {% for article in site.wiki sorted %}
+  {% for article in site.wiki reversed %}
     <!-- 若该文章类别与上一文章类别不同 -->
-    {% if article.categories != article.posts.categories %}
+    {% if article.categories != article.next.categories %}
       <!-- 如果不是第一个类别，则划分区分标志 -->
       {% if category_index != 0 %}
         </ol>
