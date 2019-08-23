@@ -2,7 +2,6 @@
 layout: post
 title: JavaScript - 类和对象
 categories: JavaScript
-description: 创建对象的各种方法
 keywords: JavaScript
 ---
 本文记录了 js 中类和对象创建的各种方式，同时探究了类和对象的实现

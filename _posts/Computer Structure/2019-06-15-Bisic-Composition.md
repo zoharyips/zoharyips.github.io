@@ -2,7 +2,6 @@
 layout: post
 title: 计算机组成 - 概念
 categories: Computer
-description: 本文记述了计算机系统的基本组成
 keywords: Computer
 ---
 

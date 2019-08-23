@@ -2,7 +2,6 @@
 layout: post
 title: 解析 ls -l 显示列表含义
 categories: Linux
-description: 从 ls -l 你能领悟到 linux 文件系统的理念吗？
 keywords: Linux
 ---
 

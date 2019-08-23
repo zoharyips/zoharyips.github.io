@@ -1,8 +1,7 @@
 ---
 layout: post
 title: SpringBoot Security 多模块聚合工程搭建
-categories: Spring
-description: 
+categories: J2ee Java
 keywords: Spring
 ---
 

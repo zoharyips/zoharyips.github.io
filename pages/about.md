@@ -8,8 +8,6 @@ menu: 关于
 permalink: /about/
 ---
 
-我是 zohar，肚子又饿了
-
 ## 联系
 
 {% for website in site.data.social %}

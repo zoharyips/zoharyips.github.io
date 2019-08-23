@@ -2,7 +2,6 @@
 layout: post
 title: vim 笔记 - 插件管理
 categories: Vim
-description: 关于 vim 的主题与插件
 keywords: Vim
 ---
 

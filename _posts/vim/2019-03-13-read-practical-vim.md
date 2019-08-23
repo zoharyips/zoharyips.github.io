@@ -1,9 +1,8 @@
 ---
 layout: post
-title: vim 笔记 - 《Vim 实用技巧》
+title: vim 笔记 - Vim 实用技巧
 categories: Vim
-description: 《VIM 实用技巧笔记》
-keywords: vim
+keywords: Vim
 ---
 
 vim 实用技巧， 按照一个个技巧的方式来讲述如何使用 vim，其教学方法独特而有效，学习一门工具，

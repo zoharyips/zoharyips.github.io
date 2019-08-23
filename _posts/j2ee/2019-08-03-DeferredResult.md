@@ -1,8 +1,7 @@
 ---
 layout: post
 title: 模拟消息队列与 DeferredResult 的使用
-categories: Spring
-description: 
+categories: J2ee Java
 keywords: Spring
 ---
 
