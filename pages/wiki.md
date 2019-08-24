@@ -3,6 +3,7 @@ layout: page
 title: Wiki
 description: 人越学越觉得自己无知，知识点又多又零碎，你吃得完吗？
 comments: false
+share: false
 menu: 维基
 permalink: /wiki/
 ---
