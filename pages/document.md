@@ -79,15 +79,15 @@ assets | dir | src | The JS and stylesheet
 images | dir | src | Images
 pages | dir | .md | The content of main pages
 .gitignore | - | conf | Git ingore file configurer
-BingSiteAuth.xml | - | auth | Authentication for Bing
+BingSiteAuth | - | auth | Authentication for Bing
 CNAME | - | DNS | The personal domain of this site
 Gemfile | - | conf | Dependencies for Jekyll
 LICENSE | - | MIT | MIT License
-README.md | - |  | this file
+README.md | - | this file
 _config.yml | - | conf | Global configuration
 favicon.ico | - | src | Site icon
-index.html | - | index | Entrance and home page
-sitemap.xml | - | map | Sitemap
+index.html | - | .H5 | Entrance and home page
+sitemap.xml | - | .xml | Sitemap
 
 ## Usage
 
@@ -131,100 +131,141 @@ This site power by **[Github Page](https://pages.github.com/)**, **[Jekyll](http
 
 ### Structure
 
-* `_includes`: 
+> For save demonstration, I've replace all the outside `{` & `}` to `_` in this file;
 
-    1. To include the content from another file stored in the `_includes` folder(ignore `{}`):
+* `_includes`:
+
+    1. Directly include file:  
+        To include the content from another file stored in the `_includes` folder:
 
         ```liquid
-        % include filename.html %
+        _% include filename.html %_
         ```
 
-    2. You can choose to include file fragments relative to the current file by using the `include_relative` tag(ignore `{}`):
+    2. Relative include file:  
+        You can choose to include file fragments relative to the current file by using the `include_relative` tag:
 
         ```liquid
-        % include_relative somedir/footer.html %
+        _% include_relative somedir/footer.html %_
         ```
 
         you cannot use the `../` syntax to specify an include location that refers to a higher-level directory. the included file must be within the current directory or one of its subdirectories.
 
-* `_layout`: Layouts are templates that wrap around your content.
+    3. Variable include file:  
+        You can define a variable (a html file name) in the article meta info, then reference that variable:
 
+        ```liquid
+        ---
+        title: My page
+        my_variable: footer_company_a.html
+        ---
+
+        ...
+
+        // another file
+        _% if page.my_variable %_
+        _% include _{ page.my_variable }_ %_
+        _% endif %_
+        ```
+
+    4. Include and pass the variable to the included file:  
+        You can user `_{ include.content }_` to insert parameter
+
+        ```
+        // image.html
+        <figure>
+            <a href="_{ include.url }_">
+                <img src="_{ include.file }_" style="max-width: _{ include.max-width }_;" alt="_{ include.alt }_"/>
+            </a>
+            <figcaption>_{ include.caption }_</figcaption>
+        </figure>
+
+        // the include file
+        _%
+            include image.html
+                url="http://jekyllrb.com"
+                max-width="200px" 
+                file="logo.png"
+                alt="Jekyll logo"
+                caption="This is the Jekyll logo."
+        %_
+        ```
+
+        The value of contents will be inserted into the `_{ include.* }_` parameter.
+
+* `_layout`:  
+    Layouts are templates that wrap around your content.  
+    the content can be the `.html` file or `.md` file
+
+* `Collection`:  
+    You can create your own album as a new [collection](http://jekyllcn.com/docs/collections/), just like the `_wiki` or `_post`;
 
 ### Grammer
 
 #### Global Variable
 
-* site: 
-
+* site:  
     Site wide information & configuration settings from `_config.yml`;
 
-* page: 
-
+* page:  
     Page specific information & the article meta info. 
     Custom variables set via the article meta info will be available here.
 
-* layout: 
-
+* layout:  
     Layout specific information & the front matter. 
     Custom variables set via front matter in layouts will be available here
 
-* content: 
-
+* content:  
     In **layout files**, the rendered content of the Post or Page being wrapped. Not defined in Post or Page files.
 
-* paginator: 
-
+* paginator:  
     When the paginate configuration option is set, this variable becomes available for use. 
 
 #### Site Variables
 
-* config file:
+* config file: `_config.yml`
 
-    `_config.yml`
+* variables: `site.*`
 
-* variables:
-
-    variable | customize | description
-    :- | :-: | :-
-    site.url | `url` | The url of your site as it is configured in the _config.yml.
-    site.time |  | The current time (when you run the jekyll command).
-    site.pages |  | A list of all Pages.
-    site.posts |  | A reverse chronological list of all Posts.
-    site.tags.TAG |  | The list of all Posts with tag TAG.
-    site.categories.CATEGORY |  | The list of all Posts in category CATEGORY.
-    site.data | `_data` | A list containing the data loaded from the YAML files located in the _data directory.
-    site.collections |  | A list of all the collections (including posts).
-    site.documents |  | A list of all the documents in every collection.
-    site.related_posts |  | If the page being processed is a Post, this contains a list of up to ten related Posts. \nBy default, these are the ten most recent posts. For high quality but slow to compute results, \nrun the jekyll command with the --lsi (latent semantic indexing) option. Also note GitHub Pages does not support the lsi option when generating sites.
-    site.static_files |  | A list of all static files (i.e. files not processed by Jekyll's converters or the Liquid renderer). Each file has five properties: path, modified_time, name, basename and extname.
-    site.html_pages |  | A subset of `site.pages` listing those which end in `.html`.
-    site.html_files |  | A subset of `site.static_files` listing those which end in `.html`.
-    site.foo | `foo: bar` | All the variables set via the command line and your _config.yml are available through the site variable.
+    variable | description
+    :- | :-
+    .url\n`url` | The url of your site as it is configured in the _config.yml.
+    .time | The current time (when you run the jekyll command).
+    .pages | A list of all Pages.
+    .posts | A reverse chronological list of all Posts.
+    .tags.TAG | The list of all Posts with tag TAG.
+    .categories\n.CATEGORY | The list of all Posts in category CATEGORY.
+    .data\n`_data` | A list containing the data loaded from the YAML files located in the _data directory.
+    .collections | A list of all the collections (including posts).
+    .documents | A list of all the documents in every collection.
+    .related\n_posts | If the page being processed is a Post, this contains a list of up to ten related Posts. By default, these are the ten most recent posts. For high quality but slow to compute results, run the jekyll command with the --lsi (latent semantic indexing) option. Also note GitHub Pages does not support the lsi option when generating sites.
+    .static\n_files | A list of all static files (i.e. files not processed by Jekyll's converters or the Liquid renderer). Each file has five properties: path, modified_time, name, basename and extname.
+    .html\n_pages | A subset of `site.pages` listing those which end in `.html`.
+    .html\n_files | A subset of `site.static_files` listing those which end in `.html`.
+    .foo | `foo: bar` | All the variables set via the command line and your _config.yml are available through the site variable.
 
 #### Page Variables
 
-* config file:
+* config file: articles
 
-    articles
+* variables: `page.*`
 
-* variables: 
-
-    variable | customize | description
-    :- | :-: | :-
-    page.id |  | An identifier unique to a document in a Collection or a Post (useful in RSS feeds). e.g. `/2008/12/14/my-post/my-collection/my-document`
-    page.name |  | The filename of the post or page, e.g. `about.md`
-    page.title | `title` | The title of the Page.
-    page.excerpt |  | The un-rendered excerpt of a document.
-    page.content |  | The content of the Page, rendered or un-rendered depending upon what Liquid is being processed and what page is.
-    page.url |  | The URL of the Post without the domain, but with a leading slash, e.g. `/2008/12/14/my-post.html`
-    page.dir | `permalink` | The path between the source directory and the file of the post or page, e.g. `/pages/`.
-    page.path | `path` | The path to the raw post or page. Example usage: Linking back to the page or post’s source on GitHub.
-    page.date | `date` | The Date assigned to the Post. format: `YYYY-MM-DD HH:MM:SS` or `YYYY-MM-DD HH:MM:SS +/-TTTT`
-    page.categories | `categories` | The list of categories to which this post belongs.
-    page.tags | `tags` | The list of tags to which this post belongs.
-    page.collection |  | The label of the collection to which this document belongs. e.g. posts for a post, or puppies for a document at path _puppies/rover.md. If not part of a collection, an empty string is returned.
-    page.next |  | The next post relative to the position of the current post in site.posts. Returns nil for the last entry.
-    page.previous |  | The previous post relative to the position of the current post in site.posts. Returns nil for the first entry.
+    variable | description
+    :- | :-
+    .id | An identifier unique to a document in a Collection or a Post (useful in RSS feeds). e.g. `/2008/12/14/my-post/my-collection/my-document`
+    .name | The filename of the post or page, e.g. `about.md`
+    .title\n`title` | The title of the Page.
+    .excerpt | The un-rendered excerpt of a document.
+    .content | The content of the Page, rendered or un-rendered depending upon what Liquid is being processed and what page is.
+    .url | The URL of the Post without the domain, but with a leading slash, e.g. `/2008/12/14/my-post.html`
+    .dir\n`permalink` | The path between the source directory and the file of the post or page, e.g. `/pages/`.
+    .path\n`path` | The path to the raw post or page. Example usage: Linking back to the page or post’s source on GitHub.
+    .date\n`date` | The Date assigned to the Post. format: `YYYY-MM-DD HH:MM:SS` or `YYYY-MM-DD HH:MM:SS +/-TTTT`
+    .categories\n`categories` | The list of categories to which this post belongs.
+    .tags\n`tags` | The list of tags to which this post belongs.
+    .collection | The label of the collection to which this document belongs. e.g. posts for a post, or puppies for a document at path _puppies/rover.md. If not part of a collection, an empty string is returned.
+    .next | The next post relative to the position of the current post in site.posts. Returns nil for the last entry.
+    .previous | The previous post relative to the position of the current post in site.posts. Returns nil for the first entry.
 
 * article meta info
 
@@ -250,21 +291,36 @@ This site power by **[Github Page](https://pages.github.com/)**, **[Jekyll](http
 
 #### Paginator
 
-* config file:
+* config file: none
 
-    none
-
-* variables: 
+* variables: `paginator.*`
 
     variable | description
     :- | :-
-    paginator.page | The number of the current page
-    paginator.per_page | Number of posts per page
-    paginator.posts | Posts available for the current page
-    paginator.total_posts | Total number of posts
-    paginator.total_pages | Total number of pages
-    paginator.previous_page | The number of the previous page, or nil if no previous page exists
-    paginator.previous_page_path | The path to the previous page, or nil if no previous page exists
-    paginator.next_page | The number of the next page, or nil if no subsequent page exists
-    paginator.next_page_path | The path to the next page, or nil if no subsequent page exists
+    .page | The number of the current page
+    .per_page | Number of posts per page
+    .posts | Posts available for the current page
+    .total\n_posts | Total number of posts
+    .total\n_pages | Total number of pages
+    .previous\n_page | The number of the previous page, or nil if no previous page exists
+    .previous\n_page_path | The path to the previous page, or nil if no previous page exists
+    .next_page | The number of the next page, or nil if no subsequent page exists
+    .next\n_page_path | The path to the next page, or nil if no subsequent page exists
 
+#### Permalink 
+
+* config file: none
+
+* build in formats: 
+
+    Permalink Style | ULR Template
+    :-: | :-
+    date | /:categories/:year/:month/:day/:title:output_ext
+    pretty | /:categories/:year/:month/:day/:title/
+    ordinal | /:categories/:year/:y_day/:title:output_ext
+    weekdate\n(4.0) | /:categories/:year/W:week/:short_day/:title:output_ext
+    none | /:categories/:title:output_ext
+
+* Placeholders: 
+
+    Watch all **[PlaceHolders](https://jekyllrb.com/docs/permalinks/)** here;
