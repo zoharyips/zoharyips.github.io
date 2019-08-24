@@ -133,16 +133,16 @@ This site power by **[Github Page](https://pages.github.com/)**, **[Jekyll](http
 
 * `_includes`: 
 
-    1. To include the content from another file stored in the `_includes` folder:
+    1. To include the content from another file stored in the `_includes` folder(ignore `{}`):
 
         ```liquid
-        {% include filename.html %}
+        % include filename.html %
         ```
 
-    2. You can choose to include file fragments relative to the current file by using the `include_relative` tag:
+    2. You can choose to include file fragments relative to the current file by using the `include_relative` tag(ignore `{}`):
 
         ```liquid
-        {% include_relative somedir/footer.html %}
+        % include_relative somedir/footer.html %
         ```
 
         you cannot use the `../` syntax to specify an include location that refers to a higher-level directory. the included file must be within the current directory or one of its subdirectories.
@@ -171,9 +171,6 @@ This site power by **[Github Page](https://pages.github.com/)**, **[Jekyll](http
 * content: 
 
     In **layout files**, the rendered content of the Post or Page being wrapped. Not defined in Post or Page files.
-    ```liquid
-    {{ content }}
-    ```
 
 * paginator: 
 
