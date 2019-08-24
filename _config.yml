@@ -42,10 +42,18 @@ plugins:
   - jekyll-sitemap
 #   - jekyll-mentions
 collections:
-  wiki:
-    output: true
-    # wiki 发布的 URL
-    permalink: /wiki/:path/
+  -
+    wiki:
+      output: true
+      # wiki 发布的 URL
+      permalink: /wiki/:categories/:path/
+  
+  -
+    design_mode: 
+      output: true
+      permalink: /design_mode/:path/
+
+
 
 # 导航
 navs:

@@ -8,7 +8,6 @@ permalink: /wiki/
 ---
 
 <section class="container posts-content">
-
   <!-- 分类数组下标 -->
   {% assign category_index = 0 %}
 

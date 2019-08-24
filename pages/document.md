@@ -229,20 +229,20 @@ This site power by **[Github Page](https://pages.github.com/)**, **[Jekyll](http
 
     variable | description
     :- | :-
-    .url\n`url` | The url of your site as it is configured in the _config.yml.
+    .url | `url` The url of your site as it is configured in the _config.yml.
     .time | The current time (when you run the jekyll command).
     .pages | A list of all Pages.
     .posts | A reverse chronological list of all Posts.
     .tags.TAG | The list of all Posts with tag TAG.
-    .categories\n.CATEGORY | The list of all Posts in category CATEGORY.
-    .data\n`_data` | A list containing the data loaded from the YAML files located in the _data directory.
+    .categories<br/>.CATEGORY | The list of all Posts in category CATEGORY.
+    .data | `_data` A list containing the data loaded from the YAML files located in the _data directory.
     .collections | A list of all the collections (including posts).
     .documents | A list of all the documents in every collection.
-    .related\n_posts | If the page being processed is a Post, this contains a list of up to ten related Posts. By default, these are the ten most recent posts. For high quality but slow to compute results, run the jekyll command with the --lsi (latent semantic indexing) option. Also note GitHub Pages does not support the lsi option when generating sites.
-    .static\n_files | A list of all static files (i.e. files not processed by Jekyll's converters or the Liquid renderer). Each file has five properties: path, modified_time, name, basename and extname.
-    .html\n_pages | A subset of `site.pages` listing those which end in `.html`.
-    .html\n_files | A subset of `site.static_files` listing those which end in `.html`.
-    .foo | `foo: bar` | All the variables set via the command line and your _config.yml are available through the site variable.
+    .related _posts | If the page being processed is a Post, this contains a list of up to ten related Posts. By default, these are the ten most recent posts. For high quality but slow to compute results, run the jekyll command with the --lsi (latent semantic indexing) option. Also note GitHub Pages does not support the lsi option when generating sites.
+    .static<br/>_files | A list of all static files (i.e. files not processed by Jekyll's converters or the Liquid renderer). Each file has five properties: path, modified_time, name, basename and extname.
+    .html<br/>_pages | A subset of `site.pages` listing those which end in `.html`.
+    .html<br/>_files | A subset of `site.static_files` listing those which end in `.html`.
+    .foo | `foo: bar` All the variables set via the command line and your _config.yml are available through the site variable.
 
 #### Page Variables
 
@@ -254,15 +254,15 @@ This site power by **[Github Page](https://pages.github.com/)**, **[Jekyll](http
     :- | :-
     .id | An identifier unique to a document in a Collection or a Post (useful in RSS feeds). e.g. `/2008/12/14/my-post/my-collection/my-document`
     .name | The filename of the post or page, e.g. `about.md`
-    .title\n`title` | The title of the Page.
+    .title | `title` The title of the Page.
     .excerpt | The un-rendered excerpt of a document.
     .content | The content of the Page, rendered or un-rendered depending upon what Liquid is being processed and what page is.
     .url | The URL of the Post without the domain, but with a leading slash, e.g. `/2008/12/14/my-post.html`
-    .dir\n`permalink` | The path between the source directory and the file of the post or page, e.g. `/pages/`.
-    .path\n`path` | The path to the raw post or page. Example usage: Linking back to the page or post’s source on GitHub.
-    .date\n`date` | The Date assigned to the Post. format: `YYYY-MM-DD HH:MM:SS` or `YYYY-MM-DD HH:MM:SS +/-TTTT`
-    .categories\n`categories` | The list of categories to which this post belongs.
-    .tags\n`tags` | The list of tags to which this post belongs.
+    .dir | `permalink` The path between the source directory and the file of the post or page, e.g. `/pages/`.
+    .path | `path` The path to the raw post or page. Example usage: Linking back to the page or post’s source on GitHub.
+    .date | `date` The Date assigned to the Post. format: `YYYY-MM-DD HH:MM:SS` or `YYYY-MM-DD HH:MM:SS +/-TTTT`
+    .categories | `categories` The list of categories to which this post belongs.
+    .tags | `tags` The list of tags to which this post belongs.
     .collection | The label of the collection to which this document belongs. e.g. posts for a post, or puppies for a document at path _puppies/rover.md. If not part of a collection, an empty string is returned.
     .next | The next post relative to the position of the current post in site.posts. Returns nil for the last entry.
     .previous | The previous post relative to the position of the current post in site.posts. Returns nil for the first entry.
@@ -300,12 +300,12 @@ This site power by **[Github Page](https://pages.github.com/)**, **[Jekyll](http
     .page | The number of the current page
     .per_page | Number of posts per page
     .posts | Posts available for the current page
-    .total\n_posts | Total number of posts
-    .total\n_pages | Total number of pages
-    .previous\n_page | The number of the previous page, or nil if no previous page exists
-    .previous\n_page_path | The path to the previous page, or nil if no previous page exists
-    .next_page | The number of the next page, or nil if no subsequent page exists
-    .next\n_page_path | The path to the next page, or nil if no subsequent page exists
+    .total<br/>_posts | Total number of posts
+    .total<br/>_pages | Total number of pages
+    .previous<br/>_page | The number of the previous page, or nil if no previous page exists
+    .previous<br/>_page_path | The path to the previous page, or nil if no previous page exists
+    .next<br/>_page | The number of the next page, or nil if no subsequent page exists
+    .next<br/>_page_path | The path to the next page, or nil if no subsequent page exists
 
 #### Permalink 
 
@@ -318,7 +318,7 @@ This site power by **[Github Page](https://pages.github.com/)**, **[Jekyll](http
     date | /:categories/:year/:month/:day/:title:output_ext
     pretty | /:categories/:year/:month/:day/:title/
     ordinal | /:categories/:year/:y_day/:title:output_ext
-    weekdate\n(4.0) | /:categories/:year/W:week/:short_day/:title:output_ext
+    weekdate<br/>(4.0) | /:categories/:year/W:week/:short_day/:title:output_ext
     none | /:categories/:title:output_ext
 
 * Placeholders: 

@@ -1,11 +1,8 @@
 ---
-layout: post
-title: 编程艺术 - 软件设计原则
-category: 编程艺术
-keywords: 编程艺术
+layout: wiki
+title: The Art of Programming Design - 软件设计原则
+description: 行之有效的方法论，不懈追求的编程艺术，最喜欢的软件设计之道
 ---
-
-行之有效的方法论，不懈追求的编程艺术，最喜欢的软件设计之道
 
 **目录**
 
