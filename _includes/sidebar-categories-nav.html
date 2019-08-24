@@ -1,8 +1,12 @@
-<!-- 分类页面的分类展示 -->
-<h3>Blog Categories</h3>
+<!-- 分类菜单展示 -->
+<h3>Categories</h3>
 <div id="blog-categories">
   <ul class="list-group">
-    {% assign sorted_categories = site.categories | sort %}
+    {% if include.page_type == "wiki" %}
+      {% assign categories = site.wiki.categories %}
+    {% else %}
+      {% assign categories = site.categories %}
+    {% assign sorted_categories = categories | sort %}
     {% for category in sorted_categories %}
     <li class="list-group-item">
     <a href="#{{ category[0] }}">{{ category | first }}</a>
@@ -17,4 +21,3 @@
     $("#blog-categories li").css('text-transform','capitalize')
   });
 </script>
-
