@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 编程艺术 - 软件设计原则
-categories: 编程艺术
+category: 编程艺术
 keywords: 编程艺术
 ---
 

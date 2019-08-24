@@ -43,6 +43,7 @@ comments: false
                     <h3 class="repo-list-name">
                         <a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
                     </h3>
+                    <!-- 获取页面的摘要，同时删除其两边的空白字符，删除其中的所有 html 标签 -->
                     <p class="repo-list-description">{{ post.excerpt | strip_html | strip }}</p>
                     <p class="repo-list-meta">
                         <span class="meta-info">

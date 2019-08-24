@@ -14,10 +14,15 @@
   url: https://www.funtl.com/
   type: blog
 
+# -
+#   name: 廖雪峰
+#   url: https://www.liaoxuefeng.com/
+#   type: blog
+
 -
-  name: 廖雪峰
-  url: https://www.liaoxuefeng.com/
-  type: blog
+  name: 本站文档
+  url: /doc/
+  type: doc
 
 -
   name: Jekyll 官方中文文档
@@ -42,11 +47,6 @@
 -
   name: Angular 官方文档
   url: https://angular.cn/docs
-  type: doc
-
--
-  name: 本站文档
-  url: /doc/
   type: doc
 
 -
