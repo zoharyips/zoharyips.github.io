@@ -2,10 +2,11 @@
 <h3>Categories</h3>
 <div id="blog-categories">
   <ul class="list-group">
-    {% if include.page_type == "wiki" %}
+    {% if include.content == "wiki" %}
       {% assign categories = site.wiki.categories %}
     {% else %}
       {% assign categories = site.categories %}
+    {% endif %}
     {% assign sorted_categories = categories | sort %}
     {% for category in sorted_categories %}
     <li class="list-group-item">
