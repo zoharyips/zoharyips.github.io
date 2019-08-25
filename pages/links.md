@@ -4,8 +4,6 @@ title: Links
 description: 没有链接的博客是孤独的
 keywords: 链接
 comments: false
-share: false
-repositories: false
 menu: 链接
 permalink: /links/
 ---
@@ -19,7 +17,7 @@ permalink: /links/
         {% assign privious_type = link.type %}
       {% endif %}
       <li class="posts-list-item">
-        <a class="posts-list-name" href="{{ link.url }}">{{ link.name }}</a>
+        <a class="posts-list-name" style="color:#2d5186" href="{{ link.url }}">{{ link.name }}</a>
       </li>
     {% endfor %}
   </ol>
