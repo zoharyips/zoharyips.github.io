@@ -9,6 +9,11 @@ menu: 文档
 permalink: /doc/
 ---
 
+**目录**
+
+* TOC
+{:toc}
+
 # zoharyip.club
 
 ## Filesystem hierarchy

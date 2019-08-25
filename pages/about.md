@@ -24,4 +24,3 @@ permalink: /about/
 {% endfor %}
 </div>
 {% endfor %}
-<hr>

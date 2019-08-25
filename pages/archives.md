@@ -3,6 +3,9 @@ layout: page
 title: 归档
 description: 按年份归档
 comments: false
+share: false
+repositories: false
+categories: true
 menu: 归档
 permalink: /archives/
 ---

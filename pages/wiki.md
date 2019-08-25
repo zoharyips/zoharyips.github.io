@@ -1,17 +1,17 @@
 ---
 layout: page
 title: Wiki
-description: 人越学越觉得自己无知，知识点又多又零碎，你吃得完吗？
-repositories: false
-categories: true
+description: 人越学越觉得自己无知，知识点又多又零碎，再饿也吃不完呀
 menu: 维基
+repositories: false
+share: false
+comments: false
 permalink: /wiki/
 ---
 
 <section class="container posts-content">
   <!-- 分类数组下标 -->
   {% assign category_index = 0 %}
-
   {% for article in site.wiki reversed %}
     <!-- 若该文章类别与上一文章类别不同 -->
     {% if article.categories != article.next.categories %}
@@ -29,4 +29,3 @@ permalink: /wiki/
   {% endfor %}
   </ol>
 </section>
-<hr/>

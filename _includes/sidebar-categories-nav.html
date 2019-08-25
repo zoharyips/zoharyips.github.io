@@ -3,12 +3,7 @@
 <h3>Categories</h3>
 <div id="blog-categories">
   <ul class="list-group">
-    {% if page.title == 'Wiki' %}
-      {% assign categories = site.wiki.categories %}
-    {% else %}
-      {% assign categories = site.categories %}
-    {% endif %}
-    {% assign sorted_categories = categories | sort %}
+    {% assign sorted_categories = site.categories | sort %}
     {% for category in sorted_categories %}
     <li class="list-group-item">
     <a href="#{{ category[0] }}">{{ category | first }}</a>
