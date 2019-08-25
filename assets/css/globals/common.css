@@ -154,9 +154,9 @@
 
 .site-header-nav-item {
     display: inline-block;
-    padding: 10px 20px 6px;
-    font-size: 1.4rem;
-    color: #a4a4a4
+    padding: 8px 20px 8px;
+    font-size: 1.2rem;
+    color: #c0c0c0
 }
 
 .site-footer:after,.site-footer:before {
@@ -171,8 +171,14 @@
 
 .site-header-nav-item.selected {
     color: #808080;
-    padding: 10px 20px 6px;
-    border-bottom: 2px solid #4a90e2
+    padding: 6px 20px 6px;
+    border-top: 2px solid #808080;
+    border-bottom: 2px solid #808080
+}
+
+.site-header-nav-item.selected:hover {
+    color: #222222;
+    text-decoration: none;
 }
 
 .site-header-nav-item+.btn-outline {
