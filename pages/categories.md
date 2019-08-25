@@ -17,12 +17,12 @@ permalink: /categories/
   </p>
   <a href="/archives/" style="text-decoration:underline;color: #333">
     <h3 style="display:inline">Archive by date</h3>
-    <span class="post-list-item" style="font-size: 12px;margin-left: 12px">按照日期归档</span>
   </a>
+  <span class="post-list-item" style="font-size: 12px;margin-left: 12px;color: #333">按照日期归档</span>
   {% assign sorted_categories = site.categories | sort %}
   {% for category in sorted_categories %}
     <h3>{{ category | first }}</h3>
-    <ol class="posts-list" id="{{ category[0] }}">
+    <ol class="posts-list">
       {% for post in category.last %}
         <li class="posts-list-item">
           <span class="posts-list-meta">{{ post.date | date:"%Y-%m-%d" }}</span>

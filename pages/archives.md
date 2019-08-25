@@ -26,19 +26,16 @@ permalink: /archives/
 
 {% assign counts = counts | split: ', ' | reverse %}
 {% assign i = 0 %}
-{% assign thisyear = 1 %}
 
 {% for post in site.posts %}
   {% assign year = post.date | date: '%Y' %}
   {% assign nyear = post.next.date | date: '%Y' %}
   {% if year != nyear %}
-    {% if thisyear != 1 %}
+    {% if is_not_begin %}
       </ol>
     {% endif %}
     <h3>{{ post.date | date: '%Y' }} ({{ counts[i] }})</h3>
-    {% if thisyear != 0 %}
-      {% assign thisyear = 0 %}
-    {% endif %}
+    {% assign is_not_begin = true %}
     <ol class="posts-list">
     {% assign i = i | plus: 1 %}
   {% endif %}

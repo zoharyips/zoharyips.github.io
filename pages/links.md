@@ -10,11 +10,14 @@ permalink: /links/
 
 <div>
   {% assign privious_type = 'none' %}
-  <ol class="posts-list" >
     {% for link in site.data.links %}
       {% if link.type != privious_type %}
+        {% if link.type != 'none' %}
+          </ol>
+        {% endif %}
         <h3>{{ link.type }}</h3>
-        {% assign privious_type = link.type %}
+      {% assign privious_type = link.type %}
+      <ol class="posts-list" >
       {% endif %}
       <li class="posts-list-item">
         <a class="posts-list-name" style="color:#2d5186" href="{{ link.url }}">{{ link.name }}</a>
