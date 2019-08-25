@@ -8,17 +8,15 @@ menu: 链接
 permalink: /links/
 ---
 
-<section class="container posts-content">
-  {% assign privious_type = 'none' %}
-  <ol class="posts-list" >
-    {% for link in site.data.links %}
-      {% if link.type != privious_type %}
-        <h3>{{ link.type }}</h3>
-        {% assign privious_type = link.type %}
-      {% endif %}
-      <li class="posts-list-item">
-        <a class="posts-list-name" href="{{ link.url }}">{{ link.name }}</a>
-      </li>
-    {% endfor %}
-  </ol>
-</section>
+{% assign privious_type = 'none' %}
+<ol class="posts-list" >
+  {% for link in site.data.links %}
+    {% if link.type != privious_type %}
+      <h3>{{ link.type }}</h3>
+      {% assign privious_type = link.type %}
+    {% endif %}
+    <li class="posts-list-item">
+      <a class="posts-list-name" href="{{ link.url }}">{{ link.name }}</a>
+    </li>
+  {% endfor %}
+</ol>
