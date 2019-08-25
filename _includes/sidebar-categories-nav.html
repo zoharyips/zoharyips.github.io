@@ -3,7 +3,7 @@
 <h3>Categories</h3>
 <div id="blog-categories">
   <ul class="list-group">
-    {% if include.content == "wiki" %}
+    {% if page.title == 'Wiki' %}
       {% assign categories = site.wiki.categories %}
     {% else %}
       {% assign categories = site.categories %}
