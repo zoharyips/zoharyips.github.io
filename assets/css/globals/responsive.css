@@ -72,7 +72,7 @@
     margin-bottom: 0;
   }
   .site-header .site-header-nav .site-header-nav-item {
-    padding: 0 .4rem;
+    padding: .15rem .4rem 0;
     margin-left: 0;
     font-size: 0.9rem;
     display: block;

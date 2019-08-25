@@ -154,7 +154,7 @@
 
 .site-header-nav-item {
     display: inline-block;
-    padding: 10px 20px 12px;
+    padding: 10px 20px 8px;
     font-size: 1rem;
     color: #a4a4a4
 }
@@ -171,7 +171,7 @@
 
 .site-header-nav-item.selected {
     color: #808080;
-    padding: 10px 20px 10px;
+    padding: 10px 20px 8px;
     border-bottom: 2px solid #4a90e2
 }
 
