@@ -9,28 +9,16 @@ permalink: /links/
 ---
 
 <section class="container posts-content">
-  <h3>Blogs</h3>
-  {% for link in site.data.links %}
-    {% if link.type == 'blog' %}
-  * [{{ link.name }}]({{ link.url }})
-    {% endif %}
-  {% endfor %}
-  <h3>Tools</h3>
-  {% for link in site.data.links %}
-    {% if link.type == 'tool' %}
-  * [{{ link.name }}]({{ link.url }})
-    {% endif %}
-  {% endfor %}
-  <h3>Documents</h3>
-  {% for link in site.data.links %}
-    {% if link.type == 'doc' %}
-  * [{{ link.name }}]({{ link.url }})
-    {% endif %}
-  {% endfor %}
-  <h3>Download Resource</h3>
-  {% for link in site.data.links %}
-    {% if link.type == 'download' %}
-  * [{{ link.name }}]({{ link.url }})
-    {% endif %}
-  {% endfor %}
+  {% assign privious_type = 'none' %}
+  <ol class="posts-list" >
+    {% for link in site.data.links %}
+      {% if link.type != privious_type %}
+        <h3>{{ link.type }}</h3>
+        {% assign privious_type = link.type %}
+      {% endif %}
+      <li class="posts-list-item">
+        <a class="posts-list-name" href="{{ link.url }}">{{ link.name }}</a>
+      </li>
+    {% endfor %}
+  </ol>
 </section>
