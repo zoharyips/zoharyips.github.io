@@ -6,97 +6,97 @@ comments: false
 ---
 
 <section class="banner">
-    <div class="collection-head">
-        <div class="container">
-            <div class="collection-title">
-                <h2 class="collection-header" id="sub-title">
-                    <span>{{ site.subtitle }}</span>
-                </h2>
-                <div class="collection-info">
-                    <span class="meta-info mobile-hidden">
-                        <span class="octicon octicon-location"></span>
-                        {{ site.location }}
-                    </span>
-                    {% if site.organization %}
-                    <span class="meta-info">
-                        <span class="octicon octicon-organization"></span>
-                        <a href="{{ site.organization_url }}" target="_blank">{{ site.organization }}</a>
-                    </span>
-                    {% endif %}
-                    <span class="meta-info">
-                        <span class="octicon octicon-mark-github"></span>
-                        <a href="https://github.com/{{ site.github_username }}" target="_blank">{{ site.github_username }}</a>
-                    </span>
-                </div>
-            </div>
+  <div class="collection-head">
+    <div class="container">
+      <div class="collection-title">
+        <h2 class="collection-header" id="sub-title">
+          <span>{{ site.subtitle }}</span>
+        </h2>
+        <div class="collection-info">
+          <span class="meta-info mobile-hidden">
+            <span class="octicon octicon-location"></span>
+            {{ site.location }}
+          </span>
+          {% if site.organization %}
+          <span class="meta-info">
+            <span class="octicon octicon-organization"></span>
+            <a href="{{ site.organization_url }}" target="_blank">{{ site.organization }}</a>
+          </span>
+          {% endif %}
+          <span class="meta-info">
+            <span class="octicon octicon-mark-github"></span>
+            <a href="https://github.com/{{ site.github_username }}" target="_blank">{{ site.github_username }}</a>
+          </span>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 <!-- /.banner -->
 <section class="container content">
-    <div class="columns">
-        <div class="column two-thirds" >
-            <!-- Post list -->
-            <ol class="repo-list">
-                {% for post in paginator.posts %}
-                <li class="repo-list-item">
-                    <h3 class="repo-list-name">
-                        <a href="{{ post.url }}">{{ post.title }}</a>
-                    </h3>
-                    <!-- 获取页面的摘要，同时删除其两边的空白字符，删除其中的所有 html 标签 -->
-                    <p class="repo-list-description">{{ post.excerpt | strip_html | strip }}</p>
-                    <p class="repo-list-meta">
-                        <span class="meta-info">
-                            <span class="octicon octicon-calendar"></span> {{ post.date | date: "%Y/%m/%d" }}
-                        </span>
-                        {% for cat in post.categories %}
-                        <span class="meta-info">
-                            <span class="octicon octicon-file-directory"></span>
-                            <a href="/categories/#{{ cat }}" title="{{ cat }}">{{ cat }}</a>
-                        </span>
-                        {% endfor %}
-                    </p>
-                </li>
-                {% endfor %}
-            </ol>
-            <div class="pagination text-align" style="text-align: center; margin:0px auto">
-                    <div class="btn-group">
-                    {% if paginator.previous_page %}
-                        {% if paginator.previous_page == 1 %}
-                            <a href="/" class="btn btn-outline">&laquo;</a>
-                        {% else %}
-                            <a href="/page{{paginator.previous_page}}"  class="btn btn-outline">&laquo;</a>
-                        {% endif %}
-                    {% else %}
-                        <button disabled="disabled" href="javascript:;" class="btn btn-outline">&laquo;</button>
-                    {% endif %}
-                    {% if paginator.page == 1 %}
-                        <a href="javascript:;" class="active btn btn-outline">1</a>
-                    {% else %}
-                        <a href="/"  class="btn btn-outline">1</a>
-                    {% endif %}
-                    {% for count in (2..paginator.total_pages) %}
-                        {% if count == paginator.page %}
-                            <a href="javascript:;"  class="active btn btn-outline">{{count}}</a>
-                        {% else %}
-                            <a href="/page{{count}}"  class="btn btn-outline">{{count}}</a>
-                        {% endif %}
-                    {% endfor %}
-                    {% if paginator.next_page %}
-                        <a href="/page{{paginator.next_page}}"  class="btn btn-outline">&raquo;</a>
-                    {% else %}
-                        <button disabled="disabled" href="javascript:;" class="btn btn-outline">&raquo;</button>
-                    {% endif %}
-                    </div>
-                </div>
-                <!-- /pagination -->
+  <div class="columns">
+    <div class="column two-thirds" >
+      <!-- Post list -->
+      <ol class="repo-list">
+        {% for post in paginator.posts %}
+        <li class="repo-list-item">
+          <h3 class="repo-list-name">
+            <a href="{{ post.url }}">{{ post.title }}</a>
+          </h3>
+          {% comment %} 获取页面的摘要，同时删除其两边的空白字符，删除其中的所有 html 标签 {% endcomment %}
+          <p class="repo-list-description">{{ post.excerpt | strip_html | strip }}</p>
+          <p class="repo-list-meta">
+            <span class="meta-info">
+              <span class="octicon octicon-calendar"></span> {{ post.date | date: "%Y/%m/%d" }}
+            </span>
+            {% for cat in post.categories %}
+            <span class="meta-info">
+              <span class="octicon octicon-file-directory"></span>
+              <a href="/categories/#{{ cat }}" title="{{ cat }}">{{ cat }}</a>
+            </span>
+            {% endfor %}
+          </p>
+        </li>
+        {% endfor %}
+      </ol>
+      <div class="pagination text-align" style="text-align: center; margin:0px auto">
+          <div class="btn-group">
+          {% if paginator.previous_page %}
+            {% if paginator.previous_page == 1 %}
+              <a href="/" class="btn btn-outline">&laquo;</a>
+            {% else %}
+              <a href="/page{{paginator.previous_page}}" class="btn btn-outline">&laquo;</a>
+            {% endif %}
+          {% else %}
+            <button disabled="disabled" href="javascript:;" class="btn btn-outline">&laquo;</button>
+          {% endif %}
+          {% if paginator.page == 1 %}
+            <a href="javascript:;" class="active btn btn-outline">1</a>
+          {% else %}
+            <a href="/" class="btn btn-outline">1</a>
+          {% endif %}
+          {% for count in (2..paginator.total_pages) %}
+            {% if count == paginator.page %}
+              <a href="javascript:;" class="active btn btn-outline">{{count}}</a>
+            {% else %}
+              <a href="/page{{count}}" class="btn btn-outline">{{count}}</a>
+            {% endif %}
+          {% endfor %}
+          {% if paginator.next_page %}
+            <a href="/page{{paginator.next_page}}" class="btn btn-outline">&raquo;</a>
+          {% else %}
+            <button disabled="disabled" href="javascript:;" class="btn btn-outline">&raquo;</button>
+          {% endif %}
+          </div>
         </div>
-        <div class="column one-third">
-            {% include sidebar-search.html %}
-            {% include sidebar-popular-repo.html %}
-            {% include sidebar-qrcode.html %}
-        </div>
+        <!-- /pagination -->
     </div>
-    
+    <div class="column one-third">
+      {% include sidebar-search.html %}
+      {% include sidebar-popular-repo.html %}
+      {% include sidebar-qrcode.html %}
+    </div>
+  </div>
+  
 </section>
 <!-- /section.content -->

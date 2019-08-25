@@ -134,7 +134,7 @@
     margin-left: -75px;
     font-size: 12px;
     color: #666;
-    background: url(../images/min/octocat-spinner-16px.gif) 10px 50% no-repeat #eee;
+    background: url(/assets/images/octocat-spinner-16px.gif) 10px 50% no-repeat #eee;
     border: 1px solid #ddd;
     border-top: 1px solid #fff;
     border-radius: 0 0 5px 5px
@@ -142,7 +142,7 @@
 
 @media screen and (-webkit-min-device-pixel-ratio:2),screen and (max--moz-device-pixel-ratio:2) {
     .context-loader {
-        background: url(../images/min/octocat-spinner-32-EAF2F5.gif) 10px 50% no-repeat #eee;
+        background: url(/assets/images/octocat-spinner-32-EAF2F5.gif) 10px 50% no-repeat #eee;
         background-size: 16px auto
     }
 }
@@ -154,10 +154,9 @@
 
 .site-header-nav-item {
     display: inline-block;
-    padding: 6px 10px 15px;
-    margin-left: 1.25rem;
+    padding: 6px 20px 12px;
     font-size: 1rem;
-    color: #777
+    color: #a4a4a4
 }
 
 .site-footer:after,.site-footer:before {
@@ -166,14 +165,14 @@
 }
 
 .site-header-nav-item:hover {
-    color: #333;
+    color: #222222;
     text-decoration: none
 }
 
 .site-header-nav-item.selected {
-    color: #333;
-    padding: 6px 10px 13px;
-    border-bottom: 2px solid #d26911
+    color: #444444;
+    padding: 6px 20px 10px;
+    border-bottom: 2px solid #2d5686
 }
 
 .site-header-nav-item+.btn-outline {
