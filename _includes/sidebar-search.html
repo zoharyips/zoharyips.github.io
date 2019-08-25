@@ -1,11 +1,12 @@
 <!-- 搜索框 -->
-<h3 class="post-directory-title">Search</h3>
+<h3>Search</h3>
 <div id="site_search" style="margin: 0px auto; text-align: center">
   <input type="text" id="search_box" placeholder="Search articles">
 </div>
 <ul id="search_results" 
-  style="margin: 0px auto; margin: 0;
-    padding: 0;
+  style="margin: 0px auto;
+    padding: 12px 0;
+    width: 240px;
     font-size: 100%;
     border: 0;
     display: block;
@@ -37,10 +38,10 @@
     searchInput: document.getElementById('search_box'),
     resultsContainer: document.getElementById('search_results'),
     json: '/assets/search_data.json',
-    searchResultTemplate: '<li style="padding: 8px 0;font-size: 0;border-top: 1px solid #e0e0e0;list-style: none;"><a style="width: 78%;line-height: 18px;font-size:10px;vertical-align: middle;color: #4d4d4d;text-decoration: none;text-overflow: ellipsis;white-space: nowrap;display: inline-block;overflow: hidden;cursor: pointer;" href="{url}" title="{desc}">{title}</a></li>',
-    noResultsText: 'No results found',
+    searchResultTemplate: '<li style="padding: 8px 0;font-size: 0;border-top: 1px solid #e0e0e0;list-style: none;"><a style="width: 78%;line-height: 18px;font-size:12px;vertical-align: middle;color: #4d4d4d;text-decoration: none;text-overflow: ellipsis;white-space: nowrap;display: inline-block;overflow: hidden;cursor: pointer;" href="{url}" title="{desc}">{title}</a></li>',
+    noResultsText: '<li style="padding: 8px 0;font-size: 0;border-top: 1px solid #e0e0e0;list-style: none;"><a style="width: 78%;line-height: 18px;font-size:12px;vertical-align: middle;color: #4d4d4d;text-decoration: none;text-overflow: ellipsis;white-space: nowrap;display: inline-block;overflow: hidden;cursor: pointer;" >No result found</a></li>',
     limit: 10,
     fuzzy: false,
-    exclude: ['Welcome', '页面没有找到']
+    exclude: ['Welcome']
   })
 </script>

@@ -1,7 +1,7 @@
 <!-- 分类菜单展示 -->
 {% if page.categories %}
   <h3 class="post-directory-title mobile-hidden">Categories</h3>
-  <div id="blog-categories">
+  <div  id="post-directory-module">
     <ul class="list-group">
       {% assign sorted_categories = site.categories | sort %}
         {% for category in sorted_categories %}
@@ -15,7 +15,7 @@
 
   <script type="text/javascript">
     $(document).ready(function(){
-      $("#blog-categories li").css('text-transform','capitalize')
+      $("#post-directory-module li").css('text-transform','capitalize')
     });
   </script>
 {% endif %}
