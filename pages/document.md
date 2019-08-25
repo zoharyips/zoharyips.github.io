@@ -1,7 +1,7 @@
 ---
-layout: page
+layout: wiki
 title: 文档
-description: 本站的说明文档
+description: 哈哈，你竟然发现了这个文档，我整理的好累，所以想看是有代价的
 keywords: 文档
 comments: false
 menu: 文档
