@@ -1,7 +1,7 @@
 <!-- 分类菜单展示 -->
 {% if page.categories %}
   <h3>Categories</h3>
-    <div id="blog-categories">
+    <div id="blog-categories" class="mobile-hidden">
       <ul class="list-group">
         {% assign sorted_categories = site.categories | sort %}
           {% for category in sorted_categories %}
