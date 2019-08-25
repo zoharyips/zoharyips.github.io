@@ -172,7 +172,7 @@
 .site-header-nav-item.selected {
     color: #808080;
     padding: 6px 20px 6px;
-    border-top: 2px solid #808080;
+    border-bottom-width: 82%;
     border-bottom: 2px solid #808080
 }
 
