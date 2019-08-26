@@ -18,10 +18,10 @@
             <ul class="site-footer-links mobile-hidden">
                 {% for nav in site.navs %}
                 <li>
-                    <a href="{{ site.url }}{{ nav.href }}" title="{{ nav.label }}" target="{{ nav.target | default: _self }}">{{ nav.label }}</a>
+                    <a href="{{ nav.href }}" title="{{ nav.label }}" target="{{ nav.target | default: _self }}">{{ nav.label }}</a>
                 </li>
                 {% endfor %}
-                <li><a href="{{ site.url }}{{ site.subscribe_rss }}"><span class="octicon octicon-rss" style="color:orange;"></span></a></li>
+                <li><a href="{{ site.subscribe_rss }}"><span class="octicon octicon-rss" style="color:orange;"></span></a></li>
             </ul>
 
         </div>
@@ -30,10 +30,10 @@
       <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a>
     </div>
     <!-- / footer -->
-    <script src="{{ site.url }}/assets/vendor/share.js/dist/js/share.min.js"></script>
-    <script src="{{ site.url }}/assets/js/geopattern.js"></script>
-    <script src="{{ site.url }}/assets/js/prism.js"></script>
-    <link rel="stylesheet" href="{{ site.url }}/assets/css/globals/prism.css">
+    <script src="/assets/vendor/share.js/dist/js/share.min.js"></script>
+    <script src="/assets/js/geopattern.js"></script>
+    <script src="/assets/js/prism.js"></script>
+    <link rel="stylesheet" href="/assets/css/globals/prism.css">
     <script>
       jQuery(document).ready(function($) {
         // geopattern
@@ -46,17 +46,17 @@
 
   <!-- 如果本页面开启 mermaid -->
     {% if page.mermaid %}
-    <script src="{{ site.url }}/assets/js/mermaid.min.js"></script>
+    <script src="/assets/js/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     {% endif %}
 
   <!-- 如果本页面开启 sequence -->
     {% if page.sequence %}
-    <script src="{{ site.url }}/assets/js/webfont.js"></script>
-    <script src="{{ site.url }}/assets/js/snap.svg-min.js"></script>
-    <script src="{{ site.url }}/assets/js/underscore-min.js"></script>
-    <script src="{{ site.url }}/assets/vendor/js-sequence-diagrams/dist/sequence-diagram-min.js"></script>
-    <link rel="stylesheet" href="{{ site.url }}/assets/vendor/js-sequence-diagrams/dist/sequence-diagram-min.css">
+    <script src="/assets/js/webfont.js"></script>
+    <script src="/assets/js/snap.svg-min.js"></script>
+    <script src="/assets/js/underscore-min.js"></script>
+    <script src="/assets/vendor/js-sequence-diagrams/dist/sequence-diagram-min.js"></script>
+    <link rel="stylesheet" href="/assets/vendor/js-sequence-diagrams/dist/sequence-diagram-min.css">
     <script>
       $(".language-sequence").sequenceDiagram({theme: 'simple'});
     </script>
@@ -64,9 +64,9 @@
 
   <!-- 如果本页面开启 flow -->
     {% if page.flow %}
-    <script src="{{ site.url }}/assets/js/raphael.min.js"></script>
-    <script src="{{ site.url }}/assets/vendor/flowchart.js/dist/flowchart.min.js"></script>
-    <script src="{{ site.url }}/assets/js/flow.js"></script>
+    <script src="/assets/js/raphael.min.js"></script>
+    <script src="/assets/vendor/flowchart.js/dist/flowchart.min.js"></script>
+    <script src="/assets/js/flow.js"></script>
     {% endif %}
 
     <!-- 如果本页面开启 mathjax -->

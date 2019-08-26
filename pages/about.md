@@ -3,21 +3,16 @@ layout: page
 title: About
 description: 既然选择远方，便只顾风雨兼程。哈... 我又肚子饿了
 keywords: zohar
-comments: true
 share: false
 menu: 关于
 permalink: /about/
 ---
 
-<div>
   <h3>联系</h3>
-  <ol class="posts-list">
-    {% for website in site.data.social %}
-      <li class="posts-list-item">
-        <b>{{ website.sitename }}</b><a class="posts-list-name" href="website.url">{{ website.name }}</a>
-      </li>
-    {% endfor %}
-  </ol>
+  <i class="fa fa-github"></i>&nbsp;<a href="https://github.com/zoharyips">zohar</a>
+  <i class="fa fa-wechat" ></i>&nbsp;<a href="/images/wechat.png">zohar_Yip</a>
+  <i class="fa fa-envelope"></i>&nbsp;<a href="mailto:zoharyips@outlook.com">zoharyips@outlook.com</a>
+  <i class="fa fa-home"></i>&nbsp;<a href="/">Zohar's blog</a>
 
   {% for skill in site.data.skills %}
     <h3>{{ skill.name }}</h3>
