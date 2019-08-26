@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Categories
-description: 哈哈，你找到了我的文章基因库。本站所有文章均为原创, 如需转载, 在文首附上原文地址即可
+description: 哈哈，你找到了我的文章基因库。
 keywords: 分类
 comments: false
 share: false
@@ -12,10 +12,6 @@ permalink: /categories/
 ---
 
 <div>
-  <a href="/archives/" style="text-decoration:underline;color: #333">
-    <h3 style="display:inline">Archive by date</h3>
-  </a>
-  <span class="post-list-item" style="font-size: 12px;margin-left: 12px;color: #333">按照日期归档</span>
   {% comment %} TODO：将归档功能放置在右侧，以日历的方式提示 {% endcomment %}
   {% assign sorted_categories = site.categories | sort %}
   {% for category in sorted_categories %}

@@ -8,17 +8,29 @@ menu: 关于
 permalink: /about/
 ---
 
-### 联系
+<div>
+  <h3>Contact me</h3>
+  <ul style="line-height: 3rem;list-style-type: none;">
+    <li>
+      <img width="32" height="32" style="padding: 0 0.375rem;vertical-align: middle;" src="/assets/svg/github.svg"/>&nbsp;
+      <a href="https://github.com/zoharyips">zohar</a>
+    </li>
+    <li>
+      <img width="32" height="32" style="padding: 0 0.375rem;vertical-align: middle;" src="/assets/svg/website.svg"/>&nbsp;
+      <a href="/">Zohar's blog</a>
+    <li>
+    <li>
+      <img width="32" height="32" style="padding: 0 0.375rem;vertical-align: middle;" src="/assets/svg/mailbox.svg"/>&nbsp;
+      <a href="mailto:zoharyips@outlook.com">zoharyips@outlook.com</a>
+    </li>
+      <img width="32" height="32" style="padding: 0 0.375rem;vertical-align: middle;" src="/assets/svg/wechat.svg"/>&nbsp;
+      <a href="/images/wechat.png">zohar_Yip</a>
+    </li>
+  </ul>
 
-* <i class="fa fa-github"></i>&nbsp;<a href="https://github.com/zoharyips">zohar</a>
-* <i class="fa fa-wechat" ></i>&nbsp;<a href="/images/wechat.png">zohar_Yip</a>
-* <i class="fa fa-envelope"></i>&nbsp;<a href="mailto:zoharyips@outlook.com">zoharyips@outlook.com</a>
-* <i class="fa fa-home"></i>&nbsp;<a href="/">Zohar's blog</a>
-
-### 支持
-
+  <h3>Abilities</h3>
   {% for skill in site.data.skills %}
-    <h3>{{ skill.name }}</h3>
+    <h4>{{ skill.name }}</h4>
     <div class="btn-inline">
       {% for keyword in skill.keywords %}
         <button class="btn btn-outline" type="button">{{ keyword }}</button>
