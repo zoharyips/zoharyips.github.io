@@ -8,11 +8,14 @@ menu: 关于
 permalink: /about/
 ---
 
-  <h3>联系</h3>
-  <i class="fa fa-github"></i>&nbsp;<a href="https://github.com/zoharyips">zohar</a>
-  <i class="fa fa-wechat" ></i>&nbsp;<a href="/images/wechat.png">zohar_Yip</a>
-  <i class="fa fa-envelope"></i>&nbsp;<a href="mailto:zoharyips@outlook.com">zoharyips@outlook.com</a>
-  <i class="fa fa-home"></i>&nbsp;<a href="/">Zohar's blog</a>
+### 联系
+
+* <i class="fa fa-github"></i>&nbsp;<a href="https://github.com/zoharyips">zohar</a>
+* <i class="fa fa-wechat" ></i>&nbsp;<a href="/images/wechat.png">zohar_Yip</a>
+* <i class="fa fa-envelope"></i>&nbsp;<a href="mailto:zoharyips@outlook.com">zoharyips@outlook.com</a>
+* <i class="fa fa-home"></i>&nbsp;<a href="/">Zohar's blog</a>
+
+### 支持
 
   {% for skill in site.data.skills %}
     <h3>{{ skill.name }}</h3>
