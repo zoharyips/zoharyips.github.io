@@ -6,6 +6,7 @@ menu: 维基
 repositories: false
 share: false
 comments: false
+categories: true
 permalink: /wiki/
 ---
 

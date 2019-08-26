@@ -23,18 +23,23 @@ permalink: /about/
       <img width="32" height="32" style="padding: 0 0.375rem;vertical-align: middle;" src="/assets/svg/mailbox.svg"/>&nbsp;
       <a href="mailto:zoharyips@outlook.com">zoharyips@outlook.com</a>
     </li>
+    <li>
       <img width="32" height="32" style="padding: 0 0.375rem;vertical-align: middle;" src="/assets/svg/wechat.svg"/>&nbsp;
       <a href="/images/wechat.png">zohar_Yip</a>
     </li>
   </ul>
 
   <h3>Abilities</h3>
-  {% for skill in site.data.skills %}
-    <h4>{{ skill.name }}</h4>
-    <div class="btn-inline">
-      {% for keyword in skill.keywords %}
-        <button class="btn btn-outline" type="button">{{ keyword }}</button>
-      {% endfor %}
-    </div>
-  {% endfor %}
+  <ul style="list-style-type: none;">
+    {% for skill in site.data.skills %}
+      <li>
+        <h4>{{ skill.name }}</h4>
+        <div class="btn-inline">
+          {% for keyword in skill.keywords %}
+            <button class="btn btn-outline" type="button">{{ keyword }}</button>
+          {% endfor %}
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
 </div>
