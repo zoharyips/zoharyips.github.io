@@ -16,11 +16,13 @@
         {% endfor %}
     </ul>
   </div>
-  <a href="/archives/" style="text-decoration:underline;color: #333;margin-top: 1rem">
-    <h3 style="display:inline;">Archive by date</h3>
-  </a>
-  <span class="post-list-item" style="font-size: 12px;margin-left: 12px;color: #333">按照日期归档</span><br/>
-  <span class="post-list-item" style="font-size: 12px;margin-left: 12px;color: #333">本站所有文章均为原创，如欲转载，请于文首附上原文地址</span><br/>
+  {% if page.title == 'Categories'%}
+    <a href="/archives/" style="text-decoration:underline;color: #333;margin-top: 1rem">
+      <h3 style="display:inline;">Archive by date</h3>
+    </a>
+    <span style="font-size: 12px;margin-left: 12px;color: #333">按照日期归档</span><br/>
+    <span style="font-size: 12px;margin-left: 12px;color: #333">本站文章均为原创，如欲转载，请于文首附上原文地址</span><br/>
+  {% endif %}
   <script type="text/javascript">
     $(document).ready(function(){
       $("#post-directory-module li").css('text-transform','capitalize')

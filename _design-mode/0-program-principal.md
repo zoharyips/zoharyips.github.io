@@ -1,6 +1,6 @@
 ---
 layout: wiki
-title: The Art of Programming Design - 软件设计原则
+title: 软件设计原则
 description: 行之有效的方法论，不懈追求的编程艺术，最喜欢的软件设计之道
 ---
 
