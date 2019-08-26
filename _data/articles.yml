@@ -1,0 +1,12 @@
+# 本数据源用于保存优秀的在线教程
+# 
+# 格式
+# -  
+#   title: 文章标题
+#   url: 链接
+#   type: 文章类型
+
+-
+  title: CSS 網頁字型 @font-face 使用教學與範例
+  url: https://blog.gtwang.org/web-development/css-font-face/
+  type: blog

@@ -9,11 +9,14 @@ menu: 关于
 permalink: /about/
 ---
 
-## 联系
-
-{% for website in site.data.social %}
-* {{ website.sitename }} : [@{{ website.name }}]({{ website.url }})
-{% endfor %}
+<div>
+  <h3>联系</h3>
+  {% for website in site.data.social %}
+  <ol class="posts-list">
+    <li class="posts-list-item">
+      <a class="posts-list-name">
+  * {{ website.sitename }} : [@{{ website.name }}]({{ website.url }})
+  {% endfor %}
 
 ## Skill Keywords
 
@@ -25,3 +28,4 @@ permalink: /about/
     {% endfor %}
     </div>
 {% endfor %}
+</div>

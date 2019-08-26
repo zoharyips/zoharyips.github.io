@@ -44,7 +44,7 @@ plugins:
 collections:
   wiki:
     output: true
-    permalink: /wiki/:categories/:path/
+    permalink: /wiki/:path/
 
   # - design_mode: 
   #     output: true
