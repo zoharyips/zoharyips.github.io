@@ -45,10 +45,9 @@ collections:
   wiki:
     output: true
     permalink: /wiki/:path/
-
-  # - design_mode: 
-  #     output: true
-  #     permalink: /design_mode/:path/
+  design-mode: 
+    output: true
+    permalink: /design-mode/:path/
 
 
 
