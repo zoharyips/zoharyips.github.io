@@ -5,15 +5,14 @@ categories:
 keywords: 
 ---
 
-## 内化于心，外化于形
+<div>
+<h2> 内化于心，外化于形 </h2>
 
-<section class="container posts-content">
-  {% for article in site.design-mode | sort %}
   <ol class="posts-list">
+  {% for article in site.design-mode | sort %}
     <li class="posts-list-item">
-    <a class="posts-list-name" href="{{ article.url }}">{{ article.title }}</a>
+      <a class="posts-list-name" href="{{ article.url }}">{{ article.title }}</a>
     </li>
   {% endfor %}
   </ol>
-</section>
-<hr/>
+</div>

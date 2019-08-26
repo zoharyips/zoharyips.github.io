@@ -18,7 +18,7 @@ permalink: /about/
     <li>
       <img width="32" height="32" style="padding: 0 0.375rem;vertical-align: middle;" src="/assets/svg/website.svg"/>&nbsp;
       <a href="/">Zohar's blog</a>
-    <li>
+    </li>
     <li>
       <img width="32" height="32" style="padding: 0 0.375rem;vertical-align: middle;" src="/assets/svg/mailbox.svg"/>&nbsp;
       <a href="mailto:zoharyips@outlook.com">zoharyips@outlook.com</a>

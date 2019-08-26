@@ -23,7 +23,7 @@ description: 在此汇总各种优秀的教学文章
       {% if privious_type != 'none' %}
         </ol>
       {% endif %}
-      <h3 id="{{ article.type }}">{{ article.type }}</h3>
+      <a name="{{ article.type }}"><h3>{{ article.type }}</h3></a>
       {% assign privious_type = article.type %}
       <ol class="posts-list" >
     {% endif %}
