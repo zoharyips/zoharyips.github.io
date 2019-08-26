@@ -13,7 +13,7 @@ keywords:
   <ol class="posts-list">
   {% for article in site.design-mode | sort %}
     <li class="posts-list-item">
-      <a class="posts-list-name" href="{{ article.url }}">{{ article.title }}</a>
+      <a class="posts-list-name" style="display: inline-block; width: 9rem;" href="{{ article.url }}">{{ article.title }}</a>
       <span style="font-size: 12px;margin-left: 12px;color: #333; text-align: right">{{ article.description | truncate: 20, "..." }}</span>
     </li>
   {% endfor %}
