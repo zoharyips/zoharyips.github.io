@@ -1,8 +1,9 @@
 <!-- 评论模块 -->
 {% if page.comments != false %}
+  <h3>Comments</h3>
   <div id="gitalk-container"></div>
-  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"/>
-  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <link rel="stylesheet" href="/assets/vendor/gitalk/gitalk.css"/>
+  <script src="/assets/vendor/gitalk/gitalk.min.js"></script>
   <script>
     var gitalk = new Gitalk({
       id: '{{ page.url | truncate: 50, "" }}',
