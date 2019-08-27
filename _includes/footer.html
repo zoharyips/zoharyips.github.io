@@ -71,7 +71,7 @@
   <script src="/assets/js/flow.js"></script>
 {% endif %}
 
-<!-- 如果本页面开启 mathjax -->
+<!-- 如果本页面开启 mathjax, mathjax 脚本无法引入本地目录 -->
 {% if page.mathjax %}
   <script type="text/javascript" src="https://basis-learning.github.io/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 {% endif %}
@@ -97,13 +97,13 @@
 
 <!-- 若网站开启谷歌分析 -->
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ google.analytics_id }}"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google.analytics_id }}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', '{{ google.analytics_id }}');
+  gtag('config', '{{ site.google.analytics_id }}');
 </script>
 
 </body>
