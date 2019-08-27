@@ -12,19 +12,19 @@ permalink: /about/
   <h3>Contact me</h3>
   <ul style="line-height: 3rem;list-style-type: none;">
     <li>
-      <img width="32" height="32" style="padding: 0 0.375rem;vertical-align: middle;" src="/assets/svg/github.svg"/>&nbsp;
+      <img width="32" height="32" style="margin-right:0.375rem;vertical-align: middle;" src="/assets/svg/github.svg"/>&nbsp;
       <a href="https://github.com/zoharyips">zohar</a>
     </li>
     <li>
-      <img width="32" height="32" style="padding: 0 0.375rem;vertical-align: middle;" src="/assets/svg/website.svg"/>&nbsp;
+      <img width="32" height="32" style="margin-right:0.375rem;vertical-align: middle;" src="/assets/svg/website.svg"/>&nbsp;
       <a href="/">Zohar's blog</a>
     </li>
     <li>
-      <img width="32" height="32" style="padding: 0 0.375rem;vertical-align: middle;" src="/assets/svg/mailbox.svg"/>&nbsp;
+      <img width="32" height="32" style="margin-right:0.375rem;vertical-align: middle;" src="/assets/svg/mailbox.svg"/>&nbsp;
       <a href="mailto:zoharyips@outlook.com">zoharyips@outlook.com</a>
     </li>
     <li>
-      <img width="32" height="32" style="padding: 0 0.375rem;vertical-align: middle;" src="/assets/svg/wechat.svg"/>&nbsp;
+      <img width="32" height="32" style="margin-right:0.375rem;vertical-align: middle;" src="/assets/svg/wechat.svg"/>&nbsp;
       <a href="/wechat">zohar_Yip</a>
     </li>
   </ul>
@@ -43,6 +43,21 @@ permalink: /about/
     {% endfor %}
   </ul>
   <div class="comment">
-    {% include comments.html %}
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"/>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+      var gitalk = new Gitalk({
+        id: '{{ page.url | truncate: 50, "" }}',
+        clientID: '{{ site.gitalk.clientID }}',
+        clientSecret: '{{ site.gitalk.clientSecret }}',
+        repo: '{{ site.gitalk.repo }}',
+        owner: '{{ site.gitalk.owner }}',
+        admin: ['{{ site.gitalk.owner }}'],
+        labels: ['gitment'],
+        perPage: 50,
+      });
+      gitalk.render('gitalk-container');
+    </script>
   </div>
 </div>

@@ -12,9 +12,9 @@ description:
   <ol class="posts-list">
     {% for article in site.design-mode | sort %}
       <li class="posts-list-item">
-        <p style="text-align: right; display: flex; flex-direction: row;">
+        <p style="display: flex;">
           <a class="posts-list-name" href="{{ article.url }}">{{ article.title }}</a>
-          <span style="font-size: 0.7rem;color: #333; flex: 1; align-self: center; text-align: right;">{{ article.description | truncate: 15, "..." }}</span>
+          <span style="font-size: 0.7rem;color: #333;flex: 1;align-self: center; text-align: right;">{{ article.description | truncate: 15, "..." }}</span>
         </p>
       </li>
     {% endfor %}
