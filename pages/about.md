@@ -25,7 +25,7 @@ permalink: /about/
     </li>
     <li>
       <img width="32" height="32" style="padding: 0 0.375rem;vertical-align: middle;" src="/assets/svg/wechat.svg"/>&nbsp;
-      <a href="/images/wechat.png">zohar_Yip</a>
+      <a href="/wechat">zohar_Yip</a>
     </li>
   </ul>
 
@@ -42,4 +42,7 @@ permalink: /about/
       </li>
     {% endfor %}
   </ul>
+  <div class="comment">
+    {% include comments.html %}
+  </div>
 </div>
