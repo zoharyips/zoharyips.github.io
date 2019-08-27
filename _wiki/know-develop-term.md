@@ -36,6 +36,9 @@ description: 了解一些缩略词或者术语的由来, 有利于深刻理解, 
 **SSL** | **S**ecure **S**ockets **L**ayer | 安全套接层
 **TLS** | **T**ransport **L**ayer **S**ecurity | 安全传输层
 **IIS** | **I**nternet **I**nformation **S**ervices | 互联网信息服务(Win)
+**P2P** | **P**eer to **P**eer network | 对等网络
+**C/S** | **C**lient **S**erver model | 客户端/服务器模型
+**B/S** | **B**rowser **S**erver model | 浏览器/服务器模型
 
 
 # 开发

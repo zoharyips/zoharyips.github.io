@@ -3,28 +3,47 @@ layout: default
 ---
 <!-- 文章显示页面 -->
 <section class="collection-head small geopattern" data-pattern-id="{{ page.title | truncate: 15, ''}}">
-<div class="container">
-  <div class="columns">
-    <div class="column three-fourths">
-      <div class="collection-title">
-        <h1 class="collection-header">{{ page.title }}</h1>
-        <div class="collection-info">
-          {% if page.date %}
-          <span class="meta-info">
-            <span class="octicon octicon-calendar"></span> {{ page.date | date: "%Y/%m/%d" }}
-          </span>
-          {% endif %}
-          {% for cat in page.categories %}
-          <span class="meta-info">
-            <span class="octicon octicon-file-directory"></span>
-            <a href="{{ site.url }}/categories/#{{ cat }}" title="{{ cat }}">{{ cat }}</a>
-          </span>
-          {% endfor %}
+  <div id="origin_title" class="container">
+    <div class="columns">
+      <div class="column three-fourths">
+        <div class="collection-title">
+          <h1 class="collection-header">{{ page.title }}</h1>
+          <div class="collection-info">
+            {% if page.date %}
+              <span class="meta-info">
+                <span class="octicon octicon-calendar"></span> {{ page.date | date: "%Y/%m/%d" }}
+              </span>
+            {% endif %}
+            {% for cat in page.categories %}
+              <span class="meta-info">
+                <span class="octicon octicon-file-directory"></span>
+                <a href="{{ site.url }}/categories/#{{ cat }}" title="{{ cat }}">{{ cat }}</a>
+              </span>
+            {% endfor %}
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+  <div id="fixed_title" style="position: relative;top: 0; left: 0; width: 100%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" hidden=true>
+    <div style="display: flex;">
+      <h2 height = 1rem>{{ page.title }}</h2>
+      <span style="flex: 1;align-self: center; text-align: right;">
+        {% if page.date %}
+          <span class="meta-info">
+            <span class="octicon octicon-calendar"></span> {{ page.date | date: "%Y/%m/%d" }}
+          </span>
+        {% endif %}
+        {% for cat in page.categories %}
+          <span class="meta-info">
+            <span class="octicon octicon-file-directory"></span>
+            <a href="{{ site.url }}/categories/#{{ cat }}" title="{{ cat }}">{{ cat }}</a>
+          </span>
+        {% endfor %}
+      </span>
+    </div>
+  </div>
+  <script src="/assets/js/fixed_title.js"></script>
 </section>
 <!-- / .banner -->
 <section class="container content">
