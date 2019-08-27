@@ -1,105 +1,112 @@
 <!-- 文章尾部 -->
-    <footer class="container">
-        <div class="site-footer" role="contentinfo">
-            <div class="copyright left mobile-block">
-                    © 2019
-                    <span title="{{ site.author}}">{{ site.author }}</span>
-                    <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
-            </div>
-
-            <ul class="site-footer-links right mobile-hidden">
-                <li>
-                    <a href="javascript:window.scrollTo(0,0)" >TOP</a>
-                </li>
-            </ul>
-            <a href="{{ site.github.repository_url }}" target="_blank" aria-label="view source code">
-                <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
-            </a>
-            <ul class="site-footer-links mobile-hidden">
-                {% for nav in site.navs %}
-                <li>
-                    <a href="{{ nav.href }}" title="{{ nav.label }}" target="{{ nav.target | default: _self }}">{{ nav.label }}</a>
-                </li>
-                {% endfor %}
-                <li><a href="{{ site.subscribe_rss }}"><span class="octicon octicon-rss" style="color:orange;"></span></a></li>
-            </ul>
-
-        </div>
-    </footer>
-    <div class="tools-wrapper">
-      <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a>
+<footer class="container">
+  <div class="site-footer" role="contentinfo">
+    <div class="copyright left mobile-block">
+      © 2019
+      <span title="{{ site.author}}">{{ site.author }}</span>
+      <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
     </div>
-    <!-- / footer -->
-    <script src="/assets/vendor/share.js/dist/js/share.min.js"></script>
-    <script src="/assets/js/geopattern.js"></script>
-    <script src="/assets/js/prism.js"></script>
-    <link rel="stylesheet" href="/assets/css/globals/prism.css">
-    <script>
-      jQuery(document).ready(function($) {
-        // geopattern
-        $('.geopattern').each(function(){
-          $(this).geopattern($(this).data('pattern-id'));
-        });
-       // hljs.initHighlightingOnLoad();
-      });
-    </script>
+    <ul class="site-footer-links right mobile-hidden">
+      <li>
+        <a href="javascript:window.scrollTo(0,0)" >TOP</a>
+      </li>
+    </ul>
+    <a href="{{ site.github.repository_url }}" target="_blank" aria-label="view source code">
+      <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+    </a>
+    <ul class="site-footer-links mobile-hidden">
+      {% for nav in site.navs %}
+        <li>
+          <a href="{{ nav.href }}" title="{{ nav.label }}" target="{{ nav.target | default: _self }}">{{ nav.label }}</a>
+        </li>
+      {% endfor %}
+      <li>
+        <a href="{{ site.subscribe_rss }}"><span class="octicon octicon-rss" style="color:orange;"></span></a>
+      </li>
+    </ul>
+  </div>
+</footer>
 
-  <!-- 如果本页面开启 mermaid -->
-    {% if page.mermaid %}
-    <script src="/assets/js/mermaid.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true});</script>
-    {% endif %}
+<div class="tools-wrapper">
+  <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a>
+</div>
 
-  <!-- 如果本页面开启 sequence -->
-    {% if page.sequence %}
-    <script src="/assets/js/webfont.js"></script>
-    <script src="/assets/js/snap.svg-min.js"></script>
-    <script src="/assets/js/underscore-min.js"></script>
-    <script src="/assets/vendor/js-sequence-diagrams/dist/sequence-diagram-min.js"></script>
-    <link rel="stylesheet" href="/assets/vendor/js-sequence-diagrams/dist/sequence-diagram-min.css">
-    <script>
-      $(".language-sequence").sequenceDiagram({theme: 'simple'});
-    </script>
-    {% endif %}
+<!-- / footer -->
+<script src="/assets/vendor/share.js/dist/js/share.min.js"></script>
+<script src="/assets/js/geopattern.js"></script>
+<script src="/assets/js/prism.js"></script>
+<link rel="stylesheet" href="/assets/css/globals/prism.css">
+<script>
+  jQuery(document).ready(function($) {
+    // geopattern
+    $('.geopattern').each(function(){
+      $(this).geopattern($(this).data('pattern-id'));
+    });
+    // hljs.initHighlightingOnLoad();
+  });
+</script>
 
-  <!-- 如果本页面开启 flow -->
-    {% if page.flow %}
-    <script src="/assets/js/raphael.min.js"></script>
-    <script src="/assets/vendor/flowchart.js/dist/flowchart.min.js"></script>
-    <script src="/assets/js/flow.js"></script>
-    {% endif %}
+<!-- 如果本页面开启 mermaid -->
+{% if page.mermaid %}
+<script src="/assets/js/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+{% endif %}
 
-    <!-- 如果本页面开启 mathjax -->
-    {% if page.mathjax %}
-    <script type="text/javascript" src="https://basis-learning.github.io/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    {% endif %}
-    <!-- 百度自动推送脚本 -->
-    <script>
-      (function(){
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        }
-        else {
-          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-      })();
-    </script>
-    <!-- 若网站开启谷歌分析 -->
-    {% if site.google.analytics_id %}
-    <div style="display:none">
-      <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-        ga('create', '{{ site.google.analytics_id }}', 'auto');
-        ga('send', 'pageview');
-      </script>
-    </div>
-    {% endif %}
+<!-- 如果本页面开启 sequence -->
+{% if page.sequence %}
+  <script src="/assets/js/webfont.js"></script>
+  <script src="/assets/js/snap.svg-min.js"></script>
+  <script src="/assets/js/underscore-min.js"></script>
+  <script src="/assets/vendor/js-sequence-diagrams/dist/sequence-diagram-min.js"></script>
+  <link rel="stylesheet" href="/assets/vendor/js-sequence-diagrams/dist/sequence-diagram-min.css">
+  <script>
+    $(".language-sequence").sequenceDiagram({theme: 'simple'});
+  </script>
+{% endif %}
+
+<!-- 如果本页面开启 flow -->
+{% if page.flow %}
+  <script src="/assets/js/raphael.min.js"></script>
+  <script src="/assets/vendor/flowchart.js/dist/flowchart.min.js"></script>
+  <script src="/assets/js/flow.js"></script>
+{% endif %}
+
+<!-- 如果本页面开启 mathjax -->
+{% if page.mathjax %}
+  <script type="text/javascript" src="/assets/js/mathjax.js"></script>
+{% endif %}
+
+<!-- 百度自动推送脚本，百度站长加入使用 -->
+{% comment %}
+  本网站基于 github page 搭建，由于 github 封锁百度爬虫，失效
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = '/assets/js/baidu_push.js';
+      }
+      else {
+        bp.src = '/assets/js/baidu_zhanzhang.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+{% endcomment %}
+
+<!-- 若网站开启谷歌分析 -->
+<div style="display:none">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146513129-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-146513129-1');
+  </script>
+</div>
+
 </body>
 </html>
