@@ -73,7 +73,7 @@
 
 <!-- 如果本页面开启 mathjax -->
 {% if page.mathjax %}
-  <script type="text/javascript" src="/assets/js/mathjax.js"></script>
+  <script type="text/javascript" src="/assets/js/mathjax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 {% endif %}
 
 <!-- 百度自动推送脚本，百度站长加入使用 -->
@@ -96,20 +96,17 @@
 {% endcomment %}
 
 <!-- 若网站开启谷歌分析 -->
+<div style="display:none">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ google.analytics_id }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-{% if google.analytics_id %}
-  <div style="display:none">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ google.analytics_id }}"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', '{{ google.analytics_id }}');
-    </script>
-  </div>
-{% endif %}
+    gtag('config', '{{ google.analytics_id }}');
+  </script>
+</div>
 
 </body>
 </html>
