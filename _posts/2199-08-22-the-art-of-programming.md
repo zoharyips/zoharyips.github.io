@@ -9,7 +9,7 @@ description:
 
 <h2> 内化于心，外化于形 </h2>
 
-  <ol class="posts-list">
+  <ol class="posts-list" style="line-height: 1rem;">
     {% for article in site.design-mode | sort %}
       <li class="posts-list-item">
         <p style="display: flex;">
