@@ -14,9 +14,9 @@ window.onload = function(){
       isPhone: isPhone,
       isAndroid: isAndroid,
       isPc: isPc
-    };	
+    };
   }();
-  if (os.isAndroid || os.isPhone) {   
+  if (os.isAndroid || os.isPhone) {
     //alert("手机" );
     titleFixed();
   }

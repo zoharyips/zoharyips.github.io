@@ -1,7 +1,8 @@
 ---
 layout: wiki
 title: 编程的艺术 - 设计原则与设计模式
-description: 
+description: 漂亮的代码只有艺术家才写得出来
+comments: false
 ---
 
 <div>
@@ -9,14 +10,14 @@ description:
 
 <h2> 内化于心，外化于形 </h2>
 
-  <ol class="posts-list" style="line-height: 1rem;">
-    {% for article in site.design-mode | sort %}
-      <li class="posts-list-item">
-        <p style="display: flex;">
-          <a class="posts-list-name" href="{{ article.url }}">{{ article.title }}</a>
-          <span style="font-size: 0.7rem;color: #333;flex: 1;align-self: center; text-align: right;">{{ article.description | truncate: 15, "..." }}</span>
-        </p>
-      </li>
-    {% endfor %}
-  </ol>
+<ol class="posts-list" style="line-height: 1rem;">
+  {% for article in site.design-mode | sort %}
+    <li class="posts-list-item">
+      <p style="display: flex;">
+        <a class="posts-list-name" href="{{ article.url }}">{{ article.title }}</a>
+        <span style="font-size: 0.7rem;color: #333;flex: 1;align-self: center; text-align: right;">{{ article.description | truncate: 15, "..." }}</span>
+      </p>
+    </li>
+  {% endfor %}
+</ol>
 </div>
