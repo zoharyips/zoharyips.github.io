@@ -25,26 +25,11 @@ layout: default
       </div>
     </div>
   </div>
-  <div id="fixed_title" style="position: relative;top: 0; left: 0; width: 100%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" hidden=true>
-    <div style="display: flex;">
-      <h2 height = 1rem>{{ page.title }}</h2>
-      <span style="flex: 1;align-self: center; text-align: right;">
-        {% if page.date %}
-          <span class="meta-info">
-            <span class="octicon octicon-calendar"></span> {{ page.date | date: "%Y/%m/%d" }}
-          </span>
-        {% endif %}
-        {% for cat in page.categories %}
-          <span class="meta-info">
-            <span class="octicon octicon-file-directory"></span>
-            <a href="{{ site.url }}/categories/#{{ cat }}" title="{{ cat }}">{{ cat }}</a>
-          </span>
-        {% endfor %}
-      </span>
-    </div>
-  </div>
-  <script src="/assets/js/fixed_title.js"></script>
 </section>
+<div id="fixed_title" class="fix-title mobile-visible" hidden=true>
+  <h3>{{ page.title }}</h3>
+</div>
+<script src="/assets/js/fixed_title.js"></script>
 <!-- / .banner -->
 <section class="container content">
 <div class="columns">

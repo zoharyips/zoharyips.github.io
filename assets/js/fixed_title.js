@@ -9,20 +9,14 @@ function titleFixed(){
   }
 }
 function changePos(height){
-  var originTitle = document.getElementById('origin_title');
   var fixedTitle = document.getElementById('fixed_title');
   var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-  if(scrollTop < height){
-    originTitle.hidden = false;
-
-    $("#fixed_title").fadeOut(500, function(){
-      fixedTitle.hidden = true;
-      fixedTitle.style.position = 'relative';
-    })
-  } else {
-    originTitle.hidden = true;
+  if(scrollTop > height){
     fixedTitle.style.position = 'fixed';
-    $("#fixed_title").fadeIn(500, null)
     fixedTitle.hidden = false;
+    $("#fixed_title").fadeIn(500, null );
+  } else {
+    fixedTitle.hidden = true;
+    fixedTitle.style.position = 'relative';
   }
 }
