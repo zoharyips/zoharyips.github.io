@@ -2,8 +2,11 @@
 layout: default
 ---
 <!-- 文章显示页面 -->
-<section class="collection-head small geopattern" data-pattern-id="{{ page.title | truncate: 15, ''}}">
-  <div id="origin_title" class="container">
+<div id="fixed_title" class="fix-title mobile-visible" hidden=true>
+    <h3>{{ page.title }}</h3>
+</div>
+<section id="origin_title" class="collection-head small geopattern" data-pattern-id="{{ page.title | truncate: 15, ''}}">
+  <div class="container">
     <div class="columns">
       <div class="column three-fourths">
         <div class="collection-title">
@@ -26,9 +29,6 @@ layout: default
     </div>
   </div>
 </section>
-<div id="fixed_title" class="fix-title mobile-visible" hidden=true>
-  <h3>{{ page.title }}</h3>
-</div>
 <script src="/assets/js/fixed_title.js"></script>
 <!-- / .banner -->
 <section class="container content">

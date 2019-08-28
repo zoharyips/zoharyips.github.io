@@ -17,6 +17,6 @@ function changePos(height){
     $("#fixed_title").fadeIn(500, null );
   } else {
     fixedTitle.hidden = true;
-    fixedTitle.style.position = 'relative';
+    fixedTitle.style.position = 'none';
   }
 }
