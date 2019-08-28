@@ -9,6 +9,10 @@
   display: none
 }
 
+.fix-title {
+  display: none;
+}
+
 @media (max-width:60em) {
   .collection-card {
     width: 45%;
@@ -138,11 +142,5 @@
   .collection-head .collection-info .meta-info {
     display: block;
     margin-top: 15px
-  }
-}
-
-@media screen and (min-width: 60rem) {
-  .fix-title {
-    display: none;
   }
 }
