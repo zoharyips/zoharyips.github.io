@@ -1,6 +1,9 @@
 window.onload = function(){
-  titleFixed();
+  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    titleFixed();
+  }
 }
+
 function titleFixed(){
   var originTitle = document.getElementById('origin_title');
   var _getHeight = originTitle.offsetTop + originTitle.offsetHeight;

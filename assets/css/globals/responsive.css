@@ -9,10 +9,6 @@
   display: none
 }
 
-.fix-title {
-  display: none;
-}
-
 @media (max-width:60em) {
   .collection-card {
     width: 45%;
