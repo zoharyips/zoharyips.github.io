@@ -1,8 +1,7 @@
 /*标题样式*/
 #LHeader {
-  /* height: 21px; */
-  font-family: "宋体";
-  /* font-size: 12px; */
+  height: 30px;
+  font-size: 1rem;
 }
 
 /*星期的单元格样式*/
@@ -10,7 +9,6 @@
   width: 30px;
   height: 30px;
   text-align: center;
-  font-family: "宋体";
   font-size: 12px;
 }
 
