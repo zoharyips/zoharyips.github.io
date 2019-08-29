@@ -1,0 +1,26 @@
+/*标题样式*/
+#LHeader {
+  /* height: 21px; */
+  font-family: "宋体";
+  /* font-size: 12px; */
+}
+
+/*星期的单元格样式*/
+#LDay td {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  font-family: "宋体";
+  font-size: 12px;
+}
+
+/*日期的单元格样式*/
+#LBody td {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  font-family: "宋体";
+  font-size: 12px;
+  color: #999;
+  font-weight: bold;
+}

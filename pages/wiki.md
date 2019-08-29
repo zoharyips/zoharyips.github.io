@@ -7,6 +7,7 @@ repositories: false
 share: false
 comments: false
 categories: true
+calendar: true
 permalink: /wiki/
 ---
 
