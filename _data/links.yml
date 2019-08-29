@@ -64,6 +64,10 @@
   type: tool
 
 -
+  name: 免费 API 测试
+  url: https://www.free-api.com/
+  type: tool
+-
   name: ★ 第八基地
   url: http://doc.d8jd.com/
   type: download

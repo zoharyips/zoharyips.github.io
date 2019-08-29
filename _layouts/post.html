@@ -3,7 +3,7 @@ layout: default
 ---
 <!-- 文章显示页面 -->
 <div id="fixed_title" class="fix-title" hidden=true>
-  <h3>{{ page.title }}</h3>
+  <h3 onclick="titleBackToTop()">{{ page.title }}</h3>
 </div>
 <section id="origin_title" class="collection-head small geopattern" data-pattern-id="{{ page.title | truncate: 15, ''}}">
   <div class="container">
