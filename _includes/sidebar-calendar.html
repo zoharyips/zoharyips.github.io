@@ -1,45 +1,34 @@
 <!-- 评论模块 -->
 {% if page.calendar %}
   <h3>Calendar</h3>
-  <div style="height: 190px;margin: auto; text-align: center">
-    <table id="Calendar" width="212" style="margin: auto">
-      <tr>
-        <td height="21" bgcolor="#78b3ed" width="212">
-          <table id="LHeader" height="21" width="212">
-            <tbody>
-              <tr align="center">
-                <td id="pre_month" align="center" width="21" onclick="preMonth()">&lt;</td>
-                <td align="center">
-                  <span id="showDate"></span>
-                </td>
-                <td id="next_month" align="center" width="21" onclick="nextMonth()">&gt;</td>
-              </tr>
-            </tbody>
+    <center id="calendar_container">
+      <table>
+      <thead id="calendar_header">
+        <td>
+          <table>
+            <td id="pre_month" width="15%">&lt;</td>
+            <td id="show_date" width="auto"></td>
+            <td id="next_month" width="15%">&gt;</td>					
+          </table>
+        </td>
+      </thead>
+      <tr id="calendar_weeks">
+        <td>
+          <table>
+            <td class="calendar_column">Sun</td>
+            <td class="calendar_column">Mon</td>
+            <td class="calendar_column">Tue</td>
+            <td class="calendar_column">Wed</td>
+            <td class="calendar_column">Thu</td>
+            <td class="calendar_column">Fri</td>
+            <td class="calendar_column">Sat</td>
           </table>
         </td>
       </tr>
-      <tr>
-        <td height="18">
-          <table id="LDay" bgcolor="#e7f1fd">
-            <tbody>
-              <tr>
-                <td>日</td>
-                <td>一</td>
-                <td>二</td>
-                <td>三</td>
-                <td>四</td>
-                <td>五</td>
-                <td>六</td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
+      <tr id="calendar_body">
+        <td id="calendar_body_container"></td>
       </tr>
-      <tr>
-        <td height="120" width="212" id="Container" style="text-align: center;">
-        </td>
-      </tr>
-    </table>
-  </div>
+      </table>
+    </center>
   <script src="/assets/js/calendar.js"></script>
 {% endif %}
