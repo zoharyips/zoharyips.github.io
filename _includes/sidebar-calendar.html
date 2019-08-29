@@ -1,14 +1,14 @@
 <!-- 评论模块 -->
 {% if page.calendar %}
   <h3>Calendar</h3>
-    <center id="calendar_container">
-      <table>
+  <center id="calendar_container">
+    <table>
       <thead id="calendar_header">
         <td>
           <table>
-            <td id="pre_month" width="15%">&lt;</td>
-            <td id="show_date" width="auto"></td>
-            <td id="next_month" width="15%">&gt;</td>					
+            <td id="pre_month">&lt;</td>
+            <td id="show_date"></td>
+            <td id="next_month">&gt;</td>					
           </table>
         </td>
       </thead>
@@ -28,7 +28,7 @@
       <tr id="calendar_body">
         <td id="calendar_body_container"></td>
       </tr>
-      </table>
-    </center>
+    </table>
+  </center>
   <script src="/assets/js/calendar.js"></script>
 {% endif %}

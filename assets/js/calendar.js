@@ -1,4 +1,3 @@
-//实现日历
 window.onload = function() {
   var today = new Date();
   generateCalendar(today);
@@ -12,7 +11,7 @@ document.getElementById('pre_month').onclick = function() {
   if (targetMonth == (today.getMonth() + 1) && year == today.getFullYear()) {
     generateCalendar(today);
   } else{
-    generateCalendar(new Date(year, targetMonth - 1, 1));					
+    generateCalendar(new Date(year, targetMonth - 1, 1));
   }
 }
 
@@ -24,7 +23,7 @@ document.getElementById('next_month').onclick = function() {
   if (targetMonth == (today.getMonth() + 1) && year == today.getFullYear()) {
     generateCalendar(today);
   } else{
-    generateCalendar(new Date(year, targetMonth - 1, 1));					
+    generateCalendar(new Date(year, targetMonth - 1, 1));
   }
 }
 
@@ -34,7 +33,9 @@ function generateCalendar(today) {
   var day = today.getDate(); // 本日
   var dayBegin = new Date(year, month - 1, 1).getDay();
   var dayCount = new Date(year, month, 0).getDate();
-  // 开始画日历
+  if (month < 10) {
+    month = "0" + "" + month;
+  }
   document.getElementById('show_date').innerHTML = year + '.' + month;
   var html = '<table><tr>';
   var dayIndex = 1;

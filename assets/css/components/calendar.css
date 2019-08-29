@@ -1,6 +1,5 @@
 #calendar_container {
   height: 15rem;
-  background-color: #b8e986;
 }
 
 #calendar_container table {
@@ -9,26 +8,31 @@
 
 #calendar_header {
   background-color: #78b3ed;
-  line-height: 1.5rem;
+  line-height: 1.8rem;
 }
 
 #calendar_header table {
   width: 100%;
 }
 
-#calendar_weeks {
-  background-color: #e7f1fd;
-  font-size: 0.75rem;
+#pre_month #next_month {
+  width: 15%;
 }
 
-#calendar_body {
+#calendar_weeks {
+  background-color: #e7f1fd;
+  line-height: 1.2rem;
   font-size: 0.9rem;
 }
 
+#calendar_body {
+  font-size: 1rem;
+}
+
 #calendar_body_container {
-  line-height: 1.5rem;
+  line-height: 1.8rem;
 }
 
 .calendar_column {
-  width: 1.875rem;
+  width: 2.625rem;
 }
