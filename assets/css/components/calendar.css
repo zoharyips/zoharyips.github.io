@@ -4,8 +4,8 @@
 
 #calendar_header {
   background-color: #78b3ed;
-  line-height: 2.2rem;
-  font-size: 1.2rem;
+  line-height: 32px;
+  font-size: 1rem;
 }
 
 #calendar_header table {
@@ -18,18 +18,26 @@
 
 #calendar_weeks {
   background-color: #e7f1fd;
-  line-height: 1.5rem;
-  font-size: 0.9rem;
+  line-height: 24px;
+  font-size: 0.8rem;
 }
 
 #calendar_body {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 #calendar_body_container {
-  line-height: 2.2rem;
+  line-height: 32px;
 }
 
 .calendar_column {
-  width: 2.4rem;
+  width: 32px;
+}
+
+.calendar_column .normal_date {
+  color: #7f7f7f;
+}
+
+.calendar_column .active_date {
+  font-weight: 600;
 }
