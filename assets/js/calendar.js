@@ -42,9 +42,9 @@ function generateCalendar(today) {
   for (var index = 0; index < 37; index++) {
     if (index > dayBegin && index <= (dayCount + dayBegin)) {
       if (dayIndex == day) {
-        html += '<td class="calendar_column normal_date" onclick="onDateClick('+ dayIndex + ')">' + dayIndex;
+        html += '<td class="calendar_column active_date" onclick="onDateClick('+ dayIndex + ')"><a>' + dayIndex + '</a>';
       } else {
-        html += '<td class="calendar_column active_date" onclick="onDateClick('+ dayIndex + ')">' + dayIndex;
+        html += '<td class="calendar_column normal_date" onclick="onDateClick('+ dayIndex + ')"><a>' + dayIndex + '</a>';
       }
       dayIndex++;
     } else if (index > (dayCount + dayBegin)) {

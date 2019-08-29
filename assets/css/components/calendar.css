@@ -39,7 +39,7 @@
 }
 
 .calendar_column .active_date {
-  font-weight: 600;
+  font-weight: bold
 }
 
 .calendar_column .normal_date :hover {
