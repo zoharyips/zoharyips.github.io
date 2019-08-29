@@ -1,14 +1,11 @@
-#calendar_container {
-  height: 15rem;
-}
-
 #calendar_container table {
   text-align: center;
 }
 
 #calendar_header {
   background-color: #78b3ed;
-  line-height: 1.8rem;
+  line-height: 2.2rem;
+  font-size: 1.2rem;
 }
 
 #calendar_header table {
@@ -21,18 +18,18 @@
 
 #calendar_weeks {
   background-color: #e7f1fd;
-  line-height: 1.2rem;
+  line-height: 1.5rem;
   font-size: 0.9rem;
 }
 
 #calendar_body {
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 #calendar_body_container {
-  line-height: 1.8rem;
+  line-height: 2.2rem;
 }
 
 .calendar_column {
-  width: 2.625rem;
+  width: 2.4rem;
 }
