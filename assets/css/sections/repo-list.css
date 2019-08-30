@@ -27,8 +27,9 @@
 }
 
 .repo-list-item {
+  display: inline-block;
   position: relative;
-  padding: 30px 300px;
+  padding: 30px 0;
   list-style: none;
   border-bottom: 1px solid #eee
 }

@@ -37,24 +37,23 @@ comments: false
   <!-- Post list -->
   <ol class="repo-list">
     {% for post in paginator.posts %}
-    <li class="repo-list-item">
-      <h3 class="repo-list-name">
-        <a href="{{ post.url }}">{{ post.title }}</a>
-      </h3>
-      {% comment %} 获取页面的摘要，同时删除其两边的空白字符，删除其中的所有 html 标签 {% endcomment %}
-      <p class="repo-list-description">{{ post.excerpt | strip_html | strip }}</p>
-      <p class="repo-list-meta">
-        <span class="meta-info">
-          <span class="octicon octicon-calendar"></span> {{ post.date | date: "%Y/%m/%d" }}
-        </span>
-        {% for cat in post.categories %}
-        <span class="meta-info">
-          <span class="octicon octicon-file-directory"></span>
-          <a href="/categories/#{{ cat }}" title="{{ cat }}">{{ cat }}</a>
-        </span>
-        {% endfor %}
-      </p>
-    </li>
+      <div class="mobile-hidden" style="width: 15%"></div>
+      <li class="repo-list-item">
+        <h3 class="repo-list-name"><a href="{{ post.url }}">{{ post.title }}</a></h3>
+        <p class="repo-list-description">{{ post.excerpt | strip_html | strip }}</p>
+        <p class="repo-list-meta">
+          <span class="meta-info">
+            <span class="octicon octicon-calendar"></span> {{ post.date | date: "%Y/%m/%d" }}
+          </span>
+          {% for cat in post.categories %}
+          <span class="meta-info">
+            <span class="octicon octicon-file-directory"></span>
+            <a href="/categories/#{{ cat }}" title="{{ cat }}">{{ cat }}</a>
+          </span>
+          {% endfor %}
+        </p>
+      </li>
+      <div class="mobile-hidden" style="width: 15%"></div>
     {% endfor %}
   </ol>
   <div class="pagination text-align" style="text-align: center; margin:0px auto">
