@@ -1,6 +1,6 @@
 .home .banner,
 .home .site-header {
-  background: linear-gradient(135deg, red, orange, green, blue, purple) left center/400% 400%;
+  background: linear-gradient(135deg, #c93756, #d9b611, #057748, #065279, #4a4266) left center/400% 400%;
   color: #fff;
   animation: move 15s infinite;
 }
