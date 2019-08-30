@@ -27,10 +27,9 @@
 }
 
 .repo-list-item {
-  margin: 0 auto;
-  display: inline-block;
+  margin: auto;
   position: relative;
-  width: 78%;
+  width: 98%;
   padding: 30px 0;
   list-style: none;
   border-bottom: 1px solid #eee
@@ -53,9 +52,10 @@
 }
 
 .repo-list-description {
+  letter-spacing: 0.5;
   max-width: 100%;
   margin-top: 8px;
-  margin-bottom: 0;
+  margin-bottom: 20px;
   font-size: 14px;
   color: #666
 }
@@ -115,15 +115,30 @@
   text-decoration: none
 }
 
-.repo-list-meta .meta-info {
+.repo-list-meta .meta-info-left {
+  float: left;
   margin-right: 15px
 }
 
-.repo-list-meta .meta-info a {
+.repo-list-meta .meta-info-left a {
   color: #999
 }
 
-.repo-list-meta .meta-info a:hover,
-.repo-list-meta .meta-info a:hover {
+.repo-list-meta .meta-info-left a:hover,
+.repo-list-meta .meta-info-left a:hover {
+  text-decoration: underline
+}
+
+.repo-list-meta .meta-info-right {
+  float: right;
+  margin-right: 15px
+}
+
+.repo-list-meta .meta-info-right a {
+  color: #999
+}
+
+.repo-list-meta .meta-info-right a:hover,
+.repo-list-meta .meta-info-right a:hover {
   text-decoration: underline
 }

@@ -27,9 +27,6 @@
 
 /* 手机端 */
 @media (max-width:50em) {
-  .repo-list-item {
-    width: 100%;
-  }
   .mobile-block {
     display: block;
     float: none
