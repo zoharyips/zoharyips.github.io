@@ -12,22 +12,22 @@ comments: false
         <h2 class="collection-header" id="sub-title">
           <span>{{ site.subtitle }}</span>
         </h2>
-        <div class="collection-info">
-          <span class="meta-info mobile-hidden">
-            <span class="octicon octicon-location"></span>
-            {{ site.location }}
-          </span>
-          {% if site.organization %}
+      </div>
+      <div class="collection-info">
+        <span class="meta-info mobile-hidden">
+          <span class="octicon octicon-location"></span>
+          {{ site.location }}
+        </span>
+        {% if site.organization %}
           <span class="meta-info">
             <span class="octicon octicon-organization"></span>
             <a href="{{ site.organization_url }}" target="_blank">{{ site.organization }}</a>
           </span>
-          {% endif %}
-          <span class="meta-info">
-            <span class="octicon octicon-mark-github"></span>
-            <a href="https://github.com/{{ site.github_username }}" target="_blank">{{ site.github_username }}</a>
-          </span>
-        </div>
+        {% endif %}
+        <span class="meta-info">
+          <span class="octicon octicon-mark-github"></span>
+          <a href="https://github.com/{{ site.github_username }}" target="_blank">{{ site.github_username }}</a>
+        </span>
       </div>
     </div>
   </div>
@@ -52,6 +52,7 @@ comments: false
           {% endfor %}
         </p>
       </li>
+      <div style="display: block;height: 20px;"> </div>
     {% endfor %}
   </ol>
   <div class="pagination text-align" style="text-align: center; margin:0px auto">
