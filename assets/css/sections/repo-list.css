@@ -97,6 +97,7 @@
 }
 
 .repo-list-meta {
+  float: right;
   font-size: 13px;
   color: #999
 }
