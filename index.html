@@ -37,7 +37,7 @@ comments: false
   <!-- Post list -->
   <ol class="repo-list">
     {% for post in paginator.posts %}
-      <div class="mobile-hidden" style="width: 15%"></div>
+      <div class="mobile-hidden" style="width: 15%;display: inline-block;"></div>
       <li class="repo-list-item">
         <h3 class="repo-list-name"><a href="{{ post.url }}">{{ post.title }}</a></h3>
         <p class="repo-list-description">{{ post.excerpt | strip_html | strip }}</p>
@@ -53,7 +53,7 @@ comments: false
           {% endfor %}
         </p>
       </li>
-      <div class="mobile-hidden" style="width: 15%"></div>
+      <div class="mobile-hidden" style="width: 15%;display: inline-block;"></div>
     {% endfor %}
   </ol>
   <div class="pagination text-align" style="text-align: center; margin:0px auto">
