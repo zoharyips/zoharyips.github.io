@@ -1,30 +1,41 @@
 .home .banner,
 .home .site-header {
-    background: #4183c4;
-    color: #fff
+  background: linear-gradient(135deg, red, orange, green, blue, purple) left center/400% 400%;
+  color: #fff;
+  animation: move 15s infinite;
+}
+
+@keyframes move {
+  0%,
+  100% {
+    background-position-x: left;
+  }
+  50% {
+    background-position-x: right;
+  }
 }
 
 .home .banner .collection-head {
-    color: #fff;
-    background: 0 0;
-    box-shadow: none;
-    -webkit-box-shadow: none
+  color: #fff;
+  background: 0 0;
+  box-shadow: none;
+  -webkit-box-shadow: none
 }
 
 .home .site-header {
-    border-bottom: none
+  border-bottom: none
 }
 
 .home .site-header h1 a {
-    color: #fff
+  color: #fff
 }
 
 .home .site-header .site-header-nav-item {
-    color: rgba(255, 255, 255, .5)
+  color: rgba(255, 255, 255, .5)
 }
 
 .home .site-header .site-header-nav-item:hover {
-    color: #fff
+  color: #fff
 }
 
 

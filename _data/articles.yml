@@ -7,6 +7,11 @@
 #   type: 文章类型
 
 -
+  title: 灵活运用 css 开发技巧
+  url: https://juejin.im/post/5d4d0ec651882549594e7293#heading-0
+  type: css
+
+-
   title: CSS 網頁字型 @font-face 使用教學與範例
   url: https://blog.gtwang.org/web-development/css-font-face/
   type: css
