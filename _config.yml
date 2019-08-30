@@ -23,7 +23,7 @@ markdown: kramdown
 kramdown:
   input: GFM
 highlighter: rouge
-paginate: 8
+paginate: 12
 lsi: false
 quiet: false
 # 可以发布未来时间的博文
