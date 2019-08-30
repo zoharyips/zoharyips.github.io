@@ -40,6 +40,9 @@
   .mobile-md-section {
     padding: 10px 0
   }
+  .repo-list-item {
+    width: 100%;
+  }
   .column,
   .one-third-column {
     width: 100%!important;
