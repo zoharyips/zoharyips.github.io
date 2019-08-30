@@ -30,14 +30,14 @@
   margin: auto;
   position: relative;
   width: 88%;
-  padding: 30px 0;
+  padding: 40px 0 30px 0;
   list-style: none;
   border-bottom: 1px solid #eee
 }
 
 .repo-list-name {
   margin: 0 0 8px;
-  font-size: 1.75rem;
+  font-size: 1.4rem;
   line-height: 1.2
 }
 
@@ -54,7 +54,7 @@
 .repo-list-description {
   letter-spacing: 0.5;
   max-width: 95%;
-  margin-top: 16px;
+  margin-top: 12px;
   margin-bottom: 20px;
   font-size: 14px;
   color: #666

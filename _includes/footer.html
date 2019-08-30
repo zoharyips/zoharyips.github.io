@@ -27,9 +27,11 @@
   </div>
 </footer>
 
-<div class="tools-wrapper">
-  <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a>
-</div>
+{% if page.gotop != false %}
+  <div class="tools-wrapper">
+    <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a>
+  </div>
+{% endif %}
 
 <!-- / footer -->
 <script src="/assets/vendor/share.js/dist/js/share.min.js"></script>
