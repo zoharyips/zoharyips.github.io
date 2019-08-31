@@ -2,13 +2,18 @@
 <footer class="container">
   <div class="site-footer" role="contentinfo">
     <div class="copyright left mobile-block">
-      © 2019
+      © {% assign year = site.time | date: '%Y' %}{{ year }}
       <span title="{{ site.author}}">{{ site.author }}</span>
-      <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
+      {% if site.beian %}
+        <a href="{{ site.MIIT }}" class="right mobile-visible">{{ site.beian }}</a>
+      {% else %}
+        <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
+      {% endif %}
     </div>
     <ul class="site-footer-links right mobile-hidden">
       <li>
-        <a href="javascript:window.scrollTo(0,0)" >TOP</a>
+        <img width="20px" height="20px" src="/assets/svg/siterecord.svg" style="vertical-align: middle;"/>
+        <a href="{{ site.MIIT }}" >{{ site.beian }}</a>
       </li>
     </ul>
     <a href="{{ site.github.repository_url }}" target="_blank" aria-label="view source code">
