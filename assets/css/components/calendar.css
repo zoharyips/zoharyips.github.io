@@ -1,3 +1,7 @@
+#calendar_container {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 #calendar_container table {
   text-align: center;
 }
@@ -40,14 +44,4 @@
 
 .active_date {
   font-weight: bold;
-}
-
-.normal_date :hover {
-  border-style: solid;
-  border-width: 1px;
-}
-
-.active_date :hover {
-  border-style: solid;
-  border-width: 1px;
 }

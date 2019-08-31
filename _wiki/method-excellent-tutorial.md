@@ -12,6 +12,7 @@ description: 在此汇总各种优秀的教学文章
     {% for article in site.data.articles %}
       {% if article.type != privious_type %}
         <li><a href="#{{ article.type }}">{{ article.type }}</a></li>
+        {% assign privious_type = article.type %}
       {% endif %}
     {% endfor %}
   </ul>

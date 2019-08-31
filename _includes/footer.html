@@ -3,7 +3,7 @@
   <div class="site-footer" role="contentinfo">
     <div class="copyright left mobile-block">
       © {% assign year = site.time | date: '%Y' %}{{ year }}
-      <span title="{{ site.author}}">{{ site.author }}</span>
+      <span title="{{ site.author}}">{{ site.author }}&nbsp;&nbsp;</span>
       {% if site.beian %}
         <a href="{{ site.MIIT }}" class="right mobile-visible site-record">{{ site.beian }}</a>
       {% else %}
@@ -12,7 +12,7 @@
     </div>
     <ul class="site-footer-links right mobile-hidden">
       <li>
-        <img width="1rem" height="1rem" src="/assets/svg/siterecord.svg" style="vertical-align: middle;"/>
+        <img width="16px" height="16px" src="/assets/svg/siterecord.svg" style="vertical-align: middle;"/>
         <a href="{{ site.MIIT }}" class="site-record" >{{ site.beian }}</a>
       </li>
     </ul>
