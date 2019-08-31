@@ -5,15 +5,15 @@
       © {% assign year = site.time | date: '%Y' %}{{ year }}
       <span title="{{ site.author}}">{{ site.author }}</span>
       {% if site.beian %}
-        <a href="{{ site.MIIT }}" class="right mobile-visible">{{ site.beian }}</a>
+        <a href="{{ site.MIIT }}" class="right mobile-visible site-record">{{ site.beian }}</a>
       {% else %}
         <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
       {% endif %}
     </div>
     <ul class="site-footer-links right mobile-hidden">
       <li>
-        <img width="20px" height="20px" src="/assets/svg/siterecord.svg" style="vertical-align: middle;"/>
-        <a href="{{ site.MIIT }}" >{{ site.beian }}</a>
+        <img width="1rem" height="1rem" src="/assets/svg/siterecord.svg" style="vertical-align: middle;"/>
+        <a href="{{ site.MIIT }}" class="site-record" >{{ site.beian }}</a>
       </li>
     </ul>
     <a href="{{ site.github.repository_url }}" target="_blank" aria-label="view source code">

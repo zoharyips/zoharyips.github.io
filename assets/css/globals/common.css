@@ -208,7 +208,13 @@
 }
 
 .site-footer .copyright {
-  padding-right: 20px
+  padding: 0;
+}
+
+.site-record{
+  color: #777;
+  font-size: 90%;
+  vertical-align: middle;
 }
 
 .site-footer:after {
