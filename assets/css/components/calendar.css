@@ -1,5 +1,9 @@
 #calendar_container {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  width: 96%;
+  margin: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
 #calendar_container table {
@@ -7,9 +11,8 @@
 }
 
 #calendar_header {
-  background-color: #78b3ed;
-  line-height: 32px;
-  font-size: 1rem;
+  line-height: 40px;
+  font-weight: bold;
 }
 
 #calendar_header table {
@@ -21,8 +24,8 @@
 }
 
 #calendar_weeks {
-  background-color: #e7f1fd;
-  line-height: 24px;
+  background-color: #e0eefd;
+  line-height: 1.5rem;
   font-size: 0.8rem;
 }
 
@@ -35,13 +38,13 @@
 }
 
 .calendar_column {
-  width: 40px;
+  width: 44px;
 }
 
-.normal_date {
+.calendar_column .normal_date {
   color: #7f7f7f;
 }
 
-.active_date {
-  font-weight: bold;
+.calendar_column .active_date {
+  font-weight: bolder;
 }

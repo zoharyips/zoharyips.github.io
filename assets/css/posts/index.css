@@ -1,5 +1,7 @@
 #post-directory-module {
   z-index: 999;
+  width: 96%;
+  margin: auto;
 }
 
 .post-directory {
