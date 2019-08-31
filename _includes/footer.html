@@ -1,4 +1,4 @@
-<!-- 文章尾部 -->
+<!-- footer -->
 <footer class="container">
   <div class="site-footer" role="contentinfo">
     <div class="copyright left mobile-block">
@@ -32,34 +32,33 @@
   </div>
 </footer>
 
+<!-- the fly button: return to top -->
 {% if page.gotop != false %}
   <div class="tools-wrapper">
     <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a>
   </div>
 {% endif %}
 
-<!-- / footer -->
+<!-- enable the js file that can load at the end -->
 <script src="/assets/vendor/share.js/dist/js/share.min.js"></script>
 <script src="/assets/js/geopattern.js"></script>
 <script src="/assets/js/prism.js"></script>
 <link rel="stylesheet" href="/assets/css/globals/prism.css">
 <script>
   jQuery(document).ready(function($) {
-    // geopattern
     $('.geopattern').each(function(){
       $(this).geopattern($(this).data('pattern-id'));
     });
-    // hljs.initHighlightingOnLoad();
   });
 </script>
 
-<!-- 如果本页面开启 mermaid -->
+<!-- if the page enable mermaid -->
 {% if page.mermaid %}
 <script src="/assets/js/mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true});</script>
 {% endif %}
 
-<!-- 如果本页面开启 sequence -->
+<!-- if the page enable sequence -->
 {% if page.sequence %}
   <script src="/assets/js/webfont.js"></script>
   <script src="/assets/js/snap.svg-min.js"></script>
@@ -71,17 +70,26 @@
   </script>
 {% endif %}
 
-<!-- 如果本页面开启 flow -->
+<!-- if the page enable flow -->
 {% if page.flow %}
   <script src="/assets/js/raphael.min.js"></script>
   <script src="/assets/vendor/flowchart.js/dist/flowchart.min.js"></script>
   <script src="/assets/js/flow.js"></script>
 {% endif %}
 
-<!-- 如果本页面开启 mathjax, mathjax 脚本无法引入本地目录 -->
+<!-- if the page enable mathjax, mathjax 脚本无法引入本地目录 -->
 {% if page.mathjax %}
   <script type="text/javascript" src="https://basis-learning.github.io/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 {% endif %}
+
+<!-- if the site enable google analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google.analytics_id }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ site.google.analytics_id }}');
+</script>
 
 <!-- 百度自动推送脚本，百度站长加入使用 -->
 {% comment %}
@@ -101,16 +109,6 @@
     })();
   </script>
 {% endcomment %}
-
-<!-- 若网站开启谷歌分析 -->
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google.analytics_id }}"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', '{{ site.google.analytics_id }}');
-</script>
 
 </body>
 </html>

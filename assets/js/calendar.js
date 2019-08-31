@@ -28,9 +28,9 @@ document.getElementById('next_month').onclick = function() {
 }
 
 function generateCalendar(today) {
-  var year = today.getFullYear(); // 本年
-  var month = today.getMonth() + 1; // 本月
-  var day = today.getDate(); // 本日
+  var year = today.getFullYear();
+  var month = today.getMonth() + 1;
+  var day = today.getDate();
   var dayBegin = new Date(year, month - 1, 1).getDay();
   var dayCount = new Date(year, month, 0).getDate();
   if (month < 10) {
@@ -40,15 +40,19 @@ function generateCalendar(today) {
   var html = '<table><tr>';
   var dayIndex = 1;
   for (var index = 0; index < 37; index++) {
+    // the actual days in a month
     if (index > dayBegin && index <= (dayCount + dayBegin)) {
+      html += '<td class="calendar_column" onclick="onDateClick('+ dayIndex + ')"><a ';
       if (dayIndex == day) {
-        html += '<td class="calendar_column active_date" onclick="onDateClick('+ dayIndex + ')"><a>' + dayIndex + '</a>';
+        html += 'class="active_date">' + dayIndex + '</a>';
       } else {
-        html += '<td class="calendar_column normal_date" onclick="onDateClick('+ dayIndex + ')"><a>' + dayIndex + '</a>';
+        html += 'class="normal_date">' + dayIndex + '</a>';
       }
       dayIndex++;
+    // the white space after the days of month, to maintain the height of the whole component
     } else if (index > (dayCount + dayBegin)) {
       html += '<td class="calendar_column" style="opacity: 0">a</td>';
+    // the white space before the first day of month
     } else {
       html += '<td class="calendar_column"></td>';
     }
