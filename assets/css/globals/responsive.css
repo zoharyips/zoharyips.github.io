@@ -10,6 +10,16 @@
   display: none
 }
 
+#canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index:-1;
+  display: block;
+  width: 99vw;
+  height: 99vh;
+}
+
 @media (max-width:60em) {
   .collection-card {
     width: 45%;
