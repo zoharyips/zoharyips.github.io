@@ -1,4 +1,5 @@
-// 参考资料：https://github.com/sunshine940326/canvas-nest
+// 参考：https://github.com/sunshine940326/canvas-nest
+// 修改：https://github.com/zoharyips/zoharyips.github.io
 class Circle {
   //创建对象
   //以一个圆为对象
@@ -12,6 +13,7 @@ class Circle {
     this._mx = Math.random();
     this._my = Math.random();
   }
+
   //canvas 画圆和画直线
   //画圆就是正常的用canvas画一个圆
   //画直线是两个圆连线，为了避免直线过多，给圆圈距离设置了一个值，距离很远的圆圈，就不做连线处理
@@ -23,6 +25,7 @@ class Circle {
     ctx.fillStyle = 'rgba(204, 204, 204, 0.3)';
     ctx.fill();
   }
+
   drawLine(ctx, _circle) {
     let dx = this.x - _circle.x;
     let dy = this.y - _circle.y;
@@ -37,44 +40,49 @@ class Circle {
       ctx.stroke();
     }
   }
+
   // 圆圈移动
-  // 圆圈移动的距离必须在屏幕范围内
-  move(w, h) {
-    this._mx = (this.x < w && this.x > 0) ? this._mx : (-this._mx);
-    this._my = (this.y < h && this.y > 0) ? this._my : (-this._my);
-    this.x += this._mx / 2;
-    this.y += this._my / 2;
+  // 圆圈移动的距离必须在屏幕范围内,速度越打越快;
+  move(width, height, speed) {
+    this._mx = (this.x < width && this.x > 0) ? this._mx : (-this._mx);
+    this._my = (this.y < height && this.y > 0) ? this._my : (-this._my);
+  speed = speed / 100;
+    this.x += this._mx * speed;
+    this.y += this._my * speed;
   }
 }
-//鼠标点画圆闪烁变动
+
+// 鼠标所在的点
 class currentCirle extends Circle {
   constructor(x, y) {
     super(x, y)
   }
+
   drawCircle(ctx) {
     ctx.beginPath();
     //注释内容为鼠标焦点的地方圆圈半径变化
-    //this.r = (this.r < 14 && this.r > 1) ? this.r + (Math.random() * 2 - 1) : 2;
+    this.r = (this.r < 14 && this.r > 1) ? this.r + (Math.random() * 2 - 1) : 2;
     this.r = 8;
     ctx.arc(this.x, this.y, this.r, 0, 360);
     ctx.closePath();
-    //ctx.fillStyle = 'rgba(0,0,0,' + (parseInt(Math.random() * 100) / 100) + ')'
-    ctx.fillStyle = 'rgba(255, 77, 54, 0.3)'
+    ctx.fillStyle = 'rgba(0,0,0,' + (parseInt(Math.random() * 100) / 100) + ')';
+    ctx.fillStyle = 'rgba(204, 204, 204, 0.6)'
     ctx.fill();
   }
 }
-//更新页面用requestAnimationFrame替代setTimeout
+//更新页面用 requestAnimationFrame 替代 setTimeout
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
-let w = canvas.width = canvas.offsetWidth;
-let h = canvas.height = canvas.offsetHeight;
+canvas.width = canvas.offsetWidth;
+canvas.height = canvas.offsetHeight;
 let circles = [];
 let current_circle = new currentCirle(0, 0)
+
 let draw = function() {
-  ctx.clearRect(0, 0, w, h);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   for (let i = 0; i < circles.length; i++) {
-    circles[i].move(w, h);
+    circles[i].move(canvas.width, canvas.height, Math.min(canvas.width, canvas.height) / 12);
     circles[i].drawCircle(ctx);
     for (j = i + 1; j < circles.length; j++) {
       circles[i].drawLine(ctx, circles[j])
@@ -88,43 +96,76 @@ let draw = function() {
   }
   requestAnimationFrame(draw)
 }
+
 let init = function(num) {
   for (var i = 0; i < num; i++) {
-    circles.push(new Circle(Math.random() * w, Math.random() * h));
+    circles.push(new Circle(Math.random() * canvas.width, Math.random() * canvas.height));
   }
   draw();
 }
-window.onload = function(){
-  var os = function (){
-    var ua = navigator.userAgent,
-    isWindowsPhone = /(?:Windows Phone)/.test(ua),
-    isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone,
-    isAndroid = /(?:Android)/.test(ua),
-    isFireFox = /(?:Firefox)/.test(ua),
-    isChrome = /(?:Chrome|CriOS)/.test(ua),
-    isTablet = /(?:iPad|PlayBook)/.test(ua) || (isAndroid && !/(?:Mobile)/.test(ua)) || (isFireFox && /(?:Tablet)/.test(ua)),
-    isPhone = /(?:iPhone)/.test(ua) && !isTablet,
-    isPc = !isPhone && !isAndroid && !isSymbian;
-    return {
-      isTablet: isTablet,
-      isPhone: isPhone,
-      isAndroid: isAndroid,
-      isPc: isPc
-    };
-  }();
-  if (os.isPc || os.isTablet) {
-    canvas.hidden = false;
-    init(60);
-  } else {
-    canvas.hidden = true;
-  }
+
+function clearCanvas() {
+circles.splice(0, circles.length);
 }
+
+window.addEventListener('load', init(Math.max(canvas.width, canvas.height) / 36));
+
 window.onmousemove = function(e) {
   e = e || window.event;
   current_circle.x = e.clientX;
   current_circle.y = e.clientY;
 }
+
 window.onmouseout = function() {
   current_circle.x = null;
   current_circle.y = null;
 }
+
+var resizeTimer;
+var isStart = true;
+window.addEventListener('resize', function() {
+  if (isStart) {
+    console.log('onResizeStart');
+    $("#canvas").fadeOut(1000, clearCanvas());
+    isStart = false;
+  }
+
+  clearTimeout(resizeTimer);
+
+  resizeTimer = setTimeout(function() {
+    // 此函数会在resize结束的时候执行
+    console.log('onResizeCompleted');
+    canvas.width = document.body.offsetWidth * 0.99;
+    canvas.height = document.body.offsetHeight * 0.99;
+    init(Math.max(canvas.width, canvas.height) / 36);
+    $("#canvas").fadeIn(1000, function(){
+      isStart = true;
+    });
+  }, 1000);
+});
+
+// window.onload = function(){
+//   var os = function (){
+//     var ua = navigator.userAgent,
+//     isWindowsPhone = /(?:Windows Phone)/.test(ua),
+//     isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone,
+//     isAndroid = /(?:Android)/.test(ua),
+//     isFireFox = /(?:Firefox)/.test(ua),
+//     isChrome = /(?:Chrome|CriOS)/.test(ua),
+//     isTablet = /(?:iPad|PlayBook)/.test(ua) || (isAndroid && !/(?:Mobile)/.test(ua)) || (isFireFox && /(?:Tablet)/.test(ua)),
+//     isPhone = /(?:iPhone)/.test(ua) && !isTablet,
+//     isPc = !isPhone && !isAndroid && !isSymbian;
+//     return {
+//       isTablet: isTablet,
+//       isPhone: isPhone,
+//       isAndroid: isAndroid,
+//       isPc: isPc
+//     };
+//   }();
+//   if (os.isPc || os.isTablet) {
+//     canvas.hidden = false;
+//     init(60);
+//   } else {
+//     canvas.hidden = true;
+//   }
+// }
