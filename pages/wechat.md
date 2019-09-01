@@ -2,6 +2,7 @@
 layout: default
 title: 微信
 description: 这是我的个人微信
+canvas: true
 permalink: /wechat/
 ---
 

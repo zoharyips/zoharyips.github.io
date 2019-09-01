@@ -6,6 +6,7 @@ comments: false
 share: false
 repositories: false
 categories: true
+canvas: true
 menu: 归档
 permalink: /archives/
 ---

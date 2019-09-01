@@ -37,6 +37,11 @@
   <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a>
 </div>
 
+{% if page.canvas %}
+  <canvas id="canvas"></canvas>
+  <script src="/assets/js/zhihubg.js"></script>
+{% endif %}
+
 <!-- enable the js file that can load at the end -->
 <script src="/assets/vendor/share.js/dist/js/share.min.js"></script>
 <script src="/assets/js/geopattern.js"></script>

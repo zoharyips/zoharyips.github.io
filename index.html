@@ -2,7 +2,7 @@
 layout: default
 class: home
 css: ['pages/index.css']
-comments: false
+canvas: true
 ---
 
 <section class="banner">
@@ -34,7 +34,6 @@ comments: false
 </section>
 <!-- /.banner -->
 <!-- Main Session -->
-<canvas id="canvas"></canvas>
 <section class="container content">
   <ol class="repo-list">
     {% for post in paginator.posts %}
@@ -89,4 +88,3 @@ comments: false
   {% include sidebar-search.html %}
 </section>
 <!-- /Main Session -->
-<script src="/assets/js/zhihubg.js"></script>

@@ -8,6 +8,7 @@ share: false
 comments: false
 categories: true
 calendar: true
+canvas: true
 permalink: /wiki/
 ---
 

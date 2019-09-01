@@ -5,6 +5,7 @@ description: 哈哈，你竟然发现了这个文档，我整理的好累，所�
 keywords: 文档
 comments: false
 share: false
+canvas: true
 menu: 文档
 permalink: /doc/
 ---

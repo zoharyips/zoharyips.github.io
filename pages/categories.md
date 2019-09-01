@@ -7,6 +7,7 @@ comments: false
 share: false
 repositories: false
 categories: true
+canvas: true
 menu: 分类
 permalink: /categories/
 ---

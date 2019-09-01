@@ -135,8 +135,9 @@ window.addEventListener('resize', function() {
   resizeTimer = setTimeout(function() {
     // 此函数会在resize结束的时候执行
     console.log('onResizeCompleted');
-    canvas.width = document.body.offsetWidth * 0.99;
-    canvas.height = document.body.offsetHeight * 0.99;
+    
+    canvas.width = window.outerWidth * 0.98;
+    canvas.height = window.innerHeight * 0.99;
     init(Math.max(canvas.width, canvas.height) / 36);
     $("#canvas").fadeIn(1000, function(){
       isStart = true;
