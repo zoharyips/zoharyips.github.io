@@ -13,7 +13,6 @@ permalink: /categories/
 ---
 
 <div>
-  {% comment %} TODO：将归档功能放置在右侧，以日历的方式提示 {% endcomment %}
   {% assign sorted_categories = site.categories | sort %}
   {% for category in sorted_categories %}
     <h3>{{ category | first }}</h3>
