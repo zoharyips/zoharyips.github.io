@@ -1,4 +1,4 @@
-<!-- 评论模块 -->
+<!-- 日历模块 -->
 {% if page.calendar %}
   <h3>Calendar</h3>
   <center id="calendar_container">
@@ -30,5 +30,16 @@
       </tr>
     </table>
   </center>
+  <script>
+    var post_dates = new Map();
+    {% for post in site.posts %}
+      {% assign date = post.date | date: '%Y%m%d' %}
+      post_dates.set('{{ date }}', '{{ post.url }}');
+    {% endfor %}
+    post_dates.forEach(function (value, key, map) {
+      console.log(key + " = " + value);
+    });
+    var siteUrl = "{{ site.url }}";
+  </script>
   <script src="/assets/js/calendar.js"></script>
 {% endif %}

@@ -1,13 +1,12 @@
+var today = new Date();
 window.onload = function() {
-  var today = new Date();
   generateCalendar(today);
 }
 
+// 上一个月
 document.getElementById('pre_month').onclick = function() {
-  var today = new Date();
   var targetMonth = parseInt(document.getElementById('show_date').innerHTML.substr(5)) - 1;
   var year = parseInt(document.getElementById('show_date').innerHTML.substr(0, 4));
-  console.log(year + "." + targetMonth + ":" + today.getFullYear() + "." + today.getMonth());
   if (targetMonth == (today.getMonth() + 1) && year == today.getFullYear()) {
     generateCalendar(today);
   } else{
@@ -15,11 +14,10 @@ document.getElementById('pre_month').onclick = function() {
   }
 }
 
+// 下一个月
 document.getElementById('next_month').onclick = function() {
-  var today = new Date();
   var targetMonth = parseInt(document.getElementById('show_date').innerHTML.substr(5)) + 1;
   var year = parseInt(document.getElementById('show_date').innerHTML.substr(0, 4));
-  console.log(year + "." + targetMonth + ":" + today.getFullYear() + "." + today.getMonth());
   if (targetMonth == (today.getMonth() + 1) && year == today.getFullYear()) {
     generateCalendar(today);
   } else{
@@ -27,22 +25,36 @@ document.getElementById('next_month').onclick = function() {
   }
 }
 
-function generateCalendar(today) {
-  var year = today.getFullYear();
-  var month = today.getMonth() + 1;
-  var day = today.getDate();
+// 生成日历
+function generateCalendar(date) {
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
   var dayBegin = new Date(year, month - 1, 1).getDay();
   var dayCount = new Date(year, month, 0).getDate();
   if (month < 10) {
     month = "0" + "" + month;
   }
+
   document.getElementById('show_date').innerHTML = year + '.' + month;
+
   var html = '<table><tr>';
   var dayIndex = 1;
+  var haveContent = false;
   for (var index = 0; index < 37; index++) {
     // the actual days in a month
     if (index > dayBegin && index <= (dayCount + dayBegin)) {
-      html += '<td class="calendar_column" onclick="onDateClick('+ dayIndex + ')"><a ';
+      // judge if the date have post content; travers add the post content date;
+      if (index < 10) {
+        index = "0" + "" + index;
+      }
+      var value = post_dates.get(year + month + index + '');
+      if (value != null) {
+        console.log(year + month + index + ' : ' + value);
+        html += '<td class="calendar_column" ><a href="' + siteUrl + value + '" style="color:#5a862d;font-weight:bolder"  title="' + value + '"';
+      } else {
+        html += '<td class="calendar_column" onclick="onDateClick('+ year + month + dayIndex + ')" title="这一天偷懒喽"><a ';
+      }
       if (dayIndex == day) {
         html += 'class="active_date">' + dayIndex + '</a>';
       } else {
@@ -63,6 +75,6 @@ function generateCalendar(today) {
   html += '</tr></table>';
   document.getElementById("calendar_body_container").innerHTML = html;
 }
-function onDateClick(day) {
-  alert("You have press the date: " + day);
+function onDateClick(date) {
+  alert(date + "偷懒了一整天，什么都没写");
 }
