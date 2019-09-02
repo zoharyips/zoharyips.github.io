@@ -149,9 +149,7 @@ $(document).ready(function(){
     var currentScroll = $(window).scrollTop();
     if (currentScroll >= fixmeTop) {
       $('#post-directory-module').css({
-        top: '0',
-        position: 'fixed',
-        width: 'inherit'
+        position: 'fixed'
       });
       $('.post-directory').css('overflow', 'auto');
     } else {
