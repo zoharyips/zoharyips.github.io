@@ -14,19 +14,19 @@ permalink: /about/
   <ul style="line-height: 3rem;list-style-type: none;">
     <li>
       <img width="32" height="32" style="margin-right:0.375rem;vertical-align: middle;" src="/assets/svg/github.svg"/>&nbsp;
-      <a href="https://github.com/zoharyips">zohar</a>
+      <a href="https://github.com/zoharyips" title="My github account">zohar</a>
     </li>
     <li>
       <img width="32" height="32" style="margin-right:0.375rem;vertical-align: middle;" src="/assets/svg/website.svg"/>&nbsp;
-      <a href="/">Zohar's blog</a>
+      <a href="/" title="My website">Zohar's blog</a>
     </li>
     <li>
       <img width="32" height="32" style="margin-right:0.375rem;vertical-align: middle;" src="/assets/svg/mailbox.svg"/>&nbsp;
-      <a href="mailto:zoharyips@outlook.com">zoharyips@outlook.com</a>
+      <a href="mailto:zoharyips@outlook.com" title="Send email">zoharyips@outlook.com</a>
     </li>
     <li>
       <img width="32" height="32" style="margin-right:0.375rem;vertical-align: middle;" src="/assets/svg/wechat.svg"/>&nbsp;
-      <a href="/wechat">zohar_Yip</a>
+      <a href="/wechat" title="Contact me on wechat">zohar_Yip</a>
     </li>
   </ul>
   <h3>Abilities</h3>
