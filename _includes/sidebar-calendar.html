@@ -1,5 +1,5 @@
-<!-- 日历模块 -->
 {% if page.calendar %}
+  <!-- 日历模块 -->
   <h3>Calendar</h3>
   <center id="calendar_container">
     <table>
@@ -39,31 +39,8 @@
     post_dates.forEach(function (value, key, map) {
       console.log(key + " = " + value);
     });
-    var today = new Date();
-    window.onload = function() {
-      generateCalendar(today);
-    }
-
-    // 上一个月
-    document.getElementById('pre_month').onclick = function() {
-      var targetMonth = parseInt(document.getElementById('show_date').innerHTML.substr(5)) - 1;
-      var year = parseInt(document.getElementById('show_date').innerHTML.substr(0, 4));
-      if (targetMonth == (today.getMonth() + 1) && year == today.getFullYear()) {
-        generateCalendar(today);
-      } else{
-        generateCalendar(new Date(year, targetMonth - 1, 1));
-      }
-    }
-
-    // 下一个月
-    document.getElementById('next_month').onclick = function() {
-      var targetMonth = parseInt(document.getElementById('show_date').innerHTML.substr(5)) + 1;
-      var year = parseInt(document.getElementById('show_date').innerHTML.substr(0, 4));
-      if (targetMonth == (today.getMonth() + 1) && year == today.getFullYear()) {
-        generateCalendar(today);
-      } else{
-        generateCalendar(new Date(year, targetMonth - 1, 1));
-      }
+    function onDateClick(date) {
+      alert(date + "偷懒了一整天，什么都没写");
     }
 
     // 生成日历
@@ -116,8 +93,32 @@
       html += '</tr></table>';
       document.getElementById("calendar_body_container").innerHTML = html;
     }
-    function onDateClick(date) {
-      alert(date + "偷懒了一整天，什么都没写");
+
+    var today = new Date();
+    window.onload = function() {
+      generateCalendar(today);
+    }
+
+    // 上一个月
+    document.getElementById('pre_month').onclick = function() {
+      var targetMonth = parseInt(document.getElementById('show_date').innerHTML.substr(5)) - 1;
+      var year = parseInt(document.getElementById('show_date').innerHTML.substr(0, 4));
+      if (targetMonth == (today.getMonth() + 1) && year == today.getFullYear()) {
+        generateCalendar(today);
+      } else{
+        generateCalendar(new Date(year, targetMonth - 1, 1));
+      }
+    }
+
+    // 下一个月
+    document.getElementById('next_month').onclick = function() {
+      var targetMonth = parseInt(document.getElementById('show_date').innerHTML.substr(5)) + 1;
+      var year = parseInt(document.getElementById('show_date').innerHTML.substr(0, 4));
+      if (targetMonth == (today.getMonth() + 1) && year == today.getFullYear()) {
+        generateCalendar(today);
+      } else{
+        generateCalendar(new Date(year, targetMonth - 1, 1));
+      }
     }
   </script>
 {% endif %}
