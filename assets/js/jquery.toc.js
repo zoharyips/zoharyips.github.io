@@ -149,12 +149,14 @@ $(document).ready(function(){
     var currentScroll = $(window).scrollTop();
     if (currentScroll >= fixmeTop) {
       $('#post-directory-module').css({
-        position: 'fixed'
+        position: 'fixed',
+        top: 0
       });
       $('.post-directory').css('overflow', 'auto');
     } else {
       $('#post-directory-module').css({
         position: 'inherit',
+        top: inherit
       });
       $('.post-directory').css('overflow', 'hidden');
       $('.post-directory').scrollTop(0);

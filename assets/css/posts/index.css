@@ -2,7 +2,7 @@
   z-index: 999;
   width: 96%;
   margin: auto;
-  top: '0';
+  top: inherit;
 }
 
 .post-directory {
