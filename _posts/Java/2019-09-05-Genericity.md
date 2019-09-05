@@ -207,20 +207,23 @@ public class TestClass<T> {
     子类型通配符，亦称上界通配符，限定了 `T` 的类型仅能是 `Type` 的子类或实现类或其自身
 
     ```java
-    public class HashMap<K,V> extends AbstractMap<K,V> implements Map<K,V>, Cloneable, Serializable {}
+    public class Zoo<T extends Animal> {}
     ```
 
 * `T super Type`
 
     父类型通配符，亦称下界通配符，限定了 `T` 的类型仅能是 `Type` 的父类或者自身
 
+    ```java
+    public class UserServiceDetailHandler<T super ClientUserServiceDetail> {}
+    ```
 
 *******
 
 看到网友写的一篇文章挺好的：
 
-[JAVA泛型通配符T，E，K，V区别，T以及Class<T>，Class<?>的区别](https://www.jianshu.com/p/95f349258afb)
+[JAVA泛型通配符T，E，K，V区别...](https://www.jianshu.com/p/95f349258afb)
 
-但是这篇文章被抄了不下十次，而且还不提示参考原文的，甚至有公众号抄了当作原创。。。
+但是这篇文章被其他人抄了不下十次，而且还不提示参考原文，甚至有公众号抄了当作原创。。。
 
-良心不痛吗？
+抄别人文章会不会很开心，很自豪吖，脑残？
