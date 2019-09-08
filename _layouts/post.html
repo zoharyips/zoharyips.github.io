@@ -13,9 +13,16 @@ gotop: false
         <div class="collection-title">
           <h1 class="collection-header">{{ page.title }}</h1>
           <div class="collection-info">
+            {% if page.modify %}
+              <span class="meta-info">
+                <span class="octicon octicon-pencil"></span>
+                {{ page.modify }}
+              </span>
+            {% endif %}
             {% if page.date %}
               <span class="meta-info">
-                <span class="octicon octicon-calendar"></span> {{ page.date | date: "%Y/%m/%d" }}
+                <span class="octicon octicon-calendar"></span>
+                {{ page.date | date: "%Y/%m/%d" }}
               </span>
             {% endif %}
             {% for cat in page.categories %}
