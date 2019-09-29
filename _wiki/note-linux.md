@@ -31,7 +31,7 @@ description: 简单记录一些 linux 常用命令
 ### 用户组
 
 * 添加用户至 sudo 组 `usermod -a -G sudo <userName>`  
-或添加信息至 `/etc/sudoers` 文件中:  
+或添加信息至 `/etc/sudoers` 文件中，编辑该文件请使用 `visudo` 命令:  
 
     ```
     ...
