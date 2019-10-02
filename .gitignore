@@ -1,6 +1,7 @@
 _site/
 .bundle/*
 vendor/*
+.vscode
 *.swp
 *.~vsd
 \#*\#
