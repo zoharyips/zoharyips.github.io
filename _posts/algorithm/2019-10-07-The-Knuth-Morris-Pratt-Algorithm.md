@@ -64,28 +64,20 @@ KMP 为什么会是改进后的查找匹配算法呢？
 
 我们先来看看暴力法的问题所在：
 
-> 图片引用：labuladong [KMP 算法详解](https://leetcode-cn.com/problems/implement-strstr/solution/kmp-suan-fa-xiang-jie-by-labuladong/)，侵删
+![viloence-solve.gif](https://zoharyip.club/images/posts/KMP-alogrithm/viloence-solve.gif "https://zoharyip.club")
 
-![viloence-solve.gif](https://pic.leetcode-cn.com/811d906845ddb8ae2cc7edf98d541ac541e6d24ae1466d13e794ccd195da0da1-viloence-solve.gif "图片源于：labuladong")
-
-在暴力匹配中，我们从 txt 的下标为 i 的子串开始和 pattern 进行匹配，匹配失败则让下标为 i+1 的子串重新匹配。此时我们**抛弃了前面的匹配信息**，因为我们知道前面匹配中遇到了 `c`，而 pattern 中并无 `c` ，应该跳过 `c` 开始匹配。
+在暴力匹配中，我们从 txt 的下标为 i 的子串开始和 pattern 进行匹配，匹配失败则让下标为 i+1 的子串重新匹配。此时我们**抛弃了前面的匹配信息**，因为我们知道前面匹配中遇到了 `四`，而 pattern 中并无 `四` ，应该从 `四` 后面的 `一` 开始重新匹配。
 
 而 KMP 算法目的就是：在出错时，利用原有的匹配信息，尽量减少重新匹配的次数。
 
 所以应当是这样的：
 
-> 图片引用：labuladong [KMP 算法详解](https://leetcode-cn.com/problems/implement-strstr/solution/kmp-suan-fa-xiang-jie-by-labuladong/)，侵删
+![kmp2.gif](https://zoharyip.club/images/posts/KMP-alogrithm/kmp2.gif "https://zoharyip.club")
 
-![kmp1.gif](https://pic.leetcode-cn.com/021c7d8065b39664bc1561fa5b55989379dbfcc37024975cc2a66524a5544e12-kmp1.gif "图片源于：labuladong")
+或者是其他情况：
 
-而最直观的应该是这一种情况了：
+![kmp1.gif](https://zoharyip.club/images/posts/KMP-alogrithm/kmp1.gif "https://zoharyip.club")
 
-> 图片引用：labuladong [KMP 算法详解](https://leetcode-cn.com/problems/implement-strstr/solution/kmp-suan-fa-xiang-jie-by-labuladong/)，侵删
-
-![kmp2.gif](https://pic.leetcode-cn.com/91d69bf7823467a5f68fe553d761c81287c21e5c9a1ce06e3d36093fb2136e50-kmp2.gif "图片源于：labuladong")
-
-
-从已有的匹配信息中可以看出，txt 串的出错字符 `a` 前，已经存在 pattern 串的前缀 `aa`，结合出错字符 `a`，仍可构成 pattern 前缀 `aaa`，因此固定 pattern 的匹配状态，将 pattern 串后移至 txt 串下一下标继续匹配即可。
 
 在两种方法的对比中，可以看到 KMP 算法的主串下标永不后退，而暴力算法一旦出错，则回退至匹配起始的下一个下标重头开始。
 
