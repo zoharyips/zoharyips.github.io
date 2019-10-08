@@ -1,8 +1,8 @@
 ---
 layout: post
 title: 使用 VScode 进行 Java/J2EE 开发
-categories: VScode, Java
-keywords: Vscode, Java
+categories: VScode Java
+keywords: Vscode Java
 ---
 
 电脑坏了，只能用舍友的电脑😞，之前一直使用 IDEA，偶尔使用 Eclipse 打 Java，但答应舍友只安装 VSCode 这一个软件，那就试一下使用 VScode 来打 Java 吧
