@@ -15,7 +15,7 @@ keywords: Alogrithm
 
 ## 1 strStr 题目
 
-这是 LeetCode 上一道极其简单的题目，[实现 strStr()](https://leetcode-cn.com/problems/implement-strstr)：
+这是 LeetCode 上一道极其简单的题目,但这道题目却十分有价值，[实现 strStr()](https://leetcode-cn.com/problems/implement-strstr)：
 
 *给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。如果不存在，则返回  -1。*
 
@@ -44,7 +44,7 @@ public int strStr(String haystack, String needle) {
 
 暴力法固然简单，奈何时间复杂度为 $O(n*m)$，对于超长文本和长子串而言，时间成本极高。
 
-暴力法再简单再无脑，估计也不比这样答题的差，动脑子的题解才有价值，时间效率再高也是知其然而不知其所以然：
+暴力法再简单再无脑，估计也不比这样答题的差，动脑子的题解才有价值，使用库函数，即使时间效率再高也是知其然而不知其所以然：
 
 ```java
 public int strStr(String haystack, String needle) {
@@ -64,33 +64,40 @@ KMP 为什么会是改进后的查找匹配算法呢？
 
 我们先来看看暴力法的问题所在：
 
-![暴力法逻辑图](/images\posts\KMP-alogrithm\viloence-solve.gif "图片源于：labuladong")
+> 图片引用：labuladong [KMP 算法详解](https://leetcode-cn.com/problems/implement-strstr/solution/kmp-suan-fa-xiang-jie-by-labuladong/)，侵删
 
-设 m 为 pattern 串长度，在暴力匹配中，我们会将 txt（大文本，即主串）`T[0] ~ T[m]` 与 pattern（模式串）`P[0] ~ P[m]` 进行匹配，如果匹配相同则匹配下一字符 `T[1]` 与 `P[1]`，若字符不相同，则我们会**抛弃前面的匹配信息**，从 `T[1]` 开始，重新与 pattern 相匹配。
+![viloence-solve.gif](https://pic.leetcode-cn.com/811d906845ddb8ae2cc7edf98d541ac541e6d24ae1466d13e794ccd195da0da1-viloence-solve.gif "图片源于：labuladong")
 
-而 KMP 算法目的就是：在出错时，利用原有的匹配信息，尽量地减少重新匹配的次数。
+在暴力匹配中，我们从 txt 的下标为 i 的子串开始和 pattern 进行匹配，匹配失败则让下标为 i+1 的子串重新匹配。此时我们**抛弃了前面的匹配信息**，因为我们知道前面匹配中遇到了 `c`，而 pattern 中并无 `c` ，应该跳过 `c` 开始匹配。
 
-例如：
+而 KMP 算法目的就是：在出错时，利用原有的匹配信息，尽量减少重新匹配的次数。
 
-![KMP1](/images\posts\KMP-alogrithm\kmp1.gif "图片源于：labuladong")
+所以应当是这样的：
 
-由于 pattern 串中并不存在字符 `c`，因此将 pattern 串移到主串中字符 `c` 的下一位开始匹配；
+> 图片引用：labuladong [KMP 算法详解](https://leetcode-cn.com/problems/implement-strstr/solution/kmp-suan-fa-xiang-jie-by-labuladong/)，侵删
 
-![KMP2](/images\posts\KMP-alogrithm\kmp2.gif "图片源于：labuladong")
+![kmp1.gif](https://pic.leetcode-cn.com/021c7d8065b39664bc1561fa5b55989379dbfcc37024975cc2a66524a5544e12-kmp1.gif "图片源于：labuladong")
 
-从已有的匹配信息中可以看出，txt 串的出错字符 `a` 前，已经存在 pattern 串的前缀 `aa`，结合出错字符，仍可构成 pattern 前缀 `aaa`，因此固定 pattern 的匹配状态，将 pattern 串后移至 txt 串下一下标继续匹配即可。
+而最直观的应该是这一种情况了：
+
+> 图片引用：labuladong [KMP 算法详解](https://leetcode-cn.com/problems/implement-strstr/solution/kmp-suan-fa-xiang-jie-by-labuladong/)，侵删
+
+![kmp2.gif](https://pic.leetcode-cn.com/91d69bf7823467a5f68fe553d761c81287c21e5c9a1ce06e3d36093fb2136e50-kmp2.gif "图片源于：labuladong")
+
+
+从已有的匹配信息中可以看出，txt 串的出错字符 `a` 前，已经存在 pattern 串的前缀 `aa`，结合出错字符 `a`，仍可构成 pattern 前缀 `aaa`，因此固定 pattern 的匹配状态，将 pattern 串后移至 txt 串下一下标继续匹配即可。
 
 在两种方法的对比中，可以看到 KMP 算法的主串下标永不后退，而暴力算法一旦出错，则回退至匹配起始的下一个下标重头开始。
 
 ### 3.3 怎么做
 
-从上文我们知道，KMP 通过利用出错时已有的匹配信息，讲 pattern 串移到对应主串的正确位置重新/继续匹配，这该怎么做呢？
+那么我们该如何利用已有的出错信息呢？
 
-* 原有的匹配信息有：
+**原匹配信息有：**
   * txt 串的已遍历字符，长度太长，缓存一份自然是不现实的，因此舍去；
-  * pattern 串的已匹配字符，长度小，同时其已匹配前缀与 txt 串前几个字符是已匹配的，因此是相同的。
+  * pattern 串的已匹配字符，长度小，与 txt 串最近几个字符是已匹配的。
 
-因此，利用已匹配的信息我们就是要用 pattern 串的已匹配字符；当然在此之前我们是知道完整的 pattern 串的，因此，我们一直掌握着一个信息：**Pattern 串的匹配程度**，也就是 **Pattern 串的匹配状态**
+因此，已匹配信息自然就是指 pattern 串的已匹配字符；而完整的 pattern 串是已知的，因此，我们一直掌握着一个信息：**Pattern 串的匹配程度**，也就是 **Pattern 串的已匹配状态**。
 
 #### 3.3.1 状态
 
@@ -99,28 +106,27 @@ KMP 为什么会是改进后的查找匹配算法呢？
 $$ \mathsf{txt:} \qquad \mathbf{...\ \overline{A\ A\ B\ A}\ A\ C\ ...} $$
 $$ \mathsf{pattern:} \qquad \mathbf{\overline{A\ A\ B\ A}\ B\ C} $$
 
-此时 pattern 的匹配状态是 `AABA`，接下来如果遇到字符 `B` 可以进入下一状态 `AABAB`。
+此时 pattern 的匹配状态是 `AABA`，如果遇到字符 `B` 可以进入下一状态 `AABAB`。
 
-而 txt 串的下一匹配字符是 `A`，`AABA` 遇到 `A` 就会变成 `AABAA`，匹配失败，我们需要重新匹配。
+但却遇到了 `A`，匹配失败，在暴力法中我们需要重新匹配。
 
-已知情况是，`A`、`AA`、`AAB`、`AABA` 都是 pattern 的前缀，而借助刚才的匹配信息 `AABA`，推导出 `AABAA` 是下一次匹配的结果，而 `AA` 是 pattern 的前缀之一，因此：
+`A`、`AA`、`AAB`、`AABA` 都是 pattern 的前缀，再回顾刚才匹配失败的信息： `AABAA`，发现 `AA` 是 pattern 的前缀之一，我们无需重新匹配，只需要将 pattern 的匹配状态调整至 `AA` 即可继续匹配，而不用回退 txt 的指针；我们可以将这些已匹配的信息成为 pattern 的**匹配状态**：
 
 **`AABA` 状态遇到 `B` 会上升为 `AABAB` 状态，遇到`A` 会回退到 `AA` 状态，而无需回退到 pattern 全部重新匹配。**
 
-$$ \mathbf{nowStatus} \ +\ \mathbf{char[next]} \ =\ \mathbf{nextStatus/preStatus}  $$
+$$ \mathbf{nowStatus} \ +\ \mathbf{char} \ =\ \mathbf{targetStatus}  $$
 
-* `nowStatus` 为当前状态
-* `char[next]` 为待匹配的字符 
-* `nextStatus` 表示升状态
-* `preStatus` 表示降状态
+* `nowStatus` 为当前状态，这是已知的
+* `char` 为待匹配的字符 ，这也是已知的
+* `targetStatus` 表示目标状态，可能是升状态也可能是降状态，这是我们可以推导出来的
 
-整条公式表示：pattern 处于某个匹配状态时，遇到特定的字符会升状态（即当前字符匹配成功），遇到其他字符会降状态；
+整条公式表示：pattern 处于某个匹配状态时，遇到特定的字符会变成另一种状态（重置的话就是 0 状态）；
 
-**当前状态**是已知的，**待匹配字符**也是已知的，**升状态所需要的字符**是已知的，**遇到不是升状态的字符就会降状态**或者重置状态，至于降到什么状态，我们是可以进行推导的，推导之后记录成一张表，我们需要的时候查阅这张表就可以判断是成功匹配、降级还是要重置，这样一张表我们称为<u>**确定有限状态机**</u>。
+因此，我们可以把 所有的状态（X轴） + 所有的字符（Y轴） 存储成一张表结构，而目标状态就是（X, Y）的值，我们每读取一个 txt 的字符，就查阅一次表$O(1))$即可知道接下来的匹配状态了。这样一张表我们称为<u>**确定有限状态机**</u>。
 
 #### 3.3.2 确定有限状态机
 
-例如，对于待匹配字符串为 `ababc` 的 pattern 串，我们可以手动推导出这样一张表：
+例如，对于待匹配字符串为 `ababc` 的 pattern 串，我们可以手动推导出这张表：
 
 statusNo | nowStatus | char[next] | targetStatus
 :-: | :-: | :-: | :-:
@@ -140,48 +146,47 @@ statusNo | nowStatus | char[next] | targetStatus
 3 | `aba` | `...` | ` `
 4 | `abab` | `a` | `aba` $\downarrow$
 4 | `abab` | `b` | ` `
-4 | `abab` | `c` | <u>**`ababc`**</u> $\uparrow$
+4 | `abab` | `c` | **`ababc`** $\uparrow$
 4 | `abab` | `...` | ` `
 
 根据这张表，利用 `nowStatus + char[next] => targetStatus` 这条规则我们可以推导出 `abab` 状态下匹配失败后，如果是匹配到 `a` 可以返回到 `aba` 状态，而不是重新匹配：
 
-![ababa](/images/posts/KMP-alogrithm/ababa.png)
-
-下面是状态机的完整工作状态：
-
-![Matching](/images\posts\KMP-alogrithm\matching.gif "图片源于：labuladong")
+![ababa.png](https://pic.leetcode-cn.com/a87863bf33557faab84dee624f2d473d0ecfbec886c21b12d3aa798d1d7a3a42-ababa.png "zoharyip.club")
 
 #### 3.3.3 使用有限状态机
 
 我们需要应用这一道公式：
 
-$$ \mathbf{nowStatus} \ +\ \mathbf{char[next]} \ =\ \mathbf{targetStatus}  $$
+$$\mathbf{targetStatus} \ =\ \mathbf{nowStatus} \ +\ \mathbf{char}$$
 
-* `int status = 0`
-    为了记录当前状态，我们使用整型变量 status，按照上述表的转态编号保存当前 pattern 串的匹配转态；
-* `txt.charAt(nextIndex)`
-    为下一匹配字符；
-
-* 应用：
-    `status = FSM[status][txt.charAt(nextIndex)]`
-
-没错，如上文所说，我们使用表，即二维数组来记录状态转换，x 轴记录状态，y 轴记录下一匹配的字符，其值为目标状态；而使用就是这么简单，但是我们该如何构建呢？
+```
+// 匹配子串
+int state = 0;
+for (int i = 0; i < strLen; i++) {
+    state = FSM[state][haystack.charAt(i)];
+    // 如果当前状态 = 完全匹配状态，即得出结果
+    if (state == subLen) {
+        return i - subLen + 1;
+    }
+}
+```
+使用就是这么简单，但是我们该如何构建 FSM（指 Finite State Machine，有限状态机简称）表呢？
 
 #### 3.3.4 逐列构建有限状态机
 
-回到前面的示例表那里 [3.3.2 确定有限状态机](#332-%e7%a1%ae%e5%ae%9a%e6%9c%89%e9%99%90%e7%8a%b6%e6%80%81%e6%9c%ba)，我们依据： **当前状态 + 匹配字符 = 目标状态** 推导出了状态机这整张表，手动的东西弄清楚原理，我们就可以根据 pattern 串自动生成状态机了。
+回到前面的示例表那里 [3.3.2 确定有限状态机](#332-%e7%a1%ae%e5%ae%9a%e6%9c%89%e9%99%90%e7%8a%b6%e6%80%81%e6%9c%ba)，我们依据 **当前状态 + 匹配字符 = 目标状态** 推导出了状态机这整张表，手动推导的东西弄清楚原理就能控制自动生成，所以我们来一步步搞清楚原理
 
-上文我们知道，`abab` 遇到 `a` 无法升级，但是却可以把 `abab` 看成是 `ab`，`ab` 遇到 `a` 可以升级为 `aba`，因此 `abab` 遇到 `a` 不需要重置为 0 状态，可以降级为 `aba` 状态。
+>`abab` 遇到 `a` 无法升级，但是却可以把 `abab` 看成是 `ab`，遇到 `a` 可以变成 `aba`，因此 `abab` 遇到 `a` 不需要重置为 0 状态，可以降级为 `aba` 状态。
 
 能这样做的原因就是：`abab` 这个已匹配串中的前缀 `ab` 与后缀 `ab` 内容相同而不相等（不是同一个子字符串），就像 `aba` 可以视为 `a`，因为包含的内容相同而不相等的前后缀 `a`！我称这种情况为**孪生词缀，即前后缀内容相同而不相等**，因此有：
 
-**当前状态 + 匹配失败字符 = 孪生词缀状态 + 匹配字符 = 目标状态**
+**当前状态 + 匹配失败字符 = 孪生词缀状态 + 匹配字符 = 目标状态（失败或成功）**
 
-要注意：当前状态匹配失败的字符，对于孪生词缀所处的状态而言，可能会匹配失败也可能会匹配成功。
+> 当前状态匹配失败的字符，对于孪生词缀所处的状态而言，可能会匹配失败也可能会匹配成功。
 
-所以，在生成表时，我们需要为每一个状态找到相应的孪生词缀状态，并借助这个孪生词缀状态判断匹配失败后是重置还是降级，我们设置一个整型变量 X 代表其孪生词缀状态;
+所以，在生成表时，我们需要为每一个状态找到相应的孪生词缀状态，并借助这个孪生词缀状态判断匹配失败后是重置还是降级，我们设置一个整型变量 X 代表其孪生词缀状态，直接来尝试构建，构建的唯一要素就是这一串 pattern 字符串：
 
-1. 声明并初始化表格，所有表格成员默认值都为 0，很好，因为默认所有状态遇到所有字符都进入零状态；同时初始化 X 为 0，因为一开始所有状态的孪生词缀状态是未知的嘛，所以默认都是 0 嘛；
+1. 声明并初始化表格，所有表格成员默认值都为 0，很好，因为我们还没读取 pattern 串，所以默认所有状态下遇到任何字符都将进入零状态；同时初始化 X 为 0，因为一开始所有状态的孪生词缀状态是未知的嘛，所以默认都是 0 嘛；
 
     ```java
     int X = 0
@@ -190,9 +195,9 @@ $$ \mathbf{nowStatus} \ +\ \mathbf{char[next]} \ =\ \mathbf{targetStatus}  $$
     ```
 
 2. 循环更新每一列和每一个状态的孪生词缀状态！
-    根据这条公式：
-    **当前状态 + 匹配失败字符 = 孪生词缀状态 + 匹配字符 = 目标状态**；
-    由于我们还不知道哪个字符会匹配成功，所以我们先默认所有字符匹配失败；
+  根据这条公式：
+  **当前状态 + 匹配失败字符 = 孪生词缀状态 + 匹配字符 = 目标状态**；
+  由于我们还不知道哪个字符会匹配成功，所以我们先默认所有字符匹配失败；再挑出正确的字符进行修改。
     ```java
     for (int i = 0; i < pattern.length(); i++){
         // 当前能成功匹配的字符
