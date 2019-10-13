@@ -3,15 +3,13 @@ layout: post
 title: 从一道简单的 subStr 题目引出来的 KMP 算法
 categories: Alogrithm
 keywords: Alogrithm
+mathjax: true
 ---
 
 简单的 subStr 题目要求从指定文本串中搜索特定子串，由此接触到了 KMP 算法，并予以记录，本文将用到其他地方的部分图片和信息，不以商业为用途，使用时都将标注出处。
 
-**目录**
-
 * TOC
 {:toc}
-
 
 ## 1 strStr 题目
 

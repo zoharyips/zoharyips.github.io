@@ -3,9 +3,8 @@ layout: wiki
 title: Java 方方面面的知识点
 categories: 知识
 description: 这是一份 Java 的修炼笔记哈哈哈
+mathjax: true
 ---
-
-**目录**
 
 * TOC
 {:toc}
@@ -16,19 +15,22 @@ description: 这是一份 Java 的修炼笔记哈哈哈
 
 ## 2 继承
 
-**规则**
+规则
 
 1. 使用 `extend` 关键字进行继承;
 2. 一个类只能继承一个父类；
 3. 构造方法不能继承；
 4. 继承具有传递性，多级超类的方法可以继承给多级子孙类；
 5. 子类可以[重写](#21-%e9%87%8d%e5%86%99)父类的非私有方法；
-   ```java
-   @Override
-   public void voice(){
-        System.out.println("Miaow~");
-   }
+
+    ```java
+    @Override
+    public void voice(){
+            System.out.println("Miaow~");
+    }
+
 6. 可以在子类中显示调用父类的任何非私有方法，包括构造方法；
+
     ```java
     public void miaow(){
         super.voice();
@@ -37,6 +39,7 @@ description: 这是一份 Java 的修炼笔记哈哈哈
     ```
 
 7. 在子类构造方法中调用父类构造方法必须作为第一个语句；
+
     ```java
     Cat(int a, int b) {
         super(a, b);
@@ -44,7 +47,7 @@ description: 这是一份 Java 的修炼笔记哈哈哈
     }
     ```
 
-**特性**
+特性
 
 * 父类更通用，子类更具体
 
@@ -52,7 +55,7 @@ description: 这是一份 Java 的修炼笔记哈哈哈
 
 重写（override），又称覆盖，是子类对父类的允许访问的方法的实现过程进行重新编写, 返回值和形参都不能改变。即外壳不变，核心重写！
 
-**规则：两同两小一大原则**
+规则：两同两小一大原则
 
 1. 方法名、参数表不变，返回类型可以相同也可以是原类型的子类型（JDK5 开始支持）。
 2. 访问性只能扩大不能缩小。
@@ -82,7 +85,7 @@ description: 这是一份 Java 的修炼笔记哈哈哈
 
 ### try-catch-finally
 
-**执行顺序**
+执行顺序
 
 1. 执行 try 块；
 2. 捕捉到异常，执行 catch 块；
@@ -96,7 +99,7 @@ description: 这是一份 Java 的修炼笔记哈哈哈
 
 重载（overload），编写与原方法名称相同的新方法。
 
-**规则**
+规则
 
 1. 方法名必须相同，这是定义。
 2. 参数列表必须不相同（个数不同、或类型不同、或参数类型排列顺序不同）。
@@ -108,37 +111,37 @@ description: 这是一份 Java 的修炼笔记哈哈哈
 
 * 包相关
     KeyWord | Meaning | KeyWord | Meaning
-    :-: | :-: | :-: | :-: 
+    :-: | :-: | :-: | :-:
     package | 包 | import | 导入
 
 * 访问控制符
-    KeyWord | Meaning | KeyWord | Meaning | KeyWord | Meaning 
-    :-: | :-: | :-: | :-: | :-: | :-: 
+    KeyWord | Meaning | KeyWord | Meaning | KeyWord | Meaning
+    :-: | :-: | :-: | :-: | :-: | :-:
     private | 私有 | protected | 保护 | public | 公有
 
 * 引用
-    KeyWord | Meaning | KeyWord | Meaning | KeyWord | Meaning 
-    :-: | :-: | :-: | :-: | :-: | :-: 
+    KeyWord | Meaning | KeyWord | Meaning | KeyWord | Meaning
+    :-: | :-: | :-: | :-: | :-: | :-:
     super | 父类 | this | 本类 | void | 空
 
 * 基本数据类型
-    KeyWord | Meaning | KeyWord | Meaning | KeyWord | Meaning 
-    :-: | :- | :-: | :- | :-: | :- 
+    KeyWord | Meaning | KeyWord | Meaning | KeyWord | Meaning
+    :-: | :- | :-: | :- | :-: | :-
     boolean | 布尔 | byte | 字节 | char | 字符
      int | 整型 | long | 长整型 | short | 短整型
     double | 双精度浮点 | float | 单精度浮点 |
 
 * 程序控制
-    KeyWord | Meaning | KeyWord | Meaning | KeyWord | Meaning 
-    :-: | :-: | :-: | :-: | :-: | :-: 
+    KeyWord | Meaning | KeyWord | Meaning | KeyWord | Meaning
+    :-: | :-: | :-: | :-: | :-: | :-:
     for | 循环 | do | 执行 | while | 当/直到
     if | 如果 | else | 否则 | switch | 转换
     break | 跳出 | continue | 继续 | case | 情况
     return | 返回 | instanceof | 实例 | default | 默认
 
 * 面向对象
-    KeyWord | Meaning | KeyWord | Meaning | KeyWord | Meaning 
-    :-: | :-: | :-: | :-: | :-: | :-: 
+    KeyWord | Meaning | KeyWord | Meaning | KeyWord | Meaning
+    :-: | :-: | :-: | :-: | :-: | :-:
     class | 类 | interface | 接口 | new | 新建
     extend | 继承 | implements | 实现 | native | 原生
     abstract | 抽象 | final | 最终 | static | 静态全局
@@ -146,14 +149,14 @@ description: 这是一份 Java 的修炼笔记哈哈哈
     volatile | 不定
 
 * 异常处理
-    KeyWord | Meaning | KeyWord | Meaning | KeyWord | Meaning 
-    :-: | :-: | :-: | :-: | :-: | :-: 
+    KeyWord | Meaning | KeyWord | Meaning | KeyWord | Meaning
+    :-: | :-: | :-: | :-: | :-: | :-:
     assert | 断言 | try | 尝试 | catch | 捕获
     finally | 最终 | throw | 抛出 | throws | 抛出
 
 * 保留关键字
-    KeyWord | Meaning | KeyWord | Meaning | KeyWord | Meaning 
-    :-: | :-: | :-: | :-: | :-: | :-: 
+    KeyWord | Meaning | KeyWord | Meaning | KeyWord | Meaning
+    :-: | :-: | :-: | :-: | :-: | :-:
     const | 常量 | null | 空 | goto | 跳转
 
 * 注意：
