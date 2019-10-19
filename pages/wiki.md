@@ -13,7 +13,7 @@ permalink: /wiki/
 ---
 
 <div>
-  {% for article in site.wiki reversed %}
+  {% for article in site.wiki %}
     {% if article.categories != article.next.categories %}
       {% if is_not_begin %}
         </ol>
