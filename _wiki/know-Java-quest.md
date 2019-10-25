@@ -1,7 +1,7 @@
 ---
 layout: wiki
 title: Java 之切问近思
-categories: 知识
+categories: Java 合集
 description: 时常发问，时常解答，高中生就是这么学习的，难道连提出问题都不会了？
 ---
 
@@ -40,3 +40,27 @@ description: 时常发问，时常解答，高中生就是这么学习的，难�
         }
     }
     ```
+
+### 父类构造方法调用重写方法
+
+* 问题：以下代码会输出什么？
+
+    ```java
+    public class Base {
+        private String baseName = "base";
+        private Base() { this.callName(); }
+        public void callName() { System.out.println(this.baseName); }
+
+        static class Sub extends Base {
+            private String baseName = "sub";
+            @Override
+            public void callName() { System.out.println(this.baseName); }
+        }
+
+        public static void main(String[] args) { Base b = new Sub(); }
+    }
+    ```
+
+* 答案：`null`
+
+* 原因：先构造父类构造方法，再构造子类域和方法，调用父类构造方法时，子类重写的方法中所使用的变量并未构造，因此输出 `null`；
