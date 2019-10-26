@@ -8,7 +8,7 @@
           <table>
             <td id="pre_month">&lt;</td>
             <td id="show_date"></td>
-            <td id="next_month">&gt;</td>					
+            <td id="next_month">&gt;</td>
           </table>
         </td>
       </thead>
@@ -45,20 +45,21 @@
 
     // 生成日历
     function generateCalendar(date) {
-      var year = date.getFullYear();
-      var month = date.getMonth() + 1;
-      var day = date.getDate();
-      var dayBegin = new Date(year, month - 1, 1).getDay();
-      var dayCount = new Date(year, month, 0).getDate();
+      var year     = date.getFullYear();                    // 今年
+      var month    = date.getMonth() + 1;                   // 本月
+      var day      = date.getDate();                        // 今天
+      var dayBegin = new Date(year, month - 1, 1).getDay(); // 本月第一天
+      var dayCount = new Date(year, month, 0).getDate();    // 本月天数
       if (month < 10) {
         month = "0" + "" + month;
       }
 
+      /** 月份显示 **/
       document.getElementById('show_date').innerHTML = year + '.' + month;
 
       var html = '<table><tr>';
-      var dayIndex = 1;
-      var haveContent = false;
+      var dayIndex  = 1; // 月中的每一天
+      /** 有的月份最后几天会多出一行，直接上到 37，这样必定会多出一行，所有日历高度都一致，所以这个 index 并不能代表月中的每一天 **/
       for (var index = 0; index < 37; index++) {
         // the actual days in a month
         if (index > dayBegin && index <= (dayCount + dayBegin)) {
@@ -66,13 +67,15 @@
           if (index < 10) {
             index = "0" + "" + index;
           }
+          // 从字典中获取文章路径
           var value = post_dates.get(year + month + index + '');
+          console.log(year + month + index + ' : ' + value);
           if (value != null) {
-            console.log(year + month + index + ' : ' + value);
             html += '<td class="calendar_column" ><a href="{{ site.url }}' + value + '" style="color:#5a862d;font-weight:bolder"  title="' + value + '"';
           } else {
             html += '<td class="calendar_column" onclick="onDateClick('+ year + month + dayIndex + ')" title="这一天偷懒喽"><a ';
           }
+          /** 日期刚好是今天则使用蓝色样式 **/
           if (dayIndex == day) {
             html += 'class="active_date">' + dayIndex + '</a>';
           } else {
