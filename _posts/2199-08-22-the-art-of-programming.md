@@ -8,10 +8,10 @@ comments: false
 <div>
 <blockquote style="font-size: 1rem">Musicians certainly know what they like and what they don’t like and they know when they’ve done something well and that’s the way I look at a program.</blockquote>
 
-<h2> 内化于心，外化于形，你连内功都没有，还想练什么神功？ </h2>
+<h2> 内化于心，外化于形，欲练神功，必... 必练内功 </h2>
 
 <ol class="posts-list" style="line-height: 1rem;">
-  {% for article in site.design-mode | sort %}
+  {% for article in site.design-mode %}
     <li class="posts-list-item">
       <p style="display: flex;">
         <a class="posts-list-name" href="{{ article.url }}">{{ article.title }}</a>
