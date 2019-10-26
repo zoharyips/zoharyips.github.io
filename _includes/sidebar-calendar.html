@@ -68,7 +68,7 @@
             index = "0" + "" + index;
           }
           // 从字典中获取文章路径
-          var value = post_dates.get(year + month + index + '');
+          var value = post_dates.get('' + year + month + index);
           console.log(year + month + index + ' : ' + value);
           if (value != null) {
             html += '<td class="calendar_column" ><a href="{{ site.url }}' + value + '" style="color:#5a862d;font-weight:bolder"  title="' + value + '"';
