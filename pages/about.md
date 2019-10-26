@@ -28,6 +28,10 @@ permalink: /about/
       <img width="32" height="32" style="margin-right:0.375rem;vertical-align: middle;" src="/assets/svg/wechat.svg"/>&nbsp;
       <a href="/wechat" title="Contact me on wechat">zohar_Yip</a>
     </li>
+    <li>
+      <img width="32" height="32" style="margin-right:0.375rem;vertical-align: middle;" src="/assets/svg/leetcode.svg"/>&nbsp;
+      <a href="https://leetcode-cn.com/u/zoharyips/" title="See my leetcode life">zoharyips</a>
+    </li>
   </ul>
   <h3>Abilities</h3>
   <ul style="list-style-type: none;">

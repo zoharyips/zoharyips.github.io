@@ -5,12 +5,10 @@ categories: 疑难杂症
 description: 简单记录一些 linux 常见问题及其解决办法
 ---
 
-**目录**
-
 * TOC
 {:toc}
 
-## xxx is not in the sudoers file.  This incident will be reported.
+## 1. xxx is not in the sudoers file.  This incident will be reported
 
 该用户不在 sudo 用户组内，无法执行 sudo 命令且此操作将被记录
 
@@ -18,16 +16,41 @@ description: 简单记录一些 linux 常见问题及其解决办法
 
 1. 使用 `visudo` 编辑 sudo 配置文件
 
-2. 找到该行: 
+2. 找到该行:
 
-    ```
+    ```bash
     root ALL=(ALL) ALL
     ```
 
 3. 在改行下插入新行, 为指定用户授予权限:
 
-    ```
+    ```bash
     xxx  ALL=(ALL) ALL
     ```
 
 4. 保存并退出即可生效
+
+## 2. 配置 Ali 软件源
+
+```bash
+# 备份
+sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+# 修改
+sudo vim /etc/apt/sources.list
+
+###################### 插入内容 ######################
+deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse
+#####################################################
+
+# 更新
+apt-get update
+```

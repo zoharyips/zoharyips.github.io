@@ -5,16 +5,12 @@ categories: 笔记
 description: 简单记录一些 linux 常用命令
 ---
 
-**目录**
-
 * TOC
 {:toc}
 
-# 系统类
+## 1. 用户管理
 
-## 用户管理
-
-### 创建
+### 1.1 创建
 
 * 创建用户, 且默认生成家目录
 
@@ -28,147 +24,144 @@ description: 简单记录一些 linux 常用命令
     sudo passwd <userName>
     ```
 
-### 用户组
+### 1.2 用户组
 
 * 添加用户至 sudo 组 `usermod -a -G sudo <userName>`  
 或添加信息至 `/etc/sudoers` 文件中，编辑该文件请使用 `visudo` 命令:  
 
-    ```
+    ```bash
     ...
     # User privilege specification
     root    ALL=(ALL:ALL) ALL
-    
+
     # Allow members of group sudo to execute any command
     zohar   ALL=(ALL:ALL) ALL   //添加此行, 将 zohar 改为自己的用户名
     ...
     ```
 
-### 删除
+### 1.3 删除
 
 * 普通删除
 
-    ```
+    ```bash
     userdel <username>
     ```
 
 * 连同工作目录删除
 
-    ```
+    ```bash
     userdel -r <username>
     ```
 
-
-## 文件管理
+## 2. 文件管理
 
 * 命令溯源
 
-    ```
+    ```bash
     which <orderName>
     ```
 
 * 创建备份
 
-    ```
+    ```bash
     cp <fileName> <filename>.backup_$(date +%N)
     ```
 
 * 查看详细信息
 
-    ```
+    ```bash
     stat <fileName>
     ```
 
-## 进程管理
+## 3. 进程管理
 
 * 后台执行
 
-    ```
+    ```bash
     nohup <command> &
     ```
 
-## 网络管理
+## 4. 网络管理
 
 * 本机公网 IP
 
-    ```
+    ```bash
     curl ifconfig.me
     ```
 
 * 本机网卡 IP
 
-    ```
+    ```bash
     ifconfig
     ```
 
 * 路由跟踪
 
-    ```
+    ```bash
     tracepath <address>
     ```
 
 * 端口占用
 
-    ```
+    ```bash
     netstat
     ```
 
 * 查看指定端口
 
-    ```
+    ```bash
     netstat -tunlp | grep <portID>
     ```
 
 * 端口管理
 
-    ```
+    ```bash
     iptables
     ```
 
-# 应用类
-
-## yum 包管理器
+## 5. yum 包管理器
 
 * 检查更新
 
-    ```
+    ```bash
     yum check-update
     ```
 
 * 更新
 
-    ```
+    ```bash
     yum update
     ```
 
 * 安装软件
 
-    ```
+    ```bash
     yum install <packageName>
     ```
 
 * 更新指定软件
 
-    ```
+    ```bash
     yum update <packageName>
     ```
 
 * 可安装软件列表
 
-    ```
+    ```bash
     yum list
     ```
 
 * 卸载软件
 
-    ```
+    ```bash
     yum remove <packageName>
     ```
 
-## 远程
+## 6. 远程
 
 * 远程连接
 
-    ```
+    ```bash
     ssh <userName>@<ipAddress>
     ```
 
@@ -176,7 +169,7 @@ description: 简单记录一些 linux 常用命令
 
 * 推送文件
 
-    ```
+    ```bash
     scp <localFilePath> <userName>@<ipAddress>:<filePath>
     ```
 
@@ -184,7 +177,7 @@ description: 简单记录一些 linux 常用命令
 
 * 下载文件
 
-    ```
+    ```bash
     scp <userName>@<ipAddress>:<filePath> <localFilePath>
     ```
 
