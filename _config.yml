@@ -1,102 +1,100 @@
-# 站点配置
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your entire site, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# `jekyll serve`. If you change this file, please restart the server process.
+
+# Site Settings
 baseurl:
-url: https://zoharyip.club
-title: Zohar's blog
-name: zohar's blog
-subtitle: "Chinese by birth, Programmer by choice"
-description: "zohar's blog"
-repository: zoharyips/zoharyips.github.io
-keywords: zohar, zohar Yip
-date_format: "ordinal"
-timezone: Asia/Shanghai
-encoding: "utf-8"
-side_bar_repo_limit: 3
+url                 : https://zoharyip.club
+title               : Zohar's blog
+name                : zohar's blog
+subtitle            : "Chinese by birth, Programmer by choice"
+description         : "zohar's blog"
+repository          : zoharyips/zoharyips.github.io
+keywords            : zohar, zohar Yip
+date_format         : "ordinal"
+timezone            : Asia/Shanghai
+encoding            : "utf-8"
+side_bar_repo_limit : 3
 
-# 个人信息
-author: zohar
-github_username: zoharyips
-location: Guangzhou, China
-email: zoharyips@outlook.com
+author              : zohar
+github_username     : zoharyips
+location            : Guangzhou, China
+email               : zoharyips@outlook.com
 
-# jekyll 配置
-github: [metadata]
-markdown: kramdown
+markdown            : kramdown
 kramdown:
-  input: GFM
-highlighter: rouge
-paginate: 12
-lsi: false
-quiet: false
-# 可以发布未来时间的博文
-future: true
-# 摘录的分隔符
-excerpt_separator: "\n\n"
-# 博文发布的 URL
-permalink: /:year/:month/:day/:title/
+  input             : GFM
+highlighter         : rouge
+paginate            : 12
+lsi                 : false
+quiet               : false
+future              : true
+excerpt_separator   : "\n\n"                      # 摘录的分隔符
+permalink           : /:year/:month/:day/:title/  # 博文发布的 URL
 plugins:
   - jekyll-github-metadata
   - rouge
-#   - jekyll-html-pipeline
   - jekyll-paginate
   - jekyll-feed
   - jemoji
   - jekyll-sitemap
+#   - jekyll-html-pipeline
 #   - jekyll-mentions
 collections:
   wiki:
-    output: true
-    permalink: /wiki/:path/
+    output          : true
+    permalink       : /wiki/:path/
   design-mode: 
-    output: true
-    permalink: /design-mode/:path/
+    output          : true
+    permalink       : /design-mode/:path/
 
 
 
 # 导航
 navs:
   -
-    href: /
-    label: 首页
+    href            : /
+    label           : 首页
 
   -
-    href: /categories/
-    label: 分类
+    href            : /categories/
+    label           : 分类
 
 # -
-#   href: /archives/
-#   label: 归档
+#   href            : /archives/
+#   label           : 归档
 
   -
-    href: /wiki/
-    label: 维基
+    href            : /wiki/
+    label           : 维基
 
   -
-    href: /links/
-    label: 链接
+    href            : /links/
+    label           : 链接
 
   -
-    href: /about/
-    label: 关于
+    href            : /about/
+    label           : 关于
 
-# rss 订阅
-subscribe_rss: /feed.xml
+subscribe_rss       : /feed.xml
 
 # 评论模块
 gitalk:
-  owner: zoharyips
-  repo: blog-comments
-  clientID: 4f7905fa91963e1cb585
-  clientSecret: 860aa59b9dac0ff81e468c3a67bec5a052e8b8ec
+  owner             : zoharyips
+  repo              : blog-comments
+  clientID          : 4f7905fa91963e1cb585
+  clientSecret      : 860aa59b9dac0ff81e468c3a67bec5a052e8b8ec
 
-# 搜索模块
 simple_jekyll_search:
-  # 是否支持全文搜索
-  fulltext: false
+  fulltext          : false
 
 # 谷歌分析
 google:
-  analytics_id: UA-146513129-1
+  analytics_id      : UA-146513129-1
 
 # 备案号
-beian: 粤ICP备18146252号-1
-MIIT: http://www.beian.miit.gov.cn
+beian               : 粤ICP备18146252号-1
+MIIT                : http://www.beian.miit.gov.cn
