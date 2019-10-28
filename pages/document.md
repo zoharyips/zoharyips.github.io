@@ -15,6 +15,8 @@ permalink: /doc/
 * TOC
 {:toc}
 
+{% raw %}
+
 # zoharyip.club
 
 ## Filesystem hierarchy
@@ -138,22 +140,20 @@ This site power by **[Github Page](https://pages.github.com/)**, **[Jekyll](http
 
 ### Structure
 
-> For save demonstration, I've replace all the outside `{` & `}` to `_` in this file;
-
 * `_includes`:
 
     1. Directly include file:  
         To include the content from another file stored in the `_includes` folder:
 
         ```liquid
-        _% include filename.html %_
+        {% include filename.html %}
         ```
 
     2. Relative include file:  
         You can choose to include file fragments relative to the current file by using the `include_relative` tag:
 
         ```liquid
-        _% include_relative somedir/footer.html %_
+        {% include_relative somedir/footer.html %}
         ```
 
         you cannot use the `../` syntax to specify an include location that refers to a higher-level directory. the included file must be within the current directory or one of its subdirectories.
@@ -170,35 +170,35 @@ This site power by **[Github Page](https://pages.github.com/)**, **[Jekyll](http
         ...
 
         // another file
-        _% if page.my_variable %_
-        _% include _{ page.my_variable }_ %_
-        _% endif %_
+        {% if page.my_variable %}
+        {% include {{ page.my_variable }} %}
+        {% endif %}
         ```
 
     4. Include and pass the variable to the included file:  
-        You can user `_{ include.content }_` to insert parameter
+        You can user `{{ include.content }}` to insert parameter
 
         ```
         // image.html
         <figure>
-            <a href="_{ include.url }_">
-                <img src="_{ include.file }_" style="max-width: _{ include.max-width }_;" alt="_{ include.alt }_"/>
+            <a href="{{ include.url }}">
+                <img src="{{ include.file }}" style="max-width: {{ include.max-width }};" alt="{{ include.alt }}"/>
             </a>
-            <figcaption>_{ include.caption }_</figcaption>
+            <figcaption>{{ include.caption }}</figcaption>
         </figure>
 
         // the include file
-        _%
+        {%
             include image.html
                 url="http://jekyllrb.com"
                 max-width="200px" 
                 file="logo.png"
                 alt="Jekyll logo"
                 caption="This is the Jekyll logo."
-        %_
+        %}
         ```
 
-        The value of contents will be inserted into the `_{ include.* }_` parameter.
+        The value of contents will be inserted into the `{{ include.* }}` parameter.
 
 * `_layout`:  
     Layouts are templates that wrap around your content.  
@@ -331,3 +331,5 @@ This site power by **[Github Page](https://pages.github.com/)**, **[Jekyll](http
 * Placeholders: 
 
     Watch all **[PlaceHolders](https://jekyllrb.com/docs/permalinks/)** here;
+
+{% endraw %}

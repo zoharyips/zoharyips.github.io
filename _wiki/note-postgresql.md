@@ -1,8 +1,9 @@
 ---
 layout: wiki
 title: Postgresql
-categories: 笔记
 description: 基础 psql 语法集合
+date: 2019-03-09
+categories: 笔记
 ---
 
 **目录**

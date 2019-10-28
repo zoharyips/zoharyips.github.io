@@ -1,8 +1,9 @@
 ---
 layout: wiki
 title: Linux
-categories: 笔记
 description: 简单记录一些 linux 常用命令
+date: 2019-10-28
+categories: 笔记
 ---
 
 * TOC
@@ -159,7 +160,7 @@ description: 简单记录一些 linux 常用命令
 
 ## 6. 远程
 
-* 远程连接
+### 6.1 远程连接
 
     ```bash
     ssh <userName>@<ipAddress>
@@ -167,7 +168,7 @@ description: 简单记录一些 linux 常用命令
 
     例: `ssh zohar@110.110.110.110`
 
-* 推送文件
+### 6.2 推送文件
 
     ```bash
     scp <localFilePath> <userName>@<ipAddress>:<filePath>
@@ -175,10 +176,20 @@ description: 简单记录一些 linux 常用命令
 
     例: `scp /home/zohar/Documents/md-note.md zohar@110.110.110.110:/home/zohar/md-note.md`
 
-* 下载文件
+### 6.3 下载文件
 
     ```bash
     scp <userName>@<ipAddress>:<filePath> <localFilePath>
     ```
 
     例: `scp zohar@110.110.110.110:/home/zohar/md-note.md /home/zohar/Download/md-note.md`
+
+
+## 7. 实用工具
+
+### 打印当前路径
+
+```bash
+[zohar@VM_0_6_centos zookeeper-3.4.6]$ pwd
+/usr/local/services/zookeeper-3.4.6
+```

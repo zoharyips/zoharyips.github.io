@@ -1,8 +1,9 @@
 ---
 layout: wiki
 title: Java 之切问近思
-categories: Java 合集
 description: 时常发问，时常解答，高中生就是这么学习的，难道连提出问题都不会了？
+date: 2019-10-25
+categories: Java 合集
 ---
 
 * TOC

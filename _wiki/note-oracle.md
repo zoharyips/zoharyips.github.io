@@ -1,8 +1,9 @@
 ---
 layout: wiki
 title: Oracle
-categories: 笔记
 description: 基础 oracle 语法集合
+date: 2019-04-12
+categories: 笔记
 ---
 
 **目录**

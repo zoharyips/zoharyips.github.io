@@ -1,8 +1,9 @@
 ---
 layout: wiki
 title: 杂乱无章的知识点
-categories: 知识
 description: 分散的知识点慢慢聚集起来会是什么情景呢?
+date: 2019-04-05
+categories: 知识
 ---
 
 **目录**

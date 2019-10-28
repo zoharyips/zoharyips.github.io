@@ -12,19 +12,27 @@ canvas: true
 permalink: /wiki/
 ---
 
-<div>
-  {% for article in site.wiki reversed %}
-    {% if article.categories != article.next.categories %}
-      {% if is_not_begin %}
-        </ol>
-      {% endif %}
-      {% assign is_not_begin = true %}
-      <h3>{{ article.categories }}</h3>
-      <ol class="posts-list">
-    {% endif %}
-    <li class="posts-list-item">
-      <a class="posts-list-name" href="{{ article.url }}">{{ article.title }}</a>
-    </li>
-  {% endfor %}
-  </ol>
-</div>
+<script>
+    var categories = new Map();
+    var wikis = new Map();
+    {% for article in site.wiki %}
+      wikis.set("{{ article.title }}", "{{ article.url }}")
+      if(categories.has("{{ article.categories }}")) {
+        categories.get("{{ article.categories }}").push("{{ article.title }}");
+      } else {
+        var category = new Array("{{ article.title }}");
+        categories.set("{{ article.categories }}", category);
+      }
+    {% endfor %}
+    var HTML = '';
+    categories.forEach(function (value, key, map) {
+      HTML += '<h3>' + key + '</h3><ol class="posts-list">';
+      var tmp = value;
+      for(var i = 0; i < tmp.length; i++) {
+        HTML += '<li class="posts-list-item"><a class="posts-list-name" href="'+ wikis.get(tmp[i]) + '">' + tmp[i] + '</a></li>';
+        console.log(tmp[i] + " : " + wikis.get(tmp[i]));
+      }
+      HTML += '</ol>';
+    });
+    document.write(HTML);
+</script>

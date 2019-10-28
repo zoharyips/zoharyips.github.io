@@ -12,26 +12,12 @@ permalink: /about/
 <div>
   <h3>Contact me</h3>
   <ul style="line-height: 3rem;list-style-type: none;">
+    {% for obj in site.data.social %}
     <li>
-      <img width="32" height="32" style="margin-right:0.375rem;vertical-align: middle;" src="/assets/svg/github.svg"/>&nbsp;
-      <a href="https://github.com/zoharyips" title="My github account">zohar</a>
+      <img width="32" height="32" style="margin-right:0.375rem;vertical-align: middle;" src="{{ obj.svg }}"/>&nbsp;
+      <a href="{{ obj.url }}" title="{{ obj.title }}" style="white-space:pre"><code>{{ obj.sitename }}</code> {{ obj.name }}</a>
     </li>
-    <li>
-      <img width="32" height="32" style="margin-right:0.375rem;vertical-align: middle;" src="/assets/svg/website.svg"/>&nbsp;
-      <a href="/" title="My website">Zohar's blog</a>
-    </li>
-    <li>
-      <img width="32" height="32" style="margin-right:0.375rem;vertical-align: middle;" src="/assets/svg/mailbox.svg"/>&nbsp;
-      <a href="mailto:zoharyips@outlook.com" title="Send email">zoharyips@outlook.com</a>
-    </li>
-    <li>
-      <img width="32" height="32" style="margin-right:0.375rem;vertical-align: middle;" src="/assets/svg/wechat.svg"/>&nbsp;
-      <a href="/wechat" title="Contact me on wechat">zohar_Yip</a>
-    </li>
-    <li>
-      <img width="32" height="32" style="margin-right:0.375rem;vertical-align: middle;" src="/assets/svg/leetcode.svg"/>&nbsp;
-      <a href="https://leetcode-cn.com/u/zoharyips/" title="See my leetcode life">zoharyips</a>
-    </li>
+    {% endfor %}
   </ul>
   <h3>Abilities</h3>
   <ul style="list-style-type: none;">

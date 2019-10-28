@@ -1,8 +1,9 @@
 ---
 layout: wiki
 title: Linux 
-categories: 疑难杂症
 description: 简单记录一些 linux 常见问题及其解决办法
+date: 2019-10-26
+categories: 疑难杂症
 ---
 
 * TOC

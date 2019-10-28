@@ -1,8 +1,9 @@
 ---
 layout: wiki
 title:  软件安装
-categories: 方法
 description: 在此汇总各种行之有效的软件安装方案
+date: 2019-10-27
+categories: 方法
 ---
 
 **目录**
@@ -39,8 +40,14 @@ description: 在此汇总各种行之有效的软件安装方案
     
 ### Jekyll 环境搭建
 
-1. 安装 <abbr title="sudo apt-get install ruby">ruby</abbr> 和 ruby-dev
-2. [更换 gem 淘宝镜像](https://gems.ruby-china.com/), 请时常访问以检查是否更换或停用
-3. 安装 jekyll `sudo gem install jekyll`
-4. 安装 bundle `sudo gem install bundle`
-5. 构建 `bundle install`
+* [Ubuntu 下 jekyll 环境搭建](https://zoharyip.club/wiki/note-jekyll-env-set-up/)
+
+### jdk 安装
+
+* [Ubuntu 16.04安装Java JDK](http://topspeedsnail.com/ubuntu16-install-java-jdk/)
+
+* [CentOS 7 安装 JAVA环境（JDK 1.8）](https://www.cnblogs.com/stulzq/p/9286878.html)
+
+### 安装 zookeeper
+
+* [Ubuntu 安装 Zookeeper](https://www.jianshu.com/p/0a917a12ec78)

@@ -1,8 +1,9 @@
 ---
 layout: wiki
 title: Java 之奇淫技巧
-categories: Java 合集
 description: 数学公式交给你，直接用就好了
+date: 2019-10-25
+categories: Java 合集
 ---
 
 * TOC

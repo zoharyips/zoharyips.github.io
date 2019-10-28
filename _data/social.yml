@@ -1,19 +1,34 @@
 -
-  sitename: GitHub
-  name: zoharyips
+  sitename: Github
+  name: "&emsp;zoharyips"
   url: https://github.com/zoharyips
+  svg: /assets/svg/github.svg
+  title: My github account
 
 -
-  sitename: 微信
-  name: zohar_Yip
+  sitename: Wechat
+  name: "&emsp;zohar_Yip"
   url: https://zoharyip.club/images/wechat.png
+  svg: /assets/svg/wechat.svg
+  title: Contact me on wechat
 
 -
-  sitename: 邮箱
-  name: zoharyips@outlook.com
+  sitename: AEmail
+  name: "&emsp;zoharyips@outlook.com"
   url: mailto:zoharyips@outlook.com
+  svg: /assets/svg/mailbox.svg
+  title: Send me an email
 
 -
-  sitename: 博客
-  name: zohar's blog
+  sitename: Blog
+  name: "&emsp;&emsp;zohar's blog"
   url: https://zoharyip.club
+  svg: /assets/svg/website.svg
+  title: This is this blog
+
+-
+  sitename: LeetCode
+  name: "zoharyips"
+  url: https://leetcode-cn.com/u/zoharyips/
+  svg: /assets/svg/leetcode.svg
+  title: See my leetcode life

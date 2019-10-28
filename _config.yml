@@ -19,6 +19,7 @@ location: Guangzhou, China
 email: zoharyips@outlook.com
 
 # jekyll 配置
+github: [metadata]
 markdown: kramdown
 kramdown:
   input: GFM

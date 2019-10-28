@@ -1,8 +1,9 @@
 ---
 layout: wiki
 title: Redis
-categories: 笔记
 description: 基础 redis 语法集合
+date: 2019-07-26
+categories: 笔记
 ---
 
 **目录**

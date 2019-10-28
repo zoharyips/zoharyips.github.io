@@ -1,8 +1,9 @@
 ---
 layout: wiki
 title: 专业术语
-categories: 知识
 description: 了解一些缩略词或者术语的由来, 有利于深刻理解, 如果不明白其中含义的话, 必定是懵懵懂懂, 一知半解
+date: 2019-03-26
+categories: 知识
 ---
 
 **目录**

@@ -1,8 +1,9 @@
 ---
 layout: wiki
 title: 全网优秀教程
-categories: 方法
 description: 在此汇总各种优秀的教学文章
+date: 2019-07-05
+categories: 方法
 ---
 
 <div>

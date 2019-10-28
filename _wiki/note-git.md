@@ -1,8 +1,9 @@
 ---
 layout: wiki
 title: Git
-categories: 笔记
 description: 一些常用 git 命令的记录, 以备查阅 ^_^
+date: 2019-01-20
+categories: 笔记
 ---
 
 **目录**
