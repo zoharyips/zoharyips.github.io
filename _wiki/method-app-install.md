@@ -1,9 +1,9 @@
 ---
 layout: wiki
-title:  软件安装
+title: 软件安装
 description: 在此汇总各种行之有效的软件安装方案
 date: 2019-10-27
-categories: 方法
+categories: Method
 ---
 
 **目录**

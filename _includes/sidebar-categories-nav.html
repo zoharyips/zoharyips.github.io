@@ -15,17 +15,17 @@
   <div id="post-directory-module">
     <ul class="list-group">
       {% assign sorted_categories = site.categories | sort %}
-        {% for category in sorted_categories %}
-          <li class="list-group-item">
-            <a href="#{{ category[0] }}">{{ category | first }}</a>
-            <span class="badge">{{ category[1].size }}</span>
-          </li>
-        {% endfor %}
+      {% for category in sorted_categories %}
+        <li class="list-group-item">
+          <a href="#{{ category[0] }}">{{ category | first }}</a>
+          <span class="badge">{{ category[1].size }}</span>
+        </li>
+      {% endfor %}
     </ul>
   </div>
-  <script type="text/javascript">
-    $(document).ready(function(){
-      $("#post-directory-module li").css('text-transform','capitalize')
-    });
-  </script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#post-directory-module li").css('text-transform','capitalize')
+  });
+</script>
 {% endif %}

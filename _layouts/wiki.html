@@ -8,14 +8,14 @@ layout: default
       <div class="column three-fourths">
         <div class="collection-title">
           <h1 class="collection-header">{{ page.title }}</h1>
-          {% if page.description %}
-          <div class="collection-info">
-            <span class="meta-info">
-              {{ page.description }}
-            </span>
-          </div>
-          {% endif %}
         </div>
+        {% if page.description %}
+        <div class="collection-info">
+          <span class="meta-info">
+            {{ page.description }}
+          </span>
+        </div>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -33,9 +33,11 @@ layout: default
     <div class="share">
       {% include sns-share.html %}
     </div>
+    {% comment %}
     <div class="comment">
       {% include comments.html %}
     </div>
+    {% endcomment %}
   </div>
   <div class="column one-fourth">
     {% include sidebar-post-nav.html %}

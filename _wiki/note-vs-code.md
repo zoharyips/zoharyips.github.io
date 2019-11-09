@@ -3,7 +3,7 @@ layout: wiki
 title: VS Code 插件英雄榜
 description: 收集爱不释手的 VS code 插件
 date: 2019-05-05
-categories: 笔记
+categories: Note
 ---
 
 **目录**

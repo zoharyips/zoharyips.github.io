@@ -3,7 +3,7 @@ layout: wiki
 title: IDEA ★
 description: IDEA 与 Eclipse 的区别，应该是智能与自动的区别
 date: 2019-07-22
-categories: 笔记
+categories: Note
 ---
 
 **目录**

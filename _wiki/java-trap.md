@@ -3,7 +3,7 @@ layout: wiki
 title: Java 之避阱入坑
 description: WTF?? 谁 TM 写的代码
 date: 2019-10-28
-categories: Java 合集
+categories: Java
 ---
 
 * 导包只能导入当前层，不可以导入包里的其他包；

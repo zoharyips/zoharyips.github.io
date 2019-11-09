@@ -82,11 +82,11 @@ navs:
 subscribe_rss       : /feed.xml
 
 # 评论模块
-gitalk:
-  owner             : zoharyips
-  repo              : blog-comments
-  clientID          : 4f7905fa91963e1cb585
-  clientSecret      : 860aa59b9dac0ff81e468c3a67bec5a052e8b8ec
+# gitalk:
+#   owner             : zoharyips
+#   repo              : blog-comments
+#   clientID          : 4f7905fa91963e1cb585
+#   clientSecret      : 860aa59b9dac0ff81e468c3a67bec5a052e8b8ec
 
 simple_jekyll_search:
   fulltext          : false

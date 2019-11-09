@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Wiki
-description: 人越学越觉得自己无知，知识点又多又零碎，再饿也吃不完呀
+description: 人越学越觉得自己无知，这里存放了许多琐碎的知识点，食之无味弃之可惜
 menu: 维基
 repositories: false
 share: false

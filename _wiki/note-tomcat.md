@@ -3,7 +3,7 @@ layout: wiki
 title: Tomcat
 description:
 date: 2019-04-18
-categories: 笔记
+categories: Note
 ---
 
 **目录**

@@ -3,7 +3,7 @@ layout: wiki
 title: Ubuntu 下 jekyll 环境搭建
 description: 无论是在 Linux 下还是在 Win 下，搭建 jekyll 环境都想让人吐血
 date: 2019-10-26
-categories: 笔记
+categories: Note
 ---
 
 * TOC
