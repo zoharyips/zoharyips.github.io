@@ -193,3 +193,41 @@ categories: Linux
 [zohar@VM_0_6_centos zookeeper-3.4.6]$ pwd
 /usr/local/services/zookeeper-3.4.6
 ```
+
+### 设置别名
+
+使用命令的方式设置别名仅在注销登陆前有效
+
+```bash
+zohar@Titan:~$ zohar
+zohar: command not found
+zohar@Titan:~$ alias zohar='ls -al'
+zohar@Titan:~$ zohar
+total 32
+drwxr-xr-x 1 zohar zohar 4096 Nov  7 22:11 .
+drwxr-xr-x 1 root  root  4096 Oct 26 21:43 ..
+-rw------- 1 zohar zohar 3466 Nov 10 20:40 .bash_history
+-rw-r--r-- 1 zohar zohar  220 Oct 26 21:43 .bash_logout
+-rw-r--r-- 1 zohar zohar 3891 Oct 29 00:48 .bashrc
+drwxr-xr-x 1 zohar zohar 4096 Oct 26 22:15 .bundle
+drwxr-xr-x 1 zohar zohar 4096 Oct 26 21:53 .gem
+-rw-r--r-- 1 zohar zohar  121 Oct 26 21:51 .gemrc
+-rw-r--r-- 1 zohar zohar   56 Oct 27 00:53 .gitconfig
+-rw-r--r-- 1 zohar zohar  807 Oct 26 21:43 .profile
+drwx------ 1 zohar zohar 4096 Nov  7 22:11 .ssh
+-rw-r--r-- 1 zohar zohar    0 Oct 26 21:44 .sudo_as_admin_successful
+-rw------- 1 root  root  6662 Oct 26 21:44 .viminfo
+drwxr-xr-x 1 zohar zohar 4096 Oct 26 22:35 .vscode-server
+-rw-r--r-- 1 zohar zohar  183 Nov  9 09:30 .wget-hsts
+drwxr-xr-x 1 zohar zohar 4096 Oct 26 22:32 zoharyips.github.io
+```
+
+使用[配置文件](#8-%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6)可使设置永久生效，配置格式与上述命令用法一致。
+
+## 8. 配置文件
+
+* `/etc/profile` 系统级配置文件，所有用户生效。
+
+* `/etc/bashrc` 同样是系统级配置文件，所有用户生效。
+
+* `~/.bashrc` 用户配置文件，单用户生效

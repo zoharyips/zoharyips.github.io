@@ -15,6 +15,10 @@ categories: Method
 
 ## Linux
 
+### docker
+
+* [CentOS 7 下安装 Docker 及操作命令](https://www.linuxidc.com/Linux/2019-05/158742.html)
+
 ### MySQL 5.7
 
 * [CentOS 安装 MySQL 5.7](https://www.jianshu.com/p/7cccdaa2d177)
@@ -37,7 +41,7 @@ categories: Method
 
     * [postgresql 资源](https://download.postgresql.org/)  
     根据教程下载指定版本 psql
-    
+
 ### Jekyll 环境搭建
 
 * [Ubuntu 下 jekyll 环境搭建](https://zoharyip.club/wiki/note-jekyll-env-set-up/)
@@ -47,6 +51,10 @@ categories: Method
 * [Ubuntu 16.04安装Java JDK](http://topspeedsnail.com/ubuntu16-install-java-jdk/)
 
 * [CentOS 7 安装 JAVA环境（JDK 1.8）](https://www.cnblogs.com/stulzq/p/9286878.html)
+
+### maven 安装
+
+* [CentOS 7 环境下安装Maven](https://blog.csdn.net/myNameIssls/article/details/54140176)
 
 ### 安装 zookeeper
 
