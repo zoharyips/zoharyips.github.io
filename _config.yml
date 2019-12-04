@@ -7,7 +7,8 @@
 
 # Site Settings
 baseurl:
-url                 : https://zoharyip.club
+# It will redirect your site to this url
+url                 : https://zoharyips.github.io
 title               : Zohar's blog
 name                : zohar's blog
 subtitle            : "Chinese by birth, Programmer by choice"
