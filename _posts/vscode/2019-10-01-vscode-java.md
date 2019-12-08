@@ -98,14 +98,14 @@ VScode 有 maven 插件，但并不是 maven 程序，安装 maven 走起
     ...
     <localRepository>F:\maven-repository</localRepository>
     ...
-      <mirrors>
-    <mirror>
+    <mirrors>
+      <mirror>
       <id>alimaven</id>
       <name>aliyun maven</name>
       <url>http://maven.aliyun.com/nexus/content/repositories/central/</url>
       <mirrorOf>central</mirrorOf>
-    </mirror>
-  </mirrors>
+      </mirror>
+    </mirrors>
     ```
 
 5. 命令行执行初始化
