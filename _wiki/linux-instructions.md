@@ -9,225 +9,58 @@ categories: Linux
 * TOC
 {:toc}
 
-## 1. 用户管理
-
-### 1.1 创建
-
-* 创建用户, 且默认生成家目录
-
-    ```bash
-    adduser <userName>
-    ```
-
-* 创建/修改用户密码
-
-    ```bash
-    sudo passwd <userName>
-    ```
-
-### 1.2 用户组
-
-* 添加用户至 sudo 组 `usermod -a -G sudo <userName>`  
-或添加信息至 `/etc/sudoers` 文件中，编辑该文件请使用 `visudo` 命令:  
-
-    ```bash
-    ...
-    # User privilege specification
-    root    ALL=(ALL:ALL) ALL
-
-    # Allow members of group sudo to execute any command
-    zohar   ALL=(ALL:ALL) ALL   //添加此行, 将 zohar 改为自己的用户名
-    ...
-    ```
-
-### 1.3 删除
-
-* 普通删除
-
-    ```bash
-    userdel <username>
-    ```
-
-* 连同工作目录删除
-
-    ```bash
-    userdel -r <username>
-    ```
-
-## 2. 文件管理
-
-* 命令溯源
-
-    ```bash
-    which <orderName>
-    ```
-
-* 创建备份
-
-    ```bash
-    cp <fileName> <filename>.backup_$(date +%N)
-    ```
-
-* 查看详细信息
-
-    ```bash
-    stat <fileName>
-    ```
-
-## 3. 进程管理
-
-* 后台执行
-
-    ```bash
-    nohup <command> &
-    ```
-
-## 4. 网络管理
-
-* 本机公网 IP
-
-    ```bash
-    curl ifconfig.me
-    ```
-
-* 本机网卡 IP
-
-    ```bash
-    ifconfig
-    ```
-
-* 路由跟踪
-
-    ```bash
-    tracepath <address>
-    ```
-
-* 端口占用
-
-    ```bash
-    netstat
-    ```
-
-* 查看指定端口
-
-    ```bash
-    netstat -tunlp | grep <portID>
-    ```
-
-* 端口管理
-
-    ```bash
-    iptables
-    ```
-
-## 5. yum 包管理器
-
-* 检查更新
-
-    ```bash
-    yum check-update
-    ```
-
-* 更新
-
-    ```bash
-    yum update
-    ```
-
-* 安装软件
-
-    ```bash
-    yum install <packageName>
-    ```
-
-* 更新指定软件
-
-    ```bash
-    yum update <packageName>
-    ```
-
-* 可安装软件列表
-
-    ```bash
-    yum list
-    ```
-
-* 卸载软件
-
-    ```bash
-    yum remove <packageName>
-    ```
-
-## 6. 远程
-
-### 6.1 远程连接
-
-    ```bash
-    ssh <userName>@<ipAddress>
-    ```
-
-    例: `ssh zohar@110.110.110.110`
-
-### 6.2 推送文件
-
-    ```bash
-    scp <localFilePath> <userName>@<ipAddress>:<filePath>
-    ```
-
-    例: `scp /home/zohar/Documents/md-note.md zohar@110.110.110.110:/home/zohar/md-note.md`
-
-### 6.3 下载文件
-
-    ```bash
-    scp <userName>@<ipAddress>:<filePath> <localFilePath>
-    ```
-
-    例: `scp zohar@110.110.110.110:/home/zohar/md-note.md /home/zohar/Download/md-note.md`
-
-
-## 7. 实用工具
-
-### 打印当前路径
-
-```bash
-[zohar@VM_0_6_centos zookeeper-3.4.6]$ pwd
-/usr/local/services/zookeeper-3.4.6
-```
-
-### 设置别名
-
-使用命令的方式设置别名仅在注销登陆前有效
-
-```bash
-zohar@Titan:~$ zohar
-zohar: command not found
-zohar@Titan:~$ alias zohar='ls -al'
-zohar@Titan:~$ zohar
-total 32
-drwxr-xr-x 1 zohar zohar 4096 Nov  7 22:11 .
-drwxr-xr-x 1 root  root  4096 Oct 26 21:43 ..
--rw------- 1 zohar zohar 3466 Nov 10 20:40 .bash_history
--rw-r--r-- 1 zohar zohar  220 Oct 26 21:43 .bash_logout
--rw-r--r-- 1 zohar zohar 3891 Oct 29 00:48 .bashrc
-drwxr-xr-x 1 zohar zohar 4096 Oct 26 22:15 .bundle
-drwxr-xr-x 1 zohar zohar 4096 Oct 26 21:53 .gem
--rw-r--r-- 1 zohar zohar  121 Oct 26 21:51 .gemrc
--rw-r--r-- 1 zohar zohar   56 Oct 27 00:53 .gitconfig
--rw-r--r-- 1 zohar zohar  807 Oct 26 21:43 .profile
-drwx------ 1 zohar zohar 4096 Nov  7 22:11 .ssh
--rw-r--r-- 1 zohar zohar    0 Oct 26 21:44 .sudo_as_admin_successful
--rw------- 1 root  root  6662 Oct 26 21:44 .viminfo
-drwxr-xr-x 1 zohar zohar 4096 Oct 26 22:35 .vscode-server
--rw-r--r-- 1 zohar zohar  183 Nov  9 09:30 .wget-hsts
-drwxr-xr-x 1 zohar zohar 4096 Oct 26 22:32 zoharyips.github.io
-```
-
-使用[配置文件](#8-%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6)可使设置永久生效，配置格式与上述命令用法一致。
-
-## 8. 配置文件
-
-* `/etc/profile` 系统级配置文件，所有用户生效。
-
-* `/etc/bashrc` 同样是系统级配置文件，所有用户生效。
-
-* `~/.bashrc` 用户配置文件，单用户生效
+## 命令组合
+
+效果 | 方式
+:-: | :-
+参数化命令 | ``COMMAND `OLD_CMD` `` <br/> `COMMAND $(OLD_CMD)` ⭐ <br/> `OLD_CMD | xargs COMMAND`
+连续运行 | `COMMAND ; COMMAND ; ...` <br/> `COMMAND && COMMAND && ...` ⭐
+失败运行 | `COMMAND || COMMAND || ...`
+写入信息 | `>`
+追加信息 | `>>`
+读取信息 | `<`
+处理输出 | `OLD_CMD | HANDLE_OUTPUT_COMMAND`
+
+## 用户管理
+
+动作 | 命令
+:-: | :-
+创建用户 | `useradd USER` <br/> `adduser USER` ⭐
+删除用户 | `userdel USER` <br/> `userdel -r USER` ⭐
+修改密码 | `passwd [USER]`
+加入root | `usermod -a -G sudo USER`
+
+## 文件管理
+
+动作 | 命令
+:-: | :-
+当前路径 | `pwd`
+命令溯源 | `which COMMAND` ⭐ <br/> `whereis COMMAND`
+详细信息 | `stat FILE`
+备份文件 | `cp FILE FILE.backup_$(date +%N)`
+
+## 进程管理
+
+动作 | 命令
+:-: | :-
+后台执行 | `nohup COMMAND &`
+查看进程 | `ps -ef`
+
+## 网络管理
+
+动作 | 命令
+:-: | :-
+公网 IP | `curl https://ifconfig.me`
+内网 IP | `hostname -I` <br/> `ifconfig eth0 |grep 'inet '| awk '{print $2}'`
+路由跟踪 | `tracepath ADDRESS`
+端口占用 | `netstat`
+指定端口 | `netstat -tunlp | grep PORT`
+端口管理 | `iptables`
+
+## 网络工具
+
+动作 | 命令
+:-: | :-
+远程连接 | `ssh USER@IP -p PORT`
+推送文件 | `scp PATH USER@IP:PATH`
+下载文件 | `scp USER@IP:PATH PATH`
