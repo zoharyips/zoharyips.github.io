@@ -6,6 +6,9 @@ keywords: Algorithm
 permalink: /Algorithm/
 ---
 
+索引了各大算法教程，在本站更新后，会一一放上本站的链接噢
+
+
 <div>
   {% assign privious_type = 'none' %}
   {% for alogrithm in site.data.algorithms %}
