@@ -38,6 +38,9 @@ categories: Linux
 命令溯源 | `which COMMAND` ⭐ <br/> `whereis COMMAND`
 详细信息 | `stat FILE`
 备份文件 | `cp FILE FILE.backup_$(date +%N)`
+打包文件 | `tar cvf FILE.tar FILE`
+解包文件 | `tar xvf FILE.tar`
+
 
 ## 进程管理
 

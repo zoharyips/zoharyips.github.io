@@ -24,18 +24,6 @@ keywords: Computer
 
     ![CPU work mode](/images/posts/computer-structure/CPU-work-mode.png "CPU work mode")
 
-* 作业：用户的计算任务。例如你运行一个命令，则作业为运行完这个命令所有的指令。
-
-* 作业步：用户的计算任务的每一个步骤。类比于命令中的每一个步骤，一个步骤可以包含多个指令。
-
-* 批处理：作业的自动转换。例如你写了一个脚本，会自动的运行一条一条的命令，脚本启动后不可干预命令的执行。
-
-* 进程：运行中的程序。如你启动了一个程序，程序加载在内存中，它就是一个进程，与是否执行计算无关。
-
-* 单道：单进程工作。同一个时间段仅有一个进程。
-
-* 多道：多进程工作。同一个时间段有不止一个进程。
-
 ## 系统初启一般过程
 
 1. 硬件检测
@@ -145,15 +133,47 @@ keywords: Computer
 
 2. 早期批处理阶段
 
-    * 早期脱机批处理
-    * 早期联机批处理
-
 3. 多道批处理系统
-
-    ![multiple program running](/images/posts/computer-structure/multiple-program-running.jpg "multiple program running")
+    ![multiple-program-running](/images/posts/computer-structure/multiple-program-running.jpg "Multiple Program Running")
 
 4. 分时系统
 
+    分时主要指若干并发程序对CPU时间的共享。
+
 5. 实时系统
 
-6. 
+    重要特征：对时间有严格限制和要求 
+
+    * 过程控制系统
+    * 信息查询系统
+    * 事务处理系统
+
+### 操作系统的主要结构
+
+1. 单体结构
+
+    模块耦合度高，效率高。
+
+    ![Monolithic system](/images/posts/computer-structure/Monolithic-system.png "Monolithic system")
+
+2. 层次结构
+
+    任意一层模块只能调用比它低层的模块来得到服务。
+
+    ![The OS](/images/posts/computer-structure/The-OS.png "The OS")
+
+3. 虚拟机结构
+
+    ![VM/370](/images/posts/computer-structure/VM370.png "VM/370")
+
+    通过共享物理机器资源实现虚拟化。
+
+    同时运行多个操作系统、系统安全，有效地保护系统资源、提供良好的工作环境、组建虚拟网络
+
+4. C/S 结构
+
+    ![Microkernel System](/images/posts/computer-structure/Microkernel-system.png "Microkernel System")
+
+    使操作系统保持最小的核心，称为微内核，把所有非本质的服务抽取出来，以用户进程的方式运行为本地服务或网络服务（分布式系统）。
+
+    ![Distributed System](/images/posts/computer-structure/Distributed-Systems.png "Distributed System")
