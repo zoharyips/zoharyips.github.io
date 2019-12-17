@@ -5,9 +5,12 @@ categories: Computer
 keywords: Computer
 ---
 
-小白入门篇。
+本文叙述了操作系统的基本概念、目标、作用即设计方法等...
 
 **目录**
+
+* TOC
+{:toc}
 
 ## 基本概念
 
