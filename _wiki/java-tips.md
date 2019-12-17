@@ -1,7 +1,7 @@
 ---
 layout: wiki
 title: Java 之奇淫技巧
-description: 数学公式交给你，直接用就好了
+description: 聪明的你总是能想出一些非常奇妙的方法
 date: 2019-10-25
 categories: Java
 ---
@@ -9,7 +9,17 @@ categories: Java
 * TOC
 {:toc}
 
-## 使用原生方法复制数组
+## 源码中的奇淫技巧
+
+### 使用与运算代替取模操作
+
+!["与运算代替取模操作"](/images/wiki/AND-operation-replace-modular-arithmetic.png "与运算代替取模操作")
+
+由于散列表容量固定且无需考虑顺序，只需要保证散列至桶内即可。使用 len 与 hash 进行与操作的方式既可以保证结果必定小于 len 且效率要比取模操作高。
+
+## 通用的技巧
+
+### 使用原生方法复制数组
 
 * System.arraycopy()
 
@@ -50,7 +60,7 @@ categories: Java
     System.out.println(cats[0].name);               // CC
     ```
 
-## 使用迭代器在迭代时增删操作
+### 使用迭代器在迭代时增删操作
 
 如果在循环时调用集合的 `remove()` 方法或者 `add()` 方法，就会导致循环出错；
 
@@ -71,7 +81,7 @@ while(iterator.hasNext()) {
 }
 ```
 
-## 使用静态工厂方法替代构造方法获取对象
+### 使用静态工厂方法替代构造方法获取对象
 
 * 静态工厂方法具有名字
 
