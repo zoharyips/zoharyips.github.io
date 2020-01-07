@@ -42,6 +42,17 @@ categories: Java
 
 而哈希值相同的情况是无法根除的，因为哈希冲突是无法消除的，对于乘法哈希函数，int 存在边界，对于取模哈希函数，则模为其边界，超出边界的哈希值会返回哈希值取值范围内，与原有的哈希值冲突。
 
+### Fail-fast（快速失败）是什么？
+
+是 Java 集合迭代时的一种机制，如果在迭代过程中集合发生了修改，如增加、删除、修改，则会抛出 `ConcurrentModificationException`。
+
+迭代器在遍历集合时，会维护一个 modCount 变量，集合在遍历期间如果发生修改，则会改变 modCount 的值。迭代器每在执行 `next()` 操作时，都会检测 modCount 是否为 exceptedModCount，是的话则继续遍历，否则抛出异常。
+
+而如果在迭代期间修改了集合的元素，并不会改变 modCount 的值，而此时便不会抛出异常，因此这个机制并不能用来确定是否发生并发修改，只是一种不完全的检测机制而已。
+
+### Fail-safe（安全失败）是什么？
+
+
 ### 可变类与不可变类的区别
 
 **可变类**指一个类在实例化之后，可以修改对象的属性，使一个对象可以拥有不同的状态。
@@ -144,6 +155,8 @@ categories: Java
 
 ## 数组与集合
 
+![Java Container](/images/wiki/Java-container.png "Java Container")
+
 ### 数组中存储的是值还是引用？
 
 **一切皆对象**是 Java 的主要理念，甚至于数组在 Java 中也是以对象的方式存在的，数组同样拥有 Object 类的所有方法，此外再多出一个 length 数据成员。
@@ -156,6 +169,10 @@ categories: Java
 
 **Collections**是一个集合的辅助工具类，提供了一系列静态方法以对集合进行各种过程性操作，如排序、搜索、线程安全等。
 
+### List、Set 和 Map 的区别？
+
+
+
 ### 用 ArrayList 还是 LinkedList？
 
 **ArrayList**，基于数组实现，随机下标获取元素时，时间效率是 O(1)，但是增删元素时时间效率是 O(n)。数组的空间损失在于数组间与尾部的空闲位置。
@@ -164,9 +181,23 @@ categories: Java
 
 因此。当你需要多次随机查找数据，而偶尔增删数据时，使用 ArrayList；当你需要频繁修改列表数据，但较少查找数据时，使用 LinkedList。
 
+### ArrayList 的长度是无限的吗？
+
+```java
+/**
+ * The maximum size of array to allocate.
+ * Some VMs reserve some header words in an array.
+ * Attempts to allocate larger arrays may result in
+ * OutOfMemoryError: Requested array size exceeds VM limit
+ */
+private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
+```
+
+如果数组大小为 `Integer.MAX_VALUE - 8` 仍不够，则数组可以通过 `grow(int minCapacity)` 增长到 `Integer.MAX_VALUE`
+
 ### 用 HashMap 还是 Hashtable？
 
-不用 Hashtable！Hashtable 是一个过时了的散列表实现类，其所继承的 Dictionary 类同样是废弃的过时类；
+不用 Hashtable！Hashtable 是一个过时了的散列表实现类。
 
 二者不同之处在于：
 
@@ -174,6 +205,10 @@ categories: Java
 2. 时间效率：HashMap 效率高；Hashtable 效率低。
 3. 键值要求：HashMap 允许以 null 作为键或者值。而 Hashtable 不允许键或值的值为 null。
 4. 废弃方法：HashMap 中并没有 `contains()` 方法，因为该方法的名字容易让人误解，而 Hashtable 中有。
+5. 实现方式：HashMap 实现 AbstractMap，Hashtable 实现 Dictionary，而 Dictionary 很久之前已经被废弃了。
+6. 初始容量：HashMap 初始容量 16，Hashtable 初始容量 11，默认负载因子都是 0.75。
+7. 扩容方式：HashMap 在未达到最大 `1 << 30` 时，通过翻倍的方式扩容，超出最大限度时，则扩容至 `Integer.MAX_VALUE`；Hashtable 扩容方式为 `+1`。
+8. 迭代方式：HashMap 的 Iterator 迭代器是 fail-fast 的，而 Hashtable 的 Enumeration 并不是。
 
 > 由于 HashMap 允许键或值以 null 形式存在，因此若使用 `get(key)` 返回 null，不一定是不包含该键，可能是因为该键对应的值为 null，因此需要使用 `containsKey()` 判断是否有该键。
 
@@ -187,6 +222,33 @@ categories: Java
 3. 适用场景：HashMap 适用于在 Map 中快速插入、删除、定位元素。TreeMap 适用于需要按顺序遍历且 Key 唯一的场景。
 
 ### HashMap 是怎么实现的？
+
+#### HashMap 的数据结构是什么？
+
+HashMap 的主干是一个 Entry 数组。Entry 是 HashMap 的基本组成单元：
+
+```java
+static class Entry<K,V> implements Map.Entry<K,V> {
+    final K key;
+    V value;
+    Entry<K,V> next;
+    int hash;
+}
+```
+
+简单来说，HashMap 由数组 + 链表组成的，数组是 HashMap 的主体，链表则是主要为了解决哈希冲突而存在的。
+
+当单一哈希值所存在的键值对超过阈值 8，则会将拉链法所用的单链表转化为红黑树，红黑树节点结构为：
+
+```java
+static final class TreeNode<K,V> extends LinkedHashMap.Entry<K,V> {
+    TreeNode<K,V> parent;  // red-black tree links
+    TreeNode<K,V> left;
+    TreeNode<K,V> right;
+    TreeNode<K,V> prev;    // needed to unlink next upon deletion
+    boolean red;
+}
+```
 
 #### HashMap 如何判定键的唯一性？
 
@@ -204,16 +266,20 @@ categories: Java
 
     使用负载因子（`loadFactor`)，HashMap 存在负载因子这一数据域。当哈希表中桶的使用率高于负载因子时，则对哈希表进行扩容。
 
-    因此，负载因子的大小决定扩容的难易程度，而容量越大，哈希冲突出现的概率越小。因此，我们可以**通过调低负载因子来减少哈希冲突**，但是这样是在以空间换取时间，需要权衡利弊，寻求最佳节点。
+    因此，负载因子的大小决定扩容的难易程度，而容量越大，哈希冲突出现的概率越小。因此，我们可以**通过调节负载因子的大小来减少哈希冲突**，但是这样是在以空间换取时间，需要权衡利弊，寻求最佳节点。
 
 2. 解决出现的哈希冲突
 
-    由于负载因子的存在，采用开放定址法会大大增加扩容的频率，这样会很消耗时间。因此 HashMap 使用**拉链法**解决哈希冲突，若冲突出现次数小于 `TREEIFY_THRESHOLD` （默认 8）则使用单链表的形式存储其他值；若冲突次数大于 `TREEIFY_THRESHOLD` 则使用红黑树来存储其他值。
+    由于负载因子的存在，采用开放定址法会大大增加扩容的频率，这样会很消耗时间。因此 HashMap 使用**拉链法**解决哈希冲突，若冲突出现次数小于 `TREEIFY_THRESHOLD` （默认 8）则使用单链表的形式存储其他值；若冲突次数大于 `TREEIFY_THRESHOLD` 则转化为红黑树，当冲突数小于 6 时则重新转化为链表。
+
+### ConcurrentHashMap 是怎么实现高效并发安全的？
+
+
 
 ### HashSet 是怎么实现的？
 
 * 底层实现：使用 HashMap。
-* 保存元素：由于 HashMap 的键值要求唯一，因此使用 HashMap 的 Key 存储元素，而使用 PRESENT。
+* 保存元素：由于 HashMap 的键值要求唯一，因此使用 HashMap 的 Key 存储元素，而 Value 统一为 PRESENT。
 
 ### Queue 中的 peek() 与 element()、poll() 与 remove()
 

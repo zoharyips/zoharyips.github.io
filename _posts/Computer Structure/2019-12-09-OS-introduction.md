@@ -157,13 +157,13 @@ keywords: Computer
 
     模块耦合度高，效率高。
 
-    ![Monolithic system](/images/posts/computer-structure/Monolithic-system.png "Monolithic system")
+    <img src="/images/posts/computer-structure/Monolithic-system.png" alt="Monolithic system" width="400px"/>
 
 2. 层次结构
 
     任意一层模块只能调用比它低层的模块来得到服务。
 
-    ![The OS](/images/posts/computer-structure/The-OS.png "The OS")
+    <img src="/images/posts/computer-structure/The-OS.png" alt="level structure" width="400px"/>
 
 3. 虚拟机结构
 

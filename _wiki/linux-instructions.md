@@ -30,17 +30,22 @@ categories: Linux
 修改密码 | `passwd [USER]`
 加入root | `usermod -a -G sudo USER`
 
-## 文件管理
-
+## 命令管理
 动作 | 命令
 :-: | :-
 当前路径 | `pwd`
 命令溯源 | `which COMMAND` ⭐ <br/> `whereis COMMAND`
+
+## 文件管理
+
+动作 | 命令
+:-: | :-
 详细信息 | `stat FILE`
+修改用户 | `chown [-R] FILE`
+修改组别 | `chgrp [-R] FILE`
 备份文件 | `cp FILE FILE.backup_$(date +%N)`
 打包文件 | `tar cvf FILE.tar FILE`
 解包文件 | `tar xvf FILE.tar`
-
 
 ## 进程管理
 
