@@ -104,6 +104,27 @@ jekyll new myblog && cd myblog
 bundle install
 ```
 
+此时如果出现错误：
+
+```
+root@hostname:/opt/metasploit-framework# bundle install
+Traceback (most recent call last):
+    2: from /usr/local/bin/bundle:23:in `'
+    1: from /usr/lib/ruby/2.5.0/rubygems.rb:308:in `activate_bin_path'
+/usr/lib/ruby/2.5.0/rubygems.rb:289:in `find_spec_for_exe': can't find gem bundler (>= 0.a) with executable bundle (Gem::GemNotFoundException)
+root@hostname:/opt/metasploit-framework#
+```
+
+目前我遇到过有两种错误的可能：
+
+1. ruby 版本与 bundle 版本冲突
+
+    返回第一步，卸载 bundler、ruby，更新软件列表后重装。
+
+2. ruby 版本与项目中 Gem 文件指定的版本冲突
+
+    项目中如果有 Gemfile.lock 请删除之，因为这是之前构建的信息，重新构建会重新生成此文件。
+
 运行服务：`bundle exec jekyll serve`
 
 成功运行😎

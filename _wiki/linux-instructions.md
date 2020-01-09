@@ -31,6 +31,7 @@ categories: Linux
 加入root | `usermod -a -G sudo USER`
 
 ## 命令管理
+
 动作 | 命令
 :-: | :-
 当前路径 | `pwd`
