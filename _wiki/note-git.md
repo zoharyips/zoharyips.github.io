@@ -173,6 +173,7 @@ categories: Note
 git config {--local | --global | --system} user.name 'username'
 git congig {--local | --global | --system} user.email 'emailAddress'
 git config {--local | --global | --system} credential.helper store # 保存用户名密码
+git config --system --unset credential.helper # 清除用户名密码
 ```
 
 ### 编辑器
