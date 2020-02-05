@@ -33,8 +33,8 @@ paginate            : 12
 lsi                 : false
 quiet               : false
 future              : true
-excerpt_separator   : "\n\n"                      # 摘录的分隔符
-permalink           : /:year/:month/:day/:title/  # 博文发布的 URL
+excerpt_separator   : "\n\n"                          # 摘录的分隔符
+permalink           : /:year/:month/:day/:title.html  # 博文发布的 URL，伪静态
 plugins:
   - jekyll-github-metadata
   - rouge
@@ -47,10 +47,10 @@ plugins:
 collections:
   wiki:
     output          : true
-    permalink       : /wiki/:path/
+    permalink       : /wiki/:path.html
   design-mode: 
     output          : true
-    permalink       : /design-mode/:path/
+    permalink       : /design-mode/:path.html
 
 
 
