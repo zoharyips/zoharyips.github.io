@@ -14,7 +14,7 @@ name                : zohar's blog
 subtitle            : "Chinese by birth, Programmer by choice"
 description         : "zohar's blog"
 repository          : zoharyips/zoharyips.github.io
-keywords            : zohar, zohar Yip
+keywords            : zohar, zohar Yip, Zohar' Blog, 叶卓豪, zohar_Yip, zoharyips
 date_format         : "ordinal"
 timezone            : Asia/Shanghai
 encoding            : "utf-8"
@@ -42,6 +42,7 @@ plugins:
   - jekyll-feed
   - jemoji
   - jekyll-sitemap
+  - jekyll-seo-tag
 #   - jekyll-html-pipeline
 #   - jekyll-mentions
 collections:

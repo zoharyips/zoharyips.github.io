@@ -12,7 +12,7 @@
 -
   title: 插入排序
   description: 遍历数组，将每个元素逐个插入到已排序的数组中
-  url: /2019/11/08/Sort-Algorithms.html/#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F
+  url: /2019/11/08/Sort-Algorithms.html#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F
   type: 排序
   image: /images/posts/ten_sort_algorithm/insertion_sort.gif
   typeinfo: 排序指将一组无序的记录序列调整为有序的记录序列。若不需要访问外存，则称为“内部排序”。若参加排序的记录数量很大，无法仅在内存中完成，则称为“外部排序”。
@@ -20,7 +20,7 @@
 -
   title: 希尔排序
   description: 将数组按照一定步长拆分为相互间隔的多组数组，对每组数组进行插入排序
-  url: /2019/11/08/Sort-Algorithms.html/#%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F
+  url: /2019/11/08/Sort-Algorithms.html#%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F
   type: 排序
   image: /images/posts/ten_sort_algorithm/shell_sort.gif
   typeinfo: 
@@ -28,7 +28,7 @@
 -
   title: 选择排序
   description: 遍历未排序的数组，选择其中的最小值，与已排序数组的后面一位元素交换
-  url: /2019/11/08/Sort-Algorithms.html/#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F
+  url: /2019/11/08/Sort-Algorithms.html#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F
   type: 排序
   image: /images/posts/ten_sort_algorithm/selection_sort.gif
   typeinfo: 
@@ -36,7 +36,7 @@
 -
   title: 堆排序
   description: 将未排序数组变成堆，取出堆顶放入已排序数组
-  url: /2019/11/08/Sort-Algorithms.html/#%E5%A0%86%E6%8E%92%E5%BA%8F
+  url: /2019/11/08/Sort-Algorithms.html#%E5%A0%86%E6%8E%92%E5%BA%8F
   type: 排序
   image: /images/posts/ten_sort_algorithm/heap_sort.gif
   typeinfo: 
@@ -44,7 +44,7 @@
 -
   title: 冒泡排序
   description: 每一次遍历数组时将最大的元素推向数组末端直至完成排序
-  url: /2019/11/08/Sort-Algorithms.html/#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F
+  url: /2019/11/08/Sort-Algorithms.html#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F
   type: 排序
   image: /images/posts/ten_sort_algorithm/bubble_sort.gif
   typeinfo: 
@@ -52,7 +52,7 @@
 -
   title: 鸡尾酒排序
   description: 左右同时遍历数组，将最大元素推向右端，最小元素推向左端
-  url: /2019/11/08/Sort-Algorithms.html/#%E9%B8%A1%E5%B0%BE%E9%85%92%E6%8E%92%E5%BA%8F%E5%8F%8C%E5%90%91%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F
+  url: /2019/11/08/Sort-Algorithms.html#%E9%B8%A1%E5%B0%BE%E9%85%92%E6%8E%92%E5%BA%8F%E5%8F%8C%E5%90%91%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F
   type: 排序
   image: /images/posts/ten_sort_algorithm/cocktail_sort.gif
   typeinfo: 
@@ -60,7 +60,7 @@
 -
   title: 快速排序
   description: 选取一个数，把比它小的放在它的左边，比它大的放在它的左边！
-  url: /2019/11/08/Sort-Algorithms.html/#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F
+  url: /2019/11/08/Sort-Algorithms.html#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F
   type: 排序
   image: /images/posts/ten_sort_algorithm/fast_sort.gif
   typeinfo: 
@@ -68,7 +68,7 @@
 -
   title: 归并排序
   description: 分而治之，把数组分成两半，先排左边一半，再排右边半，然后整理并合起来
-  url: /2019/11/08/Sort-Algorithms.html/#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F
+  url: /2019/11/08/Sort-Algorithms.html#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F
   type: 排序
   image: /images/posts/ten_sort_algorithm/merge_sort.gif
   typeinfo: 
@@ -76,7 +76,7 @@
 -
   title: 基数排序
   description: 对所有数据的各个位数使用容器进行归类，从低到高，奇妙的排序方法
-  url: /2019/11/08/Sort-Algorithms.html/#%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F
+  url: /2019/11/08/Sort-Algorithms.html#%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F
   type: 排序
   image: /images/posts/ten_sort_algorithm/radix_sort.gif
   typeinfo: 

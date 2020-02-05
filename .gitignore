@@ -9,3 +9,5 @@ vendor/*
 .DS_Store
 Gemfile.lock
 desktop.ini
+sitemap.xml
+feed.xml

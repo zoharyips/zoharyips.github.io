@@ -5,7 +5,65 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-    <title>{% if page.title %}{{ page.title }} &mdash; {% endif %}{{ site.title }}</title>
+    <!-- SEO 自动生成插件 -->
+    {% seo %}
+
+    <!-- 页面标题 -->
+    <!-- <title>{% if page.title %}{{ page.title }} &mdash; {% endif %}{{ site.title }}</title> -->
+
+    <!-- 页面描述 -->
+    {% if page.excerpt %}
+      {% assign description = page.excerpt | strip_html | strip_newlines %}
+    {% else if page.description %}
+      {% assign description = page.description | strip_html | strip_newlines %}
+    {% else if content %}
+      {% assign description = content | strip_html | strip_newlines | truncatewords: 100 %}
+    {% else %}
+      {% assign description = site.description %}
+    {% endif %}
+    <!-- <meta name="description" content="{{ description }}"/> -->
+    <!-- <meta name="og:description" content="{{ description }}"/> -->
+
+    <!-- 页面关键词：务必确保 site.keywords 值存在，以英文逗号分割 -->
+    {% if page.keywords %} 
+      {% assign keywords = page.keywords %}
+    {% else %}
+      {% assign keywords = site.keywords %}
+    {% endif %}
+    <meta name="keywords" content="{{ keywords | strip_html | strip_newlines }}"/>
+    <meta name="og:keywords" content="{{ keywords | strip_html | strip_newlines }}"/>
+
+    <!-- 站点名 -->
+    <!-- <meta property="og:site_name" content="{{ site.title }}" /> -->
+    <!-- 页面类型 -->
+    <!-- <meta property="og:type" content="article" /> -->
+    <!-- 页面所属地 -->
+    <!-- <meta property="og:locale" content="zh_CN" /> -->
+
+    <!-- 页面图片链接 -->
+    {% if page.og_image_url %}
+      <meta property="og:image" content="{{ page.og_image_url }}" />
+    {% else if page.photo_url %}
+      <meta property="og:image" content="{{ page.photo_url }}" />
+    {% endif %}
+
+    <!-- 页面发布日期 -->
+    {% if page.date %}
+      <!-- <meta property="article:published_time" content="{{ page.date | date: '%Y-%m-%d' }}"/> -->
+    {% endif %}
+
+    <!-- 页面链接 -->
+    <!-- <meta property="og:url" content="{{ page.url | remove_first: 'index.html' }}"/> -->
+    <!-- <link rel="canonical" href="{{ page.url | prepend: site.url }}" /> -->
+
+    {% if site.ios_app_name %}
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    {% endif %}
+
+    <!-- 页面图标：SEO 插件没有 -->
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <!-- 站点所需 css 文件 -->
     <link rel="stylesheet" href="/assets/vendor/primer-css/css/primer.css"/>
     <link rel="stylesheet" href="/assets/vendor/primer-markdown/dist/user-content.min.css"/>
     <link rel="stylesheet" href="/assets/vendor/octicons/octicons/octicons.css"/>
@@ -19,52 +77,11 @@
     <link rel="stylesheet" href="/assets/css/globals/common.css"/>
     <link rel="stylesheet" href="/assets/css/globals/responsive.css"/>
     <link rel="stylesheet" href="/assets/css/posts/index.css"/>
+    <!-- 页面所需 css 文件 -->
     {% for css in page.css %}
       <link rel="stylesheet" href="/assets/css/{{ css }}" />
     {% endfor %}
-    {% if site.ios_app_name %}
-      <meta name="apple-mobile-web-app-capable" content="yes" />
-      <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    {% endif %}
-    <link rel="canonical" href="{{ page.url | prepend: site.url }}" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    {% if page.title %}
-      <meta property="og:title" content="{{ page.title }}" />
-      {% if page.keywords %} 
-        {% assign keywords = page.keywords %}
-      {% else %}
-        {% assign keywords = site.keywords %}
-      {% endif %}
-      <meta name="keywords" content="{{ keywords | strip_html | strip_newlines }}"/>
-      <meta name="og:keywords" content="{{ keywords | strip_html | strip_newlines }}"/>
-      {% if page.excerpt %}
-        <meta name="description" content="{{ page.excerpt | strip_html | strip_newlines }}"/>
-        <meta name="og:description" content="{{ page.excerpt | strip_html | strip_newlines }}"/>
-      {% else if page.description %}
-        <meta name="description" content="{{ page.description | strip_html | strip_newlines }}"/>
-        <meta name="og:description" content="{{ page.description | strip_html | strip_newlines }}"/>
-      {% else if content %}
-        <meta name="description" content="{{ content | strip_html | strip_newlines | truncatewords: 100 }}"/>
-        <meta name="og:description" content="{{ content | strip_html | strip_newlines | truncatewords: 100 }}"/>
-      {% endif %}
-    {% else %}
-      <meta name="keywords" content="{{ site.keywords }}" />
-      <meta name="description" content="{{ site.description }}" />
-    {% endif %}
-    {% if page.og_image_url %}
-      <meta property="og:image" content="{{ page.og_image_url }}" />
-    {% else %}
-      {% if page.photo_url %}
-        <meta property="og:image" content="{{ page.photo_url }}" />
-      {% endif %}
-    {% endif %}
-    <meta property="og:url" content="{{ page.url | remove_first: 'index.html' }}"/>
-    <meta property="og:site_name" content="{{ site.title }}" />
-    <meta property="og:type" content="article" />
-    <meta property="og:locale" content="zh_CN" />
-    {% if page.date %}
-      <meta property="article:published_time" content="{{ page.date | date: '%Y-%m-%d' }}"/>
-    {% endif %}
+
     <script src="/assets/vendor/jquery/dist/jquery.min.js"></script>
     <script src="/assets/js/jquery-ui.js"></script>
     <script src="/assets/js/main.js"></script>
