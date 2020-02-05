@@ -33,7 +33,9 @@ categories: Note
 ## 工作流
 
 * 工作区(wording directory)
+
 * 暂存区(index)
+
 * 仓库区(git repository)
 
 ## 工作指令
@@ -149,6 +151,16 @@ categories: Note
 
 `git reset --hard <commit ID>`
 
+### 拉取最新版本
+
+```git
+git fetch --all
+
+git reset --hard origin/master`
+
+git pull
+```
+
 # 配置
 
 ### 查看配置
@@ -166,6 +178,10 @@ categories: Note
 ### 单行显示
 
 `git config format.pretty oneline`
+
+### 取消换行符自动转换
+
+`git config --global core.autocrlf false`
 
 ### 用户配置
 
