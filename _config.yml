@@ -12,7 +12,7 @@ url                 : https://zoharyips.github.io
 title               : Zohar's blog
 name                : zohar's blog
 subtitle            : "Chinese by birth, Programmer by choice"
-description         : "zohar's blog"
+description         : "The personal blog of zohar, a ascetic on the road to programming."
 repository          : zoharyips/zoharyips.github.io
 keywords            : zohar, zohar Yip, Zohar' Blog, 叶卓豪, zohar_Yip, zoharyips
 date_format         : "ordinal"
@@ -34,7 +34,7 @@ lsi                 : false
 quiet               : false
 future              : true
 excerpt_separator   : "\n\n"                          # 摘录的分隔符
-permalink           : /:year/:month/:day/:title.html  # 博文发布的 URL，伪静态
+permalink           : /posts/:title.html  # 博文发布的 URL，伪静态
 plugins:
   - jekyll-github-metadata
   - rouge
@@ -90,8 +90,15 @@ subscribe_rss       : /feed.xml
 #   clientID          : 4f7905fa91963e1cb585
 #   clientSecret      : 860aa59b9dac0ff81e468c3a67bec5a052e8b8ec
 
+# 站内搜索
 simple_jekyll_search:
   fulltext          : false
+
+# leanCloud 访问统计
+leancloud:
+  enable: true
+  app_id: 7EiyLoiTRMpJGKx5Jyy6FV0S-gzGzoHsz
+  app_key: 0l02blBLDj6noCkLMoF76LD8
 
 # 谷歌分析
 google:
