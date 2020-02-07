@@ -33,18 +33,19 @@ paginate            : 12
 lsi                 : false
 quiet               : false
 future              : true
-excerpt_separator   : "\n\n"                          # 摘录的分隔符
-permalink           : /posts/:title.html  # 博文发布的 URL，伪静态
+excerpt_separator   : "\n\n"                # 摘录的分隔符
+permalink           : /posts/:title.html    # 博文发布的 URL，伪静态
 plugins:
-  - jekyll-github-metadata
+  - jekyll-github-metadata                  # github 元信息
   - rouge
-  - jekyll-paginate
-  - jekyll-feed
-  - jemoji
-  - jekyll-sitemap
-  - jekyll-seo-tag
-#   - jekyll-html-pipeline
-#   - jekyll-mentions
+  - jekyll-octicons                         # 支持 octions 图标
+  - jekyll-paginate                         # 分页
+  - jekyll-feed                             # 自动生成 SSR 源
+  - jemoji                                  # 解析 emoji
+  - jekyll-sitemap                          # 自动生成 sitemap
+  - jekyll-seo-tag                          # 自动 SEO 头信息生成
+#   - jekyll-html-pipeline                  #
+#   - jekyll-mentions                       # 用于 @github 用户
 collections:
   wiki:
     output          : true

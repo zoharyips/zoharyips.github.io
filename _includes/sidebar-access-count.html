@@ -1,6 +1,8 @@
 {% if site.leancloud.enable %}
   <h3>Access Statistics</h3>
-  <p id="access_statistics" style="font-size: 0.8rem;color: #9b9b9b;margin-left: 1rem;">已访问：<span></span></p>
+  <p id="access_statistics" style="font-size: 0.8rem;color: #9b9b9b;margin-left: 1rem;font-family: 'Lucida Console';text-align: center;">
+    <span id='page_statistics'></span><span id='site_statistics'></span>
+  </p>
 
   <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
 
@@ -24,7 +26,7 @@
             counter.save(null, {
               success: function(counter) {
                 console.log('更新记录成功：' + counter.get('visited_times'));
-                $('#access_statistics').find('span').text(counter.get('visited_times'));
+                $('#access_statistics').find('#page_statistics').text('page: ' + counter.get('visited_times'));
               },
               error: function(counter, error) {
                 console.error('Failed to save Visitor num, with error message: ' + error.message);
@@ -37,11 +39,31 @@
             newRecord.set("visited_times", 1);
             newRecord.save(null, null);
             // 若持续都是 1 则表示无法创建该记录
-            $('#access_statistics').find('span').text(1);
+            $('#access_statistics').find('#page_statistics').text('page: 1');
           }
         },
         error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
+          console.log('更新页统计数失败:' + error.code + " " + error.message);
+        }
+      });
+      query.equalTo("post_title", "{{ site.title }}"); // 获取站点总记录
+      query.find({
+        success: function(results) {
+            var counter = results[0];                  // 获取总记录
+            counter.fetchWhenSave(true);
+            counter.increment("visited_times");        // 将点击次数加1
+            counter.save(null, {
+              success: function(counter) {
+                console.log('更新站点总记录成功：' + counter.get('visited_times'));
+                $('#access_statistics').find('#site_statistics').text(' - site: ' + counter.get('visited_times'));
+              },
+              error: function(counter, error) {
+                console.error('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+        },
+        error: function(error) {
+          console.log('更新站点总统计数失败:' + error.code + " " + error.message);
         }
       });
     }
