@@ -15,6 +15,10 @@ canvas: true
       </div>
       <div class="collection-info">
         <span class="meta-info mobile-hidden">
+          <span class="octicon octicon-pulse"></span>
+          <span id="site_statistics"></span>
+        </span>
+        <span class="meta-info mobile-hidden">
           <span class="octicon octicon-location"></span>
           {{ site.location }}
         </span>
@@ -24,10 +28,10 @@ canvas: true
             <a href="{{ site.organization_url }}" target="_blank">{{ site.organization }}</a>
           </span>
         {% endif %}
-        <span class="meta-info">
+        <!-- <span class="meta-info">
           <span class="octicon octicon-mark-github"></span>
           <a href="https://github.com/{{ site.github_username }}" target="_blank">{{ site.github_username }}</a>
-        </span>
+        </span> -->
       </div>
     </div>
   </div>

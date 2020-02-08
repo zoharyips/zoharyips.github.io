@@ -100,6 +100,7 @@ leancloud:
   enable: true
   app_id: 7EiyLoiTRMpJGKx5Jyy6FV0S-gzGzoHsz
   app_key: 0l02blBLDj6noCkLMoF76LD8
+  class_name: visited_times
 
 # 谷歌分析
 google:

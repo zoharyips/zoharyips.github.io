@@ -37,6 +37,20 @@
   <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a>
 </div>
 
+<!-- site access statistics 站点访问统计 -->
+{% if site.leancloud.enable %}
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script src="/assets/js/site_statistics.js"></script>
+  <script>
+    // leancloud 配置
+    AV.initialize('{{site.leancloud.app_id}}', '{{site.leancloud.app_key}}');
+    // 加载函数
+    $(function() {
+      updateCount(AV.Object.extend('{{ site.leancloud.class_name }}'), '{{ page.title }}', "{{ site.title }}");
+    });
+  </script>
+{% endif %}
+
 {% if page.canvas %}
   <canvas id="canvas"></canvas>
   <script src="/assets/js/zhihubg.js"></script>
