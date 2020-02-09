@@ -16,7 +16,7 @@
         <a href="{{ site.MIIT }}" class="site-record" >{{ site.beian }}</a>
       </li>
     </ul>
-    <a href="{{ site.github.repository_url }}" target="_blank" aria-label="view source code">
+    <a href="https://github.com/{{ site.github_username }}" target="_blank" aria-label="view source code">
       <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
     </a>
     <ul class="site-footer-links mobile-hidden">
@@ -99,14 +99,16 @@
   <script type="text/javascript" src="https://basis-learning.github.io/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 {% endif %}
 
-<!-- if the site enable google analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google.analytics_id }}"></script>
+<!-- if the site enable google analytics 加载过慢 -->
+{% if site.google.analytics_id %}
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google.analytics_id }}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', '{{ site.google.analytics_id }}');
-</script>
+</script> -->
+{% endif %}
 
 <!-- 百度自动推送脚本，百度站长加入使用 -->
 {% comment %}
