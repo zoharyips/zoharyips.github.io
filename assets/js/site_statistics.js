@@ -1,11 +1,56 @@
 /**
- * 更新网站统计次数
+ * 判断同一个 IP 上一次访问的网页是否是当前网页，如果页面访问统计数可增加则返回 true。
  * 
- * @param {Counter} Counter 一个查询实例
+ * @param {string} title 页面标题
+ * @param {Counter} Counter 数据库连接
+ * @param {Counter} dataCounter 数据库连接
+ * @param {string} ipAddr IP 地址
+ */
+function onWork(pageTitle, siteTitle, Counter, dataCounter, ipAddr) {
+  var query = new AV.Query(Counter);
+  query.equalTo("ip_addr", ipAddr);
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {                 // 存在该 IP 记录
+        var result = results[0];                // 获取该记录
+        var updatedTime = new Date(result.updatedAt).getTime();
+        var accessTime = new Date().getTime();
+        console.log('updatedTime: ' + updatedTime + "\taccessTime: " + accessTime + "\tgap: " + (accessTime - updatedTime));
+        // 如果不是同一个页面的，通过
+        if (result.get('post_title') == pageTitle && accessTime - updatedTime < 60000) {
+          queryCount(dataCounter, pageTitle, siteTitle);
+        } else {
+          if (result.get('post_title') != pageTitle) {
+            console.log('IP 相同，上次访问页面标题与当前标题不同');
+            result.set("post_title", pageTitle);
+          }
+          result.increment("counter");
+          result.save(null, null);
+          updateCount(dataCounter, pageTitle, siteTitle);
+        }
+      } else {
+        console.log('newRecord');
+        var newRecord = new Counter();
+        console.log(newRecord);
+        newRecord.set("ip_addr", ipAddr);
+        newRecord.set("post_title", pageTitle);
+        newRecord.save(null, null);
+        updateCount(dataCounter, pageTitle, siteTitle);
+      }
+    },
+    error: function(error) {
+      console.log('查询 visitin_ip 表失败: ' + error.code + " " + error.message);
+    }
+  });
+}
+
+/**
+ * 更新网站访问统计数据
+ * 
+ * @param {Counter} Counter 数据库连接
  * @param {string} pageTitle 页面标题，作为数据库查询主键
  */
 function updateCount(Counter, pageTitle, siteTitle) {
-  var updated = false;
   var url = window.location.href;
   var query = new AV.Query(Counter);            // 新建查询
   query.equalTo("post_title", pageTitle);       // 根据 title 查询记录
@@ -13,26 +58,17 @@ function updateCount(Counter, pageTitle, siteTitle) {
     success: function(results) {
       if (results.length > 0) {                 // 存在该记录
         var counter = results[0];               // 获取该记录
-        // 判断一分钟内是否刷新过
-        var updatedTime = new Date(counter.updatedAt).getTime();
-        var accessTime = new Date().getTime();
-        console.log('updatedTime: ' + updatedTime + "\taccessTime: " + accessTime + "\tgap: " + (accessTime - updatedTime));
-        if (accessTime - updatedTime < 60000) {
-          console.log('一分钟内重复刷新，不更新数据');
-          $('#page_statistics').text('Page access: ' + counter.get('visited_times'));
-        } else {
-          counter.fetchWhenSave(true);
-          counter.increment("visited_times");     // 将点击次数加1
-          counter.save(null, {
-            success: function(counter) {
-              console.log('更新记录成功：' + counter.get('visited_times'));
-              $('#page_statistics').text('Page access: ' + counter.get('visited_times'));
-            },
-            error: function(counter, error) {
-              console.error('Failed to save Visitor num, with error message: ' + error.message);
-            }
-          });
-        }
+        counter.fetchWhenSave(true);
+        counter.increment("visited_times");     // 将点击次数加1
+        counter.save(null, {
+          success: function(counter) {
+            console.log('更新记录成功：' + counter.get('visited_times'));
+            $('#page_statistics').text('Page access: ' + counter.get('visited_times'));
+          },
+          error: function(counter, error) {
+            console.error('Failed to save Visitor num, with error message: ' + error.message);
+          }
+        });
       } else {                                  // 无此记录
         var newRecord = new Counter();
         newRecord.set("post_title", pageTitle);
@@ -51,27 +87,51 @@ function updateCount(Counter, pageTitle, siteTitle) {
   query.find({
     success: function(results) {
       var counter = results[0];                  // 获取总记录
-      // 判断一分钟内是否刷新过
-      var updatedTime = new Date(counter.updatedAt).getTime();
-      var accessTime = new Date().getTime();
-      if (accessTime - updatedTime < 60000) {
-        $('#site_statistics').text('Site access: ' + counter.get('visited_times'));
-      } else {
-        counter.fetchWhenSave(true);
-        counter.increment("visited_times");        // 将点击次数加1
-        counter.save(null, {
-          success: function(counter) {
-            console.log('更新站点总记录成功：' + counter.get('visited_times'));
-            $('#site_statistics').text('Site access: ' + counter.get('visited_times'));
-          },
-          error: function(counter, error) {
-            console.error('Failed to save Visitor num, with error message: ' + error.message);
-          }
-        });
-      }
+      counter.fetchWhenSave(true);
+      counter.increment("visited_times");        // 将点击次数加1
+      counter.save(null, {
+        success: function(counter) {
+          console.log('更新站点总记录成功：' + counter.get('visited_times'));
+          $('#site_statistics').text('Site access: ' + counter.get('visited_times'));
+        },
+        error: function(counter, error) {
+          console.error('Failed to save Visitor num, with error message: ' + error.message);
+        }
+      });
     },
     error: function(error) {
       console.log('更新站点总统计数失败:' + error.code + " " + error.message);
+    }
+  });
+}
+
+/**
+ * 查询页面、站点访问数据
+ * 
+ * @param {Counter} Counter 数据库连接
+ * @param {string} pageTitle 页面标题
+ * @param {string} siteTitle 站点标题
+ */
+function queryCount(Counter, pageTitle, siteTitle) {
+  var query = new AV.Query(Counter);
+  query.equalTo("post_title", pageTitle);
+  query.find({
+    success: function(results) {
+      var counter = results[0];
+      $('#page_statistics').text('Page access: ' + counter.get('visited_times'));
+    },
+    error: function(error) {
+      console.log('页面访问数据查询失败:' + error.code + " " + error.message);
+    }
+  });
+  query.equalTo("post_title", siteTitle);
+  query.find({
+    success: function(results) {
+      var counter = results[0];
+      $('#site_statistics').text('Site access: ' + counter.get('visited_times'));
+    },
+    error: function(error) {
+      console.log('站点总访问数据查询失败:' + error.code + " " + error.message);
     }
   });
 }
