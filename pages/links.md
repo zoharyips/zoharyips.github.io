@@ -20,7 +20,7 @@ permalink: /links/
       <ol class="posts-list" >
     {% endif %}
     <li class="posts-list-item">
-      <a class="posts-list-name" style="color:#4169E1" href="{{ link.url }}">{{ link.name }}</a>
+      <a class="posts-list-name" style="color:#4169E1" href="{{ link.url }}" target="_blank">{{ link.name }}</a>
     </li>
   {% endfor %}
   </ol>

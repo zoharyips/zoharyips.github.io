@@ -40,16 +40,30 @@
 <!-- site access statistics 站点访问统计 -->
 {% if site.leancloud.enable %}
   <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>  
+  <!-- <script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> -->
+  <script src="/assets/js/string_hash.js"></script>
   <script src="/assets/js/site_statistics.js"></script>
+  <script src="/assets/js/fingerprint2.min.js"></script>
   <script>
     // leancloud 配置
     AV.initialize('{{site.leancloud.app_id}}', '{{site.leancloud.app_key}}');
     var dataCounter = AV.Object.extend('{{ site.leancloud.data_class_name }}');
-    var ipCounter = AV.Object.extend('{{ site.leancloud.ip_class_name }}')
-    console.log(returnCitySN["cip"]+','+returnCitySN["cname"]);
+    var hashCounter = AV.Object.extend('{{ site.leancloud.ip_class_name }}')
+    // console.log(returnCitySN["cip"]+','+returnCitySN["cname"]);
     $(function() {
-      onWork("{{ page.title }}", "{{ site.title }}", ipCounter, dataCounter, returnCitySN["cip"]);
+      if (window.requestIdleCallback) {
+        requestIdleCallback(function () {
+          Fingerprint2.get(function (components) {
+            onWork("{{ page.title }}", "{{ site.title }}", hashCounter, dataCounter, hash(JSON.stringify(components)));
+          })
+        })
+      } else {
+        setTimeout(function () {
+          Fingerprint2.get(function (components) {
+            onWork("{{ page.title }}", "{{ site.title }}", hashCounter, dataCounter, hash(JSON.stringify(components)));
+          })
+        }, 500)
+      }
     });
   </script>
 {% endif %}

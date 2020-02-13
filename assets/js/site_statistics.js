@@ -2,14 +2,15 @@
  * 判断同一个 IP 上一次访问的网页是否是当前网页，如果页面访问统计数可增加则返回 true。
  * 
  * @param {string} title 页面标题
- * @param {Counter} Counter 数据库连接
+ * @param {Counter} Counter 数据库连接，若需要更新该表数据，请勿修改此参数名
  * @param {Counter} dataCounter 数据库连接
- * @param {string} ipAddr IP 地址
+ * @param {string} fingerprintHash 浏览器指纹
+  IP 地址
  */
-function onWork(pageTitle, siteTitle, Counter, dataCounter, ipAddr) {
+function onWork(pageTitle, siteTitle, Counter, dataCounter, fingerprintHash) {
   var query = new AV.Query(Counter);
-  query.equalTo("ip_addr", ipAddr);
-  query.find({
+  query.equalTo("fingerprint_hash", fingerprintHash);
+  query.find ({
     success: function(results) {
       if (results.length > 0) {                 // 存在该 IP 记录
         var result = results[0];                // 获取该记录
@@ -18,21 +19,22 @@ function onWork(pageTitle, siteTitle, Counter, dataCounter, ipAddr) {
         console.log('updatedTime: ' + updatedTime + "\taccessTime: " + accessTime + "\tgap: " + (accessTime - updatedTime));
         // 如果不是同一个页面的，通过
         if (result.get('post_title') == pageTitle && accessTime - updatedTime < 60000) {
+          console.log('指纹相同，上次访问页面标题与当前标题相同，且时间间隔小于 1 分钟');
           queryCount(dataCounter, pageTitle, siteTitle);
         } else {
           if (result.get('post_title') != pageTitle) {
-            console.log('IP 相同，上次访问页面标题与当前标题不同');
+            console.log('指纹相同，上次访问页面标题与当前标题不同');
             result.set("post_title", pageTitle);
           }
+          console.log('指纹相同，上次访问页面标题与当前标题相同，时间间隔合法');
           result.increment("counter");
           result.save(null, null);
           updateCount(dataCounter, pageTitle, siteTitle);
         }
       } else {
-        console.log('newRecord');
+        console.log('无此指纹记录');
         var newRecord = new Counter();
-        console.log(newRecord);
-        newRecord.set("ip_addr", ipAddr);
+        newRecord.set("fingerprint_hash", fingerprintHash);
         newRecord.set("post_title", pageTitle);
         newRecord.save(null, null);
         updateCount(dataCounter, pageTitle, siteTitle);
