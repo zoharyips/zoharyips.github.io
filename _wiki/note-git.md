@@ -60,11 +60,14 @@ system： 本系统的所有用户
 
 ### 取消换行符自动转换
 
-`git config --global core.autocrlf false`
+```git
+git config --global core.autocrlf false
+git config --global core.safecrlf true
+```
 
 ### 用户配置
 
-```markdown
+```git
 git config {--local | --global | --system} user.name 'username'
 git congig {--local | --global | --system} user.email 'emailAddress'
 git config {--local | --global | --system} credential.helper store # 保存用户名密码
