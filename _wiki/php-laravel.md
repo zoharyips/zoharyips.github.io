@@ -24,7 +24,37 @@ categories: Php
 {{ Route::currentRouteName() }}
 ```
 
-## 使用 Redis 发布与订阅消息队列
+## Eloquent 模型相关
+
+### ORM 查询指定列记录
+
+* 按 id 取单条记录
+
+    ```php
+    $data = Model::find($id, ['column1', 'column2']);
+    ```
+
+* 取集合首条记录
+
+    ```php
+    $data = Model::first(['column1', 'column2']);
+    ```
+
+* 取集合全部记录
+
+    ```php
+    $data = Model::all(['column1', 'column2']);
+    ```
+
+* 取集合多条记录
+
+    ```php
+    $data = ModelA::where(...)->get(['column1', 'column2']); 
+    ```
+
+## Redis 相关
+
+### 使用 Redis 发布与订阅消息队列
 
 1. 安装 redis 组件
 
@@ -50,7 +80,7 @@ Redis::subscribe([$QUEUE_NAME], function($message) {
 });
 ```
 
-## 使用 Redis 缓存
+### 使用 Redis 缓存
 
 1. 修改配置文件
 
@@ -85,4 +115,12 @@ if (Cache::has($key)) {
 } else {
     Cache::put($key, $value, $expire_time);
 }
+```
+
+## Composer 相关
+
+### Composer 换源
+
+```console
+composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 ```

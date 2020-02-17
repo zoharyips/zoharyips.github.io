@@ -21,6 +21,14 @@ mb_strlen(string $str, [string $encoding = mb_internal_encoding()]) : mixed
 * strlen：中文字符长度按 unicode 编码数计算，一般每个中文字符长度为 3
 * mb_strlen：选定内码以 UTF-8 计算，一个中文字符长度为 1
 
+### 取子串
+
+```php
+substr(string $string, int $start, [int $length]) : string
+```
+
+返回字符串 string 由 start 和 length 参数指定的子字符串。
+
 ### 子串首次出现位置
 
 ```php
