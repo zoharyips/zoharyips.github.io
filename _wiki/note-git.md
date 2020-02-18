@@ -21,6 +21,11 @@ categories: Note
 
 * 克隆最新版本：`git clone --depth 1 path/to/repository`
 
+## 撤销文件修改
+
+* 撤销单文件：`git checkout filepath`
+* 撤销全文件：`git checkout .`
+
 ## 撤销文件加入暂存区
 
 * 撤销单文件：`git reset HEAD filepath`

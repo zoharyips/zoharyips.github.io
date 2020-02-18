@@ -17,11 +17,25 @@ categories: Php
 {!! $content !!}
 ```
 
-### 获取当前路由
+### 获取当前路由路径
 
 ```php
-{{ Request::path() }}
-{{ Route::currentRouteName() }}
+{% raw %}{{ Request::path() }}
+{{ Route::currentRouteName() }}{% endraw %}
+```
+
+### 获取当前路由参数
+
+```php
+{% raw %}{{ app('request')->input('param') }}
+{{ Request::query('param') }} // laravel 5.6
+{{ request()->param }}                // laravel 5.8{% endraw %}
+```
+
+### 分页传入路由参数
+
+```php
+{% raw %}{{ $data->appends(['param' => request()->param])->links('path_to_pagination_view') }}{% endraw %}
 ```
 
 ## Eloquent 模型相关
