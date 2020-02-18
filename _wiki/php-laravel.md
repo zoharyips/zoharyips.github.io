@@ -2,7 +2,7 @@
 layout: wiki
 title: Php Laravel 笔记
 description: Laravel 可以让你从面条一样杂乱的代码中解脱出来；它可以帮你构建一个完美的网络APP，而且每行代码都可以简洁、富于表达力。
-date: 2020-02-16
+date: 2020-02-17
 categories: Php
 ---
 
@@ -116,6 +116,36 @@ if (Cache::has($key)) {
     Cache::put($key, $value, $expire_time);
 }
 ```
+
+## HTTP 相关
+
+### HTTP 客户端
+
+* php-curl-class
+
+    ```php
+    use \Curl\Curl;
+
+    $curl = new Curl();
+    $curl->get('http://www.example.com/');
+
+    if ($curl->error) {
+        echo 'Error: ' . $curl->errorCode . ': ' . $curl->errorMessage;
+    } else {
+        echo $curl->response;
+    }
+    ```
+
+* GuzzleHttp\Client
+
+    ```php
+    use GuzzleHttp\Client;
+
+    $http = new Client();
+    $url = 'http://www.baidu.com';
+    $response = $http->get($url);
+    $data = json_decode((string)$response->getBody(), true);
+    ```
 
 ## Composer 相关
 
