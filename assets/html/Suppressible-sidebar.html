@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Suppressible Sidebar</title>
+    <style>
+        @import "http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css";
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            font-family: sans-serif;
+        }
+
+        .sidebar {
+            float: left;
+            width: 100px;
+            margin-left: -100px;
+            height: 100%;
+            background-color: #2c3e50;
+            overflow: hidden;
+            transition: 0.8s all;
+        }
+
+        .side {
+            margin-left: 0;
+        }
+
+        /*靠边*/
+        .sidebar ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        /*去点*/
+        .sidebar ul li {
+            list-style: none;
+        }
+
+        /*去下划线*/
+        .sidebar ul li a {
+            text-decoration: none;
+            color: white;
+            height: 80px;
+            width: 100%;
+            font-size: 40px;
+            line-height: 80px;
+            text-align: center;
+            display: block;
+            transition: 0.6s all;
+        }
+
+        .sidebar ul li a:hover {
+            background: #95a5a6;
+        }
+
+        .btn {
+            float: left;
+            padding: 0 10px;
+            font-size: 40px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-family: Ionicons;
+            cursor: pointer;
+
+        }
+
+        .btn:before {
+            content: '\f20d';
+        }
+
+        .btnc:before {
+            content: '\f12a';
+        }
+    </style>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="sidebar">
+        <ul>
+            <li><a class="ion-social-apple" href="https://www.apple.com/cn/shop/buy-mac/macbook-pro/MV912CH/A#"></a>
+            </li>
+            <li><a class="ion-ios-game-controller-b" href="http://www.4399.com/"></a></li>
+            <li><a class="ion-social-twitter" href="https://weibo.com/cctvxinwen?topnav=1&wvr=6&topsug=1"></a></li>
+            <li><a class="ion-social-youtube" href="https://www.bilibili.com"></a></li>
+            <li><a class="ion-ios-basketball" href="https://sports.qq.com/nba/"></a></li>
+            <li><a class="ion-social-rss" href="https://www.cnblogs.com/Dominic-Ji/"></a></li>
+            <li><a class="ion-social-github" href="https://github.com/jackfrued/Python-100-Days"></a></li>
+            <li><a class="ion-music-note" href="https://music.163.com/#/song?id=287035"></a></li>
+        </ul>
+    </div>
+    <a class="btn"></a>
+    <script type="text/javascript">
+        $('.btn').on('click', function () {
+            $('.btn').toggleClass('btnc');
+            $('.sidebar').toggleClass('side');
+
+        })
+    </script>
+</body>
+</html>

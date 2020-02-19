@@ -59,6 +59,11 @@
   type: doc
 
 -
+  name: ★ 独特工具箱
+  url: https://www.dute.org/
+  type: tool
+
+-
   name: Linux 命令查询工具
   url: http://man.linuxde.net/
   type: tool

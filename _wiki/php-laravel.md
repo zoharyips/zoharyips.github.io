@@ -28,7 +28,7 @@ categories: Php
 
 ```php
 {% raw %}{{ app('request')->input('param') }}
-{{ Request::query('param') }} // laravel 5.6
+{{ Request::query('param') }}         // laravel 5.6
 {{ request()->param }}                // laravel 5.8{% endraw %}
 ```
 
@@ -160,6 +160,18 @@ if (Cache::has($key)) {
     $response = $http->get($url);
     $data = json_decode((string)$response->getBody(), true);
     ```
+
+## MVC 相关
+
+### 返回默认的 error 视图
+
+```php
+view()->replaceNamespace('errors', [
+    resource_path('views/errors'),
+    __DIR__.'/views',
+]);
+return response()->view("errors::{$status}";
+```
 
 ## Composer 相关
 

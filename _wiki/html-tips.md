@@ -11,11 +11,11 @@ categories: Html
 
 ## 布局
 
-### 将页面底部固定在页面下方
+### 将页脚固定在页面下方
 
 1. flex 布局
 
-    使用 flex 布局，详细了解请访问 [Flex 布局教程：语法篇](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
+    使用 flex 布局，详细了解请访问 [Flex 布局教程：语法篇](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html);
 
     ```css
     html {height: 100%;}
@@ -25,7 +25,10 @@ categories: Html
     footer {flex: 0 0 auto;}
     ```
 
-    ![Flex-Layout](/images/wiki/html/footer-bottom.png "flex layout example")
+    样式演示：
+    <iframe src="/assets/html/Footer-stay-bottom.html" width="100%"></iframe>
+
+    特点：页面高度不足以撑满一页时，页脚依旧固定在底部
 
 ### 子元素水平垂直居中
 
@@ -41,4 +44,18 @@ categories: Html
     }
     ```
 
-    ![Flex-Layout](/images/wiki/html/center-center.png "flex layout example")
+    样式演示：
+    <iframe src="/assets/html/Child-absolutely-center.html" width="100%"></iframe>
+
+### 元素固定浮动在页面中间
+
+```css
+#floating-component {
+    position:fixed;                 /* 固定位置 */
+    top: 50%;                       /* 距顶部 50% */
+    transform: translate(-50%,0);   /* 往相反方向位移自身 50% */
+}
+```
+
+样式演示：
+<iframe src="/assets/html/Fixed-floating.html" width="100%"></iframe>
