@@ -4,6 +4,7 @@ title: Oracle
 description: 基础 oracle 语法集合
 date: 2019-04-12
 categories: Note
+prism: [sql, bash]
 ---
 
 **目录**
@@ -22,7 +23,7 @@ categories: Note
 
 * sqlplus 登录用法  
   
-  ```oracle
+  ```bash
   sqlplus {<username>[/<password>][@<connect_identifier>] | / }
           [AS {SYSDBA | SYSOPER | SYSASM}] [EDITION=value]
   ```
@@ -33,7 +34,7 @@ categories: Note
 
 * 普通登录  
   
-  ```oracle
+  ```sql
   $ sqlplus
   Enter user-name: <userName>
   Enter password: <password> // 暗纹密码, 不可见
@@ -41,20 +42,20 @@ categories: Note
 
 * 明文登录  
   
-  ```oracle
+  ```sql
   $ sqlplus <userName>/<password>
   ```
 
 * 指定账号登录  
   
-  ```oracle
+  ```sql
   $ sqlplus <userName>/
   Enter password: <password>
   ```
 
 * 隐私登录(不在控制台输入账号密码)  
   
-  ```oracle
+  ```sql
   $ sqlplus /nolog // 进入 sqlplus 但未登录
   SQL> conn <userName>/<password>
   ```
@@ -63,14 +64,14 @@ categories: Note
   
   系统账户有 `SYS` 和 `SYSTEM`, 登录需在登录语句后加上参数 : `AS SYSDBA`  
   
-  ```oracle
+  ```sql
   $ sqlplus {sys | system}/ AS SYSDBA
   Enter password: <password>
   ```  
 
 * 管理员隐私登录  
   
-  ```oracle
+  ```sql
   $ sqlplus /nolog
   SQL> conn {sys | system}/ AS SYSDBA
   Enter password:
@@ -79,7 +80,7 @@ categories: Note
 ### 远程登录
 
 * 使用 sqlplus 客户端远程登录  
-  ```oracle
+  ```sql
   sqlplus <userName>/<password>@//<IPAddress>:<portNo>/<sid>
   
   /**
@@ -93,7 +94,7 @@ categories: Note
 
   如:  
   
-  ```oracle
+  ```sql
   sqlplus Amy/123456@110.110.110.110:1521
   sqlplus sys/123456@110.110.110.110:1521 AS SYSDBA
   ```
@@ -106,7 +107,7 @@ categories: Note
 
 * **启动**  
 
-    ```oracle
+    ```sql
     SQL> startup {nomount | mount | open | force}
     
     nomount: 启动实例不挂载数据库  
@@ -124,7 +125,7 @@ categories: Note
 
 * **关闭**
 
-    ```oracle
+    ```sql
     SQL> shutdown {normal | immediate | transactional | abort}
 
     normal: 正常方式关闭数据库  
@@ -204,7 +205,7 @@ categories: Note
 
 * <a name="privilege">授予权限</a>  
   
-  ```oracle
+  ```sql
   GRANT privilege [, privilege...] 
       TO user [, user| role, PUBLIC...]
       [WITH ADMIN OPTION];
@@ -218,7 +219,7 @@ categories: Note
 
 * 撤销权限  
   
-  ```oracle
+  ```sql
   REVOKE {privilege | role} FROM {user_name | role_name | PUBLIC}
   ```
 

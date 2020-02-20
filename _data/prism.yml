@@ -1,0 +1,64 @@
+-
+  name: java
+  src: https://cdn.bootcss.com/prism/9000.0.1/components/prism-java.min.js
+
+-
+  name: javascript
+  src: https://cdn.bootcss.com/prism/9000.0.1/components/prism-javascript.min.js
+-
+  name: git
+  src: https://cdn.bootcss.com/prism/9000.0.1/components/prism-git.min.js
+-
+  name: erlang
+  src: https://cdn.bootcss.com/prism/9000.0.1/components/prism-erlang.min.js
+-
+  name: css
+  src: https://cdn.bootcss.com/prism/9000.0.1/components/prism-css.min.js
+-
+  name: scss
+  src: https://cdn.bootcss.com/prism/9000.0.1/components/prism-scss.min.js
+-
+  name: cpp
+  src: https://cdn.bootcss.com/prism/9000.0.1/components/prism-cpp.min.js
+-
+  name: clike
+  src: https://cdn.bootcss.com/prism/9000.0.1/components/prism-clike.min.js
+-
+  name: c
+  src: https://cdn.bootcss.com/prism/9000.0.1/components/prism-c.min.js
+-
+  name: bash
+  src: https://cdn.bootcss.com/prism/9000.0.1/components/prism-bash.min.js
+-
+  name: go
+  src: https://cdn.bootcss.com/prism/9000.0.1/components/prism-go.min.js
+-
+  name: latex
+  src: https://cdn.bootcss.com/prism/9000.0.1/components/prism-latex.min.js
+-
+  name: markdown
+  src: https://cdn.bootcss.com/prism/9000.0.1/components/prism-markdown.min.js
+-
+  name: perl
+  src: https://cdn.bootcss.com/prism/9000.0.1/components/prism-perl.min.js
+-
+  name: php
+  src: https://cdn.bootcss.com/prism/9000.0.1/components/prism-php.min.js
+-
+  name: powershell
+  src: https://cdn.bootcss.com/prism/9000.0.1/components/prism-powershell.min.js
+-
+  name: python
+  src: https://cdn.bootcss.com/prism/9000.0.1/components/prism-python.min.js
+-
+  name: r
+  src: https://cdn.bootcss.com/prism/9000.0.1/components/prism-r.min.js
+-
+  name: ruby
+  src: https://cdn.bootcss.com/prism/9000.0.1/components/prism-ruby.min.js
+-
+  name: sql
+  src: https://cdn.bootcss.com/prism/9000.0.1/components/prism-sql.min.js
+-
+  name: yaml
+  src: https://cdn.bootcss.com/prism/9000.0.1/components/prism-yaml.min.js

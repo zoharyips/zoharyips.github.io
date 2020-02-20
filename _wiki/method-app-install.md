@@ -4,6 +4,7 @@ title: 软件安装
 description: 在此汇总各种行之有效的软件安装方案
 date: 2019-12-08
 categories: Method
+prism: [bash, powershell]
 ---
 
 **目录**
@@ -84,7 +85,7 @@ categories: Method
 
 * 环境变量：
 
-    ```
+    ```bash
     ###### JAVA 20191208 ######
     export JAVA_HOME=/usr/lib/java/jdk1.8.0_231
     export JRE_HOME=$JAVA_HOME/jre
@@ -190,7 +191,7 @@ categories: Method
 
 * 环境变量：
 
-    ```
+    ```bash
     ###### TOMCAT 20191208 ######
     exprot CATALINA_HOME=/usr/local/services/tomcat-8.5.37
     export PATH=$CATALINA_HOME/bin:$PATH
@@ -212,19 +213,19 @@ categories: Method
 
 * 设置默认使用 WSL2：
 
-    ```
+    ```powershell
     wsl --set-default-version 2
     ```
 
 * 将已有 WSL 子系统转换为 WSL2：
 
-    ```
+    ```powershell
     wsl --set-version [distribution] 2
     ```
 
 * 子系统内安装 Docker
 
-    ```
+    ```bash
     sudo apt-get update
     sudo apt-get install -y \
         apt-transport-https \
@@ -243,6 +244,6 @@ categories: Method
 
 * 启用并运行测试
 
-    ```
+    ```bash
     sudo service docker start && sudo docker run hello world
     ```

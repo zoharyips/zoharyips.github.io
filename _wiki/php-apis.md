@@ -4,6 +4,7 @@ title: Php 之骑驴找马
 description: 我只在刷 leetcode 时重新写那么多函数
 date: 2020-02-16
 categories: Php
+prism: [php]
 ---
 
 * TOC

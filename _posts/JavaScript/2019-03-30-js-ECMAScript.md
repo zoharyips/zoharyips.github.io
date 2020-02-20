@@ -3,6 +3,7 @@ layout: post
 title: JavaScript - ECMAScript
 categories: JavaScript
 keywords: JavaScript
+prism: [javascript]
 ---
 JavaScript 之 ECMAScript
 
@@ -15,14 +16,14 @@ JavaScript 之 ECMAScript
 
 * 单行注释: 以 `//` 作为单行注释标记
 
-    ```js
+    ```javascript
     // This is a single line annotation
     a += 1; // This is another single line annotation
     ```
 
 * 多行注释: `/*` 与 `*/` 包裹注释内容
 
-    ```js
+    ```javascript
     /*
      * This is a multiple lines annotation
      */
@@ -47,7 +48,7 @@ JavaScript 之 ECMAScript
 
 示例:
 
-```js
+```javascript
 var a; // typeof(a) = undefined 因为未指定该变量类型，为 undefined 状态，不可使用
 var a = new Object; // 类的实例对象均解释为 object 类型
 var a = 0;
@@ -62,7 +63,7 @@ var a = 11,
 
 js 通过自动推导类型的方式为变量进行赋值，即 `变量名 = 值`
 
-```js
+```javascript
 var a = 0; // number 类型
 var a = "11"; // string 类型
 var a = false; // boolean 类型
@@ -158,7 +159,7 @@ boolean | 布尔 | false
 
 * for
 
-    ```js
+    ```javascript
     for(initExpression; judgement; operateExpression) {
         ...
     }
@@ -171,7 +172,7 @@ boolean | 布尔 | false
 
     循环遍历对象的**属性**，使用方法为 `对象名[迭代变量]`， 作用等同于 `对象名.属性`
 
-    ```js
+    ```javascript
     var x, txt="";
     var person={fname:"Bill",lname:"Gates",age:56}; 
     for (x in person){
@@ -203,7 +204,7 @@ boolean | 布尔 | false
 
 创建: 
 
-```js
+```javascript
 function funcName(arg1, arg2, ...){
     ...
     return 返回值;
@@ -214,13 +215,13 @@ function funcName(arg1, arg2, ...){
 
 * js 中调用: 
 
-    ```js
+    ```javascript
     funcName(arg1, arg2, ...);
     ```
 
 * Html 中调用:
 
-    ```js
+    ```javascript
     onClick="funcName(arg1, arg2, ...)"
     ```
 
@@ -232,7 +233,7 @@ function funcName(arg1, arg2, ...){
 
 所有函数都能访问全局变量。同时，JavaScript 支持嵌套函数，所有函数都能访问它们上一层的作用域。自然而然内嵌函数可以访问上一层的函数变量，多层内嵌函数依旧可以访问全局变量
 
-```js
+```javascript
 function add() {
     var counter = 0;
     function plus() {counter += 1;}
@@ -245,7 +246,7 @@ function add() {
 
 即 IFE（立即调用函数表达式）是一个在定义时就会立即执行的  JavaScript 函数。
 
-```js
+```javascript
 (function (args...) {
     operations...
 })();
@@ -264,7 +265,7 @@ result = Barry；
 
 即通过使用 **内嵌函数 ＋ IFE** 的方式返回一个函数，使函数拥有不被销毁的私有变量
 
-```js
+```javascript
 var a = (function(){
     var timer = 0;
     return function() {timer += 1;}
@@ -303,7 +304,7 @@ timer = 3
 
 * try... catch
 
-    ```js
+    ```javascript
     try {
         ...
     } catch (err) {
@@ -313,7 +314,7 @@ timer = 3
 
 * throw
 
-    ```js
+    ```javascript
     try {
         ...
         if() throw "userDefinedException";

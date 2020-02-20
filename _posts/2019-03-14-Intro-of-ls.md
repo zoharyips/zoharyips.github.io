@@ -3,6 +3,7 @@ layout: post
 title: 解析 ls -l 显示列表含义
 categories: Linux
 keywords: Linux
+prism: bash
 ---
 
 使用 `ls -l` 你将看到 9 个字段的列表：
@@ -126,8 +127,3 @@ drwxr-xr-x  6 zohar zohar  4096 3月  13 23:04 .android
 ```
 
 字段九则为文件名
-
-<br/><br/>
-<hr/>
-<p style="text-align:center">I came, I saw, I conquered</p>
-<p style="text-align:center">铁蹄所至，目力所及，皆为王土</p>

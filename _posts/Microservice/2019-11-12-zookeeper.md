@@ -5,6 +5,7 @@ categories: MicroService
 keywords: MicroService
 sequence: true
 date: 2019-11-27 09:02:00
+prism: [bash, clike]
 ---
 
 Zookeeper 是 Apache 的一个软件方案，它为大型分散式计算提供开源的分散式状态设定服务、同步服务和命名注册。
@@ -82,7 +83,7 @@ ZooKeeper is a centralized service for maintaining configuration information, na
 
 * 获取锁：
 
-    ```redis
+    ```bash
     SET key value {EX seconds | PX milliseconds} NX
     例：
     SET lock_002 service_012 EX 30 NX
@@ -102,7 +103,8 @@ ZooKeeper is a centralized service for maintaining configuration information, na
 
     使用 Lua 脚本保证查找删除的原子性，同时保证无法误删锁。
 
-    ```lua
+    ```clike
+    // lua language
     if redis.call("get",keys[1]) == service_ID 
         then return redis.call("del",keys[1])
     else return 0
@@ -179,7 +181,7 @@ numChildren | 子节点个数。
 
 示例：
 
-```zookeeper
+```bash
 [zk: localhost:2181(CONNECTED) 1] get /test
 Hello zookeeper
 cZxid = 0x100000002
@@ -242,7 +244,7 @@ ACL 即 Access Control List，zookeeper 利用 ACL 来控制节点的操作权�
 
     基于用户名和密码的方式校验授权
 
-    ```
+    ```bash
     setAcl path digest:username:BASE64(SHA1(password)):cdrwa
     ```
 
@@ -250,7 +252,7 @@ ACL 即 Access Control List，zookeeper 利用 ACL 来控制节点的操作权�
 
     基于客户端 IP 地址校验授权
 
-    ```
+    ```bash
     setAcl path ip:192.168.0.0:cdrwa
     ```
 
@@ -258,7 +260,7 @@ ACL 即 Access Control List，zookeeper 利用 ACL 来控制节点的操作权�
 
     所有人都能访问，创建时默认
 
-    ```
+    ```bash
     setAcl path world:anyone:cdrwa
     ```
 
@@ -351,19 +353,19 @@ Note left of Follower: commit the tx
 
 1. 列出节点
 
-    ```zookeeper
+    ```bash
     ls path [watch]
     ```
 
     列出节点并显示当前节点数据
 
-    ```zookeeper
+    ```bash
     ls2 path [watch]
     ```
 
 2. 创建节点
 
-    ```zookeeper
+    ```bash
     create [-s] [-e] path data acl
     -e：临时节点
     -s：顺序节点
@@ -372,78 +374,78 @@ Note left of Follower: commit the tx
 
     查看节点信息
 
-    ```zookeeper
+    ```bash
     get path [watch]
     ```
 
     查看节点元数据
 
-    ```java
+    ```bash
     stat path [watch]
     ```
 
     删除无子节点节点
 
-    ```zookeeper
+    ```bash
     delete path [version]
     ```
 
     强制删除有子节点的节点
 
-    ```zookeeper
+    ```bash
     rmr pah
     ```
 
     判断节点是否存在
 
-    ```zookeeper
+    ```bash
     exists path
     ```
 
     设置一个节点的数据
 
-    ```zookeeper
+    ```bash
     set path data [version]
     ```
 
 3. 设置认证
 
-    ```zookeeper
+    ```bash
     setAcl path acl
     ```
 
     查询认证
 
-    ```zookeeper
+    ```bash
     getAcl path
     ```
 
 4.  设置配额
 
-    ```zookeeper
+    ```bash
     sehquota -n|-b val path
     ```
 
     查询配额
 
-    ```zookeeper
+    ```bash
     listquota path
     ```
 
     删除配额
 
-    ```zookeeper
+    ```bash
     delquota [-n|-b] path
     ```
 
 5.  查看历史命令
 
-    ```zookeeper
+    ```bash
     history
     ```
 
     重做历史命令
 
-    ```zookeeper
+    ```bash
     redo cmdno
     ```

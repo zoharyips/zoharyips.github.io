@@ -3,6 +3,7 @@ layout: post
 title: 安全彻底地清空 github 仓库 commit 历史
 categories: Git
 keywords: Git, Github
+prism: bash
 ---
 
 github 仓库的提交次数一旦变多, 则仓库 .git 所占用的空间将随之变大, 完整 git clone 的时间将会变得很长, 本文提供 **安全**, **快速**, **彻底** 的清除 commit 历史的方法

@@ -3,6 +3,7 @@ layout: post
 title: Java - 泛型机制
 categories: Java
 keywords: Java
+prism: [java]
 ---
 
 JDK 5 中引入了泛型（Genericity）的概念，通过**参数化类型**的方式，允许开发者在**编译时检测到非法的类型**，使得程序员能够为程序中类型可变的部分设置安全的类型，最终提高代码的复用性。

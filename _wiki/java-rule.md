@@ -4,6 +4,7 @@ title: Java 之清规戒律
 description: 这是一份 Java 的修炼笔记
 date: 2019-10-25
 categories: Java
+prism: [java]
 ---
 
 * TOC

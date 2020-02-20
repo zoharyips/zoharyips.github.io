@@ -4,6 +4,7 @@ title: Redis
 description: 基础 redis 语法集合
 date: 2019-07-26
 categories: Note
+prism: [bash]
 ---
 
 **目录**
@@ -17,7 +18,7 @@ categories: Note
 
 * 本地连接实例
 
-    ```redis
+    ```bash
     $redis-cli
     127.0.0.1:6379> AUTH ******
     OK
@@ -27,7 +28,7 @@ categories: Note
 
 * 远程连接实例
 
-    ```redis
+    ```bash
     // usage: 
     // $redis-cli -h host -p port
 
@@ -42,7 +43,7 @@ categories: Note
 
 Redis 中的数据库其实是 redis 实例中的多个字典，因此登录 redis 实例后将有权限访问所有数据库，因此每一个应用都应该使用一个实例而非一个数据库。各个数据库数据独立，无法跨数据库访问，同时数据库无法命名，仅有固定编号，因此我们可以为同个应用的不同部分使用不同数据库。
 
-```redis
+```bash
 zohar:0> SELECT 1;
 OK
 zohar:1>
@@ -52,7 +53,7 @@ zohar:1>
 
 * 查看配置
 
-    ```redis
+    ```bash
     // usage: 
     // redis:0 >CONFIG GET config_name;
 
@@ -69,7 +70,7 @@ zohar:1>
 
 * 修改配置
 
-    ```redis
+    ```bash
     // usage：
     // redis:0 >CONFIG SET config_name config_value;
 
@@ -93,45 +94,45 @@ Sorted Set | 元素拥有权重 | 数据插入时排序 | 排行榜
 
 1. 删除键
 
-    ```redis
+    ```bash
     DEL key
     ```
 
 1. 判断是否存在
 
-    ```redis
+    ```bash
     EXISTS key
     ```
 
 1. 获取值类型
 
-    ```redis
+    ```bash
     TYPE key
     ```
 
 1. 重命名键
 
-    ```redis
+    ```bash
     RENAME   key other_key  // 若新键名已存在，则覆盖
     RENAMENX key new_key    // 仅重命名至未存在的键名
     ```
 
 1. 查找符合条件的键
 
-    ```redis
+    ```bash
     KEYS pattern
     KEYS *          // 查找所有键
     ```
 
 1. 持久化
 
-    ```redis
+    ```bash
     PERSIST key
     ```
 
 1. 设置过期时间
 
-    ```redis
+    ```bash
     EXPIRE  key time(second)
     EXPIRE  key time(timeStamp)
     PEXPIRE key time(milliSecond)
@@ -140,26 +141,26 @@ Sorted Set | 元素拥有权重 | 数据插入时排序 | 排行榜
 
 1. 查询过期时间
 
-    ```redis
+    ```bash
     TTL  key        // 秒
     PTTL key        // 毫秒
     ```
 
 1. 序列化键并返回序列化值
 
-    ```redis
+    ```bash
     DUMP key
     ```
 
 1. 移动键
 
-    ```redis
+    ```bash
     MOVE key db
     ```
 
 1. 随机获取一个键
 
-    ```redis
+    ```bash
     RANDOMKEY
     ```
 
@@ -169,65 +170,65 @@ Sorted Set | 元素拥有权重 | 数据插入时排序 | 排行榜
 
 1. 创建 / 修改
 
-    ```redis
+    ```bash
     SET     key value   // 创建或修改
     SETNX   key value   // 仅创建
     ```
 
 1. 创建 / 修改多个
 
-    ```redis
+    ```bash
     MSET    key1 value1 [key2 value2 key3 value3 ... keyn valuen]
     MSETNX  key1 value1 [key2 value2 key3 value3 ... keyn valuen]
     ```
 
 1. 创建 / 修改，同时设置过期时间
 
-    ```redis
+    ```bash
     SETEX   key expire_time(second) value
     PSETEX  key expire_time(millionSecond) value
     ```
 
 1. 查询
 
-    ```redis
+    ```bash
     GET key
     ```
 
 1. 查询多个
 
-    ```redis
+    ```bash
     MGET key1 [key2 key3 ... keyn]
     ```
 
 1. 查询 / 修改子串，包含起始项和结束项
 
-    ```redis
+    ```bash
     GETRANGE key start_index end_index
     SETRANGE key start_index end_index value
     ```
 
 1. 查询长度
 
-    ```redis
+    ```bash
     STRLEN key
     ```
 
 1. 追加
 
-    ```redis
+    ```bash
     APPEND key value
     ```
 
 1. 修改并返回旧值
 
-    ```redis
+    ```bash
     GETSET key new_value
     ```
 
 1. 若为数字，则增加 / 减小
 
-    ```redis
+    ```bash
     INCR        key                 // 加一
     INCRBY      key increment       // 指定增量
     INCRBYFLOAT key increment       // 指定浮点增量
@@ -240,7 +241,7 @@ Sorted Set | 元素拥有权重 | 数据插入时排序 | 排行榜
     由于 String 存储采用二进制的形式，因此所有 String 都会被转化为 0101 的二进制串，才有位操作这种操作形式。  
     如 'a' 这一字符依 ASCII 转化为二进制为 97<sub>10</sub> ＝ 01100001<sub>2</sub>，则获取下标为 3 所对应的值为 0。
 
-    ```redis
+    ```bash
     GETBIT key index
     ```
 
@@ -248,7 +249,7 @@ Sorted Set | 元素拥有权重 | 数据插入时排序 | 排行榜
 
     a 的二进制表示为 01100001，b 的二进制表示为 01100010
 
-    ```redis
+    ```bash
     SETBIT key index value
 
     redis> SET char a

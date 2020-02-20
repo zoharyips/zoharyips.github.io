@@ -4,6 +4,7 @@ title: Git
 description: 一些常用 git 命令的记录, 以备查阅 ^_^
 date: 2019-01-20
 categories: Note
+prism: [git]
 ---
 
 **目录**
@@ -48,7 +49,7 @@ categories: Note
 ### 查看配置
 
 ```git
-git config --list {--local | --global | --system}`
+git config --list {--local | --global | --system}
 
 local:   配置当前仓库
 global： 当前用户所有仓库

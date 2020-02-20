@@ -4,6 +4,7 @@ title: Java 之奇淫技巧
 description: 聪明的你总是能想出一些非常奇妙的方法
 date: 2019-10-25
 categories: Java
+prism: [java]
 ---
 
 * TOC
@@ -26,9 +27,8 @@ categories: Java
     推荐，是系统原生方法，速度快且稳定
 
     ```java
-    public static native void arraycopy(Object src,  int  srcPos,
-                                        Object dest, int destPos,
-                                        int length);
+    public static native void arraycopy(Object src, int srcPos,
+        Object dest, int destPos, int length);
     ```
 
 * for 循环逐一复制

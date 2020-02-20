@@ -4,6 +4,7 @@ title: Ubuntu 下 jekyll 环境搭建
 description: 无论是在 Linux 下还是在 Win 下，搭建 jekyll 环境都想让人吐血
 date: 2019-10-26
 categories: Note
+prism: [bash]
 ---
 
 * TOC
@@ -47,7 +48,7 @@ apt-get install make gcc g++ libxslt-dev libxml2-dev build-essential -y
 
 ## 4. 更新 Gem 软件源
 
-```
+```bash
 zohar@Titan:~$ gem source -l
 *** CURRENT SOURCES ***
 
@@ -106,7 +107,7 @@ bundle install
 
 此时如果出现错误：
 
-```
+```bash
 root@hostname:/opt/metasploit-framework# bundle install
 Traceback (most recent call last):
     2: from /usr/local/bin/bundle:23:in `'
@@ -144,6 +145,6 @@ jekyll 3.8.5 | Error:  Invalid US-ASCII character "\xE2" on line 5
 
 找到 gem 安装的 sass 模块，一般在 `/var/lib/gems/2.5.0/gems/` 下，修改 `lib/sass.rb` 文件，在所有 require 后添加：
 
-```
+```bash
 Encoding.default_external = Encoding.find('utf-8')
 ```

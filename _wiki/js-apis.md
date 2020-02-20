@@ -4,6 +4,7 @@ title: JS 之奇淫技巧
 description: 聪明的你总是能想出一些非常奇妙的方法
 date: 2020-02-19
 categories: JavaScript
+prism: [javascript]
 ---
 
 * TOC
@@ -15,7 +16,7 @@ categories: JavaScript
 
 1. 刷新当前页
 
-    ```js
+    ```javascript
     location.reload(force);                 // 重载当前页面，force 为真强制刷新
     location.replace(location.href);        // 访问当前 URL
     history.go(0);                          // 访问最新历史记录
@@ -26,7 +27,7 @@ categories: JavaScript
 
 2. 上一页并刷新页面
 
-    ```js
+    ```javascript
     location.replace(document.referrer);    // 替换为前一个页面
     ```
 
@@ -39,7 +40,7 @@ categories: JavaScript
     <meta http-equiv="refresh" content="20;url=http://www.xxx.net"> <!-- 定时跳转 -->
     ```
 
-    ```js
+    ```javascript
     function refreshPage() {
         window.location.reload();
     }

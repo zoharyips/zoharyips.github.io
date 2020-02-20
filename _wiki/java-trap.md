@@ -4,6 +4,7 @@ title: Java 之避阱入坑
 description: WTF?? 谁 TM 写的代码
 date: 2019-10-28
 categories: Java
+prism: [java]
 ---
 
 * 导包只能导入当前层，不可以导入包里的其他包；

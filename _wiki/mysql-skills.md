@@ -4,6 +4,7 @@ title: MySQL - 独门秘技
 description: 有时候你想破头都不知道这条 SQL 该怎么写
 date: 2020-01-11
 categories: MySQL
+prism: [sql, bash]
 ---
 
 * TOC
@@ -83,7 +84,7 @@ categories: MySQL
 
 * 效果：
 
-    ```data
+    ```bash
     +----+------+------+
     | id | name | data |
     +----+------+------+         +------+

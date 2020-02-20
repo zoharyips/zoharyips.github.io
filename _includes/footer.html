@@ -40,10 +40,10 @@
 <!-- site access statistics 站点访问统计 -->
 {% if site.leancloud.enable %}
   <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script src="https://cdn.bootcss.com/fingerprintjs2/2.1.0/fingerprint2.min.js"></script>
   <!-- <script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> -->
   <script src="/assets/js/string_hash.js"></script>
   <script src="/assets/js/site_statistics.js"></script>
-  <script src="/assets/js/fingerprint2.min.js"></script>
   <script>
     // leancloud 配置
     AV.initialize('{{site.leancloud.app_id}}', '{{site.leancloud.app_key}}');
@@ -74,11 +74,28 @@
 {% endif %}
 
 <!-- enable the js file that can load at the end -->
-<script src="/assets/vendor/share.js/dist/js/share.min.js"></script>
-<script src="/assets/js/geopattern.js"></script>
-<script src="/assets/js/prism.js"></script>
-<link rel="stylesheet" href="/assets/css/globals/prism.css">
+<script src="/assets/js/main.js"></script>
+<!-- 动态创建 CANVAS 背景图 -->
+<script src="https://cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+<!-- 代码提示 -->
+<!-- <script src="https://cdn.bootcss.com/prism/0.0.1/prism.min.js"></script> -->
+<!-- <link rel="stylesheet" href="https://cdn.bootcss.com/prism/0.0.1/prism.min.css"> -->
+<!-- <script src="/assets/vendor/prism/prism.js"></script> -->
+<!-- <link rel="stylesheet" href="/assets/vendor/prism/prism.css"> -->
+{% if page.prism %}
+  <script src="https://cdn.bootcss.com/prism/9000.0.1/prism.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.bootcss.com/prism/9000.0.1/themes/prism.min.css">
+  <script src="https://cdn.bootcss.com/prism/9000.0.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.bootcss.com/prism/9000.0.1/plugins/line-numbers/prism-line-numbers.min.css">
+  <script src="https://cdn.bootcss.com/prism/9000.0.1/plugins/show-language/prism-show-language.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.bootcss.com/prism/9000.0.1/plugins/show-language/prism-show-language.min.css">
+  {% for lang in page.prism %}
+    <script src="https://cdn.bootcss.com/prism/9000.0.1/components/prism-{{ lang }}.min.js"></script>
+  {% endfor %}
+{% endif %}
+
 <script>
+  $('pre').addClass("line-numbers").css('white-space', 'pre-line').css('padding', '1em 0px 22px 3em');
   jQuery(document).ready(function($) {
     $('.geopattern').each(function(){
       $(this).geopattern($(this).data('pattern-id'));
@@ -86,17 +103,17 @@
   });
 </script>
 
-<!-- if the page enable mermaid -->
+<!-- if the page enable mermaid 加载较慢 -->
 {% if page.mermaid %}
-<script src="/assets/js/mermaid.min.js"></script>
-<script>mermaid.initialize({startOnLoad:true});</script>
+  <script src="https://cdn.bootcss.com/mermaid/8.3.1/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
 {% endif %}
 
 <!-- if the page enable sequence -->
 {% if page.sequence %}
-  <script src="/assets/js/webfont.js"></script>
-  <script src="/assets/js/snap.svg-min.js"></script>
-  <script src="/assets/js/underscore-min.js"></script>
+  <script src="https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js"></script>
+  <script src="https://cdn.bootcss.com/snap.svg/0.5.1/snap.svg-min.js"></script>
+  <script src="https://cdn.bootcss.com/underscore.js/1.9.1/underscore-min.js"></script>
   <script src="/assets/vendor/js-sequence-diagrams/dist/sequence-diagram-min.js"></script>
   <link rel="stylesheet" href="/assets/vendor/js-sequence-diagrams/dist/sequence-diagram-min.css">
   <script>
@@ -106,14 +123,15 @@
 
 <!-- if the page enable flow -->
 {% if page.flow %}
-  <script src="/assets/js/raphael.min.js"></script>
-  <script src="/assets/vendor/flowchart.js/dist/flowchart.min.js"></script>
+  <script src="https://cdn.bootcss.com/raphael/2.3.0/raphael.min.js"></script>
+  <script src="https://cdn.bootcss.com/flowchart/1.12.2/flowchart.min.js"></script>
   <script src="/assets/js/flow.js"></script>
 {% endif %}
 
 <!-- if the page enable mathjax, mathjax 脚本无法引入本地目录 -->
 {% if page.mathjax %}
-  <script type="text/javascript" src="https://basis-learning.github.io/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script type="text/javascript" src="https://basis-learning.github.io/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
 {% endif %}
 
 <!-- if the site enable google analytics 加载过慢 -->

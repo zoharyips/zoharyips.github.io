@@ -15,10 +15,10 @@
 
 @font-face {
   font-family:octicons;
-  src:  url(../../vendor/octicons/octicons/octicons.eot?#iefix) format("embedded-opentype"),
-        url(../../vendor/octicons/octicons/octicons.woff) format("woff"),
+  src:  url(https://cdn.bootcss.com/octicons/3.5.0/octicons.eot?#iefix) format("embedded-opentype"),
+        url(https://cdn.bootcss.com/octicons/3.5.0/octicons.woff) format("woff"),
         url(../../../assets/) format("truetype"),
-        url(../../vendor/octicons/octicons/octicons.svg#octicons) format("svg");
+        url(https://cdn.bootcss.com/octicons/3.5.0/octicons.svg#octicons) format("svg");
   font-weight:400;
   font-style:normal
 }
@@ -582,12 +582,12 @@
 }
 
 .markdown-body .highlight pre,.markdown-body pre {
-  padding: 16px;
+  /* padding: 16px; */
   overflow: auto;
   font-size: 85%;
-  line-height: 1.45;
-  background-color: #f7f7f7;
-  border-radius: 3px
+  line-height: 1.4;
+  /* background-color: #f7f7f7; */
+  /* border-radius: 3px */
 }
 
 .markdown-body .highlight pre {

@@ -3,6 +3,7 @@ layout: post
 title: 使用 VScode 进行 Java/J2EE 开发
 categories: VScode Java
 keywords: Vscode Java
+prism: [markup, bash, java, powershell]
 ---
 
 电脑坏了，只能用舍友的电脑😞，之前一直使用 IDEA，偶尔使用 Eclipse 打 Java，但答应舍友只安装 VSCode 这一个软件，那就试一下使用 VScode 来打 Java 吧
@@ -94,7 +95,7 @@ VScode 有 maven 插件，但并不是 maven 程序，安装 maven 走起
 
 4. 修改 `settings.xml`
 
-    ```xml
+    ```markup
     ...
     <localRepository>F:\maven-repository</localRepository>
     ...
@@ -110,7 +111,7 @@ VScode 有 maven 插件，但并不是 maven 程序，安装 maven 走起
 
 5. 命令行执行初始化
 
-    ```bash
+    ```powershell
     C:\Users\Administrator>mvn help:system
     ```
 

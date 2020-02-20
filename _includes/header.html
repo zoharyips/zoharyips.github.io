@@ -64,28 +64,24 @@
     <link rel="shortcut icon" href="/favicon.ico" />
     <!-- <link rel="canonical" href="{{ page.url | prepend: site.url }}" /> SEO 插件有 -->
     <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="{{ site.title }}">
-    <!-- 站点所需 css 文件 -->
-    <link rel="stylesheet" href="/assets/vendor/primer-css/css/primer.css"/>
-    <link rel="stylesheet" href="/assets/vendor/primer-markdown/dist/user-content.min.css"/>
-    <link rel="stylesheet" href="/assets/vendor/octicons/octicons/octicons.css"/>
-    <link rel="stylesheet" href="/assets/vendor/share.js/dist/css/share.min.css"/>
+    <!-- 全站所需 css 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/Primer/2.7.0/css/primer.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/octicons/3.5.0/octicons.min.css">
     <link rel="stylesheet" href="/assets/css/components/collection.css"/>
-    <link rel="stylesheet" href="/assets/css/components/repo-card.css"/>
     <link rel="stylesheet" href="/assets/css/components/boxed-group.css"/>
-    <link rel="stylesheet" href="/assets/css/components/calendar.css"/>
     <link rel="stylesheet" href="/assets/css/sections/repo-list.css"/>
     <link rel="stylesheet" href="/assets/css/sections/mini-repo-list.css"/>
     <link rel="stylesheet" href="/assets/css/globals/common.css"/>
     <link rel="stylesheet" href="/assets/css/globals/responsive.css"/>
     <link rel="stylesheet" href="/assets/css/posts/index.css"/>
+    <!-- <link rel="stylesheet" href="/assets/vendor/primer-css/css/primer.css"/> -->
     <!-- 页面所需 css 文件 -->
     {% for css in page.css %}
       <link rel="stylesheet" href="/assets/css/{{ css }}" />
     {% endfor %}
 
-    <script src="/assets/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="/assets/js/jquery-ui.js"></script>
-    <script src="/assets/js/main.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>
   </head>
   <body class="{{ page.class }}" data-mz="{{ page.class }}">
     <header class="site-header">

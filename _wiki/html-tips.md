@@ -4,6 +4,7 @@ title: HTML 之奇淫技巧
 description: 聪明的你总是能想出一些非常奇妙的方法
 date: 2020-02-18
 categories: Html
+prism: [css]
 ---
 
 * TOC
