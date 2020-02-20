@@ -95,7 +95,7 @@
 {% endif %}
 
 <script>
-  $('pre').addClass("line-numbers").css('white-space', 'pre-line').css('padding', '1em 0px 22px 3em');
+  $('pre').addClass("line-numbers").css('white-space', 'pre-line').css('padding', '1em 0px 22px 3em').css('position', 'unset');
   jQuery(document).ready(function($) {
     $('.geopattern').each(function(){
       $(this).geopattern($(this).data('pattern-id'));
