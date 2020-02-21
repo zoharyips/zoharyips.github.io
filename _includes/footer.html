@@ -75,8 +75,7 @@
 
 <!-- enable the js file that can load at the end -->
 <script src="/assets/js/main.js"></script>
-<!-- 动态创建 CANVAS 背景图 -->
-<script src="https://cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+
 <!-- 代码提示 -->
 <!-- <script src="https://cdn.bootcss.com/prism/0.0.1/prism.min.js"></script> -->
 <!-- <link rel="stylesheet" href="https://cdn.bootcss.com/prism/0.0.1/prism.min.css"> -->
@@ -92,10 +91,14 @@
   {% for lang in page.prism %}
     <script src="https://cdn.bootcss.com/prism/9000.0.1/components/prism-{{ lang }}.min.js"></script>
   {% endfor %}
+  <script>
+    $('pre').addClass("line-numbers").css('white-space', 'pre-line').css('padding', '1em 0px 22px 3em');
+  </script>
 {% endif %}
 
+<!-- 动态创建 CANVAS 背景图 -->
+<script src="https://cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
 <script>
-  $('pre').addClass("line-numbers").css('white-space', 'pre-line').css('padding', '1em 0px 22px 3em').css('position', 'unset');
   jQuery(document).ready(function($) {
     $('.geopattern').each(function(){
       $(this).geopattern($(this).data('pattern-id'));
