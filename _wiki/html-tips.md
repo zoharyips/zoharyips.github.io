@@ -2,7 +2,7 @@
 layout: wiki
 title: HTML 之奇淫技巧
 description: 聪明的你总是能想出一些非常奇妙的方法
-date: 2020-02-24
+date: 2020-02-28
 categories: Html
 prism: [css, javascript]
 ---
@@ -115,3 +115,13 @@ $('.btn').on('click', function () {
 
 样式演示：
 <iframe src="/assets/html/Suppressible-sidebar.html" width="100%"></iframe>
+
+## 元素
+
+### disabled 表单域的值提交
+
+* 方案 1：不用 `disabled` 而是使用 `readonly`
+
+* 方案 2：在提交之前，把要提交的表单复制一份，然后把复制后的表单中的所有表单域的 `disabled` 属性都置为 `false`，然后提交这个复制后的表单。
+
+    相关链接：[如何提交表单中disabled表单域的值示例代码](https://www.jb51.net/web/94392.html)

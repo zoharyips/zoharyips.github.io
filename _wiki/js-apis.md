@@ -4,7 +4,7 @@ title: JS 之奇淫技巧
 description: 聪明的你总是能想出一些非常奇妙的方法
 date: 2020-02-19
 categories: JavaScript
-prism: [javascript]
+prism: [javascript, markup]
 ---
 
 * TOC
@@ -35,7 +35,7 @@ prism: [javascript]
 
 3. 定时刷新页面
 
-    ```html
+    ```markup
     <meta http-equiv="refresh" content="20">                        <!-- 定时刷新 -->
     <meta http-equiv="refresh" content="20;url=http://www.xxx.net"> <!-- 定时跳转 -->
     ```
@@ -46,3 +46,64 @@ prism: [javascript]
     }
     setTimeout('refreshPage()',1000);
     ```
+
+## 对象相关
+
+### 获取对象
+
+```javascript
+$("*")                              // 获取所有对象
+$("#XXX")                           // 获取 id=XXX 的元素对象
+$(".XXX")                           // 获取 class=XXX 的元素对象
+$("div")                            // 获取所有 div 元素
+$("input[name='uname']")            // 获取 input 标签中 name='uname' 的对象
+$("Element[attribute =  'test']")   // 获取所有指定属性为 test 的 Element 元素
+$("Element[attribute != 'test']")   // 获得所有指定属性非 test 的元素
+$("Element[attribute ^= 'test']")   // 获得所有指定属性非 test 的开头的元素
+$("Element[attribute *= 'test']")   // 获得所有指定属性为 test 的开头的元素
+$('Element1 Element2')              // 获取 Element1 下所有 Element2 子孙节点
+$('Element1 > Element2')            // 获取 Element1 下所有 Element2 子节点
+$('Element1 + Element2')            // 获取 Element1 后一个 Element2 兄弟节点
+$('Element1 ~ Element2')            // 获取 Element1 所有的 Element2 兄弟节点
+```
+
+### 获取对象类型
+
+```javascript
+$('#id')[0].tagName;                // 大写
+$('#id')[0].tagName.toLowerCase();  // 小写
+```
+
+### JQuery 对象与 dom 对象互转
+
+```javascript
+var obj = $('#xx')[0];              // jQuery 转 dom
+$(obj);                             // dom 转 jQuery
+```
+
+### 获取 Class 所有元素
+
+```javascript
+// jQuery
+$('.lis').each(function(index, object){
+    console.log(index + ': ' + object);
+});
+// js
+var lis = document.getElementsByClassName('lis');
+for(var i = 0; i < lis.length; i++){
+    console.log(i + ': ' + lis[i]);
+}
+```
+
+### 获取/设置元素属性
+
+```javascript
+$("Element").attr(key);         // 获取属性
+$("Element").attr(key,value);   // 设置属性
+```
+
+### 表单对象赋值
+
+```javascript
+$('Element').val('value');
+```
