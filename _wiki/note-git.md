@@ -2,7 +2,7 @@
 layout: wiki
 title: Git
 description: 一些常用 git 命令的记录, 以备查阅 ^_^
-date: 2019-02-29
+date: 2020-02-29
 categories: Note
 prism: [git]
 ---
