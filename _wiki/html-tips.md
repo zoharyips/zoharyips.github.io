@@ -4,7 +4,7 @@ title: HTML 之奇淫技巧
 description: 聪明的你总是能想出一些非常奇妙的方法
 date: 2020-02-28
 categories: Html
-prism: [css, javascript]
+prism: [css, javascript, markup]
 ---
 
 * TOC
@@ -115,6 +115,47 @@ $('.btn').on('click', function () {
 
 样式演示：
 <iframe src="/assets/html/Suppressible-sidebar.html" width="100%"></iframe>
+
+## 弹出层
+
+### 图片弹出层
+
+点击图标、文字、图片弹出具体弹出层
+
+```css
+.popups {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;                     /* 遮罩覆盖整个父页面 */
+    z-index: 2000;                    /* 将弹出层置于最前 */
+    background: rgba(0, 0, 0, 0.7);
+    display: none;                    /* 默认不显示 */
+}
+.popups img {                         /* 图片样式，自行设定 */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 430px;
+    border: 5px solid rgb(255, 255, 255);
+}
+```
+
+绑定点击事件即可
+
+```javascript
+<div onclick="$('.qrcode-shade').fadeIn('fast')">
+    ...
+</div>
+<div class="popups" onclick="$('.qrcode-shade').fadeOut('fast');">
+    <img src="..." alt="...">
+</div>
+```
+
+样式演示：
+<iframe src="/assets/html/Image-popups-layer.html" width="100%"></iframe>
 
 ## 元素
 
