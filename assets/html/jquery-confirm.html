@@ -1,0 +1,65 @@
+<link href="https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css" rel="stylesheet">
+<link href="https://cdn.bootcss.com/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery.form/4.2.2/jquery.form.min.js"></script>
+<style>
+  button {
+    margin: 12px;
+  }
+</style>
+<button class="example-alert btn btn-success">Alert Dialog</button>
+<button class="example-confirm btn btn-success">Confirm Dialog</button>
+<button class="example-input btn btn-success">Input Dialog</button>
+<script>
+  $('.example-alert').on('click', function () {
+    $.alert({
+      title: 'Alert!',
+      content: 'Simple alert!',
+      buttons: {
+        confirm: function(){
+          $.alert('Confirmed!');
+        }
+      }
+    });
+  });
+  
+  $('.example-confirm').on('click', function () {
+    $.confirm({
+      title: 'Confirm please!',
+      content: 'Simple confirm!',
+      buttons: {
+        confirm: function(){
+          $.alert('Confirmed!');
+        },
+        cancel: function() {
+          $.alert('Canceled!');
+        }
+      }
+    });
+  });
+  
+  $('.example-input').on('click', function () {
+    $.confirm({
+      title: 'Input please!',
+      content: 'url:form.html',
+      buttons: {
+        confirm: function(){
+          var input = $('#input-name');
+          var errorText = $('.text-danger');
+          if (input.val() == '') {
+              errorText.slideDown();
+              return false;
+          } else {
+              $.alert('Hello ' + input.val());
+          }
+        },
+        cancel: function() {
+          $.alert('Canceled!');
+        }
+      }
+    });
+  });
+</script>
