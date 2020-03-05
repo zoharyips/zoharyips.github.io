@@ -2,7 +2,7 @@
 layout: wiki
 title: Php 之骑驴找马
 description: 我只在刷 leetcode 时重新写那么多函数
-date: 2020-02-16
+date: 2020-04-04
 categories: Php
 prism: [php]
 ---
@@ -71,3 +71,20 @@ explode(string $delimiter, string $string, [int $limit]) : array
 ```
 
 如果设置了 limit 参数并且是正数，则返回的数组包含最多 limit 个元素，而最后那个元素将包含 string 的剩余部分。
+
+## 数组
+
+### 数组长度
+
+```php
+count($array);
+```
+
+## 时间
+
+### 秒数转时间戳
+
+```php
+gmstrftime($format, $seconds);
+// Year-Month-Day Hour:Minute:Second 为 %Y-%m-%d %H:%M:%S
+```

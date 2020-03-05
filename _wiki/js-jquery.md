@@ -119,15 +119,37 @@ $(document).ready(function(){
 
 ## Ajax 请求
 
+```javascript
+$.ajax({
+    url:      url,
+    type:     method,
+    data:     data,
+    success:  callback(),
+    dataType: dataType
+});
+```
+
 ### Get 请求
 
+```javascript
+$.get(url, data, callback);
+```
+
 ### Post 请求
+
+```javascript
+$.post(url, data, callback);
+$.post(url, data)
+    .done(callback)
+    .fail(callback)
+    .always(callback);
+```
 
 ### PUT 请求
 
 ```javascript
 $.ajax({
-   url: 'url',
+   url: url,
    type: 'PUT',
    success: function(result) {...}
 });

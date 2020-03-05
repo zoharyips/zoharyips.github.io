@@ -44,41 +44,27 @@
   type: doc
 
 -
-  name: Postgresql 中文文档
-  url: http://www.postgres.cn/v2/document
-  type: doc
-
--
-  name: Golang 标准库文档
-  url: https://studygolang.com/pkgdoc
-  type: doc
-
--
-  name: Angular 官方文档
-  url: https://angular.cn/docs
-  type: doc
-
--
-  name: ★ 独特工具箱
+  name: 独特工具箱
   url: https://www.dute.org/
   type: tool
 
 -
-  name: Linux 命令查询工具
-  url: http://man.linuxde.net/
+  name: 在线工具
+  url: https://tool.lu/
   type: tool
   
 -
-  name: 在线 POST 测试
+  name: 在线 API 测试
   url: http://coolaf.com/
   type: tool
 
 -
-  name: 免费 API 测试
-  url: https://www.free-api.com/
-  type: tool
+  name: BootCDN
+  url: https://www.bootcdn.cn/
+  type: download
+
 -
-  name: ★ 第八基地
+  name: 第八基地
   url: http://doc.d8jd.com/
   type: download
   
