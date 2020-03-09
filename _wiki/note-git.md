@@ -70,9 +70,31 @@ prism: [git]
 
 ## 分支管理
 
-* 创建 `git branch <branchname>`
+### 创建本地分支
 
-* 切换 `git checkout <branchname>`
+`git branch <branchname>`
+
+### 推送本地分支到远程
+
+`git push origin <branchName>`
+
+### 切换分支
+
+`git checkout <branchname>`
+
+### 拉取远程分支
+
+1. 拉取 `git fetch origin <remoteBranchName>`
+
+2. 创建 `git checkout -b <localBranchName> origin/<remoteBranchName>`
+
+### 删除远程分支
+
+`git push --delete origin <remoteBranchName>`
+
+### 重命名本地分支
+
+`git branch -m <oldBranchName> <newBranchName>`
 
 ### 隐藏修改切换分支
 

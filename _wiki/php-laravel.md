@@ -4,7 +4,7 @@ title: Php Laravel 笔记
 description: Laravel 可以让你从面条一样杂乱的代码中解脱出来；它可以帮你构建一个完美的网络APP，而且每行代码都可以简洁、富于表达力。
 date: 2020-02-27
 categories: Php
-prism: [php, bash, yaml]
+prism: [php, bash, yaml, markup]
 ---
 
 * TOC
@@ -271,3 +271,19 @@ return response()->json(['code' => '1', 'msg' => 'Subscribe successfully']);
 ```bash
 composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 ```
+
+## 部署相关
+
+### Nginx
+
+1. 将网站目录指向 public 文件夹
+
+    `root   "D:/WORKSPACE/PhpStorm/up_server_admin/public";`
+
+2. 设置网站入口为 index.php
+
+    `index index.php index.html;`
+
+3. 设置所有资源入口为 index.php
+
+    `try_files $uri $uri/ /index.php?$query_string;`
