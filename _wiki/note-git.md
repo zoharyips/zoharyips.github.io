@@ -58,8 +58,6 @@ prism: [git]
 
 * 撤销多次提交：`git reset --soft HEAD~n`
 
-* 修改提交注释：`git commit --amend`
-
 参数：
 
 * `--mixed`：默认参数，撤销至 **已修改** 状态；
@@ -67,6 +65,10 @@ prism: [git]
 * `--soft`：撤销至 **已暂存** 状态；
 
 * `--hard`：撤销至 **未修改** 状态；
+
+### 修改提交注释
+
+`git commit --amend`
 
 ## 分支管理
 

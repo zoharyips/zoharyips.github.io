@@ -85,6 +85,6 @@ count($array);
 ### 秒数转时间戳
 
 ```php
-gmstrftime($format, $seconds);
+strftime($format, $seconds);
 // Year-Month-Day Hour:Minute:Second 为 %Y-%m-%d %H:%M:%S
 ```

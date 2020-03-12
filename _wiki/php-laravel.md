@@ -39,6 +39,13 @@ prism: [php, bash, yaml, markup]
 {% raw %}{{ $data->appends(['param' => request()->param])->links('path_to_pagination_view') }}{% endraw %}
 ```
 
+### 将视图转化为字符串
+
+```php
+$view = view('emails.index')->with(['lang' => $lang, 'name' => $name]);
+$viewStr = response($view)->getContent();
+```
+
 ## Eloquent 模型相关
 
 ### ORM 查询指定列记录
