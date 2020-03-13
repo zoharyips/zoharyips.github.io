@@ -10,6 +10,46 @@ prism: [php]
 * TOC
 {:toc}
 
+## 判断
+
+| Expression     | `gettype($x)` | `empty($x)` | `if($x)` | `is_null($x)` | `isset($x)` |
+|:---------------|:-------------:|:-----------:|:--------:|:-------------:|:-----------:|
+| `var $x`       |    `NULL`     |      √      |    ×     |       √       |      ×      |
+| `$x undefined` |    `NULL`     |      √      |    ×     |       √       |      ×      |
+| `$x = null`    |    `NULL`     |      √      |    ×     |       √       |      ×      |
+| `$x = 0`       |   `integer`   |      √      |    ×     |       ×       |      √      |
+| `$x = 1`       |   `integer`   |      ×      |    √     |       ×       |      √      |
+| `$x = -1`      |   `integer`   |      ×      |    √     |       ×       |      √      |
+| `$x = true`    |   `boolean`   |      ×      |    √     |       ×       |      √      |
+| `$x = false`   |   `boolean`   |      √      |    ×     |       ×       |      √      |
+| `$x = ''`      |   `string`    |      √      |    ×     |       ×       |      √      |
+| `$x = 'zohar'` |   `string`    |      ×      |    √     |       ×       |      √      |
+| `$x = '0'`     |   `string`    |      √      |    ×     |       ×       |      √      |
+| `$x = '1'`     |   `string`    |      ×      |    √     |       ×       |      √      |
+| `$x = '-1'`    |   `string`    |      ×      |    √     |       ×       |      √      |
+| `$x = 'true'`  |   `string`    |      ×      |    √     |       ×       |      √      |
+| `$x = 'false'` |   `string`    |      ×      |    √     |       ×       |      √      |
+
+* `empty($x)` 与 `if($x)` 互斥
+
+* `is_null($x)` 与 `isset($x)` 互斥
+
+### 判空
+
+1. 尽量不要为接收的变量设置默认值
+
+2. 为了规范，统一使用 `isset()` 判空，但要记住 `is_null()` 和 `gettype($x) === NULL` 都可以用来判空。
+
+### 判 false
+
+1. 前端禁止传送 `value=true` 或 `value=false`，使用 `value=1` 或 `value=0` 的方式传布尔值，因为 `boolval('false') = true`, 字符串含有内容转成布尔值一律为 true。
+
+2. 只要保证不将布尔值以字符串的形式传递，那么就可以正常使用 `if` 或 `empty()` 判断布尔值。
+
+### 判请求参数是否有值
+
+使用 `isset($param) && $param !== ''` 的方式判断可确保无误
+
 ## 字符串处理
 
 ### 字符串长度
