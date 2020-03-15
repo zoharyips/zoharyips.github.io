@@ -28,7 +28,9 @@ email               : zoharyips@outlook.com
 markdown            : kramdown
 kramdown:
   input             : GFM
-highlighter         : rouge
+  syntax_highlighter_opts:
+    disable: true
+# highlighter         : rouge
 paginate            : 12
 lsi                 : false
 quiet               : false
@@ -37,7 +39,7 @@ excerpt_separator   : "\n\n"                # 摘录的分隔符
 permalink           : /posts/:title.html    # 博文发布的 URL，伪静态
 plugins:
   - jekyll-github-metadata                  # github 元信息
-  - rouge
+  # - rouge                                   # Jekyll 的语法高亮在 Jekyll 3.0 以上默认使用的是 Rouge
   - jekyll-octicons                         # 支持 octions 图标
   - jekyll-paginate                         # 分页
   - jekyll-feed                             # 自动生成 SSR 源

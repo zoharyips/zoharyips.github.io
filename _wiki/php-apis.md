@@ -4,7 +4,7 @@ title: Php 之骑驴找马
 description: 我只在刷 leetcode 时重新写那么多函数
 date: 2020-03-04
 categories: Php
-prism: [php]
+prism: [php, php-extras, java, css]
 ---
 
 * TOC
@@ -128,6 +128,16 @@ explode(string $delimiter, string $string, [int $limit]) : array
 
 ```php
 count($array);
+```
+
+### 将数组转为一组变量
+
+```php
+list($oldPassword, $password, $confirm) = [
+    $credentials['old_password'],
+    $credentials['password'],
+    $credentials['password_confirmation']
+];
 ```
 
 ## 时间

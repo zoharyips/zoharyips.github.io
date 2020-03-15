@@ -83,16 +83,37 @@
 <!-- <link rel="stylesheet" href="/assets/vendor/prism/prism.css"> -->
 {% if page.prism %}
   <script src="https://cdn.bootcss.com/prism/9000.0.1/prism.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.bootcss.com/prism/9000.0.1/themes/prism.min.css">
   <script src="https://cdn.bootcss.com/prism/9000.0.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.bootcss.com/prism/9000.0.1/plugins/line-numbers/prism-line-numbers.min.css">
   <script src="https://cdn.bootcss.com/prism/9000.0.1/plugins/show-language/prism-show-language.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.bootcss.com/prism/1.19.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/prism/9000.0.1/plugins/line-numbers/prism-line-numbers.min.css">
   <link rel="stylesheet" href="https://cdn.bootcss.com/prism/9000.0.1/plugins/show-language/prism-show-language.min.css">
   {% for lang in page.prism %}
     <script src="https://cdn.bootcss.com/prism/9000.0.1/components/prism-{{ lang }}.min.js"></script>
+    {% if lang == 'php' %}
+      <script>
+        jQuery(document).ready(function($) {
+          $('pre ~ .language-php').each(function(index, object){
+            $(object).css('padding', '1em 0px 1em 1em');
+          });
+        });
+      </script>
+    {% endif %}
   {% endfor %}
   <script>
-    $('pre').addClass("line-numbers").css('white-space', 'pre-line').css('padding', '1em 0px 22px 3em');
+    let code = $('pre');
+    code.addClass('line-numbers');
+    code.css('padding', '1em 0px 1em 3.5em');
+    code.css('background-color', '#45494A');
+    code.css('border-radius', '.5em');
+    code.css('box-shadow', 'none');
+    $('code').css('text-shadow', 'none');
+    jQuery(document).ready(function($) {
+      $('.line-numbers-rows').each(function(index, object){
+        let numRows = object.children;
+        $(numRows[numRows.length - 1]).attr('style', 'display:none');
+      });
+    });
   </script>
 {% endif %}
 
