@@ -279,6 +279,18 @@ return response()->json(['code' => '1', 'msg' => 'Subscribe successfully']);
 composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 ```
 
+查看配置
+
+```bash
+composer config -gl
+```
+
+### 新建 laravel 项目
+
+```bash
+composer create-project laravel/laravel <projectName>
+```
+
 ## 部署相关
 
 ### Nginx

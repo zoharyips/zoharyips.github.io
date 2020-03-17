@@ -130,3 +130,40 @@ prism: [sql, bash]
         ), null
     ) AS max;
     ```
+
+### 行列转换：将多行数据转换成多列数据
+
+* 效果：
+
+    ```bash
+        id  class   course_id    teacher_id
+    ------  ------  ---------  ------------
+        1   101             2            18         class  语文  数学  英语
+        12  101             1            12         -----  ----  ----  ----
+        13  101             3             1  ====>   101    12    18    1
+        14  102             2             4          102    54    4     0
+        15  102             1            54          103    23    0     0
+        16  103             1            23          104    0     0     13
+        17  104             3            13
+    ```
+
+* 使用 `Group By` 分组
+
+    如果需要作为分组的依据是多个字段关联，那么使用 `Group By col1, col2, col3...` 即可。
+
+    注意，`Group By` 之后 `select` 后面指定的字段必须与 `group by` 后面的一致，或者是使用聚合函数。
+
+    比如，这个例子中，对 `class` 进行 `Group By` 之后，不能 `select id`，因为同一组的 id 是不同的，MySQL 默认不知道选哪个；如果 select 了不合法的字段，MySql 会报异常。
+
+* 使用 `IF` 函数
+
+    `IF(a, b, c)` 函数：若 a 为真，则 b， 否则 c。
+
+    ```sql
+    SELECT class,
+        SUM(IF(course_id = 1, teacher_id, 0)) AS `语文`,
+        SUM(IF(course_id = 2, teacher_id, 0)) AS `数学`,
+        SUM(IF(course_id = 3, teacher_id, 0)) AS `英语`
+    FROM test 
+    GROUP BY class;
+    ```
