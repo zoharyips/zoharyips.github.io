@@ -2,7 +2,10 @@
 layout: default
 ---
 <!-- 维基页面 -->
-<section id="fix_title" class="collection-head small geopattern" data-pattern-id="{{ page.title | truncate: 15, ''}}">
+<div id="fixed_title" class="fix-title" hidden=true>
+  <h3 onclick="titleBackToTop()">{{ page.title }}</h3>
+</div>
+<section id="origin_title" class="collection-head small geopattern" data-pattern-id="{{ page.title | truncate: 15, ''}}">
   <div class="container">
     <div class="columns">
       <div class="column three-fourths">
@@ -46,3 +49,4 @@ layout: default
 </div>
 </section>
 <!-- /section.content -->
+<script src="/assets/js/fixed_title.js"></script>

@@ -99,6 +99,7 @@
     code.css('background-color', '#45494A');
     code.css('border-radius', '.5em');
     code.css('box-shadow', 'none');
+    code.css('position', 'unset');
     $('code').css('text-shadow', 'none');
     jQuery(document).ready(function($) {
       /* 处理行号会多出一行的 bug */
@@ -125,6 +126,10 @@
         str = arr.join('\n');
         object.innerHTML = str;
       });
+      /* 修复代码类型位置是 fixed 的 bug */
+      $('pre').each(function(index, object) {
+        $(object).wrap('<div style="position:relative;"></div>');
+      })
     });
   </script>
 {% endif %}

@@ -4,7 +4,7 @@ title: Android 之问题合集
 description: 记录 android studio 使用中遇到的各种小问题
 date: 2019-01-06
 categories: Android
-prism: [bash]
+prism: [bash, markup]
 ---
 
 **目录**
@@ -45,13 +45,13 @@ warnning: 阿里镜像源地址可能会进行更新, 使用前可通过浏览�
 返回, 打开 `project` 中的 `build.gradle` 文件, 将 gradle 版本修改为和 studio 版本号一致  
 
 ```bash
-    dependencies {
-        // 重要 : 此处设置与你的 AndroidStudio 版本一致!
-        classpath 'com.android.tools.build:gradle:3.3.2'
-		
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
+dependencies {
+    // 重要 : 此处设置与你的 AndroidStudio 版本一致!
+    classpath 'com.android.tools.build:gradle:3.3.2'
+    
+    // NOTE: Do not place your application dependencies here; they belong
+    // in the individual module build.gradle files
+}
 ```
 
 返回, 打开 `app` 中的 `build.gradle`, 使里面的 `compileSdkVersion` 与 `targetSdkVersion` 与 `dependencies` 中的版本一致:  
@@ -94,7 +94,7 @@ dependencies {
 再在 AndroidManifest 文件中的 `<application>` 标签中增加这一属性:  
 `android:networkSecurityConfig="@xml/***.xml"`
 
-```
+```markup
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
 	<base-config cleartextTrafficPermitted="true" />
