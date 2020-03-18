@@ -46,6 +46,15 @@ $view = view('emails.index')->with(['lang' => $lang, 'name' => $name]);
 $viewStr = response($view)->getContent();
 ```
 
+### Form 表单进行 PUT 请求
+
+```php
+<form method="post" action="/tc-strategy/{{ $unionId }}">
+    <input name="_method" type="hidden" value="PUT"/>
+    {{ csrf_field() }}
+</form>
+```
+
 ## Eloquent 模型相关
 
 ### ORM 查询指定列记录
@@ -100,7 +109,7 @@ $viewStr = response($view)->getContent();
     Redis::subscribe([$QUEUE_NAME], function($message) {
         this->info($message);
     });
-```
+    ```
 
 ### 使用 Redis 异步任务队列
 
