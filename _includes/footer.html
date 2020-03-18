@@ -90,15 +90,6 @@
   <link rel="stylesheet" href="https://cdn.bootcss.com/prism/9000.0.1/plugins/show-language/prism-show-language.min.css">
   {% for lang in page.prism %}
     <script src="https://cdn.bootcss.com/prism/9000.0.1/components/prism-{{ lang }}.min.js"></script>
-    {% if lang == 'php' %}
-      <script>
-        jQuery(document).ready(function($) {
-          $('pre ~ .language-php').each(function(index, object){
-            $(object).css('padding', '1em 0px 1em 1em');
-          });
-        });
-      </script>
-    {% endif %}
   {% endfor %}
   <script>
     let code = $('pre');
@@ -110,9 +101,29 @@
     code.css('box-shadow', 'none');
     $('code').css('text-shadow', 'none');
     jQuery(document).ready(function($) {
+      /* 处理行号会多出一行的 bug */
       $('.line-numbers-rows').each(function(index, object){
         let numRows = object.children;
         $(numRows[numRows.length - 1]).attr('style', 'display:none');
+      });
+      /* 处理 php 代码段无法生成行号，而行号占用左边空间不美观的 bug */
+      $('pre[data-language="php"]').each(function(index, object) {
+        $(object).removeClass('line-numbers');
+        $(object).css('padding', '1em 0px 1em 1em');
+      });
+      /* 处理因为缩进而引发代码块代码行左边出现空格的 bug */
+      $('pre code').each(function(index, object) {
+        /* 要修改 html 而非 textContent */
+        str = object.innerHTML;
+        let arr = str.split('\n');
+        len = arr[0].length - arr[0].trimLeft().length; // 前面多出的非法空格数量，使用 trimLeft 会把缩进也毁掉的。
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i][0] === ' ') {
+            arr[i] = arr[i].substr(len);
+          }
+        }
+        str = arr.join('\n');
+        object.innerHTML = str;
       });
     });
   </script>

@@ -49,10 +49,10 @@ $viewStr = response($view)->getContent();
 ### Form 表单进行 PUT 请求
 
 ```php
-<form method="post" action="/tc-strategy/{{ $unionId }}">
+{% raw %}<form method="post" action="/tc-strategy/{{ $unionId }}">
     <input name="_method" type="hidden" value="PUT"/>
     {{ csrf_field() }}
-</form>
+</form>{% endraw %}
 ```
 
 ## Eloquent 模型相关
