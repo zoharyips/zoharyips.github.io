@@ -76,35 +76,35 @@ prism: [git]
 
 * 创建
 
-`git branch <branchname>`
+    `git branch <branchname>`
 
 * 删除
 
-`git branch -d <branchname>`
+    `git branch -d <branchname>`
 
 * 切换
 
-`git checkout <branchname>`
+    `git checkout <branchname>`
 
 * 重命名本地分支
 
-`git branch -m <oldBranchName> <newBranchName>`
+    `git branch -m <oldBranchName> <newBranchName>`
 
 ### 远程分支
 
 * 推送本地分支到远程分支
 
-`git push origin <branchName>`
+    `git push origin <branchName>`
 
 * 拉取远程分支到本地
 
-1. 拉取 `git fetch origin <remoteBranchName>`
+    1. 拉取 `git fetch origin <remoteBranchName>`
 
-2. 创建 `git checkout -b <localBranchName> origin/<remoteBranchName>`
+    2. 创建 `git checkout -b <localBranchName> origin/<remoteBranchName>`
 
 * 删除远程分支
 
-`git push --delete origin <remoteBranchName>`
+    `git push --delete origin <remoteBranchName>`
 
 ### 隐藏修改切换分支
 
