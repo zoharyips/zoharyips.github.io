@@ -34,25 +34,64 @@ prism: [bash]
 
 ## 2. 配置 Ali 软件源
 
-```bash
-# 备份
-sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
-# 修改
-sudo vim /etc/apt/sources.list
+### 2.1 Ubuntu
 
-###### Ali source 20190909 ######
-deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
-#################################
+1. 备份
 
-# 更新
-apt-get update
-```
+    ```bash
+    sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+    ```
+
+2. 修改软件源文件
+
+    ```bash
+    sudo vim /etc/apt/sources.list
+    ```
+
+3. 修改内容为：
+
+    ```markup
+    ###### Ali source 20190909 ######
+    deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+    deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+    deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+    deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+    deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+    deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+    deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+    deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+    deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+    deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+    #################################
+    ```
+
+4. 试试是否生效，试试就逝世
+
+    ```bash
+    apt-get update
+    ```
+
+### 2.2 CentOS
+
+1、改名备份原源文件
+
+    ```bash
+    mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
+    ```
+
+2、下载新的CentOS-Base.repo 到/etc/yum.repos.d/
+
+    ```bash
+    # CentOS 5
+    wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-5.repo
+    # CentOS 6
+    wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
+    # CentOS 7
+    wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+    ```
+
+3、生成缓存，试试是否生效，试试就逝世
+
+    ```bash
+    yum makecache
+    ```
