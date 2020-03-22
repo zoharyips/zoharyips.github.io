@@ -1,31 +1,105 @@
 {% if page.categories %}
-  <!-- 分类菜单展示 -->
-  {% if page.title == 'Categories'%}
-    <div style="margin-top: 1.5rem;display: flex; flex-direction: row;">
-      <a href="/archives/" style="text-decoration:underline;color: #333;">
-        <h3>Archive by date</h3>
-      </a>
-      <span style="font-size: 0.7rem;color: #333; flex: 1; align-self: center; text-align: right;">按照日期归档</span>  
+    <!-- 分类菜单展示 -->
+    <style>
+        @import url(https://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css);
+        .sidebar-model-wrapper {
+            padding: 0 .5em;
+        }
+        a.category-tag {
+            padding: 6px 8px;
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid #a7a7a7;
+            width: fit-content;
+            margin: 0 .5em 1em;
+            color: #7f7f7f;
+            line-height: 1.8em;
+            font-size: .918em;
+            font-family: arial;
+            font-weight: bold;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+        a.category-tag:hover {
+            color: #3f3f3f;
+            border: 1px solid #8b8b8b;
+            background: rgba(255, 255, 255, 0.75);
+            text-shadow: 0px 0px 2em #5f5f5f;
+            box-shadow: 0px 0px 1px white inset, 0 6px 16px 0px #ccc;
+            transition: 0.5s;
+        }
+        a.category-tag:active {
+            color: #3f3f3f;
+            border: 1px solid #8b8b8b;
+            text-shadow: 0px 0px 2em #5f5f5f;
+            box-shadow: 0px 0px 1px white inset, 0 6px 16px 0px #ccc;
+            background: -webkit-linear-gradient(bottom, #d1d1d1 0%, #ECECEC 100%);
+        }
+        a.category-tag svg {
+            width: 1.2em;
+            margin-right: 1em;
+        }
+
+        .badge {
+            display: inline-block;
+            height: 1.8em;
+            width: 1.8em;
+            line-height: 1.8em;
+            margin-left: 1em;
+            font-size: 0.718em;
+            color: #fff;
+            text-align: center;
+            background-color: #777;
+            border-radius: 10px;
+        }
+    </style>
+    {% if page.title == 'Categories'%}
+        <div style="margin-top: 1.5rem;display: flex; flex-direction: row;">
+            <a href="/archives/" style="text-decoration:underline;color: #333;">
+                <h3>Archive by date</h3>
+            </a>
+            <span style="font-size: 0.7rem;color: #333; flex: 1; align-self: center; text-align: right;">按照日期归档</span>
+        </div>
+        <span style="margin-bottom: 1.5rem;font-size: 0.7rem;color: #333">本站文章均为原创，如欲转载，请于文首附上原文地址</span><br/>
+        <h3 class="post-directory-title">Post Categories</h3>
+        <div class="sidebar-model-wrapper">
+            {% assign sorted_categories = site.categories | sort %}
+            {% for category in sorted_categories %}
+                <a class="category-tag" href="/categories/#{{ category[0] }}">{{ category | first }}<span class="badge">{{ category[1].size }}</span></a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <h3 class="post-directory-title">Wiki Categories</h3>
+        <div class="sidebar-model-wrapper">
+            {% assign sorted_categories = site.wiki | map: "categories" | sort | uniq %}
+            {% for category in sorted_categories %}
+                <a class="category-tag" href="/wiki/#{{ category }}">
+                    {% for icon in site.data.icons %}
+                        {% if icon.name  == category %}
+                            {{ icon.svg }}
+                        {% endif %}
+                    {% endfor %}
+                {{ category }}
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% comment %}
+    <div id="post-directory-module">
+        <ul class="list-group">
+            {% assign sorted_categories = site.categories | sort %}
+            {% for category in sorted_categories %}
+            <li class="list-group-item">
+                <a href="#{{ category[0] }}">{{ category | first }}</a>
+                <span class="badge">{{ category[1].size }}</span>
+            </li>
+            {% endfor %}
+        </ul>
     </div>
-    <span style="margin-bottom: 1.5rem;font-size: 0.7rem;color: #333">本站文章均为原创，如欲转载，请于文首附上原文地址</span><br/>
-    <h3 class="post-directory-title">Categories</h3>
-  {% else %}
-    <h3 class="post-directory-title">Post articles</h3>
-  {% endif %}
-  <div id="post-directory-module">
-    <ul class="list-group">
-      {% assign sorted_categories = site.categories | sort %}
-      {% for category in sorted_categories %}
-        <li class="list-group-item">
-          <a href="#{{ category[0] }}">{{ category | first }}</a>
-          <span class="badge">{{ category[1].size }}</span>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#post-directory-module li").css('text-transform','capitalize')
-  });
-</script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#post-directory-module li").css('text-transform', 'capitalize')
+        });
+    </script>
+    {% endcomment %}
 {% endif %}

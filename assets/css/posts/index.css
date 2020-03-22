@@ -107,7 +107,7 @@
   border-bottom-left-radius: 4px;
 }
 
-.list-group-item>.badge {
+/* .list-group-item>.badge {
   float: right;
 }
 
@@ -124,7 +124,7 @@
   vertical-align: middle;
   background-color: #777;
   border-radius: 10px;
-}
+} */
 
 .fix-title {
   text-align: center;

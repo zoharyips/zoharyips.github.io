@@ -1,41 +1,45 @@
 <!-- footer -->
 <footer class="container">
-  <div class="site-footer" role="contentinfo">
-    <div class="copyright left mobile-block">
-      © {% assign year = site.time | date: '%Y' %}{{ year }}
-      <span title="{{ site.author}}">{{ site.author }}&nbsp;&nbsp;</span>
-      {% if site.beian %}
-        <a href="{{ site.MIIT }}" class="right mobile-visible site-record">{{ site.beian }}</a>
-      {% else %}
-        <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
-      {% endif %}
+    <div class="site-footer" role="contentinfo">
+        <!-- Mobile Visible -->
+        <div class="mobile-visible" style="width: 100%;">
+            <div class="left">
+                © {% assign year = site.time | date: '%Y' %}{{ year }}
+                <span title="{{ site.author}}">{{ site.author }}</span>
+            </div>
+            {% if site.beian %}
+                <a href="{{ site.MIIT }}" class="right site-record">{{ site.beian }}</a>
+            {% else %}
+                <a href="#" class="gotop right mobile-visible">TOP</a>
+            {% endif %}
+        </div>
+        <!-- Mobile Hidden -->
+        <div class="mobile-hidden">
+            <ul class="site-footer-links">
+                {% for nav in site.navs %}
+                    <li><a href="{{ nav.href }}" title="{{ nav.label }}" target="{{ nav.target | default: _self }}">{{ nav.label }}</a></li>
+                {% endfor %}
+                <li><a href="{{ site.subscribe_rss }}"><span class="octicon octicon-rss" style="color:orange;"></span></a></li>
+                <li class="right">
+                  <svg class="site-record" t="1584856247474" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7709" width="16" height="16"><path d="M512 967.111c170.667-68.267 284.444-164.978 341.333-284.444 73.956-142.223 91.023-307.2 56.89-500.623L512 56.89 113.778 187.733c-34.134 187.734-17.067 352.711 51.2 494.934C227.556 802.133 341.333 898.844 512 967.11z m-295.822-307.2c-62.578-125.155-79.645-267.378-51.2-432.355L512 113.778l347.022 113.778c22.756 164.977 5.69 307.2-56.889 426.666-51.2 102.4-147.91 182.045-290.133 244.622-147.911-56.888-244.622-142.222-295.822-238.933z" fill="#73777A" p-id="7710"></path><path d="M512 631.467L318.578 438.044l45.51-39.822L512 546.133l204.8-204.8 45.511 39.823z" fill="#73777A" p-id="7711"></path></svg>
+                  <a class="site-record" href="{{ site.MIIT }}">{{ site.beian }}</a>
+                  <span class="site-record" title="{{ site.author}}">© {{ site.time | date: '%Y' }} {{ site.author }}</span>
+                </li>
+            </ul>
+        </div>
+        <!-- GitHub Entry; ALL visable -->
+        <a href="https://github.com/{{ site.github_username }}" target="_blank" aria-label="view source code" title="Zohar's Github">
+          <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+        </a>
     </div>
-    <ul class="site-footer-links right mobile-hidden">
-      <li>
-        <img width="16px" height="16px" src="/assets/svg/siterecord.svg" style="vertical-align: middle;"/>
-        <a href="{{ site.MIIT }}" class="site-record" >{{ site.beian }}</a>
-      </li>
-    </ul>
-    <a href="https://github.com/{{ site.github_username }}" target="_blank" aria-label="view source code">
-      <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
-    </a>
-    <ul class="site-footer-links mobile-hidden">
-      {% for nav in site.navs %}
-        <li>
-          <a href="{{ nav.href }}" title="{{ nav.label }}" target="{{ nav.target | default: _self }}">{{ nav.label }}</a>
-        </li>
-      {% endfor %}
-      <li>
-        <a href="{{ site.subscribe_rss }}"><span class="octicon octicon-rss" style="color:orange;"></span></a>
-      </li>
-    </ul>
-  </div>
 </footer>
 
 <!-- the fly button: return to top -->
-<div class="tools-wrapper">
-  <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a>
-</div>
+{% if !site.beian %}
+  <div class="tools-wrapper mobile-hidden">
+    <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a>
+  </div>
+{% endif %}
 
 <!-- site access statistics 站点访问统计 -->
 {% if site.leancloud.enable %}

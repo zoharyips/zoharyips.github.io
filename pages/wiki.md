@@ -12,27 +12,16 @@ canvas: true
 permalink: /wiki/
 ---
 
-<script>
-    var categories = new Map();
-    var wikis = new Map();
+{% assign sorted_categories = site.wiki | map: "categories" | sort | uniq %}
+{% for category in sorted_categories %}
+  <h3 name="{{ category }}" id="{{ category}}">{{ category }}</h3>
+  <ol class="posts-list">
     {% for article in site.wiki %}
-      wikis.set("{{ article.title }}", "{{ article.url }}")
-      if(categories.has("{{ article.categories }}")) {
-        categories.get("{{ article.categories }}").push("{{ article.title }}");
-      } else {
-        var category = new Array("{{ article.title }}");
-        categories.set("{{ article.categories }}", category);
-      }
+      {% for article_category in article.categories %}
+        {% if category == article_category %}
+          <li class="posts-list-item"><a class="posts-list-name" href="{{ article.url }}">{{ article.title }}</a></li>
+        {% endif %}
+      {% endfor %}
     {% endfor %}
-    var HTML = '';
-    categories.forEach(function (value, key, map) {
-      HTML += '<h3>' + key + '</h3><ol class="posts-list">';
-      var tmp = value;
-      for(var i = 0; i < tmp.length; i++) {
-        HTML += '<li class="posts-list-item"><a class="posts-list-name" href="'+ wikis.get(tmp[i]) + '">' + tmp[i] + '</a></li>';
-        console.log(tmp[i] + " : " + wikis.get(tmp[i]));
-      }
-      HTML += '</ol>';
-    });
-    document.write(HTML);
-</script>
+  </ol>
+{% endfor %}
