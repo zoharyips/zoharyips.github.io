@@ -16,7 +16,7 @@ mermaid: true
 
 ## Vue Instance
 
-```mermaid
+<div class="mermaid">
 graph LR
 A[Vue Instance] --> B($data 属性)
 A --> C(生命周期)
@@ -36,11 +36,11 @@ C1 --> Create
 C1 --> Mount
 C1 --> Update
 C1 --> Destory
-```
+</div>
 
 ## Template syntax
 
-```mermaid
+<div class="mermaid">
 graph LR
 A[Syntax] --> B(text)
 B --> B1(数据绑定: Mustache)
@@ -62,5 +62,4 @@ G --> 对象语法
 G --> 数组语法
 G --> 自动前缀与多重值
 A --> E(js expression) --> E1(Mustache)
-```
-
+</div>
