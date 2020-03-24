@@ -24,7 +24,7 @@ mermaid: true
 
 2. 创建路由文件
 
-    ```js
+    ```javascript
     // src/router/index.js
     import Vue from 'vue'
     import Router from 'vue-router'
@@ -49,7 +49,7 @@ mermaid: true
 
 3. 引入路由文件
 
-    ```js
+    ```javascript
     // src/main.js
     import Routers from './router'
 
@@ -65,7 +65,7 @@ mermaid: true
 
 4. 根组件引入路由组件
 
-    ```html
+    ```markup
     <!-- src/App.vue -->
     <template>
         <div id="app">
@@ -77,7 +77,7 @@ mermaid: true
 
 5. 解决域名后需要带 # 号的问题
 
-    ```js
+    ```javascript
     // src/router/index.js
     export default new Router({
         routes: [
