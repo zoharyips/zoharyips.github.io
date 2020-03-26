@@ -2,7 +2,7 @@
 layout: wiki
 title: MySQL - 独门秘技
 description: 有时候你想破头都不知道这条 SQL 该怎么写
-date: 2020-01-11
+date: 2020-03-26
 categories: MySQL
 prism: [sql, bash]
 ---
@@ -33,6 +33,16 @@ prism: [sql, bash]
         DEFAULT CURRENT_TIMESTAMP 
         ON UPDATE CURRENT_TIMESTAMP NOT NULL;
     ```
+
+## 设计
+
+### 枚举类型不要从 0 开始
+
+对于表示 type 等的枚举类型，一般不要从 0 开始，从 1 开始设置。
+
+1. 对于多数语言 0 代表 false 而非零代表 true，如果使用 `tiny(1)` 类型存储，MySql 会默认返回成 `true` 或 `false` 而非真实值。
+
+2. 对于部分编程语言，原本枚举类型对应 MAP 的形式，但是由于数据库设置了 0 开始，导致部分语言默认转换成数组，因为索引数组的下标从零开始，容易导致一些人混淆或者做一些不必要的转换工作。
 
 ## 查询
 

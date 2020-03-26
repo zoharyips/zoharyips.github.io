@@ -4,7 +4,6 @@ title: Vue 路由
 categories: Vue
 keywords: Vue
 prism: [javascript, bash, markup]
-mermaid: true
 ---
 
 这款由中国人开发的框架早有耳闻，听说学习曲线非常平滑，容易学习也容易印象不深，因此使用思维导图的方式把知识点记录下来。
