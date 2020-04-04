@@ -21,60 +21,71 @@
                 {% endfor %}
                 <li><a href="{{ site.subscribe_rss }}"><span class="octicon octicon-rss" style="color:orange;"></span></a></li>
                 <li class="right">
-                  <svg class="site-record" t="1584856247474" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7709" width="16" height="16"><path d="M512 967.111c170.667-68.267 284.444-164.978 341.333-284.444 73.956-142.223 91.023-307.2 56.89-500.623L512 56.89 113.778 187.733c-34.134 187.734-17.067 352.711 51.2 494.934C227.556 802.133 341.333 898.844 512 967.11z m-295.822-307.2c-62.578-125.155-79.645-267.378-51.2-432.355L512 113.778l347.022 113.778c22.756 164.977 5.69 307.2-56.889 426.666-51.2 102.4-147.91 182.045-290.133 244.622-147.911-56.888-244.622-142.222-295.822-238.933z" fill="#73777A" p-id="7710"></path><path d="M512 631.467L318.578 438.044l45.51-39.822L512 546.133l204.8-204.8 45.511 39.823z" fill="#73777A" p-id="7711"></path></svg>
-                  <a class="site-record" href="{{ site.MIIT }}">{{ site.beian }}</a>
-                  <span class="site-record" title="{{ site.author}}">© {{ site.time | date: '%Y' }} {{ site.author }}</span>
+                    <svg class="site-record" t="1584856247474" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7709" width="16" height="16"><path d="M512 967.111c170.667-68.267 284.444-164.978 341.333-284.444 73.956-142.223 91.023-307.2 56.89-500.623L512 56.89 113.778 187.733c-34.134 187.734-17.067 352.711 51.2 494.934C227.556 802.133 341.333 898.844 512 967.11z m-295.822-307.2c-62.578-125.155-79.645-267.378-51.2-432.355L512 113.778l347.022 113.778c22.756 164.977 5.69 307.2-56.889 426.666-51.2 102.4-147.91 182.045-290.133 244.622-147.911-56.888-244.622-142.222-295.822-238.933z" fill="#73777A" p-id="7710"></path><path d="M512 631.467L318.578 438.044l45.51-39.822L512 546.133l204.8-204.8 45.511 39.823z" fill="#73777A" p-id="7711"></path></svg>
+                    <a class="site-record" href="{{ site.MIIT }}">{{ site.beian }}</a>
+                    <span class="site-record" title="{{ site.author}}">© {{ site.time | date: '%Y' }} {{ site.author }}</span>
                 </li>
             </ul>
         </div>
         <!-- GitHub Entry; ALL visable -->
         <a href="https://github.com/{{ site.github_username }}" target="_blank" aria-label="view source code" title="Zohar's Github">
-          <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+            <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
         </a>
     </div>
 </footer>
 
 <!-- the fly button: return to top -->
 {% if !site.beian %}
-  <div class="tools-wrapper mobile-hidden">
-    <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a>
-  </div>
+    <div class="tools-wrapper mobile-hidden">
+        <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a>
+    </div>
 {% endif %}
 
 <!-- site access statistics 站点访问统计 -->
 {% if site.leancloud.enable %}
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script src="https://cdn.bootcss.com/fingerprintjs2/2.1.0/fingerprint2.min.js"></script>
-  <!-- <script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> -->
-  <script src="/assets/js/string_hash.js"></script>
-  <script src="/assets/js/site_statistics.js"></script>
-  <script>
-    // leancloud 配置
-    AV.initialize('{{site.leancloud.app_id}}', '{{site.leancloud.app_key}}');
-    var dataCounter = AV.Object.extend('{{ site.leancloud.data_class_name }}');
-    var hashCounter = AV.Object.extend('{{ site.leancloud.ip_class_name }}')
-    // console.log(returnCitySN["cip"]+','+returnCitySN["cname"]);
-    $(function() {
-      if (window.requestIdleCallback) {
-        requestIdleCallback(function () {
-          Fingerprint2.get(function (components) {
-            onWork("{{ page.title }}", "{{ site.title }}", hashCounter, dataCounter, hash(JSON.stringify(components)));
-          })
-        })
-      } else {
-        setTimeout(function () {
-          Fingerprint2.get(function (components) {
-            onWork("{{ page.title }}", "{{ site.title }}", hashCounter, dataCounter, hash(JSON.stringify(components)));
-          })
-        }, 500)
-      }
-    });
-  </script>
+    <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+    <script src="https://cdn.bootcss.com/fingerprintjs2/2.1.0/fingerprint2.min.js"></script>
+    <!-- <script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> -->
+    <script src="/assets/js/string_hash.js"></script>
+    <script src="/assets/js/site_statistics.js"></script>
+    <script>
+        // leancloud 配置
+        AV.initialize('{{site.leancloud.app_id}}', '{{site.leancloud.app_key}}');
+        var dataCounter = AV.Object.extend('{{ site.leancloud.data_class_name }}');
+        var hashCounter = AV.Object.extend('{{ site.leancloud.ip_class_name }}')
+        // console.log(returnCitySN["cip"]+','+returnCitySN["cname"]);
+        $(function() {
+            if (window.requestIdleCallback) {
+                requestIdleCallback(function () {
+                    Fingerprint2.get(function (components) {
+                        onWork("{{ page.title }}", "{{ site.title }}", hashCounter, dataCounter, hash(JSON.stringify(components)));
+                    })
+                })
+            } else {
+                setTimeout(function () {
+                    Fingerprint2.get(function (components) {
+                        onWork("{{ page.title }}", "{{ site.title }}", hashCounter, dataCounter, hash(JSON.stringify(components)));
+                    })
+                }, 500)
+            }
+        });
+    </script>
 {% endif %}
 
+<!-- BiliBili 的表情包 -->
+<script>
+    jQuery(document).ready(function($) {
+        let bilibiliImgs = $('img[alt^="bilibili"]');
+        Array.from(bilibiliImgs).forEach(function(node) {
+            $(node).attr('style', 'display:inline;width:20px;vertical-align:middle');
+            // $(node).wrap('<span></span>');
+        });
+    });
+</script>
+
 {% if page.canvas %}
-  <canvas id="canvas"></canvas>
-  <script src="/assets/js/zhihubg.js"></script>
+    <canvas id="canvas"></canvas>
+    <script src="/assets/js/zhihubg.js"></script>
 {% endif %}
 
 <!-- enable the js file that can load at the end -->
@@ -86,127 +97,127 @@
 <!-- <script src="/assets/vendor/prism/prism.js"></script> -->
 <!-- <link rel="stylesheet" href="/assets/vendor/prism/prism.css"> -->
 {% if page.prism %}
-  <script src="https://cdn.bootcss.com/prism/9000.0.1/prism.min.js"></script>
-  <script src="https://cdn.bootcss.com/prism/9000.0.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
-  <script src="https://cdn.bootcss.com/prism/9000.0.1/plugins/show-language/prism-show-language.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.bootcss.com/prism/1.19.0/themes/prism-tomorrow.min.css">
-  <link rel="stylesheet" href="https://cdn.bootcss.com/prism/9000.0.1/plugins/line-numbers/prism-line-numbers.min.css">
-  <link rel="stylesheet" href="https://cdn.bootcss.com/prism/9000.0.1/plugins/show-language/prism-show-language.min.css">
-  {% for lang in page.prism %}
-    <script src="https://cdn.bootcss.com/prism/9000.0.1/components/prism-{{ lang }}.min.js"></script>
-  {% endfor %}
-  <script>
-    let code = $('pre');
-    code.addClass('line-numbers');
-    code.css('padding', '1em 0px 1em 3.5em');
-    code.css('font-size', '.8em');
-    code.css('background-color', '#45494A');
-    code.css('border-radius', '.5em');
-    code.css('box-shadow', 'none');
-    code.css('position', 'unset');
-    $('code').css('text-shadow', 'none');
-    jQuery(document).ready(function($) {
-      /* 处理行号会多出一行的 bug */
-      $('.line-numbers-rows').each(function(index, object){
-        let numRows = object.children;
-        $(numRows[numRows.length - 1]).attr('style', 'display:none');
-      });
-      /* 处理 php 代码段无法生成行号，而行号占用左边空间不美观的 bug */
-      $('pre[data-language="php"]').each(function(index, object) {
-        $(object).removeClass('line-numbers');
-        $(object).css('padding', '1em 0px 1em 1em');
-      });
-      /* 处理因为缩进而引发代码块代码行左边出现空格的 bug */
-      $('pre code').each(function(index, object) {
-        /* 要修改 html 而非 textContent */
-        str = object.innerHTML;
-        let arr = str.split('\n');
-        len = arr[0].length - arr[0].trimLeft().length; // 前面多出的非法空格数量，使用 trimLeft 会把缩进也毁掉的。
-        for (let i = 0; i < arr.length; i++) {
-          if (arr[i][0] === ' ') {
-            arr[i] = arr[i].substr(len);
-          }
-        }
-        str = arr.join('\n');
-        object.innerHTML = str;
-      });
-      /* 修复代码类型位置是 fixed 的 bug */
-      $('pre').each(function(index, object) {
-        $(object).wrap('<div style="position:relative;"></div>');
-      })
-    });
-  </script>
+    <script src="https://cdn.bootcss.com/prism/9000.0.1/prism.min.js"></script>
+    <script src="https://cdn.bootcss.com/prism/9000.0.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdn.bootcss.com/prism/9000.0.1/plugins/show-language/prism-show-language.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/prism/1.19.0/themes/prism-tomorrow.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/prism/9000.0.1/plugins/line-numbers/prism-line-numbers.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/prism/9000.0.1/plugins/show-language/prism-show-language.min.css">
+    {% for lang in page.prism %}
+        <script src="https://cdn.bootcss.com/prism/9000.0.1/components/prism-{{ lang }}.min.js"></script>
+    {% endfor %}
+    <script>
+        let code = $('pre');
+        code.addClass('line-numbers');
+        code.css('padding', '1em 0px 1em 3.5em');
+        code.css('font-size', '.8em');
+        code.css('background-color', '#45494A');
+        code.css('border-radius', '.5em');
+        code.css('box-shadow', 'none');
+        code.css('position', 'unset');
+        $('code').css('text-shadow', 'none');
+        jQuery(document).ready(function($) {
+            /* 处理行号会多出一行的 bug */
+            $('.line-numbers-rows').each(function(index, object){
+                let numRows = object.children;
+                $(numRows[numRows.length - 1]).attr('style', 'display:none');
+            });
+            /* 处理 php 代码段无法生成行号，而行号占用左边空间不美观的 bug */
+            $('pre[data-language="php"]').each(function(index, object) {
+                $(object).removeClass('line-numbers');
+                $(object).css('padding', '1em 0px 1em 1em');
+            });
+            /* 处理因为缩进而引发代码块代码行左边出现空格的 bug */
+            $('pre code').each(function(index, object) {
+                /* 要修改 html 而非 textContent */
+                str = object.innerHTML;
+                let arr = str.split('\n');
+                len = arr[0].length - arr[0].trimLeft().length; // 前面多出的非法空格数量，使用 trimLeft 会把缩进也毁掉的。
+                for (let i = 0; i < arr.length; i++) {
+                if (arr[i][0] === ' ') {
+                    arr[i] = arr[i].substr(len);
+                }
+                }
+                str = arr.join('\n');
+                object.innerHTML = str;
+            });
+            /* 修复代码类型位置是 fixed 的 bug */
+            $('pre').each(function(index, object) {
+                $(object).wrap('<div style="position:relative;"></div>');
+            })
+        });
+    </script>
 {% endif %}
 
 <!-- 动态创建 CANVAS 背景图 -->
 <script src="https://cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
 <script>
-  jQuery(document).ready(function($) {
-    $('.geopattern').each(function(){
-      $(this).geopattern($(this).data('pattern-id'));
+    jQuery(document).ready(function($) {
+        $('.geopattern').each(function(){
+        $(this).geopattern($(this).data('pattern-id'));
+        });
     });
-  });
 </script>
 
 <!-- if the page enable mermaid 加载较慢 -->
 {% if page.mermaid %}
-  <script src="https://cdn.bootcss.com/mermaid/8.3.1/mermaid.min.js"></script>
-  <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="https://cdn.bootcss.com/mermaid/8.3.1/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
 {% endif %}
 
 <!-- if the page enable sequence -->
 {% if page.sequence %}
-  <script src="https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js"></script>
-  <script src="https://cdn.bootcss.com/snap.svg/0.5.1/snap.svg-min.js"></script>
-  <script src="https://cdn.bootcss.com/underscore.js/1.9.1/underscore-min.js"></script>
-  <script src="/assets/vendor/js-sequence-diagrams/dist/sequence-diagram-min.js"></script>
-  <link rel="stylesheet" href="/assets/vendor/js-sequence-diagrams/dist/sequence-diagram-min.css">
-  <script>
-    $(".language-sequence").sequenceDiagram({theme: 'simple'});
-  </script>
+    <script src="https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js"></script>
+    <script src="https://cdn.bootcss.com/snap.svg/0.5.1/snap.svg-min.js"></script>
+    <script src="https://cdn.bootcss.com/underscore.js/1.9.1/underscore-min.js"></script>
+    <script src="/assets/vendor/js-sequence-diagrams/dist/sequence-diagram-min.js"></script>
+    <link rel="stylesheet" href="/assets/vendor/js-sequence-diagrams/dist/sequence-diagram-min.css">
+    <script>
+        $(".language-sequence").sequenceDiagram({theme: 'simple'});
+    </script>
 {% endif %}
 
 <!-- if the page enable flow -->
 {% if page.flow %}
-  <script src="https://cdn.bootcss.com/raphael/2.3.0/raphael.min.js"></script>
-  <script src="https://cdn.bootcss.com/flowchart/1.12.2/flowchart.min.js"></script>
-  <script src="/assets/js/flow.js"></script>
+    <script src="https://cdn.bootcss.com/raphael/2.3.0/raphael.min.js"></script>
+    <script src="https://cdn.bootcss.com/flowchart/1.12.2/flowchart.min.js"></script>
+    <script src="/assets/js/flow.js"></script>
 {% endif %}
 
 <!-- if the page enable mathjax, mathjax 脚本无法引入本地目录 -->
 {% if page.mathjax %}
-  <script src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  <!-- <script type="text/javascript" src="https://basis-learning.github.io/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+    <script src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- <script type="text/javascript" src="https://basis-learning.github.io/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
 {% endif %}
 
 <!-- if the site enable google analytics 加载过慢 -->
 {% if site.google.analytics_id %}
 <!-- <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google.analytics_id }}"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', '{{ site.google.analytics_id }}');
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.google.analytics_id }}');
 </script> -->
 {% endif %}
 
 <!-- 百度自动推送脚本，百度站长加入使用 -->
 {% comment %}
-  本网站基于 github page 搭建，由于 github 封锁百度爬虫，失效
-  <script>
-    (function(){
-      var bp = document.createElement('script');
-      var curProtocol = window.location.protocol.split(':')[0];
-      if (curProtocol === 'https') {
-        bp.src = '/assets/js/baidu_push.js';
-      }
-      else {
-        bp.src = '/assets/js/baidu_zhanzhang.js';
-      }
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(bp, s);
-    })();
-  </script>
+    <!-- 本网站基于 github page 搭建，由于 github 封锁百度爬虫，失效 -->
+    <script>
+        (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = '/assets/js/baidu_push.js';
+        }
+        else {
+            bp.src = '/assets/js/baidu_zhanzhang.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
 {% endcomment %}
 
 </body>

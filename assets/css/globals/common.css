@@ -735,3 +735,7 @@ pre {
 .tools-wrapper .gotop {
   display: none;
 }
+.bilibili-emoji {
+  width: 20px;
+  height: 20px;
+}
