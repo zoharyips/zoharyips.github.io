@@ -73,12 +73,33 @@
 {% endif %}
 
 <!-- BiliBili 的表情包 -->
+<script src="https://cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
 <script>
     jQuery(document).ready(function($) {
+        /* 动态创建 CANVAS 背景图 */
+        $('.geopattern').each(function(){
+        $(this).geopattern($(this).data('pattern-id'));
+        });
+        /* BiliBili 的表情包 */
         let bilibiliImgs = $('img[alt^="bilibili"]');
         Array.from(bilibiliImgs).forEach(function(node) {
             $(node).attr('style', 'display:inline;width:20px;vertical-align:middle');
             // $(node).wrap('<span></span>');
+        });
+        /* 固定表格表头宽度 */
+        let headerCells = document.getElementsByTagName('th');
+        Array.from(headerCells).forEach(function(th) {
+            th.setAttribute('style', 'white-space:nowrap');
+        });
+        /* 表格单元格内容为代码则固定宽度 */
+        let tds = document.getElementsByTagName('td');
+        Array.from(tds).forEach(function(td) {
+            if(td.children.length === 0) {
+                return;
+            }
+            if(td.children[0].tagName === 'CODE') {
+                td.children[0].setAttribute('style', 'white-space:nowrap');
+            }
         });
     });
 </script>
@@ -148,16 +169,6 @@
         });
     </script>
 {% endif %}
-
-<!-- 动态创建 CANVAS 背景图 -->
-<script src="https://cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
-<script>
-    jQuery(document).ready(function($) {
-        $('.geopattern').each(function(){
-        $(this).geopattern($(this).data('pattern-id'));
-        });
-    });
-</script>
 
 <!-- if the page enable mermaid 加载较慢 -->
 {% if page.mermaid %}
