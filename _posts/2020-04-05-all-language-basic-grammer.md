@@ -79,7 +79,7 @@ prism: [javascript, java, php, go, markup]
     
     由于 GO 采用 UTF-8 编码，该字符集部分字符 Unicode 编码长度已超过 2 个字节，像 JAVA 的 char 类型由于仅 2 个字节，靠后的字符无力表示，因此 GO 设置了 4 个字节长度的 rune 类型，可表示基本上所有 UTF-8 字符。
 
-* Php
+* PHP
 
     | Boolean | Integer | Float  | String | Array  |
     |:-------:|:-------:|:------:|:------:|:------:|
@@ -113,4 +113,161 @@ prism: [javascript, java, php, go, markup]
 
 ## 变量
 
-### 声明
+### 变量声明与赋值
+
+* Java：
+
+    ```java
+    int int1;
+    int int1 = 10;
+    int int1, int2;
+    int int1 = 10, int2 = 20;
+    ```
+
+* Go 
+
+    ```go
+    var int1 int
+    var int1 int = 10
+    var int1 = 10
+    int1 := 10                      // 初始化声明，仅在函数体中可用
+    var int1, int2 int
+    var int1, int2 int = 10, 20
+    var int1, int2 = 10, 20
+    int1, int2 := 10, 20
+    var (                           // 一般用于声明全局变量
+        int1 int
+        string1 string
+    )
+    var (
+        int1 int = 10
+        string1 string = "Hello"
+    )
+    ```
+
+* PHP
+
+    ```php
+    $int1 = 10;
+    ```
+
+* JS
+
+    ```javascript
+    let int1;                       // 块级作用域
+    let int1 = 10;
+    let int1, int2;
+    let int1 = 10, int2 = 20;
+    
+    var int1;                       // 函数/全局作用域
+    var int1 = 10;
+    var int1, int2;
+    var int1 = 10, int2 = 20;
+    ```
+
+### 静态变量
+
+> Wiki: 在程序执行前系统就为之静态分配（也即在运行时中不再改变分配情况）存储空间的一类变量。
+
+静态变量：实例共享变量
+
+* Java
+
+    ```java
+    class TestCase {
+        // qualifier static type identifier
+        public static int int1;
+        public static int int2 = 10;
+    }
+    ```
+
+    调用：类名.变量名
+    
+    ```java
+    System.out.println(TestCase.int1);
+    ```
+
+    Java 不支持静态局部变量，对静态变量的支持以类或接口为基础
+
+* Go
+
+    Go 不支持静态变量，但静态局部变量可以通过闭包实现：
+
+    ```go
+    func main() {
+        staticVariable := 1
+        testFunc := func() {
+            fmt.Println("x:", x)
+            staticVariable++
+        }
+        for i := 0; i < 10; i++ {
+            testFunc()
+        }
+    }
+    ```
+
+* PHP
+
+    ```php
+    class TestCase {
+        // qualifier static identifier = value;
+        public static $int1;
+        public static $int2 = 20;
+        public function testFunc() {
+            // static identifier = value;
+            static $int3 = 10;
+        }
+    }
+    ```
+    
+    调用：类名::变量名，或实例::变量名；局部静态变量生效范围为定义区块，直接访问即可
+    
+    ```php
+    echo TestCase::$int1;
+    echo $testCase::$int1;
+    ```
+
+* JS
+
+    JS 不支持静态变量；静态局部变量可以简单通过闭包实现：
+
+    ```javascript
+    let func = (() => {
+        var localStaticVariable = 0;
+        return function() {
+            localStaticVariable += 1;
+            console.log(localStaticVariable);
+        }
+    })();
+    ```
+    
+    而且 JS 支持类变量，所以我自己想了静态全局变量的一种写法，比较简单易懂，风格也和其他语言比较统一：
+
+    ```javascript
+    function TestCase() {
+        // 类首次加载时执行，类似于静态变量的初始化
+        if(typeof TestCase._initilized === "undefined") {
+            TestCase.staticVariable = 0;
+            TestCase._initilized = true;
+        }
+
+        /* 对象定义属性，让每个实例的属性指向类属性 */
+        Object.defineProperty(this, "staticVariable", {
+            configurable: true,
+            enumerable: true,
+            get() {
+                return TestCase.staticVariable;
+            },
+            set(newVal) {
+                TestCase.staticVariable = newVal;
+            }
+        })
+    }
+    let a = new TestCase();
+    let b = new TestCase();
+    a.staticVariable;       // 0
+    b.staticVariable;       // 0
+    a.staticVariable = 100;
+    a.staticVariable;       // 100
+    b.staticVariable;       // 100
+    ```
