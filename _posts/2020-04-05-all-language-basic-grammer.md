@@ -165,13 +165,29 @@ prism: [javascript, java, php, go, markup]
     var int1 = 10, int2 = 20;
     ```
 
+### 变量作用域与生命周期
+
+* **局部变量**：函数内定义的变量或函数参数列表定义的变量，作用范围仅限在定义区块内，函数运行结束即销毁。
+
+* **实例变量**：类(Go 为结构体)定义的数据域，实例化为对象的成员变量，作用范围和实例的作用范围相同，对象实例化时创建，销毁时一同销毁。
+
+* **全局变量**：全局变量普遍意义上讲都是静态全局变量。
+
+    * Java：类区块内定义的静态变量，因此可以称作**类变量**，作用范围是全局，在第一次加载类时初始化，伴随程序终止而销毁。
+
+    * Go：在包作用域下定义的变量，作用范围同样是 Global，程序运行时创建、结束时销毁。
+
+    * PHP：类区块内定义的静态变量，作用范围同样是 Global，脚本运行时创建、结束时销毁。
+
+    * JS：类定义时可在类内定义类变量，也可以在类定义后直接设置类变量，作用范围是全局，定义的时候创建，脚本运行结束时销毁。
+
 ### 静态变量
 
 > Wiki: 在程序执行前系统就为之静态分配（也即在运行时中不再改变分配情况）存储空间的一类变量。
 
-静态变量：实例共享变量
+静态全局变量通常表现为相同类型实例共享变量，静态局部变量则表现为相同函数共享变量
 
-* Java
+* Java：不支持静态局部变量，仅支持静态全局变量。
 
     ```java
     class TestCase {
@@ -187,17 +203,20 @@ prism: [javascript, java, php, go, markup]
     System.out.println(TestCase.int1);
     ```
 
-    Java 不支持静态局部变量，对静态变量的支持以类或接口为基础
-
-* Go
-
-    Go 不支持静态变量，但静态局部变量可以通过闭包实现：
+* Go：不直接支持静态局部变量，但可以通过闭包实现：
 
     ```go
-    func main() {
+    package testpkg
+
+    // var identifier = value 或 var (identifier1 = value1, identifier2 = value2, ...)
+    var GlobalStaticVariable = 10;
+    
+    func TestPkgMain() {
+        // 静态局部变量
         staticVariable := 1
+        // 调用静态局部变量
         testFunc := func() {
-            fmt.Println("x:", x)
+            fmt.Println("staticVariable:", staticVariable)
             staticVariable++
         }
         for i := 0; i < 10; i++ {
@@ -206,7 +225,12 @@ prism: [javascript, java, php, go, markup]
     }
     ```
 
-* PHP
+    调用：静态全局变量：包名.变量名；静态局部变量：闭包
+    ```go
+    fmt.Println(testpkg.GlobalStaticVariable)
+    ```
+
+* PHP：都支持，牛不牛逼
 
     ```php
     class TestCase {
@@ -216,6 +240,9 @@ prism: [javascript, java, php, go, markup]
         public function testFunc() {
             // static identifier = value;
             static $int3 = 10;
+            // 调用静态局部变量
+            echo $int3;
+            $int3++;
         }
     }
     ```
@@ -227,13 +254,12 @@ prism: [javascript, java, php, go, markup]
     echo $testCase::$int1;
     ```
 
-* JS
-
-    JS 不支持静态变量；静态局部变量可以简单通过闭包实现：
+* JS：支持类变量，JS 不支持静态变量；静态局部变量可以简单通过闭包实现：
 
     ```javascript
     let func = (() => {
         var localStaticVariable = 0;
+        // 调用静态局部变量
         return function() {
             localStaticVariable += 1;
             console.log(localStaticVariable);
@@ -241,7 +267,7 @@ prism: [javascript, java, php, go, markup]
     })();
     ```
     
-    而且 JS 支持类变量，所以我自己想了静态全局变量的一种写法，比较简单易懂，风格也和其他语言比较统一：
+    而既然 JS 支持类变量，所以我自己想了静态全局变量的一种比较简单易懂，风格也和其他语言比较统一的写法：
 
     ```javascript
     function TestCase() {
