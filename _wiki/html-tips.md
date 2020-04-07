@@ -166,3 +166,25 @@ $('.btn').on('click', function () {
 * 方案 2：在提交之前，把要提交的表单复制一份，然后把复制后的表单中的所有表单域的 `disabled` 属性都置为 `false`，然后提交这个复制后的表单。
 
     相关链接：[如何提交表单中disabled表单域的值示例代码](https://www.jb51.net/web/94392.html)
+
+### div 包裹内容，内容到达一定长度换行
+
+```css
+max-width: 128px;
+width: max-content;
+word-break: break-all;
+```
+
+### 固定单元格高度
+
+在单元格 `<td></td>` 或 `<th></th>` 中添加一个 `<span></span>`，再设置 `span` 的 `display` 属性为 block 即可。
+
+```css
+tbody span {
+    display: block;
+    height: 48px;
+    width: max-content;
+    max-height: 48px;
+    max-width: 128px;
+}
+```
