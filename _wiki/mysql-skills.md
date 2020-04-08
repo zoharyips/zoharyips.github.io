@@ -177,3 +177,24 @@ prism: [sql, bash]
     FROM test 
     GROUP BY class;
     ```
+
+### 最大值：单行多列数据取最大值
+
+* 效果：
+
+    ```bash
+        id  english    math  chinese            id  english    math  chinese  higest  
+    ------  -------  ------  ---------      ------  -------  ------  -------  --------
+        1       99      78         53            1       99      78       53        99
+        2       88      34         89  ====>     2       88      34       89        89
+        3       34      23         58            3       34      23       58        58
+        4       95      84         78            4       95      84       78        95
+    ```
+
+* 使用 `GREATEST()` 函数
+
+    `GREATEST(col1, col2, col3, ...)`
+
+    ```sql
+    SELECT *, GREATEST(english, math, chinese) AS higest FROM student_grades;
+    ```
