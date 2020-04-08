@@ -353,7 +353,16 @@ prism: [javascript, java, php, go, markup]
 
 ### 判断控制
 
-判断控制对于所有语言而已是一样的：`if(expression)...elseif(expression)...else...`
+判断控制对于所有语言而言差不多都是如此：
+
+```markup
+if(expression)
+    /* ... */
+else if(expression)
+    /* ... */
+else
+    /* ... */
+```
 
 ### 循环控制
 
@@ -414,18 +423,15 @@ prism: [javascript, java, php, go, markup]
     ```java
     // JDK 12 前：JDK 7 前 val 仅能是整形或枚举，JDK 7 开始可以使用 string
     switch(val) {
-        case a:
-            /* ... */
+        case a:                 /* ... */
             break;
-        case b: case c: case d:
-            /* ... */
+        case b: case c: case d: /* ... */
             break;
-        default:
-            /* ... */
+        default:                /* ... */
     }
     // JDK 12 开始：可直接作为返回值
     res = switch(val) {
-        case a -> return singleExpression;
+        case a       -> return singleExpression;
         case b, c, d -> return singleExpression;
         default: {
             /* ... */
@@ -438,26 +444,18 @@ prism: [javascript, java, php, go, markup]
 
     ```go
     switch val {
-        case a:
-            /* ... */
+        case a:     /* ... */
             fallthrough
-        case b, c:          // b 或 c
-            /* ... */
-        default:
-            /* ... */
+        case b, c:  /* ... */
+        default:    /* ... */
     }
     // Type Switch
     switch i := val.(type) {
-      case nil:  
-         /* ... */
-      case int:  
-         /* ... */
-      case func(float64):   // 函数类型且参数为 float64
-         /* ... */
-      case bool, string:
-         /* ... */
-      default:
-         /* ... */
+      case nil:             /* ... */
+      case int:             /* ... */
+      case func(float64):   /* ... */
+      case bool, string:    /* ... */
+      default:              /* ... */
    } 
     ```
 
@@ -465,13 +463,10 @@ prism: [javascript, java, php, go, markup]
 
     ```php
     switch ($val) {
-        case val1:
-            /* ... */
-        case val2:
-            /* ... */
+        case val1: /* ... */
+        case val2: /* ... */
             break;
-        default:
-            /* ... */
+        default:   /* ... */
     }
     ```
 
@@ -479,12 +474,51 @@ prism: [javascript, java, php, go, markup]
 
     ```javascript
     switch (val) {
-        case val1:
-            /* ... */
-        case val2:
-            /* ... */
+        case val1: /* ... */
+        case val2: /* ... */
             break;
-        default:
-            /* ... */
+        default:   /* ... */
     }
+    ```
+
+## 函数/方法
+
+函数：有输入输出的固定**过程**；
+
+方法：有接收者的函数，即接收者的**行为**，是具有抽象意义的。
+
+* Java：一切皆对象，所有函数都属于某个类/对象，因此一切函数皆方法。
+
+    ```java
+    // 访问修饰符 返回类型 方法名(类型1参数名，类型2 参数名) {}
+    public int funcName(String str){ /*...*/ return res;}
+    // 无返回值方法
+    public void func(){}
+    // 静态方法
+    public static void func(){}
+    // 构造方法
+    public ClassName{}
+    // 可变参数：0 个或者 n 个，必须为参数表最后一个参数
+    public void func(int a, String str, Object... objs){}
+    ```
+
+* Go：有包内直接定义的函数，有赋予结构体的方法。
+
+    ```go
+    // func 函数名 (参数名，参数名 类型1，参数名 类型2) (返回类型1 返回类型2) ... {}
+    func funcName(str1, str2 string, a, b int) (string, int) { /*...*/ return strRes, intRes}
+    // 引用传递
+    func funcName(str1, str2 *string, a *int, b int) int { /*...*/ return res}
+    // 函数参数
+    fmt.Println(math.Sqrt(100))
+    // 闭包
+    func getSequence() func() int {
+        /* ... */
+        return func() int {
+            /* ... */
+            return res
+        }
+    }
+    // 方法：func (reciver Reciver) funcName(params) returns {}
+    func (stu Student) sayHi() string {return "hi!"}
     ```
