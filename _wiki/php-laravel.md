@@ -21,16 +21,16 @@ prism: [php, bash, yaml, markup]
 ### 获取当前路由路径
 
 ```php
-{% raw %}{{ Request::path() }}
-{{ Route::currentRouteName() }}{% endraw %}
+{% raw %}{{ Request::path() }}{% endraw %}
+{% raw %}{{ Route::currentRouteName() }}{% endraw %}
 ```
 
 ### 获取当前路由参数
 
 ```php
-{% raw %}{{ app('request')->input('param') }}
-{{ Request::query('param') }}         // laravel 5.6
-{{ request()->param }}                // laravel 5.8{% endraw %}
+{% raw %}{{ app('request')->input('param') }}{% endraw %}
+{% raw %}{{ Request::query('param') }}{% endraw %}         // laravel 5.6
+{% raw %}{{ request()->param }}{% endraw %}                // laravel 5.8
 ```
 
 ### 分页传入路由参数
@@ -51,7 +51,7 @@ $viewStr = response($view)->getContent();
 ```php
 <form method="post" action="/tc-strategy/{% raw %}{{ $unionId }}{% endraw %}">
     <input name="_method" type="hidden" value="PUT"/>
-    {{ csrf_field() }}
+    {% raw %}{{ csrf_field() }}{% endraw %}
 </form>
 ```
 
@@ -59,32 +59,32 @@ $viewStr = response($view)->getContent();
 
 ### ORM 查询指定列记录
 
-    ```php
-    $data = Model::find($id, ['column1', 'column2', ...]);
-    $data = Model::first(['column1', 'column2', ...]);
-    $data = Model::all(['column1', 'column2', ...]);
-    $data = Model::where(...)->get(['column1', 'column2', , ...]); 
-    ```
+```php
+$data = Model::find($id, ['column1', 'column2', ...]);
+$data = Model::first(['column1', 'column2', ...]);
+$data = Model::all(['column1', 'column2', ...]);
+$data = Model::where(...)->get(['column1', 'column2', , ...]); 
+```
 
 ### 使用聚合函数
 
-    ```php
-    $query = Model::query()
-        ->groupBy('model.a', 'model.b', 'model.c', 'model.d')
-        ->select('model.a as col1', 'model.b as col2', 'model.c as col3', 'model.d as col4')
-        ->selectRaw('MAX(model.e) as col5')
-        ->selectRaw('SUM(IF(`model.f` = 1, `model.g`, 0)) AS col6');
-    ```
+```php
+$query = Model::query()
+    ->groupBy('model.a', 'model.b', 'model.c', 'model.d')
+    ->select('model.a as col1', 'model.b as col2', 'model.c as col3', 'model.d as col4')
+    ->selectRaw('MAX(model.e) as col5')
+    ->selectRaw('SUM(IF(`model.f` = 1, `model.g`, 0)) AS col6');
+```
 
 ### 使用已有 Query 进行子查询
 
-    ```php
-    // 5.5
-    $subQuery = Model::query();
-    $query = Model::query->from(DB::raw("({$subQuery->toSql()}) as sub"));
-    // 5.6.12 以上
-    $query = Model::query->fromSub($subQuery,'sub');
-    ```
+```php
+// 5.5
+$subQuery = Model::query();
+$query = Model::query->from(DB::raw("({$subQuery->toSql()}) as sub"));
+// 5.6.12 以上
+$query = Model::query->fromSub($subQuery,'sub');
+```
 
 ## Redis 相关
 
