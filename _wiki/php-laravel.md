@@ -2,7 +2,7 @@
 layout: wiki
 title: Php Laravel 笔记
 description: Laravel 可以让你从面条一样杂乱的代码中解脱出来；它可以帮你构建一个完美的网络APP，而且每行代码都可以简洁、富于表达力。
-date: 2020-02-27
+date: 2020-04-09
 categories: Php
 prism: [php, bash, yaml, markup]
 ---
@@ -49,38 +49,41 @@ $viewStr = response($view)->getContent();
 ### Form 表单进行 PUT 请求
 
 ```php
-{% raw %}<form method="post" action="/tc-strategy/{{ $unionId }}">
+<form method="post" action="/tc-strategy/{% raw %}{{ $unionId }}{% endraw %}">
     <input name="_method" type="hidden" value="PUT"/>
     {{ csrf_field() }}
-</form>{% endraw %}
+</form>
 ```
 
 ## Eloquent 模型相关
 
 ### ORM 查询指定列记录
 
-* 按 id 取单条记录
-
     ```php
-    $data = Model::find($id, ['column1', 'column2']);
+    $data = Model::find($id, ['column1', 'column2', ...]);
+    $data = Model::first(['column1', 'column2', ...]);
+    $data = Model::all(['column1', 'column2', ...]);
+    $data = Model::where(...)->get(['column1', 'column2', , ...]); 
     ```
 
-* 取集合首条记录
+### 使用聚合函数
 
     ```php
-    $data = Model::first(['column1', 'column2']);
+    $query = Model::query()
+        ->groupBy('model.a', 'model.b', 'model.c', 'model.d')
+        ->select('model.a as col1', 'model.b as col2', 'model.c as col3', 'model.d as col4')
+        ->selectRaw('MAX(model.e) as col5')
+        ->selectRaw('SUM(IF(`model.f` = 1, `model.g`, 0)) AS col6');
     ```
 
-* 取集合全部记录
+### 使用已有 Query 进行子查询
 
     ```php
-    $data = Model::all(['column1', 'column2']);
-    ```
-
-* 取集合多条记录
-
-    ```php
-    $data = ModelA::where(...)->get(['column1', 'column2']); 
+    // 5.5
+    $subQuery = Model::query();
+    $query = Model::query->from(DB::raw("({$subQuery->toSql()}) as sub"));
+    // 5.6.12 以上
+    $query = Model::query->fromSub($subQuery,'sub');
     ```
 
 ## Redis 相关

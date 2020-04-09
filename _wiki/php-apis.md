@@ -2,7 +2,7 @@
 layout: wiki
 title: Php 之骑驴找马
 description: 我只在刷 leetcode 时重新写那么多函数
-date: 2020-03-04
+date: 2020-04-09
 categories: Php
 prism: [php, php-extras, java, css]
 ---
@@ -50,7 +50,33 @@ prism: [php, php-extras, java, css]
 
 ### 判请求参数是否有值
 
-使用 `if(isset($param) && $param !== '')` 的方式判断可确保无误
+采用 `$param = $request->get('key', $defaultValue)` 的方法获取参数时，有以下情况：
+
+    1. 前端没有传该 key，此时 `$param = $defaultValue`；
+    2. 前端没有传入该 key，但由于表单没有输入，因此该 key 对应的值为 `null`，而无论是 `get` 还是 `input` 方法，都是仅判断 key 而不判断 value，此时 `$param = null`。
+    3. 前端传入该 key，同时传入 value，此时为 `$param = value` 
+
+因此对于前端传过来的值，当为第二种情况时，`isset($param) = true && is_null($param) = true && $param === '' = false`，虽然 `$param` 值为 null，但很神奇地 `isset($param)` 结果是 true。因此对于使用 `get()` 或 `input()` 方法获取的请求参数，使用以下判断最好：
+
+```php
+$param = $request->get('key', '');
+if($param == '') {
+    /* ... */
+}
+```
+
+但是使用等号可能会有风险，也可以使用这种接收方式，就可以用全等号了：
+
+```php
+$params = ['key1', 'key2', ...];
+$input = [];
+foreach ($params as $param) {
+    $input[$param] = !isset($request[$param]) || $request[$param] === null ? '' : $request[$param];
+}
+if($input['key'] === '') {
+    /* ... */
+}
+```
 
 ### 判断数组是否为空
 
