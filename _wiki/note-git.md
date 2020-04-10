@@ -2,9 +2,9 @@
 layout: wiki
 title: Git
 description: 一些常用 git 命令的记录, 以备查阅 ^_^
-date: 2020-02-29
+date: 2020-04-10
 categories: Note
-prism: [git]
+prism: [bash]
 ---
 
 **目录**
@@ -128,11 +128,114 @@ prism: [git]
 
 * 克隆最新版本：`git clone --depth 1 path/to/repository`
 
+## 一整套连招
+
+### 安全彻底地清空 github 仓库 commit 历史（慎重！）
+
+1. 将仓库克隆至本地，二选一操作即可
+
+    ```bash
+    git clone git@github.com:<userName><reposName>
+    git clone --depth=1 https://github.com/<userName>/<reposName>.git
+    ```
+
+2. 重置本地版本历史
+
+    ```bash
+    # 删除版本控制历史
+    rm -rf .git
+
+    # 初始化版本控制
+    git init
+
+    # 将现有文件添加至最初版本
+    git add .
+    git commit -m "Initial commit"
+
+    # 连接至远程仓库
+    git remote add origin git@github.com:<YOUR ACCOUNT>/<YOUR REPOS>.git
+    ```
+
+3. 获取 github ssh 连接认证
+
+    * 创建账号认证密钥
+
+        ```bash
+        ssh-keygen -t rsa -C "youremail@example.com"
+        # 询问保存路径：直接回车使用默认路径，可以自己选择
+        # 询问是否加密：直接回车使用默认设置
+        ```
+
+    * ssh 冗余模式连接 github 账户 
+
+        ```bash
+        ssh -v git@github.com
+            ...
+        No more authentication methods to try.
+        Permission denied (publickey).
+        ```
+
+    * ssh 认证模式
+
+        ```bash
+        ssh-agent -s
+        SSH_AUTH_SOCK=/tmp/ssh-GTpABX1a05qH/agent.88888; export SSH_AUTH_SOCK;
+        SSH_AGENT_PID=88888; export SSH_AGENT_PID;
+        echo Agent pid 88888;
+        ```
+
+    * 导入密钥
+
+        ```bash
+        # 导入密钥
+        ssh-add ~/.ssh/id_rsa
+        Identity added: /.../.../.ssh/id_rsa (密钥保存路径)
+        ```
+
+        `~/.ssh/id_rsa` 指的是密钥的保存路径，若出现 `Could not open a connection to your authentication agent.`, 执行:
+
+        ```bash
+        eval `ssh-agent  -s`
+        ssh-add ~/.ssh/id_rsa
+        ```
+
+    * 复制密钥
+
+        ```bash
+        cat ~/.ssh/id_rsa.pub
+        ssh-rsa AAAA....2aapZ youremail@example.com
+        ```
+
+        将终端显示的信息(密钥)全部复制下来, 从 `ssh-rsa` 到 `youremail@example.com`
+
+    * 录入密钥
+
+        登录 github  
+        👉 `settings`  
+        👉 `SSH and GPG keys`  
+        👉 `new SSH key` (title: 自己起个名字; content: 刚才复制的密钥)  
+        👉 `add SSH key`
+
+    * 测试 ssh 连接
+
+        ```bash
+        ssh -T git@github.com
+        Hi ---! You've successfully authenticated, but GitHub does not provide shell access.
+        ```
+
+    若终端出现验证成功消息, 则成功验证
+
+* 强制替换本地版本控制系统至 github 仓库
+
+    ```bash
+    git push -u --force origin master
+    ```
+
 ## 配置
 
 ### 查看配置
 
-```git
+```bash
 git config --list {--local | --global | --system}
 
 local:   配置当前仓库
@@ -150,14 +253,14 @@ system： 本系统的所有用户
 
 ### 取消换行符自动转换
 
-```git
+```bash
 git config --global core.autocrlf false
 git config --global core.safecrlf true
 ```
 
 ### 用户配置
 
-```git
+```bash
 git config {--local | --global | --system} user.name 'username'
 git congig {--local | --global | --system} user.email 'emailAddress'
 git config {--local | --global | --system} credential.helper store # 保存用户名密码

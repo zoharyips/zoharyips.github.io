@@ -70,8 +70,6 @@ ssh-keygen -t rsa -b 4096
 ssh-keygen -t rsa -b 4096 -f C:\DevEnv\conf\ssh\id_rsa-remote-ssh
 ```
 
-![生成公钥](/images/posts/2019-08-28-vscode-remote-development/Snipaste_2019-09-28_23-31-38.png)
-
 ### 上传公钥
 
 将生成的公钥上传至服务器中，且保存为：`~/.ssh/authorized_keys` 文件
@@ -81,38 +79,30 @@ scp C:\Users\<username>\.ssh\id_rsa.pub <username>@***.***.***.***:~/.tmp.pub
 ssh <username>@***.***.***.*** "mkdir ~/.ssh && cat ~/tmp.pub >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys && rm -f ~/tmp.pub"
 ```
 
-### 安装 Remote-ssh
+### 安装 Remote-ssh 并添加主机
 
-为 Vscode 安装 Remote-ssh 插件，<kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>P</kib> 运行输入 remote，选择连接到主机，进行配置。
-
-### 配置 Remote Host
-
-点击左下角 `><` 绿色按钮，选择 `Remote-SSH: Open Configuration File`
-
-![进入配置](/images/posts/2019-08-28-vscode-remote-development/Snipaste_2019-09-28_23-40-40.png)
+为 Vscode 安装 Remote-ssh 插件，<kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>P</kbd> 运行输入 remote，`Remote-SSH:Add New SSH Host` 进行配置，注意不需要输入密码。
 
 配置远程服务器：
 
-```yml
+```yaml
 # Read more about SSH config files: https://linux.die.net/man/5/ssh_config
-Host ZoharServer
-    HostName ***.***.***.***
-    User zohar
+# Host：自己命名
+#   HostName：主机地址
+#   User：用户名
+Host: ZoharServer
+    HostName: ***.***.***.***
+    User: zohar
 ```
 
 ### 连接远程服务器
 
-点击左侧活动栏的远程服务器图标，双击刚创建的远程服务器，等待安装完成即可正常使用
-
-![连接远程服务器](/images/posts/2019-08-28-vscode-remote-development/Snipaste_2019-09-28_23-44-05.png)
-
-### 选择工作目录
-
-选择 `打开文件夹` 即可选择服务器上的工作目录
-
-![打开文件夹](/images/posts/2019-08-28-vscode-remote-development/Snipaste_2019-09-28_23-55-52.png)
-
-选择完毕即可进行工作
+😲 点击左侧活动栏的远程服务器图标  
+👉 双击刚创建的远程服务器  
+👉 等待服务器安装 vscode-server  
+👉 安装完成  
+👉 选择工作目录  
+👉 开干 🤣
 
 ![进行工作](/images/posts/2019-08-28-vscode-remote-development/Snipaste_2019-09-28_23-58-54.png)
 
@@ -128,18 +118,18 @@ Host ZoharServer
 
 2. 复制 `commit-id`，手动进行下载：
 
-    * 官网地址：https://update.code.visualstudio.com/commit:{commit-id}/server-linux-x64/stable
+    * 官网地址：[https://update.code.visualstudio.com/commit:{commit-id}/server-linux-x64/stable](https://update.code.visualstudio.com/commit:{commit-id}/server-linux-x64/stable "请将 {commit-id} 替换掉")
 
-    * 国内镜像：https://vscode.cdn.azure.cn/commit:{commit-id}/server-linux-x64/stable，纵享德芙般顺滑。
+    * 国内镜像：[https://vscode.cdn.azure.cn/commit:{commit-id}/server-linux-x64/stable](https://vscode.cdn.azure.cn/commit:{commit-id}/server-linux-x64/stable "请将 {commit-id} 替换掉")，纵享德芙般顺滑。
 
-3. 将下载的 `vscode-server-linux-x64.tar.gz` **里的内容**解压到 `.vscode-server/bin/{commit-id}/` 下，解压后：
+3. 将下载的 `vscode-server-linux-x64.tar.gz` 压缩包**里面的内容**解压到 `.vscode-server/bin/{commit-id}/` 下，解压后：
 
     ```bash
     [zohar@localhost 2aae1f26c72891c399f860409176fe435a154b13]$ ls
     bin  extensions  LICENSE  node  node_modules  out  package.json  product.json  server.sh
     ```
 
-4. 上车
+4. 上车 🚞🚃🚃🚃🚃🚃
 
 ## Remote-Container
 

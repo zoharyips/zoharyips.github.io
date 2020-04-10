@@ -1,8 +1,8 @@
 ---
 layout: wiki
-title: Ubuntu 下 jekyll 环境搭建
+title: 搭建 Jekyll 运行环境
 description: 无论是在 Linux 下还是在 Win 下，搭建 jekyll 环境都想让人吐血
-date: 2019-10-26
+date: 2020-04-10
 categories: Note
 prism: [bash]
 ---
@@ -10,7 +10,9 @@ prism: [bash]
 * TOC
 {:toc}
 
-## 1. 使用最新阿里云镜像源
+## Ubuntu
+
+### 1. 使用最新阿里云镜像源
 
 请确保使用最新的[阿里云镜像源](https://zoharyip.club/wiki/problem-linux/#2-%E9%85%8D%E7%BD%AE-ali-%E8%BD%AF%E4%BB%B6%E6%BA%90)，否则将出现无法安装 ruby-dev 的情况，因为使用旧版软件源，软件列表上的依赖关系是老版本的，而内核版本却是最新的，因此 ruby-dev 的依赖会与内核版本冲突，会发生类似下方描述得错误
 
@@ -24,7 +26,7 @@ prism: [bash]
 
 所以你需要更新软件源，同时 `sudo apt-get update` 更新软件列表
 
-## 2. 安装 Ruby 工具
+### 2. 安装 Ruby 工具
 
 真搞不懂 Ruby 开发的人为什么要把 Ruby 环境搞得那么复杂 (╬▔皿▔)凸；服了他们了；
 
@@ -40,13 +42,13 @@ sudo apt-get install ruby-dev
 sudo apt-get install ruby-full
 ```
 
-## 3. 安装所需构建工具及依赖
+### 3. 安装所需构建工具及依赖
 
 ```bash
 apt-get install make gcc g++ libxslt-dev libxml2-dev build-essential -y
 ```
 
-## 4. 更新 Gem 软件源
+### 4. 更新 Gem 软件源
 
 ```bash
 zohar@Titan:~$ gem source -l
@@ -72,19 +74,19 @@ https://gems.ruby-china.com added to sources
 * `gem source --add https://gems.ruby-china.com` 设置默认软件源为国内镜像地址
 
 
-## 4. 安装 bundler
+### 4. 安装 bundler
 
 ```bash
 sudo gem install bundler
 ```
 
-## 5. 安装 jekyll
+### 5. 安装 jekyll
 
 ```bash
 sudo gem install jekyll
 ```
 
-## 6. gem 安装依赖工具
+### 6. gem 安装依赖工具
 
 进入 jekyll 工程目录
 
@@ -134,9 +136,9 @@ root@hostname:/opt/metasploit-framework#
 
 直接访问 `http://127.0.0.1:4000` 即可直接浏览博客，这是即时更新的，因此非常利于修改博客
 
-## 7. 疑难杂症
+### 7. 疑难杂症
 
-### Invalid US-ASCII character
+#### Invalid US-ASCII character
 
 ```bash
 Conversion error: Jekyll::Converters::Scss encountered an error while converting 'assets/css/style.scss': Invalid US-ASCII character "\xE2" on line 5
@@ -147,4 +149,60 @@ jekyll 3.8.5 | Error:  Invalid US-ASCII character "\xE2" on line 5
 
 ```bash
 Encoding.default_external = Encoding.find('utf-8')
+```
+
+## CentOS 7
+
+### 1. 安装 RVM
+
+RVM 是一个命令行工具，可以提供一个便捷的多版本Ruby 环境的管理和切换。
+
+```bash
+gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+curl -sSL https://get.rvm.io | bash -s stable
+```
+
+更新环境变量
+
+```bash
+source /usr/local/rvm/scripts/rvm
+# 查看运行版本
+rvm -v
+```
+
+### 2. 安装 Ruby
+
+```bash
+# 安装 ruby 依赖
+rvm requirements
+# 查看 ruby 可安装列表
+rvm list known
+# 安装 ruby
+rvm install 2.7.0
+# 如果安装了多个 ruby，指定默认的 ruby
+rvm use 2.7.0 --default
+# 查看运行版本
+ruby -v
+# 查看 gem 版本
+gem -v
+```
+
+### 3. 安装 Bundler
+
+```bash
+gem install bundler
+```
+
+### 4. 安装 Jekyll
+
+```bash
+gem install jekyll
+```
+
+### 5. 运行 Jekyll
+
+```bash
+# 进入项目目录
+cd workspace
+bundle exec jekyll serve -P 80
 ```
