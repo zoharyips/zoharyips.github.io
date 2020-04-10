@@ -2,7 +2,7 @@
 layout: wiki
 title: Linux 之疑难杂症
 description: 简单记录一些 linux 常见问题及其解决办法
-date: 2019-10-26
+date: 2020-04-10
 categories: Linux
 prism: [bash]
 ---
@@ -73,13 +73,13 @@ prism: [bash]
 
 ### 2.2 CentOS
 
-1、改名备份原源文件
+1. 改名备份原源文件
 
     ```bash
     mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
     ```
 
-2、下载新的CentOS-Base.repo 到/etc/yum.repos.d/
+2. 下载新的CentOS-Base.repo 到/etc/yum.repos.d/
 
     ```bash
     # CentOS 5
@@ -90,8 +90,65 @@ prism: [bash]
     wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
     ```
 
-3、生成缓存，试试是否生效，试试就逝世
+3. 生成缓存，试试是否生效，试试就逝世
 
     ```bash
     yum makecache
+    ```
+
+## 3. 开启 SSH
+
+### 3.1 CentOS
+
+1. 安装 openssh-server
+
+    ```bash
+    sudo yum install openssh-server
+    ```
+
+2. 配置 openssh，编辑：`/etc/ssh/sshd_config`，开启以下配置：
+
+    ```bash
+    Port 22
+    ListenAddress 0.0.0.0
+    ListenAddress ::
+    PermitRootLogin yes
+    PasswordAuthentication yes
+    ```
+
+3. 启动 ssh 服务
+
+    ```bash
+    sudo service sshd start
+    # 查看是否开启
+    pe -ef | grep sshd
+    # 查看端口是否开启
+    netstat -an | grep 22
+    ```
+
+## 4. 关闭/开启图形界面
+
+### 4.1 CentOS 7
+
+    CentOS7 用 `target` 取代了运行级别的概念，使用以下命令开关图形界面：
+
+    ```bash
+    # 查看当前配置
+    sudo systemctl get-default
+    # 配置多用户命令行模式
+    sudo systemctl set-default multi-user.target
+    # 配置图形界面模式
+    sudo systemctl set-default graphical.target
+    ```
+
+    卸载图形界面
+
+    ```bash
+    // X window
+    sudo yum groupremove "X Window System"
+    // GNOME
+    sudo yum groupremove "GNOME"
+    sudo yum groupremove "GNOME Desktop Enviroment"
+    // KDE
+    sudo yum groupremove "KDE"
     ```
