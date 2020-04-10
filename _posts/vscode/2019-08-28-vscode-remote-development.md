@@ -81,6 +81,10 @@ scp C:\Users\<username>\.ssh\id_rsa.pub <username>@***.***.***.***:~/.tmp.pub
 ssh <username>@***.***.***.*** "mkdir ~/.ssh && cat ~/tmp.pub >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys && rm -f ~/tmp.pub"
 ```
 
+### 安装 Remote-ssh
+
+为 Vscode 安装 Remote-ssh 插件，<kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>P</kib> 运行输入 remote，选择连接到主机，进行配置。
+
 ### 配置 Remote Host
 
 点击左下角 `><` 绿色按钮，选择 `Remote-SSH: Open Configuration File`
@@ -112,10 +116,37 @@ Host ZoharServer
 
 ![进行工作](/images/posts/2019-08-28-vscode-remote-development/Snipaste_2019-09-28_23-58-54.png)
 
+### 问题
+
+#### 点击输入密码后一直重新加载窗口
+
+这是因为你在 vscode-server 安装过程中终止安装了，把 `.vscode-server/bin/{commit-id}/` 中下载的东西删除即可。
+
+#### vscode-server 下载卡住了
+
+1. 终止安装，把 `.vscode-server/bin/{commit-id}/` 中下载的安装包删掉。
+
+2. 复制 `commit-id`，手动进行下载：
+
+    * 官网地址：https://update.code.visualstudio.com/commit:{commit-id}/server-linux-x64/stable
+
+    * 国内镜像：https://vscode.cdn.azure.cn/commit:{commit-id}/server-linux-x64/stable，纵享德芙般顺滑。
+
+3. 将下载的 `vscode-server-linux-x64.tar.gz` **里的内容**解压到 `.vscode-server/bin/{commit-id}/` 下，解压后：
+
+    ```bash
+    [zohar@localhost 2aae1f26c72891c399f860409176fe435a154b13]$ ls
+    bin  extensions  LICENSE  node  node_modules  out  package.json  product.json  server.sh
+    ```
+
+4. 上车
+
 ## Remote-Container
 
 wait for update...
 
 ## Remote-WSL
 
-wait for update...
+直接在 WSL 中使用 code 命令即可，原理是 WSL 中的 Path 包含主机中的 Path，同时 vscode bin 文件夹下包含 exe 文件和 linux 二进制文件，只要 vscode 在 path 中，就可以在子系统中直接使用主机的 vscode。
+
+此时 vscode 会提示是否在 WSL 中安装 vscode-remote，点击 true，待安装完重新加载即可。

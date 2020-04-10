@@ -130,25 +130,25 @@ prism: [bash]
 
 ### 4.1 CentOS 7
 
-    CentOS7 用 `target` 取代了运行级别的概念，使用以下命令开关图形界面：
+CentOS7 用 `target` 取代了运行级别的概念，使用以下命令开关图形界面：
 
-    ```bash
-    # 查看当前配置
-    sudo systemctl get-default
-    # 配置多用户命令行模式
-    sudo systemctl set-default multi-user.target
-    # 配置图形界面模式
-    sudo systemctl set-default graphical.target
-    ```
+```bash
+# 查看当前配置
+sudo systemctl get-default
+# 配置多用户命令行模式
+sudo systemctl set-default multi-user.target
+# 配置图形界面模式
+sudo systemctl set-default graphical.target
+```
 
-    卸载图形界面
+卸载图形界面
 
-    ```bash
-    // X window
-    sudo yum groupremove "X Window System"
-    // GNOME
-    sudo yum groupremove "GNOME"
-    sudo yum groupremove "GNOME Desktop Enviroment"
-    // KDE
-    sudo yum groupremove "KDE"
-    ```
+```bash
+// X window
+sudo yum groupremove "X Window System"
+// GNOME
+sudo yum groupremove "GNOME"
+sudo yum groupremove "GNOME Desktop Enviroment"
+// KDE
+sudo yum groupremove "KDE"
+```
