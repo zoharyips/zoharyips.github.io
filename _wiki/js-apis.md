@@ -49,6 +49,34 @@ prism: [javascript, markup]
     setTimeout('refreshPage()',1000);
     ```
 
+### 处理页面缩放
+
+* 获取页面缩放大小
+
+    ```javascript
+    function detectZoom (){ 
+        var ratio = 0;
+        if (window.devicePixelRatio !== undefined) {    // 新版属性
+            ratio = window.devicePixelRatio;
+        } else if (navigator.userAgent.toLowerCase().indexOf('msie')) {
+            if (window.screen.deviceXDPI && window.screen.logicalXDPI) {
+                ratio = window.screen.deviceXDPI / window.screen.logicalXDPI;
+            }
+        } else if (window.outerWidth !== undefined && window.innerWidth !== undefined) {
+            ratio = window.outerWidth / window.innerWidth;
+        }
+        return Math.round(ratio * 100);
+    };
+    ```
+
+* 监听页面缩放
+
+    ```javascript
+    window.onresize = function onresize() {
+        ...
+    };
+    ```
+
 ## 对象
 
 ### 对象创建

@@ -80,8 +80,8 @@ $query = Model::query()
 
 ```php
 // 5.5
-$subQuery = Model::query();
 $query = Model::query->from(DB::raw("({$subQuery->toSql()}) as sub"));
+$query = Model::query->leftJoin(DB::raw("({$subQuery->toSql()}) as sub"), 'sub.model_id', '=', 'model.id');
 // 5.6.12 以上
 $query = Model::query->fromSub($subQuery,'sub');
 ```
