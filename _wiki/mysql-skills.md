@@ -97,48 +97,76 @@ prism: [sql, bash, php]
 
 ## 查询
 
-### 统计同一列中各数据出现的次数
+### 优化查询超多分页场景
+
+*   ```sql
+    SELECT * FROM customer LIMIT 10000000, 10;
+    ```
+
+    ```bash
+    +----+-------------+----------+------------+------+---------------+------+---------+------+---------+----------+-------+
+    | id | select_type | table    | partitions | type | possible_keys | key  | key_len | ref  | rows    | filtered | Extra |
+    +----+-------------+----------+------------+------+---------------+------+---------+------+---------+----------+-------+
+    |  1 | SIMPLE      | customer | NULL       | ALL  | NULL          | NULL | NULL    | NULL | 9383084 |   100.00 | NULL  |
+    +----+-------------+----------+------------+------+---------------+------+---------+------+---------+----------+-------+
+    ```
+
+    MySql 的分页查询默认是通过取 offset + limit 条记录进行的。
+    
+    从执行计划也可以看出直接查询的查询方式是全表查询(type=ALL)，由于是千万级数据，因此需要查询 10000010 行数据。
+    
+    统计平均耗时：3.4667128412667s;
+
+*   ```sql
+    SELECT customer.* 
+        FROM (SELECT id FROM customer LIMIT 10000000, 10) a 
+        LEFT JOIN customer ON a.`id` = customer.`id`;
+    ```
+
+*   ```sql
+    SELECT a.* 
+        FROM customer a, (SELECT id FROM customer LIMIT 10000000, 10) b 
+        WHERE a.`id` = b.id;
+    ```
+
+    ```bash
+    +----+-------------+------------+------------+--------+---------------+---------+---------+------+---------+----------+-------------+
+    | id | select_type | table      | partitions | type   | possible_keys | key     | key_len | ref  | rows    | filtered | Extra       |
+    +----+-------------+------------+------------+--------+---------------+---------+---------+------+---------+----------+-------------+
+    |  1 | PRIMARY     | <derived2> | NULL       | ALL    | NULL          | NULL    | NULL    | NULL | 9383084 |   100.00 | NULL        |
+    |  1 | PRIMARY     | a          | NULL       | eq_ref | PRIMARY       | PRIMARY | 4       | b.id |       1 |   100.00 | NULL        |
+    |  2 | DERIVED     | customer   | NULL       | index  | NULL          | PRIMARY | 4       | NULL | 9383084 |   100.00 | Using index |
+    +----+-------------+------------+------------+--------+---------------+---------+---------+------+---------+----------+-------------+
+    ```
+
+    采用关联查询的方式，以上两种写法是差不多的，二者执行计划也是一样的，多表查询就是笛卡儿积。
+    
+    同样先利用索引 id 查询到指定区域，再关联原表，通过 id 来取数据。
+    
+    统计平均耗时：2.3666601628s;
+
+### 统计同一列中各数据出现的次数和各数据的和
 
 * 效果：
 
     ```bash
     +----+------+--------+
     | id | name | data   |
-    +----+------+--------+       +------+-------+       +------+-------+
-    |  1 | a    |   1024 |       | name | times |       | name | times |
-    |  2 | b    |   4324 |       +------+-------+       +------+-------+       +------+-------+
-    |  3 | c    |   3424 |       | a    |     2 |       | b    |     3 |       | name | times |
-    |  4 | d    |    342 |  ==>  | b    |     3 |  ==>  | a    |     2 |  ==>  +------+-------+
-    |  5 | b    | 342322 |       | c    |     2 |       | c    |     2 |       | b    |     3 |
-    |  6 | a    |     23 |       | d    |     1 |       | e    |     1 |       +------+-------+
-    |  7 | c    |  23332 |       | e    |     1 |       | d    |     1 |
-    |  8 | e    |   2134 |       +------+-------+       +------+-------+
+    +----+------+--------+       +------+-------+----------+
+    |  1 | a    |   1024 |       | name | times | all_data |
+    |  2 | b    |   4324 |       +------+-------+----------+
+    |  3 | c    |   3424 |       | b    |     3 |   347880 |
+    |  4 | d    |    342 |  ==>  | c    |     2 |    26756 |
+    |  5 | b    | 342322 |       | e    |     1 |     2134 |
+    |  6 | a    |     23 |       | a    |     2 |     1047 |
+    |  7 | c    |  23332 |       | d    |     1 |      342 |
+    |  8 | e    |   2134 |       +------+-------+----------+
     |  9 | b    |   1234 |
     +----+------+--------+
     ```
-* 统计次数：
 
-    ```sql
-    SELECT `name`, COUNT(*) AS times 
-        FROM [table] 
-        GROUP BY [table].`name`;
-    ```
-
-* 统计排序：
-    ```sql
-    SELECT `name`, COUNT(*) AS times 
-        FROM [table] 
-        GROUP BY [table].`name` 
-        ORDER BY times DESC;
-    ```
-
-* 查询出现最大次数：
-    ```sql
-    SELECT `name`, COUNT(*) AS times 
-        FROM [table] 
-        GROUP BY [table].`name` 
-        ORDER BY times 
-        DESC LIMIT 1;
+*   ```sql
+    SELECT `name`, COUNT(*) AS times, SUM(data) AS all_data FROM [table] GROUP BY [table].`name` ORDER BY times;
     ```
 
 ### 查找第 n 高的数据
@@ -160,9 +188,7 @@ prism: [sql, bash, php]
 * 巧用 max 函数（仅适用于前 3）：
 
     ```sql
-    SELECT max(data) max 
-        FROM [table] 
-        WHERE data < (SELECT max(data) FROM [table]);
+    SELECT max(data) max FROM [table] WHERE data < (SELECT max(data) FROM [table]);
     ```
 
 * 使用分页
@@ -170,26 +196,13 @@ prism: [sql, bash, php]
     使用视图解决 null 问题：
 
     ```sql
-    SELECT (
-        SELECT data 
-            FROM [table] 
-            GROUP BY data 
-            DESC 
-            LIMIT 1 OFFSET 1
-    ) AS max;
+    SELECT (SELECT data FROM [table] GROUP BY data DESC LIMIT 1, 1) AS max;
     ```
 
     使用 `ifnull()` 函数解决 null 问题：
 
     ```sql
-    SELECT ifnull ((
-        SELECT data
-            FROM [table]
-            GROUP BY data
-            DESC
-            LIMIT 1 OFFSET 1
-        ), null
-    ) AS max;
+    SELECT ifnull ((SELECT data FROM [table] GROUP BY data DESC LIMIT 1, 1), null) AS max;
     ```
 
 ### 行列转换：将多行数据转换成多列数据
@@ -197,15 +210,17 @@ prism: [sql, bash, php]
 * 效果：
 
     ```bash
-    |   id  class   course_id    teacher_id
-    |-----  ------  ---------  ------------
-    |   1   101             2            18         class  语文  数学  英语
-    |   12  101             1            12         -----  ----  ----  ----
-    |   13  101             3             1  ====>   101    12    18    1
-    |   14  102             2             4          102    54    4     0
-    |   15  102             1            54          103    23    0     0
-    |   16  103             1            23          104    0     0     13
-    |   17  104             3            13
+    +----+-------+-----------+------------+         
+    | id | class | course_id | teacher_id |         
+    +----+-------+-----------+------------+         +-------+--------+--------+--------+
+    |  1 |   101 |         2 |         18 |         | class | 语文   | 数学   | 英语   |
+    |  2 |   101 |         1 |         12 |         +-------+--------+--------+--------+
+    |  3 |   101 |         3 |          1 |         |   101 |     12 |     18 |      1 |
+    |  4 |   102 |         2 |          4 |  ====>  |   102 |     54 |      4 |      0 |
+    |  5 |   102 |         1 |         54 |         |   103 |     23 |      0 |      0 |
+    |  6 |   103 |         1 |         23 |         |   104 |      0 |      0 |     13 |
+    |  7 |   104 |         3 |         13 |         +-------+--------+--------+--------+
+    +----+-------+-----------+------------+         
     ```
 
 * 使用 `Group By` 分组
@@ -234,36 +249,18 @@ prism: [sql, bash, php]
 * 效果：
 
     ```bash
-    |   id  english    math  chinese            id  english    math  chinese  higest  
-    |-----  -------  ------  ---------      ------  -------  ------  -------  --------
-    |   1       99      78         53            1       99      78       53        99
-    |   2       88      34         89  ====>     2       88      34       89        89
-    |   3       34      23         58            3       34      23       58        58
-    |   4       95      84         78            4       95      84       78        95
+    +----+---------+------+---------+       +----+---------+------+---------+--------+
+    | id | english | math | chinese |       | id | english | math | chinese | higest |
+    +----+---------+------+---------+       +----+---------+------+---------+--------+
+    |  1 |      99 |   78 |      53 |       |  1 |      99 |   78 |      53 |     99 |
+    |  2 |      88 |   34 |      89 | ====> |  2 |      88 |   34 |      89 |     89 |
+    |  3 |      34 |   23 |      58 |       |  3 |      34 |   23 |      58 |     58 |
+    |  4 |      95 |   84 |      78 |       |  4 |      95 |   84 |      78 |     95 |
+    +----+---------+------+---------+       +----+---------+------+---------+--------+
     ```
 
 * 使用 `GREATEST()` 函数
 
-    `GREATEST(col1, col2, col3, ...)`
-
     ```sql
     SELECT *, GREATEST(english, math, chinese) AS higest FROM student_grades;
-    ```
-
-### 优化查询超多分页场景
-
-    ```sql
-    SELECT * FROM customer LIMIT 10000000, 10;
-    ```
-
-    由于是千万级数据，而 MySql 中的 limit 查询是取 offset + limit 行，因此需要查询 10000010 行数据，耗时平均 3.4667128412667s;
-
-    ```sql
-    SELECT customer.* FROM (SELECT id FROM customer LIMIT 10000000, 10) a LEFT JOIN customer ON a.`id` = customer.`id`;
-    ```
-
-    采用延迟关联查询的方式，先利用索引 id 查询到指定区域，然后再通过 JOIN 获取原表中的数据，耗时平均 2.5333216673s;
-
-    ```sql
-    SELECT a.* FROM customer a, (SELECT id FROM customer LIMIT 10000000, 10) b WHERE a.`id` = b.id;
     ```
