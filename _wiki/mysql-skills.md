@@ -4,7 +4,7 @@ title: MySQL - 独门秘技
 description: 有时候你想破头都不知道这条 SQL 该怎么写
 date: 2020-04-16
 categories: MySQL
-prism: [sql, bash]
+prism: [sql, bash, php]
 ---
 
 * TOC
@@ -90,6 +90,10 @@ prism: [sql, bash]
         }
     }
     ```
+
+* `bulk_insert_buffer_size` 这个参数仅作用于使用 MyISAM 存储引擎，用来缓存批量插入数据的时候临时缓存写入数据，默认值为 8M，如果需要更快的批量处理，我们可以把它调整到 32M 甚至更大。
+
+* `max_allowed_packet` 参数会限制 MySql 服务器接受的数据包大小。此时太大的插入和更新会受 max_allowed_packet 参数限制。
 
 ## 查询
 
@@ -193,15 +197,15 @@ prism: [sql, bash]
 * 效果：
 
     ```bash
-        id  class   course_id    teacher_id
-    ------  ------  ---------  ------------
-        1   101             2            18         class  语文  数学  英语
-        12  101             1            12         -----  ----  ----  ----
-        13  101             3             1  ====>   101    12    18    1
-        14  102             2             4          102    54    4     0
-        15  102             1            54          103    23    0     0
-        16  103             1            23          104    0     0     13
-        17  104             3            13
+    |   id  class   course_id    teacher_id
+    |-----  ------  ---------  ------------
+    |   1   101             2            18         class  语文  数学  英语
+    |   12  101             1            12         -----  ----  ----  ----
+    |   13  101             3             1  ====>   101    12    18    1
+    |   14  102             2             4          102    54    4     0
+    |   15  102             1            54          103    23    0     0
+    |   16  103             1            23          104    0     0     13
+    |   17  104             3            13
     ```
 
 * 使用 `Group By` 分组
@@ -230,12 +234,12 @@ prism: [sql, bash]
 * 效果：
 
     ```bash
-        id  english    math  chinese            id  english    math  chinese  higest  
-    ------  -------  ------  ---------      ------  -------  ------  -------  --------
-        1       99      78         53            1       99      78       53        99
-        2       88      34         89  ====>     2       88      34       89        89
-        3       34      23         58            3       34      23       58        58
-        4       95      84         78            4       95      84       78        95
+    |   id  english    math  chinese            id  english    math  chinese  higest  
+    |-----  -------  ------  ---------      ------  -------  ------  -------  --------
+    |   1       99      78         53            1       99      78       53        99
+    |   2       88      34         89  ====>     2       88      34       89        89
+    |   3       34      23         58            3       34      23       58        58
+    |   4       95      84         78            4       95      84       78        95
     ```
 
 * 使用 `GREATEST()` 函数
@@ -244,4 +248,22 @@ prism: [sql, bash]
 
     ```sql
     SELECT *, GREATEST(english, math, chinese) AS higest FROM student_grades;
+    ```
+
+### 优化查询超多分页场景
+
+    ```sql
+    SELECT * FROM customer LIMIT 10000000, 10;
+    ```
+
+    由于是千万级数据，而 MySql 中的 limit 查询是取 offset + limit 行，因此需要查询 10000010 行数据，耗时平均 3.4667128412667s;
+
+    ```sql
+    SELECT customer.* FROM (SELECT id FROM customer LIMIT 10000000, 10) a LEFT JOIN customer ON a.`id` = customer.`id`;
+    ```
+
+    采用延迟关联查询的方式，先利用索引 id 查询到指定区域，然后再通过 JOIN 获取原表中的数据，耗时平均 2.5333216673s;
+
+    ```sql
+    SELECT a.* FROM customer a, (SELECT id FROM customer LIMIT 10000000, 10) b WHERE a.`id` = b.id;
     ```
