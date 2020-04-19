@@ -4,6 +4,7 @@ title: 一文逛遍所有语言基础！
 categories: Markdown
 keywords: Markdown, GFM
 prism: [javascript, java, php, go, markup]
+bootstrap: true
 ---
 
 不不不，大大大大哥我错了，两三个语言也在这里逼逼，我我我错了!  
@@ -97,55 +98,62 @@ prism: [javascript, java, php, go, markup]
 
 ### 变量声明与赋值
 
-* Java：
-
-    ```java
-    int int1;
-    int int1 = 10;
-    int int1, int2;
-    int int1 = 10, int2 = 20;
-    ```
-
-* Go 
-
-    ```go
-    var int1 int
-    var int1 int = 10
-    var int1 = 10
-    int1 := 10                      // 初始化声明，仅在函数体中可用
-    var int1, int2 int
-    var int1, int2 int = 10, 20
-    var int1, int2 = 10, 20
-    int1, int2 := 10, 20
-    var (                           // 一般用于声明全局变量
-        int1 int
-        string1 string
-    )
-    var (
-        int1 int = 10
-        string1 string = "Hello"
-    )
-    ```
-
-* PHP
-
-    ```php
-    $int1 = 10;
-    ```
-
-* JS
-
-    ```javascript
-    let int1;                       // 块级作用域
-    let int1 = 10;
-    let int1, int2;
-    let int1 = 10, int2 = 20;
-    
-    var int1;                       // 函数/全局作用域
-    var int1 = 10;
-    var int1, int2;
-    var int1 = 10, int2 = 20;
-    ```
+<div class="comb-code-block">	
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#java1" data-toggle="tab">Java</a></li>
+        <li><a href="#go1" data-toggle="tab">Go</a></li>
+        <li><a href="#php1" data-toggle="tab">PHP</a></li>
+        <li><a href="#javascript1" data-toggle="tab">JS</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="java1">
+            <pre><code class="tab-pane active language-java">
+            int int1;
+            int int1 = 10;
+            int int1, int2;
+            int int1 = 10, int2 = 20;
+            </code></pre>
+        </div>
+        <div class="tab-pane" id="go1">
+            <pre><code class="tab-pane active language-go">
+            var int1 int
+            var int1 int = 10
+            var int1 = 10
+            int1 := 10                      // 初始化声明，仅在函数体中可用
+            var int1, int2 int
+            var int1, int2 int = 10, 20
+            var int1, int2 = 10, 20
+            int1, int2 := 10, 20
+            var (                           // 一般用于声明全局变量
+                int1 int
+                string1 string
+            )
+            var (
+                int1 int = 10
+                string1 string = "Hello"
+            )
+            </code></pre>
+        </div>
+        <div class="tab-pane" id="php1">
+            <pre><code class="tab-pane active language-php">
+            $int1 = 10;
+            </code></pre>
+        </div>
+        <div class="tab-pane" id="javascript1">
+            <pre><code class="tab-pane active language-javascript">
+            let int1;                       // 块级作用域
+            let int1 = 10;
+            let int1, int2;
+            let int1 = 10, int2 = 20;
+            
+            var int1;                       // 函数/全局作用域
+            var int1 = 10;
+            var int1, int2;
+            var int1 = 10, int2 = 20;
+            </code></pre>
+        </div>
+    </div>
+</div>
 
 ### 变量作用域与生命周期
 
@@ -169,116 +177,116 @@ prism: [javascript, java, php, go, markup]
 
 静态全局变量通常表现为相同类型实例共享变量，静态局部变量则表现为相同函数共享变量
 
-* Java：不支持静态局部变量，仅支持静态全局变量。
+* Java：
+    1. 不支持静态局部变量，仅支持静态全局变量
+    2. 使用 `static` 关键字修饰，使用 `类名.变量名` 的方式调用
 
-    ```java
-    class TestCase {
-        // qualifier static type identifier
-        public static int int1;
-        public static int int2 = 10;
-    }
-    ```
+* Go：
+    1. 不直接支持静态局部变量，但可以通过闭包实现
+    2. 直接在包下使用 `var` 修饰符声明的变量即为静态全局变量
 
-    调用：类名.变量名
-    
-    ```java
-    System.out.println(TestCase.int1);
-    ```
+* PHP：  
+    都支持
 
-* Go：不直接支持静态局部变量，但可以通过闭包实现：
+* JS：  
+    支持类变量，JS 不支持静态变量；静态局部变量可以简单通过闭包实现：
 
-    ```go
-    package testpkg
+    <div class="comb-code-block">	
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#java2" data-toggle="tab">Java</a></li>
+            <li><a href="#go2" data-toggle="tab">Go</a></li>
+            <li><a href="#php2" data-toggle="tab">PHP</a></li>
+            <li><a href="#javascript2" data-toggle="tab">JS</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="java2">
+                <pre><code class="tab-pane active language-java">
+                class TestCase {
+                    public static int int1;
+                    public static int int2 = 10;
+                }
+                public static void main(String[] args) {
+                    System.out.println(TestCase.int1);
+                }
+                </code></pre>
+            </div>
+            <div class="tab-pane" id="go2">
+                <pre><code class="tab-pane active language-go">
+                package testpkg
+                var GlobalStaticVariable = 10;
+                func TestPkgMain() {
+                    // 静态局部变量
+                    staticVariable := 1
+                    // 调用静态局部变量
+                    testFunc := func() {
+                        fmt.Println("staticVariable:", staticVariable)
+                        staticVariable++
+                    }
+                    for i := 0; i < 10; i++ {
+                        testFunc()
+                    }
+                }
+                fmt.Println(testpkg.GlobalStaticVariable)
+                </code></pre>
+            </div>
+            <div class="tab-pane" id="php2">
+                <pre><code class="tab-pane active language-php">
+                class TestCase {
+                    public static $int1;
+                    public static $int2 = 20;
+                    public function testFunc() {
+                        static $int3 = 10;
+                        echo $int3;
+                        $int3++;
+                    }
+                }
+                public function test{
+                    echo TestCase::$int1;
+                    echo $testCase::$int1;
+                }
+                </code></pre>
+            </div>
+            <div class="tab-pane" id="javascript2">
+                <pre><code class="tab-pane active language-javascript">
+                let func = (() => {
+                    var localStaticVariable = 0;
+                    // 调用静态局部变量
+                    return function() {
+                        localStaticVariable += 1;
+                        console.log(localStaticVariable);
+                    }
+                })();
 
-    // var identifier = value 或 var (identifier1 = value1, identifier2 = value2, ...)
-    var GlobalStaticVariable = 10;
-    
-    func TestPkgMain() {
-        // 静态局部变量
-        staticVariable := 1
-        // 调用静态局部变量
-        testFunc := func() {
-            fmt.Println("staticVariable:", staticVariable)
-            staticVariable++
-        }
-        for i := 0; i < 10; i++ {
-            testFunc()
-        }
-    }
-    ```
-
-    调用：静态全局变量：包名.变量名；静态局部变量：闭包
-    ```go
-    fmt.Println(testpkg.GlobalStaticVariable)
-    ```
-
-* PHP：都支持，牛不牛逼
-
-    ```php
-    class TestCase {
-        // qualifier static identifier = value;
-        public static $int1;
-        public static $int2 = 20;
-        public function testFunc() {
-            // static identifier = value;
-            static $int3 = 10;
-            // 调用静态局部变量
-            echo $int3;
-            $int3++;
-        }
-    }
-    ```
-    
-    调用：类名::变量名，或实例::变量名；局部静态变量生效范围为定义区块，直接访问即可
-    
-    ```php
-    echo TestCase::$int1;
-    echo $testCase::$int1;
-    ```
-
-* JS：支持类变量，JS 不支持静态变量；静态局部变量可以简单通过闭包实现：
-
-    ```javascript
-    let func = (() => {
-        var localStaticVariable = 0;
-        // 调用静态局部变量
-        return function() {
-            localStaticVariable += 1;
-            console.log(localStaticVariable);
-        }
-    })();
-    ```
-    
-    而既然 JS 支持类变量，所以我自己想了静态全局变量的一种比较简单易懂，风格也和其他语言比较统一的写法：
-
-    ```javascript
-    function TestCase() {
-        // 类首次加载时执行，类似于静态变量的初始化
-        if(typeof TestCase._initilized === "undefined") {
-            TestCase.staticVariable = 0;
-            TestCase._initilized = true;
-        }
-
-        /* 对象定义属性，让每个实例的属性指向类属性 */
-        Object.defineProperty(this, "staticVariable", {
-            configurable: true,
-            enumerable: true,
-            get() {
-                return TestCase.staticVariable;
-            },
-            set(newVal) {
-                TestCase.staticVariable = newVal;
-            }
-        })
-    }
-    let a = new TestCase();
-    let b = new TestCase();
-    a.staticVariable;       // 0
-    b.staticVariable;       // 0
-    a.staticVariable = 100;
-    a.staticVariable;       // 100
-    b.staticVariable;       // 100
-    ```
+                /* 而既然 JS 支持类变量，所以我自己想了静态全局变量的一种比较简单易懂，风格也和其他语言比较统一的写法： */
+                function TestCase() {
+                    // 类首次加载时执行，类似于静态变量的初始化
+                    if(typeof TestCase._initilized === "undefined") {
+                        TestCase.staticVariable = 0;
+                        TestCase._initilized = true;
+                    }
+                    /* 对象定义属性，让每个实例的属性指向类属性 */
+                    Object.defineProperty(this, "staticVariable", {
+                        configurable: true,
+                        enumerable: true,
+                        get() {
+                            return TestCase.staticVariable;
+                        },
+                        set(newVal) {
+                            TestCase.staticVariable = newVal;
+                        }
+                    })
+                }
+                let a = new TestCase();
+                let b = new TestCase();
+                a.staticVariable;       // 0
+                b.staticVariable;       // 0
+                a.staticVariable = 100;
+                a.staticVariable;       // 100
+                b.staticVariable;       // 100
+                </code></pre>
+            </div>
+        </div>
+    </div>
 
 ### 访问控制
 
@@ -368,118 +376,147 @@ else
 
 > 所有语言都支持 break 和 continue，goto 不予以记录
 
-* Java
+<div class="comb-code-block">	
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#java3" data-toggle="tab">Java</a></li>
+        <li><a href="#go3" data-toggle="tab">Go</a></li>
+        <li><a href="#php3" data-toggle="tab">PHP</a></li>
+        <li><a href="#javascript3" data-toggle="tab">JS</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="java3">
+            <pre><code class="tab-pane active language-java">
+            while(expression) { /* ... */ }
 
-    ```java
-    while(expression) { /* ... */ }
+            do { /* ... */ }while(expression);
 
-    do { /* ... */ }while(expression);
+            for(init; condition; post) { /* ... */ }
+            // foreach 写法，可用于数组、集合
+            for(Type item : obj) { /* ... */ }
+            </code></pre>
+        </div>
+        <div class="tab-pane" id="go3">
+            <pre><code class="tab-pane active language-go">
+            for init; condition; post { /* ... */ }
+            // while 写法
+            for condition { /* ... */ }
+            // for range 写法，可作用于 数组、切片、字符串、map 等
+            for i, v := range obj { /* ... */ }
+            </code></pre>
+        </div>
+        <div class="tab-pane" id="php3">
+            <pre><code class="tab-pane active language-php">
+            while(expression) { /* ... */ }
 
-    for(init; condition; post) { /* ... */ }
-    // foreach 写法，可用于数组、集合
-    for(Type item : obj) { /* ... */ }
-    ```
+            do { /* ... */ }while(expression);
 
-* Go
+            for(init; condition; post) { /* ... */ }
+            // foreach 写法，可用于索引数组、集合
+            foreach($obj as $item) { /* ... */ }
+            // foreach 的关联数组写法
+            foreach($obj as $key => $val) { /* ... */ }
+            </code></pre>
+        </div>
+        <div class="tab-pane" id="javascript3">
+            <pre><code class="tab-pane active language-javascript">
+            while(expression) { /* ... */ }
 
-    ```go
-    for init; condition; post { /* ... */ }
-    // while 写法
-    for condition { /* ... */ }
-    // for range 写法，可作用于 数组、切片、字符串、map 等
-    for i, v := range obj { /* ... */ }
-    ```
+            do { /* ... */ }while(expression);
 
-* PHP
-
-    ```php
-    while(expression) { /* ... */ }
-
-    do { /* ... */ }while(expression);
-
-    for(init; condition; post) { /* ... */ }
-    // foreach 写法，可用于索引数组、集合
-    foreach($obj as $item) { /* ... */ }
-    // foreach 的关联数组写法
-    foreach($obj as $key => $val) { /* ... */ }
-    ```
-
-* JS
-
-    ```javascript
-    while(expression) { /* ... */ }
-
-    do { /* ... */ }while(expression);
-
-    for(init; condition; post) { /* ... */ }
-    // forin 写法，用于遍历对象属性、数组
-    for(item as obj) { /* ... */ }
-    ```
+            for(init; condition; post) { /* ... */ }
+            // forin 写法，用于遍历对象属性、数组
+            for(item as obj) { /* ... */ }
+            </code></pre>
+        </div>
+    </div>
+</div>
 
 ### Switch 分支
 
-* Java：
+* Java: 
+    1. 不支持在 switch 分支中进行 continue 操作；
+    2. JDK 7 前仅支持对整形或者枚举类型进行 switch 操作，JDK 7 之后可以对 string 进行 switch 操作啦；
+    3. JDK 12 之后 switch 大大增强，可以直接使用箭头指向单条执行语句，而且整个 switch 结构可以作为返回值直接返回
 
-    ```java
-    // JDK 12 前：JDK 7 前 val 仅能是整形或枚举，JDK 7 开始可以使用 string
-    switch(val) {
-        case a:                 /* ... */
-            break;
-        case b: case c: case d: /* ... */
-            break;
-        default:                /* ... */
-    }
-    // JDK 12 开始：可直接作为返回值
-    res = switch(val) {
-        case a       -> return singleExpression;
-        case b, c, d -> return singleExpression;
-        default: {
-            /* ... */
-            return returnVal;
-        }
-    }
-    ```
+* Go: 
+    1. 不支持在 `switch` 分支中进行 `continue` 操作；
+    2. 每个 case 最后默认 break，使用 `fallthrough` 关键字可以掉落到后面的代码块中；
 
-* Go: 每个 case 最后默认 break，使用 `fallthrough` 关键字可以掉落到后面的代码块中
+* PHP：  
+    支持在 switch 中对外层的循环使用 continue 操作，但必须写为：`continue 2;`
 
-    ```go
-    switch val {
-        case a:     /* ... */
-            fallthrough
-        case b, c:  /* ... */
-        default:    /* ... */
-    }
-    // Type Switch
-    switch i := val.(type) {
-      case nil:             /* ... */
-      case int:             /* ... */
-      case func(float64):   /* ... */
-      case bool, string:    /* ... */
-      default:              /* ... */
-   } 
-    ```
+* JS：  
+    同样可以在 switch 中使用 continue，但是需要设置标志位，非常不提倡
 
-* PHP
+    <div class="comb-code-block">	
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#java4" data-toggle="tab">Java</a></li>
+            <li><a href="#go4" data-toggle="tab">Go</a></li>
+            <li><a href="#php4" data-toggle="tab">PHP</a></li>
+            <li><a href="#javascript4" data-toggle="tab">JS</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="java4">
+                <pre><code class="tab-pane active language-java">
+                switch(val) {
+                    case a:                 /* ... */
+                        break;
+                    case b: case c: case d: /* ... */
+                        break;
+                    default:                /* ... */
+                }
+                // JDK 12 开始：可直接作为返回值
+                res = switch(val) {
+                    case a       -> return singleExpression;
+                    case b, c, d -> return singleExpression;
+                    default: {
+                        /* ... */
+                        return returnVal;
+                    }
+                }
+                </code></pre>
+            </div>
+            <div class="tab-pane" id="go4">
+                <pre><code class="tab-pane active language-go">
+                switch val {
+                    case a:     /* ... */
+                        fallthrough
+                    case b, c:  /* ... */
+                    default:    /* ... */
+                }
+                // Type Switch
+                switch i := val.(type) {
+                    case nil:             /* ... */
+                    case int:             /* ... */
+                    case func(float64):   /* ... */
+                    case bool, string:    /* ... */
+                    default:              /* ... */
+                }
+                </code></pre>
+            </div>
+            <div class="tab-pane" id="php4">
+                <pre><code class="tab-pane active language-php">
+                switch ($val) {
+                    case val1: /* ... */
+                    case val2: /* ... */
+                        break;
+                    default:   /* ... */
+                }
+                </code></pre>
+            </div>
+            <div class="tab-pane" id="javascript4">
+                <pre><code class="tab-pane active language-javascript">
+                switch (val) {
+                    case val1: /* ... */
+                    case val2: /* ... */
+                        break;
+                    default:   /* ... */
+                }
+                </code></pre>
+            </div>
+        </div>
+    </div>
 
-    ```php
-    switch ($val) {
-        case val1: /* ... */
-        case val2: /* ... */
-            break;
-        default:   /* ... */
-    }
-    ```
-
-* JS
-
-    ```javascript
-    switch (val) {
-        case val1: /* ... */
-        case val2: /* ... */
-            break;
-        default:   /* ... */
-    }
-    ```
 
 ## 函数/方法
 
@@ -487,38 +524,63 @@ else
 
 方法：有接收者的函数，即接收者的**行为**，是具有抽象意义的。
 
-* Java：一切皆对象，所有函数都属于某个类/对象，因此一切函数皆方法。
+* Java：  
+    一切皆对象，所有函数都属于某个类/对象，因此一切函数皆方法。
 
-    ```java
-    // 访问修饰符 返回类型 方法名(类型1参数名，类型2 参数名) {}
-    public int funcName(String str){ /*...*/ return res;}
-    // 无返回值方法
-    public void func(){}
-    // 静态方法
-    public static void func(){}
-    // 构造方法
-    public ClassName{}
-    // 可变参数：0 个或者 n 个，必须为参数表最后一个参数
-    public void func(int a, String str, Object... objs){}
-    ```
+* Go：  
+    有包内直接定义的函数，有赋予结构体的方法。
 
-* Go：有包内直接定义的函数，有赋予结构体的方法。
+    <div class="comb-code-block">	
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#java5" data-toggle="tab">Java</a></li>
+            <li><a href="#go5" data-toggle="tab">Go</a></li>
+            <li><a href="#php5" data-toggle="tab">PHP</a></li>
+            <li><a href="#javascript5" data-toggle="tab">JS</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="java5">
+                <pre><code class="tab-pane active language-java">
+                // 访问修饰符 返回类型 方法名(类型1参数名，类型2 参数名) {}
+                public int funcName(String str){ /*...*/ return res;}
+                // 无返回值方法
+                public void func(){}
+                // 静态方法
+                public static void func(){}
+                // 构造方法
+                public ClassName{}
+                // 可变参数：0 个或者 n 个，必须为参数表最后一个参数
+                public void func(int a, String str, Object... objs){}
+                </code></pre>
+            </div>
+            <div class="tab-pane" id="go5">
+                <pre><code class="tab-pane active language-go">
+                // func 函数名 (参数名，参数名 类型1，参数名 类型2) (返回类型1 返回类型2) ... {}
+                func funcName(str1, str2 string, a, b int) (string, int) { /*...*/ return strRes, intRes}
+                // 引用传递
+                func funcName(str1, str2 *string, a *int, b int) int { /*...*/ return res}
+                // 函数参数
+                fmt.Println(math.Sqrt(100))
+                // 闭包
+                func getSequence() func() int {
+                    /* ... */
+                    return func() int {
+                        /* ... */
+                        return res
+                    }
+                }
+                // 方法：func (reciver Reciver) funcName(params) returns {}
+                func (stu Student) sayHi() string {return "hi!"}
+                </code></pre>
+            </div>
+            <div class="tab-pane" id="php5">
+                <pre><code class="tab-pane active language-php">
 
-    ```go
-    // func 函数名 (参数名，参数名 类型1，参数名 类型2) (返回类型1 返回类型2) ... {}
-    func funcName(str1, str2 string, a, b int) (string, int) { /*...*/ return strRes, intRes}
-    // 引用传递
-    func funcName(str1, str2 *string, a *int, b int) int { /*...*/ return res}
-    // 函数参数
-    fmt.Println(math.Sqrt(100))
-    // 闭包
-    func getSequence() func() int {
-        /* ... */
-        return func() int {
-            /* ... */
-            return res
-        }
-    }
-    // 方法：func (reciver Reciver) funcName(params) returns {}
-    func (stu Student) sayHi() string {return "hi!"}
-    ```
+                </code></pre>
+            </div>
+            <div class="tab-pane" id="javascript5">
+                <pre><code class="tab-pane active language-javascript">
+
+                </code></pre>
+            </div>
+        </div>
+    </div>

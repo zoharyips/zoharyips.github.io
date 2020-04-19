@@ -50,6 +50,10 @@ prism: [sql, bash, php]
 
 如果该对象需要 GroupBy 操作，最好在它 Join 之前进行 GroupBy 操作，避免需要进行过多的 `Max()` 操作或 `GroupBy` 太多字段。
 
+### TimeStamp 默认值不要设置为 0000-00-00 00:00:00
+
+MySql 在 'NO_ZERO_IN_DATE,NO_ZERO_DATE' 模式下是无法将时间设置为 0 或者 1970-01-01 08:00:00 的，为了兼容各版本减少不必要的问题，在允许的情况下请将 timestamp 默认值设置为 `1970-01-01 08:00:01`。
+
 ## 插入
 
 ### 插入千万级数据
@@ -144,6 +148,23 @@ prism: [sql, bash, php]
     同样先利用索引 id 查询到指定区域，再关联原表，通过 id 来取数据。
     
     统计平均耗时：2.3666601628s;
+
+### 高数量级数据查询要点
+
+1. Where 子句
+
+    尽量避免全表扫描，在需要频繁进行 Where 筛选的字段添加索引：
+
+    ```sql
+    SELECT * FROM customer WHERE mobile = '17089127158';
+    ```
+
+    * 未加索引：4.199990180933333s
+
+    * 普通索引：0.037s
+
+    * 主键索引：0.037s
+
 
 ### 统计同一列中各数据出现的次数和各数据的和
 
@@ -263,4 +284,27 @@ prism: [sql, bash, php]
 
     ```sql
     SELECT *, GREATEST(english, math, chinese) AS higest FROM student_grades;
+    ```
+
+### 将查询出来的 null 值转为自定义默认值
+
+* 效果：
+
+    ```bash
+    +-----+-----------+-------+         +-----+-----------+-------+
+    | id  | name      | level |         | id  | name      | level |
+    +-----+-----------+-------+         +-----+-----------+-------+
+    | 777 | 涂志强    |     1 |         | 777 | 涂志强    |     1 |
+    | 888 | 姚欢      |     2 | ====>   | 888 | 姚欢      |     2 |
+    | 790 | 冷欢      |     3 |         | 790 | 冷欢      |     3 |
+    | 733 | 熊桂荣    |  NULL |         | 733 | 熊桂荣    |     0 |
+    | 734 | 谢莉      |  NULL |         | 734 | 谢莉      |     0 |
+    +-----+-----------+-------+         +-----+-----------+-------+
+    ```
+
+* 方法：`ISNULL(exp1, exp2)`
+
+    ```sql
+    SELECT c.`id`, c.`name`, IFNULL(w.`level`, 0) as level 
+        FROM customer c LEFT JOIN white_list w ON c.`id` = w.`customer_id` LIMIT 5;
     ```

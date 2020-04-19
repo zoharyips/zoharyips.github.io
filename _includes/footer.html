@@ -72,6 +72,17 @@
     </script>
 {% endif %}
 
+<!-- 是否开启 bootstrap -->
+{% if page.bootstrap %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <style>
+        html {
+            font-size: 16px;
+        }
+    </style>
+{% endif %}
+
 <!-- BiliBili 的表情包 -->
 <script src="https://cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
 <script>
