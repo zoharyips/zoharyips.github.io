@@ -96,6 +96,7 @@ Dom 加载完毕执行，是 JQ 的入口函数
     $('SPEC_ELE:last')               // 获取尾个 SPEC_ELE 节点
     $('SpEl1 SpEl2:first-child')     // 获取所有 SPEC_ELE_1 下的第一个 SPEC_ELE_2 子孙节点
     $('SpEl1 SpEl2:last-child')      // 获取所有 SPEC_ELE_1 下的最后的 SPEC_ELE_2 子孙节点
+    $('SPEC_ELE:STATUS')             // 获取所有状态为 STATUS 的 SPEC_ELE 节点，如 selected、hidden、checked 等
     ```
 
 ### 通过节点获取
@@ -265,20 +266,36 @@ $.ajax({
 
 ### 使用 ajax 提交表单且令 required 等属性生效
 
-```markup
-<form id="form" onsubmit="return submitForm()">
-...
-</form>
-<script>
-    function submitForm() {
-        $.ajax({
-            url:     url,
-            type:    metold,
-            data:    $('#form').serializeArray(), // 获取表单所有数据
-            success: callback,
-            error:   callback
-        });
-        return false;                             // 不刷新页面
-    }
-</script>
-```
+* 不需要处理响应体
+
+    ```markup
+    <form onsubmit="return submitForm()">
+    ...
+    </form>
+    <script>
+        function submitForm() {
+            document.getElementByTagName('form')[0].submit();
+            return false; // 加上则不刷新页面，不加则默认刷新页面
+        }
+    </script>
+    ```
+
+* 需要处理响应体，使用 ajax 提交
+
+    ```markup
+    <form id="form" onsubmit="return submitForm()">
+    ...
+    </form>
+    <script>
+        function submitForm() {
+            $.ajax({
+                url:     url,
+                type:    metold,
+                data:    $('#form').serializeArray(), // 获取表单所有数据
+                success: callback,
+                error:   callback
+            });
+            return false;                             // 不刷新页面
+        }
+    </script>
+    ```

@@ -10,22 +10,22 @@ prism: [php, bash, yaml, markup]
 * TOC
 {:toc}
 
-## Blade 模板相关
+### Blade 模板相关
 
-### php 变量输出为 html 代码
+##### php 变量输出为 html 代码
 
 ```php
 {!! $content !!}
 ```
 
-### 获取当前路由路径
+##### 获取当前路由路径
 
 ```php
 {% raw %}{{ Request::path() }}{% endraw %}
 {% raw %}{{ Route::currentRouteName() }}{% endraw %}
 ```
 
-### 获取当前路由参数
+##### 获取当前路由参数
 
 ```php
 {% raw %}{{ app('request')->input('param') }}{% endraw %}
@@ -33,20 +33,20 @@ prism: [php, bash, yaml, markup]
 {% raw %}{{ request()->param }}{% endraw %}                // laravel 5.8
 ```
 
-### 分页传入路由参数
+##### 分页传入路由参数
 
 ```php
-{% raw %}{{ $data->appends(['param' => request()->param])->links('path_to_pagination_view') }}{% endraw %}
+{% raw %}{{ $data->appends(['param' => request()->param])->links() }}{% endraw %}
 ```
 
-### 将视图转化为字符串
+##### 将视图转化为字符串
 
 ```php
 $view = view('emails.index')->with(['lang' => $lang, 'name' => $name]);
 $viewStr = response($view)->getContent();
 ```
 
-### Form 表单进行 PUT 请求
+##### Form 表单进行 PUT 请求
 
 ```php
 <form method="post" action="/tc-strategy/{% raw %}{{ $unionId }}{% endraw %}">
@@ -55,9 +55,65 @@ $viewStr = response($view)->getContent();
 </form>
 ```
 
-## Eloquent 模型相关
+### MVC 相关
 
-### ORM 查询指定列记录
+##### 使用默认 Validator 验证表单数据
+
+```php
+$validateRules = [
+    'id'         => '',
+    'mobile'     => 'required|int',
+    'satrt_date' => 'required|date',
+    'end_date'   => 'required|date|after_or_equal:sdate',
+];
+$validator = Validator::make($request->all(), $validateRules);
+if ($validator->fails()) {
+    $errors = $validator->errors()->toArray();
+    throw ValidationException::withMessages($errors);
+}
+```
+
+##### 将数组数据转换为分页对象
+
+```php
+$pagination = Pagination::paginate($count, $data, $limit, 'page', $pageNumber);
+```
+
+##### 返回默认的 error 视图
+
+```php
+view()->replaceNamespace('errors', [
+    resource_path('views/errors'),
+    __DIR__.'/views',
+]);
+return response()->view("errors::{$status}";
+```
+
+##### 带数据返回表单提交页面
+
+```php
+// 使用 Validator 验证时
+if ($validator->fails()) {
+    $errors = $validator->errors()->toArray();
+    throw ValidationException::withMessages($errors);
+}
+// 直接判断抛出
+throw ValidationException::withMessages(['field' => $errorMsg]]);
+// 不抛出验证异常，使用 back 的方式
+return redirect()->back()
+    ->withInput($request->all())
+    ->withErrors(['field' => $errorMsg]);
+```
+
+##### 返回 Json 数据
+
+```php
+return response()->json(['code' => '1', 'msg' => 'Subscribe successfully']);
+```
+
+### Eloquent 模型相关
+
+##### ORM 查询指定列记录
 
 ```php
 $data = Model::find($id, ['column1', 'column2', ...]);
@@ -66,7 +122,7 @@ $data = Model::all(['column1', 'column2', ...]);
 $data = Model::where(...)->get(['column1', 'column2', , ...]); 
 ```
 
-### 使用聚合函数
+##### 使用聚合函数
 
 ```php
 $query = Model::query()
@@ -76,7 +132,7 @@ $query = Model::query()
     ->selectRaw('SUM(IF(`model.f` = 1, `model.g`, 0)) AS col6');
 ```
 
-### 使用已有 Query 进行子查询
+##### 使用已有 Query 进行子查询
 
 ```php
 // 5.5
@@ -86,9 +142,9 @@ $query = Model::query->leftJoin(DB::raw("({$subQuery->toSql()}) as sub"), 'sub.m
 $query = Model::query->fromSub($subQuery,'sub');
 ```
 
-## Redis 相关
+### Redis 相关
 
-### 使用 Redis 发布与订阅消息队列
+#### 使用 Redis 发布与订阅消息队列
 
 1. 安装 predis 客户端
 
@@ -114,7 +170,7 @@ $query = Model::query->fromSub($subQuery,'sub');
     });
     ```
 
-### 使用 Redis 异步任务队列
+#### 使用 Redis 异步任务队列
 
 1. 安装 predis 客户端
 
@@ -198,7 +254,7 @@ $query = Model::query->fromSub($subQuery,'sub');
     访问 `http://localhost/horizon` 即可访问仪表盘
 
 
-### 使用 Redis 缓存
+#### 使用 Redis 缓存
 
 1. 修改配置文件
 
@@ -235,9 +291,9 @@ if (Cache::has($key)) {
 }
 ```
 
-## HTTP 相关
+### HTTP 相关
 
-### HTTP 客户端
+##### HTTP 客户端
 
 * php-curl-class
 
@@ -265,27 +321,9 @@ if (Cache::has($key)) {
     $data = json_decode((string)$response->getBody(), true);
     ```
 
-## MVC 相关
+### Composer 相关
 
-### 返回默认的 error 视图
-
-```php
-view()->replaceNamespace('errors', [
-    resource_path('views/errors'),
-    __DIR__.'/views',
-]);
-return response()->view("errors::{$status}";
-```
-
-### 返回 Json 数据
-
-```php
-return response()->json(['code' => '1', 'msg' => 'Subscribe successfully']);
-```
-
-## Composer 相关
-
-### Composer 换源
+##### Composer 换源
 
 ```bash
 composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
@@ -297,15 +335,15 @@ composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 composer config -gl
 ```
 
-### 新建 laravel 项目
+##### 新建 laravel 项目
 
 ```bash
 composer create-project laravel/laravel <projectName>
 ```
 
-## 部署相关
+### 部署相关
 
-### Nginx
+##### Nginx
 
 1. 将网站目录指向 public 文件夹
 

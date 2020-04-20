@@ -1,0 +1,44 @@
+<style>
+    td {
+        padding: 6px 13px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+    th {
+        padding: 6px 13px;
+        border: 1px solid #ddd;
+        margin: 0;
+    }
+    table {
+        border-spacing: 0;
+        border-collapse: collapse;
+    }
+    code {
+        margin: 0 .5em;
+        border-radius: 4px;
+        padding: 4px 8px;
+        font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
+        font-size: .8rem;
+        background-color: #2d2d2d;
+        color: #CC99CD;;
+    }
+</style>
+<table>
+    <thead>
+        <tr>
+            <th>规则</th>
+            <th>含义</th>
+            <th>允许示例</th>
+            <th>拒绝示例</th>
+            <th>备注</th>
+        </tr>
+    </thead>
+    <tbody >
+        <tr>
+            <td><code>required</code></td><td>字段必须存在且不为空</td><td>-</td><td><code>null</code> <code>""</code> <code>[]</code></td><td>-</td>
+        </tr>
+        <tr>
+            <td><code>required_if:field,value1,value2,...</code></td><td>如果<code>field</code>的值为<code>value1</code>或<code>value2</code>... 则本字段为 require</td><td>-</td><td><code>null</code> <code>""</code> <code>[]</code></td><td>-</td>
+        </tr>
+    </tbody>
+</table>
