@@ -19,24 +19,23 @@ prism: [sql, bash, php]
 * created_at：
 
     ```sql
-    ALTER TABLE [table] 
-        MODIFY created_at TIMESTAMP 
+    ALTER TABLE [table]
+        MODIFY created_at TIMESTAMP
         DEFAULT CURRENT_TIMESTAMP NOT NULL;
     ```
 
 * updated_at：
 
-
     ```sql
-    ALTER TABLE [table] 
-        MODIFY updated_at TIMESTAMP 
-        DEFAULT CURRENT_TIMESTAMP 
+    ALTER TABLE [table]
+        MODIFY updated_at TIMESTAMP
+        DEFAULT CURRENT_TIMESTAMP
         ON UPDATE CURRENT_TIMESTAMP NOT NULL;
     ```
 
 ## 设计
 
-### 枚举类型不要从 0 开始
+* **枚举类型不要从 0 开始**
 
 对于表示 type 等的枚举类型，一般不要从 0 开始，从 1 开始设置。
 
@@ -44,13 +43,21 @@ prism: [sql, bash, php]
 
 2. 对于部分编程语言，原本枚举类型对应 MAP 的形式，但是由于数据库设置了 0 开始，导致部分语言默认转换成数组，因为索引数组的下标从零开始，容易导致一些人混淆或者做一些不必要的转换工作。
 
-### GroupBy 操作不要与 Join 操作一起进行
+* **不要让数据有删除的可能**
+
+    对于绝大多数可以被替换或者废弃的对象数据，请不要真正进行删除：
+
+    * 对于不需要覆盖掉的数据，如学生，学号对应唯一实体，可以通过设置状态标记该对象已经废弃掉
+
+    * 对于必须覆盖掉的数据，如同一员工调去另一部门，为保留其在前一部门的状态，我们可以在 `employees` 表中设置 `start_date` 和 `leave_date` 字段，以保留同一员工在不同部门的数据。
+
+* **GroupBy 操作不要与 Join 操作一起进行**
 
 通常而言，如果要进行 Join 操作，我们必须保证 Join 对象是已经封装好的，简洁的表。
 
 如果该对象需要 GroupBy 操作，最好在它 Join 之前进行 GroupBy 操作，避免需要进行过多的 `Max()` 操作或 `GroupBy` 太多字段。
 
-### TimeStamp 默认值不要设置为 0000-00-00 00:00:00
+* **TimeStamp 默认值不要设置为 0000-00-00 00:00:00**
 
 MySql 在 'NO_ZERO_IN_DATE,NO_ZERO_DATE' 模式下是无法将时间设置为 0 或者 1970-01-01 08:00:00 的，为了兼容各版本减少不必要的问题，在允许的情况下请将 timestamp 默认值设置为 `1970-01-01 08:00:01`。
 
