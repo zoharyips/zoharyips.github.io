@@ -10,54 +10,55 @@ prism: [php, bash, yaml, markup]
 * TOC
 {:toc}
 
-### Blade 模板相关
+### Blade 模板
 
-##### php 变量输出为 html 代码
+* 变量输出
 
-```php
-{!! $content !!}
-```
+    ```php
+    {% raw %}{{ $variable }}{% endraw %}
+    {!! $content !!}
+    ```
 
-##### 获取当前路由路径
+* 获取路径
 
-```php
-{% raw %}{{ Request::path() }}{% endraw %}
-{% raw %}{{ Route::currentRouteName() }}{% endraw %}
-```
+    ```php
+    {% raw %}{{ Request::path() }}{% endraw %}
+    {% raw %}{{ Route::currentRouteName() }}{% endraw %}
+    ```
 
-##### 获取当前路由参数
+* 获取参数
 
-```php
-{% raw %}{{ app('request')->input('param') }}{% endraw %}
-{% raw %}{{ Request::query('param') }}{% endraw %}         // laravel 5.6
-{% raw %}{{ request()->param }}{% endraw %}                // laravel 5.8
-```
+    ```php
+    {% raw %}{{ app('request')->input('param') }}{% endraw %}
+    {% raw %}{{ Request::query('param') }}{% endraw %}         // laravel 5.6
+    {% raw %}{{ request()->param }}{% endraw %}                // laravel 5.8
+    ```
 
-##### 分页传入路由参数
+* 分页
 
-```php
-{% raw %}{{ $data->appends(['param' => request()->param])->links() }}{% endraw %}
-```
+    ```php
+    {% raw %}{{ $data->appends(['param' => request()->param])->links() }}{% endraw %}
+    ```
 
-##### 将视图转化为字符串
+* 导出 HTML
 
-```php
-$view = view('emails.index')->with(['lang' => $lang, 'name' => $name]);
-$viewStr = response($view)->getContent();
-```
+    ```php
+    $view = view('emails.index')->with(['lang' => $lang, 'name' => $name]);
+    $viewStr = response($view)->getContent();
+    ```
 
-##### Form 表单进行 PUT 请求
+* 表单进行 PUT 请求
 
-```php
-<form method="post" action="/tc-strategy/{% raw %}{{ $unionId }}{% endraw %}">
-    <input name="_method" type="hidden" value="PUT"/>
-    {% raw %}{{ csrf_field() }}{% endraw %}
-</form>
-```
+    ```php
+    <form method="post" action="/tc-strategy/{% raw %}{{ $unionId }}{% endraw %}">
+        <input name="_method" type="hidden" value="PUT"/>
+        {% raw %}{{ csrf_field() }}{% endraw %}
+    </form>
+    ```
 
-### MVC 相关
+### MVC
 
-##### 使用默认 Validator 验证表单数据
+#### Validator
 
 ```php
 $validateRules = [
@@ -73,13 +74,31 @@ if ($validator->fails()) {
 }
 ```
 
-##### 将数组数据转换为分页对象
+* Validate 失败
+
+    ```php
+    // 使用 Validator 验证时
+    if ($validator->fails()) {
+        $errors = $validator->errors()->toArray();
+        throw ValidationException::withMessages($errors);
+    }
+    // 直接判断抛出
+    throw ValidationException::withMessages(['field' => $errorMsg]]);
+    // 不抛出验证异常，使用 back 的方式
+    return redirect()->back()
+        ->withInput($request->all())
+        ->withErrors(['field' => $errorMsg]);
+    ```
+
+* [Validator 验证规则](/assets/html/laravel-validator.html)
+
+#### 分页对象
 
 ```php
 $pagination = Pagination::paginate($count, $data, $limit, 'page', $pageNumber);
 ```
 
-##### 返回默认的 error 视图
+#### 默认 404 页面
 
 ```php
 view()->replaceNamespace('errors', [
@@ -89,60 +108,70 @@ view()->replaceNamespace('errors', [
 return response()->view("errors::{$status}";
 ```
 
-##### 带数据返回表单提交页面
-
-```php
-// 使用 Validator 验证时
-if ($validator->fails()) {
-    $errors = $validator->errors()->toArray();
-    throw ValidationException::withMessages($errors);
-}
-// 直接判断抛出
-throw ValidationException::withMessages(['field' => $errorMsg]]);
-// 不抛出验证异常，使用 back 的方式
-return redirect()->back()
-    ->withInput($request->all())
-    ->withErrors(['field' => $errorMsg]);
-```
-
-##### 返回 Json 数据
+#### JsonResponse
 
 ```php
 return response()->json(['code' => '1', 'msg' => 'Subscribe successfully']);
 ```
 
-### Eloquent 模型相关
+### Eloquent 模型
 
-##### ORM 查询指定列记录
+* ORM 查询指定列记录
 
-```php
-$data = Model::find($id, ['column1', 'column2', ...]);
-$data = Model::first(['column1', 'column2', ...]);
-$data = Model::all(['column1', 'column2', ...]);
-$data = Model::where(...)->get(['column1', 'column2', , ...]); 
-```
+    ```php
+    $data = Model::query()->find($id, ['column1', 'column2', ...]);
+    $data = Model::query()->first(['column1', 'column2', ...]);
+    $data = Model::query()->all(['column1', 'column2', ...]);
+    $data = Model::query()->where(...)->get(['column1', 'column2', , ...]); 
+    ```
 
-##### 使用聚合函数
+* 使用聚合函数
 
-```php
-$query = Model::query()
-    ->groupBy('model.a', 'model.b', 'model.c', 'model.d')
-    ->select('model.a as col1', 'model.b as col2', 'model.c as col3', 'model.d as col4')
-    ->selectRaw('MAX(model.e) as col5')
-    ->selectRaw('SUM(IF(`model.f` = 1, `model.g`, 0)) AS col6');
-```
+    ```php
+    $query = Model::query()
+        ->groupBy('model.a', 'model.b', 'model.c', 'model.d')
+        ->select('model.a as col1', 'model.b as col2', 'model.c as col3', 'model.d as col4')
+        ->selectRaw('MAX(model.e) as col5')
+        ->selectRaw('SUM(IF(`model.f` = 1, `model.g`, 0)) AS col6');
+    ```
 
-##### 使用已有 Query 进行子查询
+* 使用已有 Query 进行子查询
 
-```php
-// 5.5
-$query = Model::query->from(DB::raw("({$subQuery->toSql()}) as sub"));
-$query = Model::query->leftJoin(DB::raw("({$subQuery->toSql()}) as sub"), 'sub.model_id', '=', 'model.id');
-// 5.6.12 以上
-$query = Model::query->fromSub($subQuery,'sub');
-```
+    ```php
+    // 5.5
+    $query = Model::query()->from(DB::raw("({$subQuery->toSql()}) as sub"));
+    $query = Model::query()->leftJoin(DB::raw("({$subQuery->toSql()}) as sub"), 'sub.model_id', '=', 'model.id');
+    // 5.6.12 以上
+    $query = Model::query()->fromSub($subQuery,'sub');
+    ```
 
-### Redis 相关
+* 多条件 JOIN
+
+    ```php
+    $query = Model::query()
+        ->leftJoin('other_table as ot', static function ($join) {
+            $join->on(CONDITION_1)->on(CONDITION_1);
+        })
+    ```
+
+* 嵌套 where：多层的 AND ... OR ... 操作
+
+    ```php
+    $query = Model::query()
+        ->where(CONDITION_1)
+        ->whereNotNull(CONDITION_2)
+        ->where(static function ($query) {
+            $query->where(static function ($innerQuery) {
+                $innerQuery->whereIn(CONDITION_2_1_1)
+                    ->whereIn(CONDITION_2_1_2);
+            })->orWhere(static function ($innerQuery) {
+                $innerQuery->where(CONDITION_2_2_1)
+                    ->where(CONDITION_2_2_2);
+            });
+        });
+    ```
+
+### Redis
 
 #### 使用 Redis 发布与订阅消息队列
 
@@ -291,9 +320,9 @@ if (Cache::has($key)) {
 }
 ```
 
-### HTTP 相关
+### HTTP
 
-##### HTTP 客户端
+#### HTTP 客户端
 
 * php-curl-class
 
@@ -321,9 +350,9 @@ if (Cache::has($key)) {
     $data = json_decode((string)$response->getBody(), true);
     ```
 
-### Composer 相关
+### Composer
 
-##### Composer 换源
+* Composer 换源
 
 ```bash
 composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
@@ -335,15 +364,9 @@ composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 composer config -gl
 ```
 
-##### 新建 laravel 项目
+### 部署
 
-```bash
-composer create-project laravel/laravel <projectName>
-```
-
-### 部署相关
-
-##### Nginx
+* Nginx
 
 1. 将网站目录指向 public 文件夹
 

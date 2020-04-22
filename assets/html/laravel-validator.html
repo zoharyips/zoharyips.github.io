@@ -1,7 +1,13 @@
 <style>
+    table {
+        margin: 0 auto;
+        background-color: #fafafa;
+    }
     td {
         padding: 6px 13px;
         border: 1px solid #ddd;
+    }
+    td h4 {
         text-align: center;
     }
     th {
@@ -26,6 +32,7 @@
 <table>
     <thead>
         <tr>
+            <th>名称</th>
             <th>规则</th>
             <th>含义</th>
             <th>允许示例</th>
@@ -35,10 +42,10 @@
     </thead>
     <tbody >
         <tr>
-            <td><code>required</code></td><td>字段必须存在且不为空</td><td>-</td><td><code>null</code> <code>""</code> <code>[]</code></td><td>-</td>
+            <td><h4>required</h4></td><td><code>required</code></td><td>字段必须存在且不为空</td><td>-</td><td><code>null</code> <code>""</code> <code>[]</code></td><td>-</td>
         </tr>
         <tr>
-            <td><code>required_if:field,value1,value2,...</code></td><td>如果<code>field</code>的值为<code>value1</code>或<code>value2</code>... 则本字段为 require</td><td>-</td><td><code>null</code> <code>""</code> <code>[]</code></td><td>-</td>
+            <td><h4>required_if</h4></td><td><code>required_if:field,value1,value2,...</code></td><td>如果<code>field</code>的值为<code>value1</code>或<code>value2</code>... 则本字段为 require</td><td>-</td><td><code>null</code> <code>""</code> <code>[]</code></td><td>-</td>
         </tr>
     </tbody>
 </table>
