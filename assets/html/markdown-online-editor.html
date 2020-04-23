@@ -8,15 +8,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </head>
 <body>
-    <h3 class="main-title">Markdown online editor | Power by marked</h3>
+    <h3 class="main-title">Markdown online editor</h3>
+    <h5 class="main-title">Power by marked</h5>
     <div class="main-container">
         <div class="markdown-wrapper">
-            <h4>Editor:</h4>
-            <div class="markdown-editor" id="editor">### abc</div>
-            <!-- <textarea class="markdown-editor" id="editor" oninput="compileMarkdown(this)"></textarea> -->
+            <div class="markdown-editor" id="editor"># Hello World!</div>
         </div>
         <div class="markdown-wrapper">
-            <h4>Previewer:</h4>
             <div class="markdown-previewer"></div>
         </div>
     </div>
@@ -34,10 +32,13 @@
     let markdownMode = ace.require('ace/mode/markdown').Mode;
     editor.session.setMode(new markdownMode());
     /* 设置监听器 */
-    let markdownEditor = document.getElementById('editor').getElementsByTagName('textarea')[0];
-    markdownEditor.addEventListener('input', function () {
+    function compileMarkdown() {
         document.getElementsByClassName('markdown-previewer')[0].innerHTML = marked(editor.getValue());
-    })
+    }
+    let markdownEditor = document.getElementById('editor').getElementsByTagName('textarea')[0];
+    markdownEditor.addEventListener('keyup', compileMarkdown);
+    /* 初始化加载 */
+    compileMarkdown();
 </script>
 </body>
 </html>
