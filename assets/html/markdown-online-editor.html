@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Online Editor</title>
+    <link rel="stylesheet" href="/assets/css/sections/online-markdown-editor.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+<body>
+    <h3 class="main-title">Markdown online editor | Power by marked</h3>
+    <div class="main-container">
+        <div class="markdown-wrapper">
+            <h4>Editor:</h4>
+            <div class="markdown-editor" id="editor">### abc</div>
+            <!-- <textarea class="markdown-editor" id="editor" oninput="compileMarkdown(this)"></textarea> -->
+        </div>
+        <div class="markdown-wrapper">
+            <h4>Previewer:</h4>
+            <div class="markdown-previewer"></div>
+        </div>
+    </div>
+    
+<script src="https://cdn.bootcss.com/ace/1.4.9/ace.min.js"></script>
+<script src="https://cdn.bootcss.com/ace/1.4.9/theme-tomorrow.min.js"></script>
+<script src="https://cdn.bootcss.com/ace/1.4.9/ext-language_tools.min.js"></script>
+<script src="https://cdn.bootcss.com/ace/1.4.9/mode-markdown.min.js"></script>
+<script src="https://cdn.bootcss.com/ace/1.4.9/ext-beautify.min.js"></script>
+<script src="https://cdn.bootcss.com/marked/0.8.2/marked.min.js"></script>
+<script>
+    /* 初始化编辑器 */
+    let editor = ace.edit('editor');
+    editor.setTheme('ace/theme/tomorrow');
+    let markdownMode = ace.require('ace/mode/markdown').Mode;
+    editor.session.setMode(new markdownMode());
+    /* 设置监听器 */
+    let markdownEditor = document.getElementById('editor').getElementsByTagName('textarea')[0];
+    markdownEditor.addEventListener('input', function () {
+        document.getElementsByClassName('markdown-previewer')[0].innerHTML = marked(editor.getValue());
+    })
+</script>
+</body>
+</html>

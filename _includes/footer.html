@@ -87,6 +87,11 @@
     </style>
 {% endif %}
 
+<!-- 是否开启 marked：使用 marked(string) 工作 -->
+{% if page.marked %}
+<script src="https://cdn.bootcss.com/marked/0.8.2/marked.min.js"></script>
+{% endif %}
+
 <!-- BiliBili 的表情包 -->
 <script src="https://cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
 <script>
