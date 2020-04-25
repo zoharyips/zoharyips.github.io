@@ -4,7 +4,7 @@ title: Php Laravel 笔记
 description: Laravel 可以让你从面条一样杂乱的代码中解脱出来；它可以帮你构建一个完美的网络APP，而且每行代码都可以简洁、富于表达力。
 date: 2020-04-09
 categories: Php
-prism: [php, bash, yaml, markup]
+prism: [php, bash, yaml, markup, sql]
 ---
 
 * TOC
@@ -116,7 +116,7 @@ return response()->json(['code' => '1', 'msg' => 'Subscribe successfully']);
 
 ### Eloquent 模型
 
-* ORM 查询指定列记录
+* **查询指定列记录**
 
     ```php
     $data = Model::query()->find($id, ['column1', 'column2', ...]);
@@ -125,7 +125,15 @@ return response()->json(['code' => '1', 'msg' => 'Subscribe successfully']);
     $data = Model::query()->where(...)->get(['column1', 'column2', , ...]); 
     ```
 
-* 使用聚合函数
+* **create、insert、save 三种插入方式的区别**
+
+    * create：走 model 流程，是面向批量操作的
+    * save：对象实例上的方法肯定走 model 流程，是面向实例对象的
+    * insert：走 DB 直接插入，不经过 model，可以批量插入
+
+    走 model 流程的意义在于会通过 model 的各项验证，如会走 fillable 验证，也会走 updated_at 和 `created_at` 的自动填充，因此走 model 流程会更加稳定安全，走 DB 流程会更加灵活快速。
+
+* **使用聚合函数**
 
     ```php
     $query = Model::query()
@@ -135,7 +143,7 @@ return response()->json(['code' => '1', 'msg' => 'Subscribe successfully']);
         ->selectRaw('SUM(IF(`model.f` = 1, `model.g`, 0)) AS col6');
     ```
 
-* 使用已有 Query 进行子查询
+* **使用已有 Query 进行子查询**
 
     ```php
     // 5.5
@@ -145,7 +153,7 @@ return response()->json(['code' => '1', 'msg' => 'Subscribe successfully']);
     $query = Model::query()->fromSub($subQuery,'sub');
     ```
 
-* 多条件 JOIN
+* **多条件 JOIN**
 
     ```php
     $query = Model::query()
@@ -154,7 +162,19 @@ return response()->json(['code' => '1', 'msg' => 'Subscribe successfully']);
         })
     ```
 
-* 嵌套 where：多层的 AND ... OR ... 操作
+* **嵌套 where：多层的 AND ... OR ... 操作**
+    
+    ```sql
+    SELECT * 
+        FROM model 
+        WHERE CONDITION_1 
+            AND CONDITION_2
+            AND (
+                (CONDITION_3_1_1 AND CONDITION_3_1_2)
+                OR
+                (OONDITION_3_2_1 AND CONDITION_3_2_2)
+            );
+    ```
 
     ```php
     $query = Model::query()
@@ -162,11 +182,11 @@ return response()->json(['code' => '1', 'msg' => 'Subscribe successfully']);
         ->whereNotNull(CONDITION_2)
         ->where(static function ($query) {
             $query->where(static function ($innerQuery) {
-                $innerQuery->whereIn(CONDITION_2_1_1)
-                    ->whereIn(CONDITION_2_1_2);
+                $innerQuery->whereIn(CONDITION_3_1_1)
+                    ->whereIn(CONDITION_3_1_2);
             })->orWhere(static function ($innerQuery) {
-                $innerQuery->where(CONDITION_2_2_1)
-                    ->where(CONDITION_2_2_2);
+                $innerQuery->where(CONDITION_3_2_1)
+                    ->where(CONDITION_3_2_2);
             });
         });
     ```
