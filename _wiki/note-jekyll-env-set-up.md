@@ -168,6 +168,8 @@ curl -sSL https://get.rvm.io | bash -s stable
 source /usr/local/rvm/scripts/rvm
 # 查看运行版本
 rvm -v
+# 换源
+echo "ruby_url=https://cache.ruby-china.com/pub/ruby" > ~/.rvm/user/db
 ```
 
 ### 2. 安装 Ruby
@@ -185,6 +187,10 @@ rvm use 2.7.0 --default
 ruby -v
 # 查看 gem 版本
 gem -v
+# gem 换源
+gem source -r 'https://rubygems.org/'
+> https://rubygems.org/ removed from sources
+gem source --add https://gems.ruby-china.com
 ```
 
 ### 3. 安装 Bundler
