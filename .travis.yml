@@ -1,3 +1,22 @@
+language: ruby
+
+branchs:
+  only:
+    - master
+
+addons:
+  ssh_known_hosts:
+    - ${SERVER_HOST}
+
 before_install:
-- openssl aes-256-cbc -K $encrypted_e55cc20ecb7b_key -iv $encrypted_e55cc20ecb7b_iv
-  -in id_rsa.enc -out ~\/.ssh/id_rsa -d
+  - openssl aes-256-cbc -K $encrypted_e55cc20ecb7b_key -iv $encrypted_e55cc20ecb7b_iv
+    -in id_rsa.enc -out ~\/.ssh/id_rsa -d
+  - chmod 600 ~/.ssh/id_rsa
+  - ssh-add ~/.ssh/id_rsa
+
+script:
+  - bundle install
+  - bundle exec jekyll build
+
+after_success:
+- scp -o stricthostkeychecking=no -r ./_site ${SERVER_USER}@${SERVER_HOST}:~/zoharyip.club
