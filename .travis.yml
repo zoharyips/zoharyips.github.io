@@ -14,9 +14,5 @@ before_install:
   - chmod 600 ~/.ssh/id_rsa
   - echo -e "Host ${SERVER_HOST}\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/id_rsa" >> ~/.ssh/config
 
-script:
-  - bundle install
-  - bundle exec jekyll build
-
 after_success:
 - ssh ${SERVER_USER}@${SERVER_HOST} -o StrictHostKeyChecking=no 'cd ~/.www/zoharyips.github.io && git pull'
