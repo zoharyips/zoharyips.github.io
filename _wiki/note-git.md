@@ -245,11 +245,15 @@ system： 本系统的所有用户
 
 ### 彩色输出
 
-`git config color.ui true`
+```bash
+git config color.ui true
+```
 
 ### 单行显示
 
-`git config format.pretty oneline`
+```bash
+git config format.pretty oneline
+```
 
 ### 取消换行符自动转换
 
@@ -269,4 +273,6 @@ git config --system --unset credential.helper # 清除用户名密码
 
 ### 编辑器
 
-`git config --global core.editor <editorName>`
+```bash
+git config --global core.editor <editorName>
+```
