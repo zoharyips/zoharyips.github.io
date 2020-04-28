@@ -3,7 +3,7 @@ layout: post
 title: 主流语言的学习与对比
 categories: Computer
 keywords: Computer
-date: 2020-04-25
+date: 2020-04-28
 prism: [javascript, java, php, go, markup]
 bootstrap: true
 ---
@@ -317,6 +317,10 @@ bootstrap: true
 ### 常量
 
 常量就是不可变的变量，常量的命名风格应该采用全大写 + 下划线分割符的形式
+
+从常量的设计目的来看，我们并不希望常量名所指向的常量是可变的，为什么有的时候是可变的呢🤔？
+
+当我们创造一个常量指向一个引用时，我们自然无法更改常量名的指向，但是我们可以更改引用对象的内容，这就表示该引用对象的状态是可变的，从设计的角度我们应该避免这种情况的发生☝。
 
 * Java：使用 `final` 修饰符
 

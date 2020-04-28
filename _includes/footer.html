@@ -233,23 +233,20 @@
 {% endif %}
 
 <!-- 百度自动推送脚本，百度站长加入使用 -->
-{% comment %}
-    <!-- 本网站基于 github page 搭建，由于 github 封锁百度爬虫，失效 -->
-    <script>
-        (function(){
+<script>
+    (function(){
         var bp = document.createElement('script');
         var curProtocol = window.location.protocol.split(':')[0];
         if (curProtocol === 'https') {
-            bp.src = '/assets/js/baidu_push.js';
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
         }
         else {
-            bp.src = '/assets/js/baidu_zhanzhang.js';
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
         }
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(bp, s);
-        })();
-    </script>
-{% endcomment %}
+    })();
+</script>
 
 </body>
 </html>

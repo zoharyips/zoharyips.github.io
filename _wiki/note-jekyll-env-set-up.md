@@ -2,7 +2,7 @@
 layout: wiki
 title: 搭建 Jekyll 运行环境
 description: 无论是在 Linux 下还是在 Win 下，搭建 jekyll 环境都想让人吐血
-date: 2020-04-10
+date: 2020-04-28
 categories: Note
 prism: [bash]
 ---
@@ -212,3 +212,25 @@ gem install jekyll
 cd workspace
 bundle exec jekyll serve -P 80
 ```
+
+### 6. 解决 ruby2.7 的大量无用输出
+
+为 RUBY 设置运行选配置即可：
+
+* 在运行命令时设置：
+
+    * Ruby2.7 项目：`RUBYOPT='-W:no-deprecated -W:no-experimental' bundle exec ...`
+
+    * 兼容低版本：`RUBYOPT='-W0' bundle exec ...`
+
+* 在用户环境变量设置：
+
+    * Ruby2.7 项目：
+        ```bash
+        export RUBYOPT='-W:no-deprecated -W:no-experimental'
+        ```
+
+    * 兼容低版本：
+        ```bash
+        export RUBYOPT='-W0'
+        ```
