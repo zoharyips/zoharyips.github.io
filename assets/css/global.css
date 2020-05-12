@@ -1,0 +1,24 @@
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+header {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 200px;
+    background: #000;
+}
+footer {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 200px;
+    background: red;
+}
+.content-wrapper {
+    flex: 1 0 auto;
+}
