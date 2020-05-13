@@ -1,35 +1,35 @@
 <!-- 文章头部 -->
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init">
-
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    {% seo %}
-    {% if page.keywords %}{% assign keywords = page.keywords %}{% else %}{% assign keywords = site.keywords %}{% endif %}
-    <meta name="keywords" content="{{ keywords | strip_html | strip_newlines }}" />
-    <meta name="og:keywords" content="{{ keywords | strip_html | strip_newlines }}" />
-    {% if page.og_image_url %}
-    <meta property="og:image" content="{{ page.og_image_url }}" />
-    {% else if page.photo_url %}
-    <meta property="og:image" content="{{ page.photo_url }}" />
-    {% endif %}
-    {% if site.ios_app_name %}
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    {% endif %}
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="{{ site.title }}">
-    <link rel="stylesheet" href="/assets/css/global.css">
-</head>
-
-<body class="{{ page.class }}" data-mz="{{ page.class }}">
-{% include header.html %}
-<div class="content-wrapper">
-    {{ content }}
-</div>
-{% include footer.html %}
-</body>
+    <head>
+        <meta charset="utf-8"/>
+        {% seo %}
+        {% if page.keywords %}{% assign keywords = page.keywords %}{% else %}{% assign keywords = site.keywords %}{% endif %}
+        <meta name="keywords" content="{{ keywords | strip_html | strip_newlines }}" />
+        <meta name="og:keywords" content="{{ keywords | strip_html | strip_newlines }}" />
+        {% if page.og_image_url %}
+        <meta property="og:image" content="{{ page.og_image_url }}" />
+        {% else if page.photo_url %}
+        <meta property="og:image" content="{{ page.photo_url }}" />
+        {% endif %}
+        <!-- enforce the IE to use the latest DOM Mode -->
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+        <!-- forbid the user to zoom the window for the responsive view -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        {% if site.ios_app_name %}
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        {% endif %}
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="{{ site.title }}">
+        <link rel="stylesheet" type="text/css" href="/assets/css/global.css">
+    </head>
+    <body class="{{ page.class }}" data-mz="{{ page.class }}">
+        {% include header.html %}
+        <div class="main">
+            {{ content }}
+        </div>
+        {% include footer.html %}
+    </body>
 <script src=""></script>
 </html>

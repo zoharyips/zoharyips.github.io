@@ -1,23 +1,25 @@
-<header class="site-header">
-  <div class="container">
-    <h1>
-      <a href="/" title="{{ site.title }}">
-        <span class="octicon octicon-mark-github"></span>
-        {{ site.title }}
-      </a>
-    </h1>
-    <button class="collapsed mobile-visible" type="button" onclick="toggleMenu();">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <nav class="site-header-nav" role="navigation">
-      {% for nav in site.navs %}
-      <a href="{{ nav.href }}" class="{% if page.menu == nav.label %} selected {% endif %} site-header-nav-item"
-        target="{{ nav.target | default: _self }}" title="{{ nav.label }}">
-        {{ nav.label }}
-      </a>
-      {% endfor %}
-    </nav>
-  </div>
+<header>
+    <section class="container">
+        <p class="site-title mdi">{{ site.title }}</p>
+        <nav>
+            <ul>
+                {% for nav in site.navs %}
+                {% if nav.href %}
+                <li class="sub-menu-parent" tab-index="0">
+                    <a href="{{ nav.href }}">{{ nav.label }}</a>
+                </li>
+                {% else %}
+                <li class="sub-menu-parent" tab-index="0">
+                    <a href="http://google.com">{{ nav.label }}</a>
+                    <ul class="sub-menu">
+                        {% for collection in nav.sub-navs %}
+                        <li><a href="{{ collection.href }}">{{ collection.label }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </nav>
+    </section>
 </header>
