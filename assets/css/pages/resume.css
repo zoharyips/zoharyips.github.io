@@ -41,20 +41,26 @@ header p {
     margin: 0;
 }
 .header-left__name--en {
+    position: relative;
     margin: 0;
     font-size: 32px;
     letter-spacing: 1px;
     word-break: keep-all;
     white-space: nowrap;
 }
-.header-left__line {
+.header-left__name--en::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
     height: 4px;
-    width: 150px;
+    width: 91%;
     background: white;
 }
 .header-left__name--zh {
     flex: 1 0 auto;
     margin: 0;
+    padding-top: 4px;
     font-size: 20px;
     letter-spacing: 6px;
 }
