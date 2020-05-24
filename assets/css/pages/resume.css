@@ -49,7 +49,7 @@ header p {
 }
 .header-left__line {
     height: 4px;
-    width: 128px;
+    width: 150px;
     background: white;
 }
 .header-left__name--zh {
@@ -151,11 +151,12 @@ header p {
     margin: 0;
     margin-right: 6px;
     padding-right: 6px;
-    min-width: 68px;
+    min-width: 64px;
     display: inline-block;
     text-align: justify;
     text-align-last: justify;
     font-weight: bold;
+    font-size: 13px;
 }
 .box__content__row__title::after {
     content: ':';
@@ -164,9 +165,8 @@ header p {
     right: 0;
 }
 .box__content__row__title--time {
-    padding-right: 0;
-    min-width: 120px;
     text-align: left;
+    font-family: 'JetBrains Mono', sans-serif;
 }
 .box__content__row__title--emoji {
     width: max-content;
@@ -185,4 +185,9 @@ a.box__content__row__details {
 }
 a.box__content__row__details:hover {
     color: rgb(45,92,134)!important;
+}
+
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url(/assets/font/JetBrainsMono-Regular.ttf) format('truetype');
 }
