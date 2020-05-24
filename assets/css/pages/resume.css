@@ -117,18 +117,17 @@ header p {
     position: relative;
     margin: 12px 0;
     padding: 0 42px;
-    width: max-content;
     font-size: 18px;
     line-height: 38px;
     color: white;
-    background: url(/assets/images/box__content__row__title__bg.png) no-repeat center center;
+    background: url(/assets/images/box__content__row__title__bg.png) no-repeat 20px;
     background-size: contain;
 }
 .box__title::after {
     content: '';
     position: absolute;
     bottom: 0;
-    left: 75%;
+    left: 16%;
     display: block;
     width: 643px;
     height: 1.5px;
@@ -151,10 +150,11 @@ header p {
     margin: 0;
     margin-right: 6px;
     padding-right: 6px;
-    min-width: 64px;
+    min-width: 4em;
     display: inline-block;
     text-align: justify;
     text-align-last: justify;
+    text-justify: inter-ideograph;
     font-weight: bold;
     font-size: 13px;
 }
@@ -169,9 +169,9 @@ header p {
     font-family: 'JetBrains Mono', sans-serif;
 }
 .box__content__row__title--emoji {
-    width: max-content;
-    min-width: max-content;
-    max-width: max-content;
+    width: 1.2em;
+    min-width: 1.2em;
+    max-width: 1.2em;
 }
 .box__content__row__title--emoji::after {
     display: none;
