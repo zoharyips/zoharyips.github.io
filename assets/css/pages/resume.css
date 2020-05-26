@@ -145,10 +145,10 @@ header p {
     height: max-content;
 }
 .box__content__row {
-    margin-top: 3px;
+    margin-top: 6px;
     display: flex;
     font-size: 13px;
-    line-height: 26px;
+    line-height: 22px;
     color: rgb(88,88,88);
 }
 .box__content__row__title {
@@ -185,12 +185,16 @@ header p {
 .box__content__row__details {
     margin: 0;
 }
-a.box__content__row__details {
+a.box__content__row__details, .box__content__row__details a {
     text-decoration: none;
     color: rgb(91,155,213)!important;
 }
-a.box__content__row__details:hover {
+a.box__content__row__details:hover, .box__content__row__details a:hover {
     color: rgb(45,92,134)!important;
+}
+
+.end {
+    margin-bottom: 1rem;
 }
 
 /* 
