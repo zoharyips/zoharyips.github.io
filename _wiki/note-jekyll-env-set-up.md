@@ -2,7 +2,7 @@
 layout: wiki
 title: 搭建 Jekyll 运行环境
 description: 无论是在 Linux 下还是在 Win 下，搭建 jekyll 环境都想让人吐血
-date: 2020-04-28
+date: 2020-05-26
 categories: Note
 prism: [bash]
 ---
@@ -151,26 +151,43 @@ jekyll 3.8.5 | Error:  Invalid US-ASCII character "\xE2" on line 5
 Encoding.default_external = Encoding.find('utf-8')
 ```
 
-## CentOS 7
+## CentOS 7 / Ubuntu 通用
 
 ### 1. 安装 RVM
 
 RVM 是一个命令行工具，可以提供一个便捷的多版本Ruby 环境的管理和切换。
 
-```bash
-gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-curl -sSL https://get.rvm.io | bash -s stable
-```
+* 请求 RVM 密钥
 
-更新环境变量
+    ```bash
+    gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+    ```
 
-```bash
-source /usr/local/rvm/scripts/rvm
-# 查看运行版本
-rvm -v
-# 换源
-echo "ruby_url=https://cache.ruby-china.com/pub/ruby" > ~/.rvm/user/db
-```
+* 下载 RVM 安装脚本
+
+    ```bash
+    curl -sSL https://get.rvm.io -o rvm.sh
+    ```
+
+* 执行脚本安装 RVM
+
+    ```bash
+    cat rvm.sh | bash -s stable
+    ```
+
+* 更新环境变量
+
+    ```bash
+    source /usr/local/rvm/scripts/rvm
+    # 查看运行版本
+    rvm -v
+    ```
+
+* 更换国内镜像源
+
+    ```bash
+    echo "ruby_url=https://cache.ruby-china.com/pub/ruby" > ~/.rvm/user/db
+    ```
 
 ### 2. 安装 Ruby
 
