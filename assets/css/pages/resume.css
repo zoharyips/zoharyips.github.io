@@ -162,7 +162,7 @@ header p {
     text-align-last: justify;
     text-justify: inter-ideograph;
     font-weight: bold;
-    font-size: 13px;
+    font-size: 14px;
 }
 .box__content__row__title::after {
     content: ':';
@@ -172,7 +172,7 @@ header p {
 }
 .box__content__row__title--time {
     text-align: left;
-    font-family: 'JetBrains Mono', sans-serif;
+    font-family: monospace, sans-serif;
 }
 .box__content__row__title--emoji {
     width: 1.2em;
@@ -193,7 +193,8 @@ a.box__content__row__details:hover {
     color: rgb(45,92,134)!important;
 }
 
+/* 
 @font-face {
     font-family: "JetBrains Mono";
     src: url(/assets/font/JetBrainsMono-Regular.ttf) format('truetype');
-}
+} */
