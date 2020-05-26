@@ -1,3 +1,9 @@
+:root {
+    --z-index-highest: 10000;
+    --z-index-999: 999;
+    --z-index-0: 0;
+    --z-index-background: -1;
+}
 html, body {
     margin: 0;
     width: 100%;
@@ -13,6 +19,7 @@ header, .mian, footer {
 header {
     flex: 0 0 auto;
     background: green;
+    z-index: var(--z-index-999);
 }
 .main {
     flex: 1 0 auto;
@@ -21,6 +28,7 @@ footer {
     flex: 0 0 auto;
     height: 200px;
     background: red;
+    z-index: var(--z-index-999);
 }
 header .container, .main .container, footer .container {
     max-width: 1200px;
@@ -43,64 +51,72 @@ header .container {
     content: "\F02A4";
     font-size: 48px;
 }
-
-.sub-menu-parent {
-    position: relative;
-}
-.sub-menu {
-    position: absolute;
-    visibility: hidden;
-    display: block;
-    width: fit-content;
-    top: 100%;
-    left: 50%;
-    z-index: -1;
-    opacity: 0;
-    word-break: keep-all;
-    transform: translate(-50%, -2em);
-    transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
-}
-.sub-menu-parent:focus .sub-menu,
-.sub-menu-parent:focus-within .sub-menu,
-.sub-menu-parent:hover .sub-menu {
-    visibility: visible;
-    opacity: 1;
-    z-index: 1;
-    transform: translate(-50%, 0%);
-    transition-delay: 0s, 0s, 0.3s;
-}
-nav a {
-    color: white;
-    font-size: 32px;
-    display: block;
-    padding: 0.5em;
-    text-decoration: none;
-}
-nav a:hover {
-    color: #4a4a4a;
-}
 nav ul, nav ul li {
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
-nav > ul {
-    text-align: center;
-}
 nav > ul > li {
     display: inline-block;
-    border-left: solid 1px #aaa;
 }
-nav > ul > li:first-child {
-    border-left: none;
+.menus {
+    position: relative;
 }
-.sub-menu {
-    background: white;
+.menus__item {
+    position: relative;
 }
-.sub-menu a {
+.menus__item__sub-menu {
+    position: absolute;
     display: block;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: fit-content;
+    height: fit-content;
+    opacity: 0;
+    z-index: var(--z-index-background);
+    background: red;
+    color: black;
+    word-break: keep-all;
 }
-
+.menus__item:hover .menus__item__sub-menu {
+    opacity: 1;
+    z-index: var(--z-index-999) + 1;
+    top: 100%;
+}
+.menus__indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    height: 4px;
+    width: 100px;
+    background: blue;
+}
+.menus__item:nth-child(1):hover ~ .menus__indicator,
+.menus__item:nth-child(1):focus ~ .menus__indicator,
+.menus__item:nth-child(1):focus-within ~ .menu__indicator {
+    left: 0px;
+}
+.menus__item:nth-child(2):hover ~ .menus__indicator,
+.menus__item:nth-child(2):focus ~ .menus__indicator,
+.menus__item:nth-child(2):focus-within ~ .menus__indicator {
+    left: 100px;
+}
+.menus__item:nth-child(3):hover ~ .menus__indicator,
+.menus__item:nth-child(3):focus ~ .menus__indicator,
+.menus__item:nth-child(3):focus-within ~ .menus__indicator {
+    left: 200px;
+}
+.menus__item:nth-child(4):hover ~ .menus__indicator,
+.menus__item:nth-child(4):focus ~ .menus__indicator,
+.menus__item:nth-child(4):focus-within ~ .menus__indicator {
+    left: 300px;
+}
+.menus__item:nth-child(5):hover ~ .menus__indicator,
+.menus__item:nth-child(5):focus ~ .menus__indicator,
+.menus__item:nth-child(5):focus-within ~ .menus__indicator {
+    left: 400px;
+}
 
 /* Material Design Icon */
 @font-face {
@@ -110,6 +126,43 @@ nav > ul > li:first-child {
     font-style: normal;
 }
 
+/* General CSS Class */
 .mdi {
     font-family: "Material Design Icons";
+}
+.text-unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.transition3 {
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -ms-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+}
+.transition5 {
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+}
+.transition8 {
+    -webkit-transition: .8s;
+    -moz-transition: .8s;
+    -ms-transition: .8s;
+    -o-transition: .8s;
+    transition: .8s;
+}
+.transition10 {
+    -webkit-transition: .10s;
+    -moz-transition: .10s;
+    -ms-transition: .10s;
+    -o-transition: .10s;
+    transition: .10s;
 }

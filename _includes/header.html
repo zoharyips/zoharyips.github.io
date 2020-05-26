@@ -2,23 +2,24 @@
     <section class="container">
         <p class="site-title mdi">{{ site.title }}</p>
         <nav>
-            <ul>
+            <ul class="menus">
                 {% for nav in site.navs %}
-                {% if nav.href %}
-                <li class="sub-menu-parent" tab-index="0">
-                    <a href="{{ nav.href }}">{{ nav.label }}</a>
-                </li>
-                {% else %}
-                <li class="sub-menu-parent" tab-index="0">
-                    <a href="http://google.com">{{ nav.label }}</a>
-                    <ul class="sub-menu">
-                        {% for collection in nav.sub-navs %}
-                        <li><a href="{{ collection.href }}">{{ collection.label }}</a></li>
-                        {% endfor %}
-                    </ul>
-                </li>
-                {% endif %}
+                    {% if nav.href %}
+                        <li class="menus__item">
+                            <a href="{{ nav.href }}">{{ nav.label }}</a>
+                        </li>
+                    {% else %}
+                        <li class="menus__item">
+                            <a>{{ nav.label }}</a>
+                            <ul class="menus__item__sub-menu transition5">
+                                {% for collection in nav.sub-navs %}
+                                    <li class="menus__item__sub-menu__item"><a href="{{ collection.href }}">{{ collection.label }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endif %}
                 {% endfor %}
+                <div class="menus__indicator transition3"></div>
             </ul>
         </nav>
     </section>
