@@ -78,13 +78,71 @@ nav li {
 }
 .menus__item {
     position: relative;
-    width: 100px;
 }
 .menus__item a {
-    font-size: 1.2rem;
-    line-height: 1.2rem;
+    display: block;
+    margin: 0 2rem;
+    font-size: 1rem;
+    line-height: 1rem;
     color: white;
     text-decoration: none;
+}
+.menus__item::before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0.5rem, -55%);
+}
+.menus__item:nth-child(1):hover ~ .menus__indicator,
+.menus__item:nth-child(1):focus ~ .menus__indicator,
+.menus__item:nth-child(1):focus-within ~ .menu__indicator {
+    left: 0.6rem;
+}
+.menus__item:nth-child(2):hover ~ .menus__indicator,
+.menus__item:nth-child(2):focus ~ .menus__indicator,
+.menus__item:nth-child(2):focus-within ~ .menus__indicator {
+    left: 6.6rem;
+}
+.menus__item:nth-child(3):hover ~ .menus__indicator,
+.menus__item:nth-child(3):focus ~ .menus__indicator,
+.menus__item:nth-child(3):focus-within ~ .menus__indicator {
+    left: 12.6rem;
+}
+.menus__item:nth-child(4):hover ~ .menus__indicator,
+.menus__item:nth-child(4):focus ~ .menus__indicator,
+.menus__item:nth-child(4):focus-within ~ .menus__indicator {
+    left: 18.6rem;
+}
+.menus__item:nth-child(5):hover ~ .menus__indicator,
+.menus__item:nth-child(5):focus ~ .menus__indicator,
+.menus__item:nth-child(5):focus-within ~ .menus__indicator {
+    left: 24.6rem;
+}
+.menus__item:nth-child(6):hover ~ .menus__indicator,
+.menus__item:nth-child(6):focus ~ .menus__indicator,
+.menus__item:nth-child(6):focus-within ~ .menus__indicator {
+    left: 30.6rem;
+}
+.menus__item:nth-child(1)::before {
+    content: '🏠';
+}
+.menus__item:nth-child(2)::before {
+    content: '📚';
+}
+.menus__item:nth-child(3)::before {
+    content: '🏹';
+}
+.menus__item:nth-child(4)::before {
+    content: '📁';
+}
+.menus__item:nth-child(5)::before {
+    content: '🕵️';
+}
+.menus__item:nth-child(6)::before {
+    content: '😀';
+}
+.menus__item__sub-menu__item {
+
 }
 .menus__item__sub-menu {
     position: absolute;
@@ -107,40 +165,10 @@ nav li {
 .menus__indicator {
     position: absolute;
     bottom: -0.6rem;
-    left: 29px;
+    left: 0.6rem;
     height: 3px;
-    width: 2.4rem;
+    width: 1.2rem;
     background: white;
-}
-.menus__item:nth-child(1):hover ~ .menus__indicator,
-.menus__item:nth-child(1):focus ~ .menus__indicator,
-.menus__item:nth-child(1):focus-within ~ .menu__indicator {
-    left: 29px;
-}
-.menus__item:nth-child(2):hover ~ .menus__indicator,
-.menus__item:nth-child(2):focus ~ .menus__indicator,
-.menus__item:nth-child(2):focus-within ~ .menus__indicator {
-    left: 129px;
-}
-.menus__item:nth-child(3):hover ~ .menus__indicator,
-.menus__item:nth-child(3):focus ~ .menus__indicator,
-.menus__item:nth-child(3):focus-within ~ .menus__indicator {
-    left: 229px;
-}
-.menus__item:nth-child(4):hover ~ .menus__indicator,
-.menus__item:nth-child(4):focus ~ .menus__indicator,
-.menus__item:nth-child(4):focus-within ~ .menus__indicator {
-    left: 329px;
-}
-.menus__item:nth-child(5):hover ~ .menus__indicator,
-.menus__item:nth-child(5):focus ~ .menus__indicator,
-.menus__item:nth-child(5):focus-within ~ .menus__indicator {
-    left: 429px;
-}
-.menus__item:nth-child(6):hover ~ .menus__indicator,
-.menus__item:nth-child(6):focus ~ .menus__indicator,
-.menus__item:nth-child(6):focus-within ~ .menus__indicator {
-    left: 529px;
 }
 
 /* Material Design Icon */

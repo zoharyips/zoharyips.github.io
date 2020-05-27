@@ -68,42 +68,42 @@ collections:
 navs:
   -
     href            : /
-    label           : 🏠 首页
+    label           : 首页
 
   -
     href            : /categories
-    label           : 📚 分类
+    label           : 分类
 
   -
-    label           : 🏹 探索
+    label           : 探索
     sub-navs:
     -
       href          : /algorithm
-      label         : 📊 算法
+      label         : 算法
     -
       href          : /design-pattern
-      label         : ⚖️ 设计模式
+      label         : 设计模式
     -
       href          : /source-code
-      label         : 🔣 源码
+      label         : 源码
     -
       href          : /os
-      label         : 🖥️ 操作系统
+      label         : 操作系统
     -
       href          : /architecture
-      label         : 📐 架构
+      label         : 架构
 
   -
     href            : /wiki
-    label           : 📁 Wiki
+    label           : Wiki
 
   -
     href            : /question
-    label           : 🕵️ 追问
+    label           : 追问
 
   -
     href            : /about
-    label           : 😀 关于
+    label           : 关于
 
 subscribe_rss       : /feed.xml
 
