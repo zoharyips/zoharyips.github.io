@@ -18,8 +18,6 @@ header, .mian, footer {
 }
 header {
     flex: 0 0 auto;
-    background: green;
-    z-index: var(--z-index-999);
 }
 .main {
     flex: 1 0 auto;
@@ -35,42 +33,64 @@ header .container, .main .container, footer .container {
 }
 
 /* Header */
+header {
+    z-index: var(--z-index-999);
+    background: linear-gradient(135deg, #827100, #5c862d, #057748, #065279, #4a4266) left center/400% 400%;
+    color: #fff;
+    animation: move 15s infinite;
+}
 header .container {
     margin: 0 auto;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
 }
+/* header left side */
 .site-title {
-    margin: 12px 0;
+    position: relative;
+    margin: 12px 0 12px 48px;
     color: white;
-    font-size: 42px;
+    font-size: 2rem;
+    line-height: 2.5rem;
 }
 .site-title::before{
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(-110%, -50%);
     content: "\F02A4";
-    font-size: 48px;
+    font-size: 2.5rem;
 }
-nav ul, nav ul li {
-    list-style-type: none;
-    padding: 0;
+/* header right side */
+nav ul, nav li {
     margin: 0;
+    padding: 0;
+    list-style: none;
 }
-nav > ul > li {
-    display: inline-block;
+nav li {
+    display: block;
 }
 .menus {
     position: relative;
+    display: flex;
+    margin-bottom: 1rem;
 }
 .menus__item {
     position: relative;
+    width: 100px;
+}
+.menus__item a {
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    color: white;
+    text-decoration: none;
 }
 .menus__item__sub-menu {
     position: absolute;
     display: block;
     top: 0%;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     width: fit-content;
     height: fit-content;
     opacity: 0;
@@ -86,36 +106,41 @@ nav > ul > li {
 }
 .menus__indicator {
     position: absolute;
-    bottom: 0;
-    left: 0px;
-    height: 4px;
-    width: 100px;
-    background: blue;
+    bottom: -0.6rem;
+    left: 29px;
+    height: 3px;
+    width: 2.4rem;
+    background: white;
 }
 .menus__item:nth-child(1):hover ~ .menus__indicator,
 .menus__item:nth-child(1):focus ~ .menus__indicator,
 .menus__item:nth-child(1):focus-within ~ .menu__indicator {
-    left: 0px;
+    left: 29px;
 }
 .menus__item:nth-child(2):hover ~ .menus__indicator,
 .menus__item:nth-child(2):focus ~ .menus__indicator,
 .menus__item:nth-child(2):focus-within ~ .menus__indicator {
-    left: 100px;
+    left: 129px;
 }
 .menus__item:nth-child(3):hover ~ .menus__indicator,
 .menus__item:nth-child(3):focus ~ .menus__indicator,
 .menus__item:nth-child(3):focus-within ~ .menus__indicator {
-    left: 200px;
+    left: 229px;
 }
 .menus__item:nth-child(4):hover ~ .menus__indicator,
 .menus__item:nth-child(4):focus ~ .menus__indicator,
 .menus__item:nth-child(4):focus-within ~ .menus__indicator {
-    left: 300px;
+    left: 329px;
 }
 .menus__item:nth-child(5):hover ~ .menus__indicator,
 .menus__item:nth-child(5):focus ~ .menus__indicator,
 .menus__item:nth-child(5):focus-within ~ .menus__indicator {
-    left: 400px;
+    left: 429px;
+}
+.menus__item:nth-child(6):hover ~ .menus__indicator,
+.menus__item:nth-child(6):focus ~ .menus__indicator,
+.menus__item:nth-child(6):focus-within ~ .menus__indicator {
+    left: 529px;
 }
 
 /* Material Design Icon */
