@@ -2,25 +2,28 @@
     <section class="container">
         <p class="site-title mdi">{{ site.title }}</p>
         <nav>
-            <ul class="menus">
+            <div class="menus text-unselectable">
                 {% for nav in site.navs %}
                     {% if nav.href %}
-                        <li class="menus__item">
-                            <a href="{{ nav.href }}">{{ nav.label }}</a>
-                        </li>
+                        <a class="menus__item {% if page.permalink == nav.href %} active {% endif %}" href="{{ nav.href }}">{{ nav.label }}</a>
                     {% else %}
-                        <li class="menus__item">
-                            <a>{{ nav.label }}</a>
-                            <ul class="menus__item__sub-menu transition5">
+                        {% assign isInCollection = false %}
+                        {% for collection in nav.sub-navs %}
+                            {% if page.permalink == collection.href %}
+                              {% assign isInCollection = true %}
+                            {% endif %}
+                        {% endfor %}
+                        <div class="menus__item {% if isInCollection == true %} active {% endif %}">{{ nav.label }}
+                            <div class="menus__item__sub-menu transition5">
                                 {% for collection in nav.sub-navs %}
-                                    <li class="menus__item__sub-menu__item"><a href="{{ collection.href }}">{{ collection.label }}</a></li>
+                                    <a class="menus__item__sub-menu__item transition5 {% if page.permalink == collection.href %} active {% endif %}" href="{{ collection.href }}">{{ collection.label }}</a>
                                 {% endfor %}
-                            </ul>
-                        </li>
+                            </div>
+                        </div>
                     {% endif %}
                 {% endfor %}
-                <div class="menus__indicator transition3"></div>
-            </ul>
+                <div class="menus__indicator transition5"></div>
+            </div>
         </nav>
     </section>
 </header>

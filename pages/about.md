@@ -6,7 +6,7 @@ share: false
 comments: true
 canvas: true
 menu: 关于
-permalink: /about/
+permalink: /about
 ---
 
 <div>

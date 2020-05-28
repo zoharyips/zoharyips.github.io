@@ -1,8 +1,19 @@
 :root {
     --z-index-highest: 10000;
-    --z-index-999: 999;
-    --z-index-0: 0;
-    --z-index-background: -1;
+    --z-index-header: 999;
+    --z-index-footer: 999;
+    --z-index-page: 0;
+    --z-index-page-before: 100;
+    --z-index-page-after: -100;
+    --color-primary-dark: #388E3C;
+    --color-primary: #4CAF50;
+    --color-primary-light: #C8E6C9;
+    --color-accent: #8BC34A;
+    --color-text-light-primary: #FFFFFF;
+    --color-text-light-secondary: #E1F1E1;
+    --color-text-dark-primary: #212121;
+    --color-text-dark-secondary: #757575;
+    --color-divider: #BDBDBD;
 }
 html, body {
     margin: 0;
@@ -16,17 +27,14 @@ body {
 header, .mian, footer {
     width: 100%;
 }
-header {
-    flex: 0 0 auto;
-}
 .main {
+    margin-top: 4rem;
     flex: 1 0 auto;
 }
 footer {
     flex: 0 0 auto;
-    height: 200px;
-    background: red;
-    z-index: var(--z-index-999);
+    height: 100px;
+    z-index: var(--z-index-footer);
 }
 header .container, .main .container, footer .container {
     max-width: 1200px;
@@ -34,10 +42,12 @@ header .container, .main .container, footer .container {
 
 /* Header */
 header {
-    z-index: var(--z-index-999);
-    background: linear-gradient(135deg, #827100, #5c862d, #057748, #065279, #4a4266) left center/400% 400%;
-    color: #fff;
-    animation: move 15s infinite;
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: var(--color-text-light-primary);
+    background: linear-gradient(to right, #827100, #5c862d, #057748, #065279, #4a4266) left center/400% 400%;
+    animation: move-header-background 15s infinite;
 }
 header .container {
     margin: 0 auto;
@@ -50,9 +60,9 @@ header .container {
 .site-title {
     position: relative;
     margin: 12px 0 12px 48px;
-    color: white;
     font-size: 2rem;
     line-height: 2.5rem;
+    white-space: nowrap;
 }
 .site-title::before{
     position: absolute;
@@ -62,66 +72,25 @@ header .container {
     content: "\F02A4";
     font-size: 2.5rem;
 }
-/* header right side */
-nav ul, nav li {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-nav li {
-    display: block;
-}
 .menus {
     position: relative;
     display: flex;
-    margin-bottom: 1rem;
+    width: fit-content;
 }
 .menus__item {
     position: relative;
-}
-.menus__item a {
     display: block;
-    margin: 0 2rem;
+    padding: 2rem 2rem 1rem;
     font-size: 1rem;
     line-height: 1rem;
-    color: white;
+    color: var(--color-text-light-primary);
     text-decoration: none;
+    white-space: nowrap;
 }
 .menus__item::before {
     position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translate(0.5rem, -55%);
-}
-.menus__item:nth-child(1):hover ~ .menus__indicator,
-.menus__item:nth-child(1):focus ~ .menus__indicator,
-.menus__item:nth-child(1):focus-within ~ .menu__indicator {
-    left: 0.6rem;
-}
-.menus__item:nth-child(2):hover ~ .menus__indicator,
-.menus__item:nth-child(2):focus ~ .menus__indicator,
-.menus__item:nth-child(2):focus-within ~ .menus__indicator {
-    left: 6.6rem;
-}
-.menus__item:nth-child(3):hover ~ .menus__indicator,
-.menus__item:nth-child(3):focus ~ .menus__indicator,
-.menus__item:nth-child(3):focus-within ~ .menus__indicator {
-    left: 12.6rem;
-}
-.menus__item:nth-child(4):hover ~ .menus__indicator,
-.menus__item:nth-child(4):focus ~ .menus__indicator,
-.menus__item:nth-child(4):focus-within ~ .menus__indicator {
-    left: 18.6rem;
-}
-.menus__item:nth-child(5):hover ~ .menus__indicator,
-.menus__item:nth-child(5):focus ~ .menus__indicator,
-.menus__item:nth-child(5):focus-within ~ .menus__indicator {
-    left: 24.6rem;
-}
-.menus__item:nth-child(6):hover ~ .menus__indicator,
-.menus__item:nth-child(6):focus ~ .menus__indicator,
-.menus__item:nth-child(6):focus-within ~ .menus__indicator {
-    left: 30.6rem;
+    top: 2rem;
+    left: 0.5rem;
 }
 .menus__item:nth-child(1)::before {
     content: '🏠';
@@ -133,42 +102,141 @@ nav li {
     content: '🏹';
 }
 .menus__item:nth-child(4)::before {
-    content: '📁';
+    content: '🕵️';
 }
 .menus__item:nth-child(5)::before {
-    content: '🕵️';
+    content: '📁';
 }
 .menus__item:nth-child(6)::before {
     content: '😀';
 }
-.menus__item__sub-menu__item {
-
-}
 .menus__item__sub-menu {
+    visibility: hidden;
+    opacity: 0;
     position: absolute;
-    display: block;
-    top: 0%;
+    display: flex;
+    flex-direction: column;
+    top: 3rem;
     left: 0;
     width: fit-content;
     height: fit-content;
-    opacity: 0;
-    z-index: var(--z-index-background);
-    background: red;
-    color: black;
-    word-break: keep-all;
+    box-shadow: 0 3px 10px rgba(0,0,0,.23), 0 3px 10px rgba(0,0,0,.16);
 }
-.menus__item:hover .menus__item__sub-menu {
+.menus__item:hover .menus__item__sub-menu,
+.menus__item:focus .menus__item__sub-menu,
+.menus__item:focus-within .menus__item__sub-menu {
+    visibility: visible;
     opacity: 1;
-    z-index: var(--z-index-999) + 1;
-    top: 100%;
+    top: 4rem;
+}
+.menus__item__sub-menu__item {
+    padding: 0 0.5rem;
+    width: 6rem;
+    height: 0;
+    font-size: 1rem;
+    line-height: 1rem;
+    word-break: keep-all;
+    color: var(--color-text-dark-secondary);
+    text-decoration: none;
+}
+.menus__item:hover .menus__item__sub-menu__item {
+    height: fit-content;
+    padding: 0.5rem;
+}
+.menus__item:hover .menus__item__sub-menu__item:nth-child(1) {
+    top: 0;
+}
+.menus__item:hover .menus__item__sub-menu__item:nth-child(2) {
+    top: 2rem;
+}
+.menus__item:hover .menus__item__sub-menu__item:nth-child(3) {
+    top: 4rem;
+}
+.menus__item:hover .menus__item__sub-menu__item:nth-child(4) {
+    top: 6rem;
+}
+.menus__item:hover .menus__item__sub-menu__item:nth-child(5) {
+    top: 8rem;
+}
+.menus__item__sub-menu__item:nth-child(1)::before {
+    content: '📉 ';
+}
+.menus__item__sub-menu__item:nth-child(2):before {
+    content: '⚖️ ';
+}
+.menus__item__sub-menu__item:nth-child(3):before {
+    content: '🔣 ';
+}
+.menus__item__sub-menu__item:nth-child(4):before {
+    content: '🖥️ ';
+}
+.menus__item__sub-menu__item:nth-child(5):before {
+    content: '📐 ';
+}
+.menus__item__sub-menu__item.active,
+.menus__item__sub-menu__item:hover {
+    color: var(--color-text-dark-primary);
+}
+.menus__item__sub-menu__item.active::after,
+.menus__item__sub-menu__item:hover::after {
+    content: '·';
 }
 .menus__indicator {
     position: absolute;
-    bottom: -0.6rem;
-    left: 0.6rem;
+    bottom: 0.5rem;
+    left: 2.5rem;
     height: 3px;
-    width: 1.2rem;
-    background: white;
+    width: 1rem;
+    background: var(--color-text-light-primary);
+    pointer-events: none;
+}
+.menus__item:nth-child(1).active ~ .menus__indicator {
+    left: 2.5rem;
+}
+.menus__item:nth-child(2).active ~ .menus__indicator {
+    left: 8.5rem;
+}
+.menus__item:nth-child(3).active ~ .menus__indicator {
+    left: 14.5rem;
+}
+.menus__item:nth-child(4).active ~ .menus__indicator {
+    left: 20.5rem;
+}
+.menus__item:nth-child(5).active ~ .menus__indicator {
+    left: 26.5rem;
+}
+.menus__item:nth-child(6).active ~ .menus__indicator {
+    left: 32.5rem;
+}
+.menus__item:nth-child(1):hover ~ .menus__indicator,
+.menus__item:nth-child(1):focus ~ .menus__indicator,
+.menus__item:nth-child(1):focus-within ~ .menu__indicator {
+    left: 2.5rem;
+}
+.menus__item:nth-child(2):hover ~ .menus__indicator,
+.menus__item:nth-child(2):focus ~ .menus__indicator,
+.menus__item:nth-child(2):focus-within ~ .menus__indicator {
+    left: 8.5rem;
+}
+.menus__item:nth-child(3):hover ~ .menus__indicator,
+.menus__item:nth-child(3):focus ~ .menus__indicator,
+.menus__item:nth-child(3):focus-within ~ .menus__indicator {
+    left: 14.5rem;
+}
+.menus__item:nth-child(4):hover ~ .menus__indicator,
+.menus__item:nth-child(4):focus ~ .menus__indicator,
+.menus__item:nth-child(4):focus-within ~ .menus__indicator {
+    left: 20.5rem;
+}
+.menus__item:nth-child(5):hover ~ .menus__indicator,
+.menus__item:nth-child(5):focus ~ .menus__indicator,
+.menus__item:nth-child(5):focus-within ~ .menus__indicator {
+    left: 26.5rem;
+}
+.menus__item:nth-child(6):hover ~ .menus__indicator,
+.menus__item:nth-child(6):focus ~ .menus__indicator,
+.menus__item:nth-child(6):focus-within ~ .menus__indicator {
+    left: 32.5rem;
 }
 
 /* Material Design Icon */
@@ -177,6 +245,17 @@ nav li {
     src: url("../fonts/materialdesignicons-webfont.woff2") format("woff2");
     font-weight: normal;
     font-style: normal;
+}
+
+/* Animations */
+@keyframes move-header-background {
+    0%,
+    100% {
+      background-position-x: left;
+    }
+    50% {
+      background-position-x: right;
+    }
 }
 
 /* General CSS Class */

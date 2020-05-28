@@ -78,7 +78,7 @@ navs:
     label           : 探索
     sub-navs:
     -
-      href          : /algorithm
+      href          : /alogrithm
       label         : 算法
     -
       href          : /design-pattern
@@ -94,12 +94,12 @@ navs:
       label         : 架构
 
   -
-    href            : /wiki
-    label           : Wiki
+    href            : /question
+    label           : 解惑
 
   -
-    href            : /question
-    label           : 追问
+    href            : /wiki
+    label           : Wiki
 
   -
     href            : /about
