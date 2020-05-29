@@ -1,3 +1,18 @@
 <footer>
-    
+    <section class="container">
+        <div class="footer-left">
+            {% for nav in site.navs %}
+                {% if nav.href %}
+                    <a class="footer-left__nav" href="{{ nav.href }}">{{ nav.label }}</a>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="footer-center">
+            <a class="footer-center__logo mdi" href="https://github.com/{{ site.github_username }}" target="_blank" title="zoharyip's github" data-mdi="github"></a>
+        </div>
+        <div class="footer-right">
+            <a class="footer-right__beian">{{ site.beian }}</a>
+            <span>© {{ site.time | date: '%Y' }} {{ site.author }}</span>
+        </div>
+    </section>
 </footer>
