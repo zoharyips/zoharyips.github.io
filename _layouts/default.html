@@ -24,13 +24,13 @@
         <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="{{ site.title }}">
         <link rel="stylesheet" type="text/css" href="/assets/css/global.css">
     </head>
-    <body class="{{ page.class }}" data-mz="{{ page.class }}">
+    <body class="{{ page.class }}" data-page="{{ page.class }}">
+        <canvas id="zhi-hu-background"></canvas>
         {% include header.html %}
         <div class="main">
             {{ content }}
         </div>
         {% include footer.html %}
     </body>
-<script>
-</script>
+    <script src="/assets/js/zhihu-bg.js"></script>
 </html>

@@ -14,7 +14,7 @@
     --color-text-dark-primary:   #212121;
     --color-text-dark-secondary: #757575;
     --color-divider:             #BDBDBD;
-    --color-divider-secondary:     #DDDDDD;
+    --color-divider-secondary:   #DDDDDD;
 }
 html, body {
     margin: 0;
@@ -29,6 +29,7 @@ header, .mian, footer {
     width: 100%;
 }
 .main {
+    position: relative;
     margin-top: 4rem;
     flex: 1 0 auto;
 }
@@ -40,12 +41,19 @@ header .container, .main .container, footer .container {
     max-width: 1020px;
     min-width: 850px;
 }
+#zhi-hu-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: var(--z-index-page-after);
+}
 
 /* Header */
 header {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: var(--z-index-header);
     color: var(--color-text-light-primary);
     background: linear-gradient(to right, #827100, #5c862d, #057748, #065279, #4a4266) left center/400% 400%;
     animation: move-header-background 15s infinite;
@@ -304,17 +312,17 @@ footer .container {
 }
 
 /* Index */
-.banner[data-belong-to="index"] {
+.index .banner {
     color: var(--color-text-light-primary);
     background: linear-gradient(to right, #827100, #5c862d, #057748, #065279, #4a4266) left center/400% 400%;
     animation: move-header-background 15s infinite;
 }
-.banner__title[data-belong-to="index"] {
+.index .banner__title {
     margin: 0;
     height: 0;
     opacity: 0;
 }
-.banner__subtitle[data-belong-to="index"] {
+.index .banner__subtitle {
     margin: 2rem 0;
     font-size: 2.5rem;
     font-weight: normal;
@@ -355,10 +363,10 @@ footer .container {
 @keyframes move-header-background {
     0%,
     100% {
-      background-position-x: left;
+        background-position-x: left;
     }
     50% {
-      background-position-x: right;
+        background-position-x: right;
     }
 }
 

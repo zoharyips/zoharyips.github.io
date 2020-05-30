@@ -10,7 +10,7 @@
                         {% assign isInCollection = false %}
                         {% for collection in nav.sub-navs %}
                             {% if page.permalink == collection.href %}
-                              {% assign isInCollection = true %}
+                                {% assign isInCollection = true %}
                             {% endif %}
                         {% endfor %}
                         <div class="menus__item {% if isInCollection == true %} active {% endif %}">{{ nav.label }}
