@@ -5,16 +5,28 @@
     --z-index-page:                0;
     --z-index-page-before:         100;
     --z-index-page-after:          -100;
-    --color-primary-dark:        #1976D2;
-    --color-primary:             #2196F3;
-    --color-primary-light:       #BBDEFB;
-    --color-accent:              #536DFE;
+    --color-primary-dark:        #303F9F;
+    --color-primary:             #3F51B5;
+    --color-primary-light:       #C5CAE9;
+    --color-accent:              #448AFF;
     --color-text-light-primary:  #FFFFFF;
     --color-text-light-secondary:#DBDBDB;
     --color-text-dark-primary:   #212121;
-    --color-text-dark-secondary: #757575;
+    --color-text-dark-secondary: #999999;
     --color-divider:             #BDBDBD;
     --color-divider-secondary:   #DDDDDD;
+    --emoji-home:                  '🏠';
+    --emoji-posts:                 '📜';
+    --emoji-categories:            '📚';
+    --emoji-explore:               '🏹';
+    --emoji-quest:                 '🕵️';
+    --emoji-wiki:                  '📁';
+    --emoji-about:                 '😀';
+    --emoji-alogrithm:             '📉';
+    --emoji-design-pattern:        '⚖️';
+    --emoji-source-code:           '🔣';
+    --emoji-os:                    '🖥️';
+    --emoji-architecture:          '📐';
 }
 html, body {
     margin: 0;
@@ -40,6 +52,20 @@ header .container, .main .container, footer .container {
     margin: 0 auto;
     max-width: 1020px;
     min-width: 850px;
+}
+.container--main-body {
+    display: flex;
+    flex-direction: row;
+}
+.container--main-body .content {
+    flex: 0 0 auto;
+    margin: 2rem 1%;
+    width: 68%;
+}
+.container--main-body .sidebar {
+    flex: 0 0 auto;
+    margin: 2rem 1%;
+    width: 28%;
 }
 #zhi-hu-background {
     position: absolute;
@@ -87,6 +113,7 @@ header .container {
     position: relative;
     display: flex;
     width: fit-content;
+    margin-right: -2rem;
 }
 .menus__item {
     position: relative;
@@ -107,22 +134,22 @@ header .container {
     left: 0.5rem;
 }
 .menus__item:nth-child(1)::before {
-    content: '🏠';
+    content: var(--emoji-home);
 }
 .menus__item:nth-child(2)::before {
-    content: '📚';
+    content: var(--emoji-categories);
 }
 .menus__item:nth-child(3)::before {
-    content: '🏹';
+    content: var(--emoji-explore);
 }
 .menus__item:nth-child(4)::before {
-    content: '🕵️';
+    content: var(--emoji-quest);
 }
 .menus__item:nth-child(5)::before {
-    content: '📁';
+    content: var(--emoji-wiki);
 }
 .menus__item:nth-child(6)::before {
-    content: '😀';
+    content: var(--emoji-about);
 }
 .menus__item__sub-menu {
     visibility: hidden;
@@ -173,20 +200,23 @@ header .container {
 .menus__item:hover .menus__item__sub-menu__item:nth-child(5) {
     top: 8rem;
 }
+.menus__item__sub-menu__item::before {
+    margin-right: 0.5rem;
+}
 .menus__item__sub-menu__item:nth-child(1)::before {
-    content: '📉 ';
+    content: var(--emoji-alogrithm);
 }
 .menus__item__sub-menu__item:nth-child(2):before {
-    content: '⚖️ ';
+    content: var(--emoji-design-pattern);
 }
 .menus__item__sub-menu__item:nth-child(3):before {
-    content: '🔣 ';
+    content: var(--emoji-source-code);
 }
 .menus__item__sub-menu__item:nth-child(4):before {
-    content: '🖥️ ';
+    content: var(--emoji-os);
 }
 .menus__item__sub-menu__item:nth-child(5):before {
-    content: '📐 ';
+    content: var(--emoji-architecture);
 }
 .menus__item__sub-menu__item.active,
 .menus__item__sub-menu__item:hover {
@@ -328,7 +358,7 @@ footer .container {
     font-weight: normal;
 }
 .banner__meta {
-    padding: 2rem;
+    padding: 2rem 0;
     display: flex;
     flex-direction: row-reverse;
     justify-content: flex-start;
@@ -351,6 +381,143 @@ footer .container {
     content: ': ';
 }
 
+/* Index */
+.post-list {
+    width: 100%;
+    height: fit-content;
+    list-style: none;
+}
+.posts-list__item {
+    margin: 0 0 1rem 0;
+    width: 100%;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 192px 1fr;
+    grid-template-rows: 32px 32px 108px 42px;
+    grid-row-gap: 6px;
+    grid-column-gap: 12px;
+    -ms-grid-column-align: 12px;
+    -ms-grid-row-align: 6px;
+    grid-template-areas:
+                        'title title'
+                        'collection langs'
+                        'img desc'
+                        'act metas';
+    justify-items: start;
+    align-items: center;
+    justify-content: stretch;
+    align-content: center;
+}
+.posts-list__item__title {
+    grid-area: title;
+}
+.posts-list__item__collection {
+    grid-area: collection;
+}
+.posts-list__item__langs {
+    grid-area: langs;
+}
+.posts-list__item__img {
+    grid-area: img;
+}
+.posts-list__item__desc {
+    grid-area: desc;
+    align-self: flex-start;
+}
+.posts-list__item__act {
+    grid-area: act;
+}
+.posts-list__item__metas {
+    grid-area: metas;
+}
+.posts-list__item__title a {
+    font-size: 1.25rem;
+    text-decoration: none;
+    color: rgba(26,26,26,1);
+}
+.posts-list__item__title a:hover {
+    color: var(--color-primary-dark);
+}
+.posts-list__item__collection span::before {
+    margin-right: 0.5rem;
+}
+.posts-list__item__collection span[data-collection="posts"]::before {
+    content: var(--emoji-posts);
+}
+.posts-list__item__collection span[data-collection="alogrithm"]::before {
+    content: var(--emoji-alogrithm);
+}
+.posts-list__item__collection span[data-collection="architecture"]::before {
+    content: var(--emoji-architecture);
+}
+.posts-list__item__collection span[data-collection="design-pattern"]::before {
+    content: var(--emoji-design-pattern);
+}
+.posts-list__item__collection span[data-collection="os"]::before {
+    content: var(--emoji-os);
+}
+.posts-list__item__collection span[data-collection="source-code"]::before {
+    content: var(--emoji-source-code);
+}
+.posts-list__item__langs {
+    position: relative;
+    width: 100%;
+    height: 29px;
+    text-align: right;
+}
+.posts-list__item__langs .lang {
+    position: relative;
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.posts-list__item__langs .lang::before {
+    display: inline-block;
+    font-size: 1.5rem;
+}
+.posts-list__item__img {
+    display: block;
+    width: 192px;
+    height: 108px;
+}
+.posts-list__item__desc {
+    margin: 0;
+}
+.posts-list__item__act span {
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--color-text-dark-secondary);
+    text-decoration: none;
+}
+.posts-list__item__act span:hover {
+    cursor: pointer;
+    color: var(--color-primary-dark);
+}
+.posts-list__item__act span::before {
+    margin-right: 0.3rem;
+    font-size: 1.1rem;
+}
+.posts-list__item__metas,
+.posts-list__item__metas a {
+    width: 100%;
+    text-align: right;
+    font-size: 0.8rem;
+    color: var(--color-text-dark-secondary);
+    text-decoration: none;
+}
+.posts-list__item__metas a,
+.posts-list__item__metas span {
+    margin-left: 0.5rem;
+}
+.posts-list__item__metas a:hover {
+    color: var(--color-primary-dark);
+}
+.posts-list__item__metas a::before,
+.posts-list__item__metas span::before {
+    margin-right: 0.3rem;
+    font-size: 1rem;
+}
+
 /* Material Design Icon */
 @font-face {
     font-family: "Material Design Icons";
@@ -368,6 +535,171 @@ footer .container {
     50% {
         background-position-x: right;
     }
+}
+
+/* Like Button */
+.button-like {
+    --color: #1E2235;
+    --color-hover: #1E2235;
+    --color-active: #fff;
+    --icon: #BBC1E1;
+    --icon-hover: #8A91B4;
+    --icon-active: #fff;
+    --background: #fff;
+    --background-hover: #fff;
+    --background-active: #275EFE;
+    --border: transparent;
+    --border-active: transparent;
+    --shadow: rgba(0, 17, 119, 0.16);
+    display: block;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    border: 0;
+    background: none;
+    padding: 0.5rem 1rem 0.5rem 1.5rem;
+    border-radius: 9px;
+    font-family: inherit;
+    font-weight: 600;
+    color: var(--color);
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-transition: color .2s linear;
+    transition: color .2s linear;
+}
+.button-like:active {
+    --scale: .95;
+}
+.button-like:not(.liked):hover {
+    --hand-rotate: 8;
+    --hand-thumb-1: -12deg;
+    --hand-thumb-2: 36deg;
+}
+.button-like.liked {
+    --span-x: 2px;
+    --span-d-o: 1;
+    --span-d-x: 0;
+    --icon: var(--icon-active);
+    --color: var(--color-active);
+    --border: var(--border-active);
+    --background: var(--background-active);
+}
+.button-like:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    -webkit-transition: background .2s linear, box-shadow .2s linear, -webkit-transform .2s;
+    transition: background .2s linear, box-shadow .2s linear, -webkit-transform .2s;
+    transition: background .2s linear, transform .2s, box-shadow .2s linear;
+    transition: background .2s linear, transform .2s, box-shadow .2s linear, -webkit-transform .2s;
+    -webkit-transform: scale(var(--scale, 1)) translateZ(0);
+            transform: scale(var(--scale, 1)) translateZ(0);
+    background: var(--background);
+    box-shadow: inset 0 0 0 var(--border-width, 1px) var(--border), 0 4px 8px var(--shadow), 0 8px 20px var(--shadow);
+}
+.button-like .button-like__hand {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px 0 0 0;
+    background: var(--icon);
+    position: relative;
+    margin: 0 4px 0 0;
+    -webkit-transform-origin: -5px -1px;
+            transform-origin: -5px -1px;
+    -webkit-transition: background .2s linear, -webkit-transform .25s;
+    transition: background .2s linear, -webkit-transform .25s;
+    transition: transform .25s, background .2s linear;
+    transition: transform .25s, background .2s linear, -webkit-transform .25s;
+    -webkit-transform: rotate(calc(var(--hand-rotate, 0) * 1deg)) translateZ(0);
+            transform: rotate(calc(var(--hand-rotate, 0) * 1deg)) translateZ(0);
+}
+.button-like .button-like__hand:before, .button-like .button-like__hand:after {
+    content: '';
+    background: var(--icon);
+    position: absolute;
+    -webkit-transition: background .2s linear, box-shadow .2s linear;
+    transition: background .2s linear, box-shadow .2s linear;
+}
+.button-like .button-like__hand:before {
+    left: -5px;
+    bottom: 0;
+    height: 8px;
+    width: 3px;
+    border-radius: 1px 1px 0 1px;
+}
+.button-like .button-like__hand:after {
+    right: -3px;
+    top: 0;
+    width: 3px;
+    height: 4px;
+    border-radius: 0 2px 2px 0;
+    background: var(--icon);
+    box-shadow: -0.5px 4px 0 var(--icon), -1px 8px 0 var(--icon), -1.5px 12px 0 var(--icon);
+    -webkit-transform: scaleY(0.5);
+            transform: scaleY(0.5);
+    -webkit-transform-origin: 0 0;
+            transform-origin: 0 0;
+}
+.button-like .button-like__hand .button-like__hand__thumb {
+    background: var(--icon);
+    width: 8px;
+    height: 3px;
+    border-radius: 2px;
+    -webkit-transform-origin: 2px 2px;
+            transform-origin: 2px 2px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    -webkit-transition: background .2s linear, -webkit-transform .25s;
+    transition: background .2s linear, -webkit-transform .25s;
+    transition: transform .25s, background .2s linear;
+    transition: transform .25s, background .2s linear, -webkit-transform .25s;
+    -webkit-transform: scale(0.85) translateY(-0.5px) rotate(var(--hand-thumb-1, -45deg)) translateZ(0);
+            transform: scale(0.85) translateY(-0.5px) rotate(var(--hand-thumb-1, -45deg)) translateZ(0);
+}
+.button-like .button-like__hand .button-like__hand__thumb:before {
+    content: '';
+    height: 3px;
+    width: 4px;
+    border-radius: 10px;
+    -webkit-transform-origin: 2px 2px;
+            transform-origin: 2px 2px;
+    background: var(--icon);
+    position: absolute;
+    left: 6px;
+    top: 0;
+    -webkit-transition: background .2s linear, -webkit-transform .25s;
+    transition: background .2s linear, -webkit-transform .25s;
+    transition: transform .25s, background .2s linear;
+    transition: transform .25s, background .2s linear, -webkit-transform .25s;
+    -webkit-transform: rotate(var(--hand-thumb-2, -45deg)) translateZ(0);
+            transform: rotate(var(--hand-thumb-2, -45deg)) translateZ(0);
+}
+.button-like .button-like__hand,
+.button-like span {
+    display: inline-block;
+}
+.button-like .button-like__hand span,
+.button-like span span {
+    opacity: var(--span-d-o, 0);
+    -webkit-transition: opacity .2s linear, -webkit-transform .25s;
+    transition: opacity .2s linear, -webkit-transform .25s;
+    transition: transform .25s, opacity .2s linear;
+    transition: transform .25s, opacity .2s linear, -webkit-transform .25s;
+    -webkit-transform: translateX(var(--span-d-x, 4px)) translateZ(0);
+            transform: translateX(var(--span-d-x, 4px)) translateZ(0);
+}
+.button-like > span {
+    -webkit-transition: -webkit-transform .25s;
+    transition: -webkit-transform .25s;
+    transition: transform .25s;
+    transition: transform .25s, -webkit-transform .25s;
+    -webkit-transform: translateX(var(--span-x, 4px)) translateZ(0);
+            transform: translateX(var(--span-x, 4px)) translateZ(0);
 }
 
 /* General CSS Class */
@@ -422,4 +754,102 @@ footer .container {
 }
 .mdi[data-mdi="map-marker-outline"]::before {
     content: "\F07D9";
+}
+.mdi[data-mdi="folder-open"]::before {
+    content: "\F0770";
+}
+.mdi[data-mdi="calendar-month"]::before {
+    content: "\F0E17";
+}
+.mdi[data-mdi="send"]::before {
+    content: "\F048A";
+}
+.mdi[data-mdi="comment-processing"]::before {
+    content: "\F0184";
+}
+.mdi[data-mdi="star-face"]::before {
+    content: "\F09A5";
+}
+
+/* Language icons */
+.lang::before {
+    content: url(../svg/lang/unknown.svg);
+}
+.lang[data-lang="c"]::before {
+    content: url(../svg/lang/c.svg);
+}
+.lang[data-lang="cpp"]::before {
+    content: url(../svg/lang/cpp.svg);
+}
+.lang[data-lang="csharp"]::before {
+    content: url(../svg/lang/csharp.svg);
+}
+.lang[data-lang="css"]::before {
+    content: url(../svg/lang/css.svg);
+}
+.lang[data-lang="fortran"]::before {
+    content: url(../svg/lang/fortran.svg);
+}
+.lang[data-lang="go"]::before {
+    content: url(../svg/lang/go.svg);
+}
+.lang[data-lang="haskell"]::before {
+    content: url(../svg/lang/haskell.svg);
+}
+.lang[data-lang="html"]::before {
+    content: url(../svg/lang/html.svg);
+}
+.lang[data-lang="java"]::before {
+    content: url(../svg/lang/java.svg);
+}
+.lang[data-lang="javascript"]::before {
+    content: url(../svg/lang/javascript.svg);
+}
+.lang[data-lang="kotlin"]::before {
+    content: url(../svg/lang/kotlin.svg);
+}
+.lang[data-lang="lua"]::before {
+    content: url(../svg/lang/lua.svg)
+}
+.lang[data-lang="markdown"]::before {
+    content: url(../svg/lang/markdown.svg)
+}
+.lang[data-lang="php"]::before {
+    content: url(../svg/lang/php.svg)
+}
+.lang[data-lang="python"]::before {
+    content: url(../svg/lang/python.svg)
+}
+.lang[data-lang="r"]::before {
+    content: url(../svg/lang/r.svg);
+}
+.lang[data-lang="ruby"]::before {
+    content: url(../svg/lang/ruby.svg);
+}
+.lang[data-lang="swift"]::before {
+    content: url(../svg/lang/swift.svg);
+}
+.lang[data-lang="typescript"]::before {
+    content: url(../svg/lang/typescript.svg);
+}
+.lang[data-lang="xaml"]::before {
+    content: url(../svg/lang/xaml.svg);
+}
+.lang[data-lang="angular"]::before {
+    content: url(../svg/lang/angular.svg);
+}
+.lang[data-lang="powershell"]::before {
+    content: url(../svg/lang/powershell.svg);
+}
+.lang[data-lang="bash"]::before {
+    content: url(../svg/lang/bash.svg);
+}
+.lang[data-lang="latex"]::before {
+    content: url(../svg/lang/latex.svg);
+}
+.lang[data-lang="yaml"]::before {
+    content: url(../svg/lang/yaml.svg);
+}
+.lang[data-lang="vim"]::before {
+    content: url(../svg/lang/vim.svg);
 }

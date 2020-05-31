@@ -21,24 +21,33 @@ class: index
 </section>
 
 
-<div class="container">
-    <!-- Main Session -->
-    <section class="container content">
-        <ol class="repo-list">
+
+<div class="container container--main-body">
+    <div class="content">
+        <ol class="posts-list">
             {% for post in paginator.posts %}
-            <li class="repo-list-item">
-                <h3 class="repo-list-name"><a href="{{ post.url }}">{{ post.title }}</a></h3>
-                <p class="repo-list-description">{{ post.excerpt | strip_html | strip }}</p>
-                <p class="repo-list-meta">
-                    <span class="meta-info-left">
-                        <span class="octicon octicon-calendar"></span> {{ post.date | date: "%Y/%m/%d" }}
-                    </span>
-                    {% for cat in post.categories %}
-                    <span class="meta-info-right">
-                        <span class="octicon octicon-file-directory"></span>
-                        <a href="/categories/#{{ cat }}" title="{{ cat }}">{{ cat }}</a>
-                    </span>
+            <li class="posts-list__item">
+                <h3 class="posts-list__item__title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
+                <div class="posts-list__item__collection">
+                    <span data-collection="{{ post.collection }}">{{ post.collection }}</span>
+                </div>
+                <p class="posts-list__item__langs">
+                    {% for lang in post.prism %}
+                        <span class="lang" data-lang="{{ lang }}" title="{{ lang }}"></span>
                     {% endfor %}
+                </p>
+                <img class="posts-list__item__img" src="https://www.dute.org/imgplaceholder/192x108?fontsize=16" width="192" height="108"></img>
+                <p class="posts-list__item__desc">{{ post.excerpt | strip_html | strip }}</p>
+                <div class="posts-list__item__act">
+                    <!-- <span class="posts-list__item__act__comment mdi" data-mdi="comment-processing">留言</span> -->
+                    <span class="posts-list__item__act__collect mdi" data-mdi="star-face">收藏</span>
+                    <span class="posts-list__item__act__share mdi" data-mdi="send">分享</span>
+                </div>
+                <p class="posts-list__item__metas">
+                    {% for category in post.categories %}
+                        <a class="mdi" href="/categories/#{{ category }}" data-mdi="folder-open">{{ category }}</a>
+                    {% endfor %}
+                    <span class="mdi" data-mdi="calendar-month">{{ post.date | date: "%Y/%m/%d" }}</span>
                 </p>
             </li>
             <div class="repo-filler"> </div>
@@ -74,6 +83,17 @@ class: index
                 {% endif %}
             </div>
         </div>
+    </div>
+    <div class="sidebar">
+        <div class="sidebar-item">
+            <!-- klfjsdklfsdjkfjsdlkfdjsklf -->
+        </div>
+    </div>
+</div>
+<div class="container">
+    <!-- Main Session -->
+    <section class="container content">
+        
         {% include sidebar-search.html %}
     </section>
     <!-- /Main Session -->

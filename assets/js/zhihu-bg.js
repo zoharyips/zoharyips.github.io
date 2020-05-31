@@ -7,7 +7,7 @@
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
 
 class Dot {
-    static COLOR_SELF = 'rgba(189,189,189,0.8)';
+    static COLOR_SELF = 'rgba(221,221,221,1)';
     static COLOR_LINE = 'rgba(221,221,221,0.3)';
     /**
      * 创建一个 Dot 实例
@@ -127,7 +127,7 @@ class Dot {
 }
 
 class CurrentDot extends Dot {
-    static COLORS = ['rgba(130,113,0,0.8)', 'rgba(92,134,45,0.8)', 'rgba(5,119,72,0.8)', 'rgba(6,82,121,0.8)', 'rgba(74,66,102,0.5)'];
+    static COLORS = ['rgba(130,113,0,0.5)', 'rgba(92,134,45,0.5)', 'rgba(5,119,72,0.5)', 'rgba(6,82,121,0.5)', 'rgba(74,66,102,0.5)'];
     /**
      * 创建一个 CurrentDot 实例
      * @param x         dot 的 x 坐标
@@ -198,7 +198,7 @@ class ZhiHuBg {
         this.canvas = canvas;
         this.ctx = this.canvas.getContext('2d');
         this.dots = [];
-        this.currentDot = new CurrentDot(0, 0, 8, 0, 0, Dot.getAppropriateDistance() * 2);
+        this.currentDot = new CurrentDot(0, 0, Dot.getAppropriateSize(), 0, 0, Dot.getAppropriateDistance() * 2);
         this.initialized = false;
     }
     init() {
@@ -226,6 +226,7 @@ class ZhiHuBg {
             if (!this.initialized) {
                 this.initialized = true;
                 this.currentDot.maxDistance = Dot.getAppropriateDistance() * 2;
+                this.currentDot.radius = Dot.getAppropriateSize();
                 zhiHuBg.init();
             }
         }, 1000);
