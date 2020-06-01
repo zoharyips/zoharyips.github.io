@@ -127,7 +127,7 @@ class Dot {
 }
 
 class CurrentDot extends Dot {
-    static COLORS = ['rgba(130,113,0,0.5)', 'rgba(92,134,45,0.5)', 'rgba(5,119,72,0.5)', 'rgba(6,82,121,0.5)', 'rgba(74,66,102,0.5)'];
+    static COLORS = ['rgba(130,113,0,0.3)', 'rgba(92,134,45,0.3)', 'rgba(5,119,72,0.3)', 'rgba(6,82,121,0.3)', 'rgba(74,66,102,0.3)'];
     /**
      * 创建一个 CurrentDot 实例
      * @param x         dot 的 x 坐标
@@ -198,7 +198,7 @@ class ZhiHuBg {
         this.canvas = canvas;
         this.ctx = this.canvas.getContext('2d');
         this.dots = [];
-        this.currentDot = new CurrentDot(0, 0, Dot.getAppropriateSize(), 0, 0, Dot.getAppropriateDistance() * 2);
+        this.currentDot = new CurrentDot(0, 0, Dot.getAppropriateSize() - 1, 0, 0, Dot.getAppropriateDistance() * 2);
         this.initialized = false;
     }
     init() {

@@ -435,7 +435,7 @@ footer .container {
     text-decoration: none;
     color: rgba(26,26,26,1);
 }
-.posts-list__item__title a:hover {
+.posts-list__item:hover .posts-list__item__title a {
     color: var(--color-primary-dark);
 }
 .posts-list__item__collection {
@@ -482,7 +482,17 @@ footer .container {
     display: block;
     width: 192px;
     height: 108px;
-    object-fit: cover;
+    overflow: hidden;
+}
+.posts-list__item__img__content {
+    width: 192px;
+    height: 108px;
+    background: var(--color-text-light-secondary) no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+}
+.posts-list__item:hover .posts-list__item__img__content {
+    transform: scale(1.15);
 }
 .posts-list__item__desc {
     margin: 0;
