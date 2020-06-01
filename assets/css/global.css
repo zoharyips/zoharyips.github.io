@@ -22,10 +22,10 @@
     --emoji-quest:                 '🕵️';
     --emoji-wiki:                  '📁';
     --emoji-about:                 '😀';
-    --emoji-alogrithm:             '📉';
+    --emoji-algorithm:             '📉';
     --emoji-design-pattern:        '⚖️';
     --emoji-source-code:           '🔣';
-    --emoji-os:                    '🖥️';
+    --emoji-computer:                    '🖥️';
     --emoji-architecture:          '📐';
 }
 html, body {
@@ -204,7 +204,7 @@ header .container {
     margin-right: 0.5rem;
 }
 .menus__item__sub-menu__item:nth-child(1)::before {
-    content: var(--emoji-alogrithm);
+    content: var(--emoji-algorithm);
 }
 .menus__item__sub-menu__item:nth-child(2):before {
     content: var(--emoji-design-pattern);
@@ -213,7 +213,7 @@ header .container {
     content: var(--emoji-source-code);
 }
 .menus__item__sub-menu__item:nth-child(4):before {
-    content: var(--emoji-os);
+    content: var(--emoji-computer);
 }
 .menus__item__sub-menu__item:nth-child(5):before {
     content: var(--emoji-architecture);
@@ -438,14 +438,17 @@ footer .container {
 .posts-list__item__title a:hover {
     color: var(--color-primary-dark);
 }
+.posts-list__item__collection {
+    color: var(--color-text-dark-secondary);
+}
 .posts-list__item__collection span::before {
     margin-right: 0.5rem;
 }
 .posts-list__item__collection span[data-collection="posts"]::before {
     content: var(--emoji-posts);
 }
-.posts-list__item__collection span[data-collection="alogrithm"]::before {
-    content: var(--emoji-alogrithm);
+.posts-list__item__collection span[data-collection="algorithm"]::before {
+    content: var(--emoji-algorithm);
 }
 .posts-list__item__collection span[data-collection="architecture"]::before {
     content: var(--emoji-architecture);
@@ -453,8 +456,8 @@ footer .container {
 .posts-list__item__collection span[data-collection="design-pattern"]::before {
     content: var(--emoji-design-pattern);
 }
-.posts-list__item__collection span[data-collection="os"]::before {
-    content: var(--emoji-os);
+.posts-list__item__collection span[data-collection="computer"]::before {
+    content: var(--emoji-computer);
 }
 .posts-list__item__collection span[data-collection="source-code"]::before {
     content: var(--emoji-source-code);
@@ -479,6 +482,7 @@ footer .container {
     display: block;
     width: 192px;
     height: 108px;
+    object-fit: cover;
 }
 .posts-list__item__desc {
     margin: 0;
@@ -535,171 +539,6 @@ footer .container {
     50% {
         background-position-x: right;
     }
-}
-
-/* Like Button */
-.button-like {
-    --color: #1E2235;
-    --color-hover: #1E2235;
-    --color-active: #fff;
-    --icon: #BBC1E1;
-    --icon-hover: #8A91B4;
-    --icon-active: #fff;
-    --background: #fff;
-    --background-hover: #fff;
-    --background-active: #275EFE;
-    --border: transparent;
-    --border-active: transparent;
-    --shadow: rgba(0, 17, 119, 0.16);
-    display: block;
-    outline: none;
-    cursor: pointer;
-    position: relative;
-    border: 0;
-    background: none;
-    padding: 0.5rem 1rem 0.5rem 1.5rem;
-    border-radius: 9px;
-    font-family: inherit;
-    font-weight: 600;
-    color: var(--color);
-    -webkit-appearance: none;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-transition: color .2s linear;
-    transition: color .2s linear;
-}
-.button-like:active {
-    --scale: .95;
-}
-.button-like:not(.liked):hover {
-    --hand-rotate: 8;
-    --hand-thumb-1: -12deg;
-    --hand-thumb-2: 36deg;
-}
-.button-like.liked {
-    --span-x: 2px;
-    --span-d-o: 1;
-    --span-d-x: 0;
-    --icon: var(--icon-active);
-    --color: var(--color-active);
-    --border: var(--border-active);
-    --background: var(--background-active);
-}
-.button-like:before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: inherit;
-    -webkit-transition: background .2s linear, box-shadow .2s linear, -webkit-transform .2s;
-    transition: background .2s linear, box-shadow .2s linear, -webkit-transform .2s;
-    transition: background .2s linear, transform .2s, box-shadow .2s linear;
-    transition: background .2s linear, transform .2s, box-shadow .2s linear, -webkit-transform .2s;
-    -webkit-transform: scale(var(--scale, 1)) translateZ(0);
-            transform: scale(var(--scale, 1)) translateZ(0);
-    background: var(--background);
-    box-shadow: inset 0 0 0 var(--border-width, 1px) var(--border), 0 4px 8px var(--shadow), 0 8px 20px var(--shadow);
-}
-.button-like .button-like__hand {
-    width: 8px;
-    height: 8px;
-    border-radius: 2px 0 0 0;
-    background: var(--icon);
-    position: relative;
-    margin: 0 4px 0 0;
-    -webkit-transform-origin: -5px -1px;
-            transform-origin: -5px -1px;
-    -webkit-transition: background .2s linear, -webkit-transform .25s;
-    transition: background .2s linear, -webkit-transform .25s;
-    transition: transform .25s, background .2s linear;
-    transition: transform .25s, background .2s linear, -webkit-transform .25s;
-    -webkit-transform: rotate(calc(var(--hand-rotate, 0) * 1deg)) translateZ(0);
-            transform: rotate(calc(var(--hand-rotate, 0) * 1deg)) translateZ(0);
-}
-.button-like .button-like__hand:before, .button-like .button-like__hand:after {
-    content: '';
-    background: var(--icon);
-    position: absolute;
-    -webkit-transition: background .2s linear, box-shadow .2s linear;
-    transition: background .2s linear, box-shadow .2s linear;
-}
-.button-like .button-like__hand:before {
-    left: -5px;
-    bottom: 0;
-    height: 8px;
-    width: 3px;
-    border-radius: 1px 1px 0 1px;
-}
-.button-like .button-like__hand:after {
-    right: -3px;
-    top: 0;
-    width: 3px;
-    height: 4px;
-    border-radius: 0 2px 2px 0;
-    background: var(--icon);
-    box-shadow: -0.5px 4px 0 var(--icon), -1px 8px 0 var(--icon), -1.5px 12px 0 var(--icon);
-    -webkit-transform: scaleY(0.5);
-            transform: scaleY(0.5);
-    -webkit-transform-origin: 0 0;
-            transform-origin: 0 0;
-}
-.button-like .button-like__hand .button-like__hand__thumb {
-    background: var(--icon);
-    width: 8px;
-    height: 3px;
-    border-radius: 2px;
-    -webkit-transform-origin: 2px 2px;
-            transform-origin: 2px 2px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    -webkit-transition: background .2s linear, -webkit-transform .25s;
-    transition: background .2s linear, -webkit-transform .25s;
-    transition: transform .25s, background .2s linear;
-    transition: transform .25s, background .2s linear, -webkit-transform .25s;
-    -webkit-transform: scale(0.85) translateY(-0.5px) rotate(var(--hand-thumb-1, -45deg)) translateZ(0);
-            transform: scale(0.85) translateY(-0.5px) rotate(var(--hand-thumb-1, -45deg)) translateZ(0);
-}
-.button-like .button-like__hand .button-like__hand__thumb:before {
-    content: '';
-    height: 3px;
-    width: 4px;
-    border-radius: 10px;
-    -webkit-transform-origin: 2px 2px;
-            transform-origin: 2px 2px;
-    background: var(--icon);
-    position: absolute;
-    left: 6px;
-    top: 0;
-    -webkit-transition: background .2s linear, -webkit-transform .25s;
-    transition: background .2s linear, -webkit-transform .25s;
-    transition: transform .25s, background .2s linear;
-    transition: transform .25s, background .2s linear, -webkit-transform .25s;
-    -webkit-transform: rotate(var(--hand-thumb-2, -45deg)) translateZ(0);
-            transform: rotate(var(--hand-thumb-2, -45deg)) translateZ(0);
-}
-.button-like .button-like__hand,
-.button-like span {
-    display: inline-block;
-}
-.button-like .button-like__hand span,
-.button-like span span {
-    opacity: var(--span-d-o, 0);
-    -webkit-transition: opacity .2s linear, -webkit-transform .25s;
-    transition: opacity .2s linear, -webkit-transform .25s;
-    transition: transform .25s, opacity .2s linear;
-    transition: transform .25s, opacity .2s linear, -webkit-transform .25s;
-    -webkit-transform: translateX(var(--span-d-x, 4px)) translateZ(0);
-            transform: translateX(var(--span-d-x, 4px)) translateZ(0);
-}
-.button-like > span {
-    -webkit-transition: -webkit-transform .25s;
-    transition: -webkit-transform .25s;
-    transition: transform .25s;
-    transition: transform .25s, -webkit-transform .25s;
-    -webkit-transform: translateX(var(--span-x, 4px)) translateZ(0);
-            transform: translateX(var(--span-x, 4px)) translateZ(0);
 }
 
 /* General CSS Class */
@@ -852,4 +691,7 @@ footer .container {
 }
 .lang[data-lang="vim"]::before {
     content: url(../svg/lang/vim.svg);
+}
+.lang[data-lang="vue"]::before {
+    content: url(../svg/lang/vue.svg);
 }

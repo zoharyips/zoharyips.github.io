@@ -3,6 +3,9 @@ layout: post
 title: 使用 VScode 进行 Java/J2EE 开发
 categories: VScode Java
 keywords: Vscode Java
+myCollection: posts
+image: /images/posts/vscode/vscode_java.jpg
+lang: [bash, powershell, java]
 prism: [markup, bash, java, powershell]
 ---
 

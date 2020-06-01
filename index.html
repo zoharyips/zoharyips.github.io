@@ -23,24 +23,25 @@ class: index
 
 
 <div class="container container--main-body">
+    
     <div class="content">
         <ol class="posts-list">
             {% for post in paginator.posts %}
             <li class="posts-list__item">
                 <h3 class="posts-list__item__title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
                 <div class="posts-list__item__collection">
-                    <span data-collection="{{ post.collection }}">{{ post.collection }}</span>
+                    <span data-collection="{{ post.myCollection }}">{{ post.myCollection }}</span>
                 </div>
                 <p class="posts-list__item__langs">
-                    {% for lang in post.prism %}
+                    {% for lang in post.lang %}
                         <span class="lang" data-lang="{{ lang }}" title="{{ lang }}"></span>
                     {% endfor %}
                 </p>
-                <img class="posts-list__item__img" src="https://www.dute.org/imgplaceholder/192x108?fontsize=16" width="192" height="108"></img>
+                <img class="posts-list__item__img" src="{{ post.image }}" width="192" height="108" alt="{{ post.title }}"></img>
                 <p class="posts-list__item__desc">{{ post.excerpt | strip_html | strip }}</p>
                 <div class="posts-list__item__act">
                     <!-- <span class="posts-list__item__act__comment mdi" data-mdi="comment-processing">留言</span> -->
-                    <span class="posts-list__item__act__collect mdi" data-mdi="star-face">收藏</span>
+                    <span class="posts-list__item__act__collect mdi" data-mdi="star-face" href="javascript:void(0);" onClick="addFavorite('{{ post.url }}', '{{ post.title }}')">收藏</span>
                     <span class="posts-list__item__act__share mdi" data-mdi="send">分享</span>
                 </div>
                 <p class="posts-list__item__metas">

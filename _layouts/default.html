@@ -34,32 +34,22 @@
     </body>
     <script src="/assets/js/zhihu-bg.js"></script>
     <script>
-        /* 点赞按钮 */
-        document.querySelectorAll('.button-like').forEach(button => {
-            button.addEventListener('click', e => {
-                button.classList.toggle('liked');
-                if(button.classList.contains('liked')) {
-                    gsap.fromTo(button, {
-                        '--hand-rotate': 8
-                    }, {
-                        ease: 'none',
-                        keyframes: [{
-                            '--hand-rotate': -45,
-                            duration: .16,
-                            ease: 'none'
-                        }, {
-                            '--hand-rotate': 15,
-                            duration: .12,
-                            ease: 'none'
-                        }, {
-                            '--hand-rotate': 0,
-                            duration: .2,
-                            ease: 'none',
-                            clearProps: true
-                        }]
-                    });
+        /* 收藏链接 */
+        function addFavorite(url, title) {
+            let ua = navigator.userAgent.toLowerCase();
+            if (ua.indexOf("msie 8") > -1) {
+                external.AddToFavoritesBar(url, title, '');//IE8
+            } else {
+                try {
+                    window.external.addFavorite(url, title);
+                } catch (e) {
+                    try {
+                        window.sidebar.addPanel(title, url, "");//firefox
+                    } catch (e) {
+                        alert("加入收藏失败，请使用Ctrl+D进行添加");
+                    }
                 }
-            });
-        });
+            }
+        }
     </script>
 </html>

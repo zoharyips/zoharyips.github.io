@@ -3,6 +3,7 @@ layout: post
 title: 解析 ls -l 显示列表含义
 categories: Linux
 keywords: Linux
+myCollection: posts
 prism: bash
 ---
 

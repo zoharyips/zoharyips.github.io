@@ -47,21 +47,6 @@ collections:
   wiki:
     output          : true
     permalink       : /wiki/:path.html
-  design-pattern: 
-    output          : true
-    permalink       : /design-pattern/:path.html
-  alogrithm:
-    output          : true
-    permalink       : /alogrithm/:path.html
-  source-code:
-    output          : true
-    permalink       : /source-code/:path.html
-  architecture:
-    output          : true
-    permalink       : /architecture/:path.html
-  os:
-    output          : true
-    permalink       : /os/:path.html
 
 
 # 导航
@@ -78,7 +63,7 @@ navs:
     label           : 探索
     sub-navs:
     -
-      href          : /alogrithm
+      href          : /algorithm
       label         : 算法
     -
       href          : /design-pattern
@@ -87,7 +72,7 @@ navs:
       href          : /source-code
       label         : 源码
     -
-      href          : /os
+      href          : /computer
       label         : 操作系统
     -
       href          : /architecture
