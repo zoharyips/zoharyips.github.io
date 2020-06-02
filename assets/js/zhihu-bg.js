@@ -198,7 +198,7 @@ class ZhiHuBg {
         this.canvas = canvas;
         this.ctx = this.canvas.getContext('2d');
         this.dots = [];
-        this.currentDot = new CurrentDot(0, 0, Dot.getAppropriateSize() - 1, 0, 0, Dot.getAppropriateDistance() * 2);
+        this.currentDot = new CurrentDot(0, 0, 0, 0, 0, Dot.getAppropriateDistance() * 2);
         this.initialized = false;
     }
     init() {

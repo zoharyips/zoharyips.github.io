@@ -27,20 +27,19 @@ class: index
     <div class="content">
         <ol class="posts-list">
             {% for post in paginator.posts %}
-            <li class="posts-list__item">
-                <h3 class="posts-list__item__title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
-                <div class="posts-list__item__collection">
-                    <span data-collection="{{ post.myCollection }}">{{ post.myCollection }}</span>
+            <li class="posts-list__item transition5">
+                <div class="posts-list__item__title-row">
+                    <h3 class="posts-list__item__title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
+                    <p class="posts-list__item__langs">
+                        {% for lang in post.lang %}
+                            <span class="lang" data-lang="{{ lang }}" title="{{ lang }}"></span>
+                        {% endfor %}
+                    </p>
                 </div>
-                <p class="posts-list__item__langs">
-                    {% for lang in post.lang %}
-                        <span class="lang" data-lang="{{ lang }}" title="{{ lang }}"></span>
-                    {% endfor %}
-                </p>
                 <div class="posts-list__item__img">
                     <div class="posts-list__item__img__content transition5" style="background-image: url('{{ post.image }}');"></div>
                 </div>
-                <p class="posts-list__item__desc">{{ post.excerpt | strip_html | strip }}</p>
+                <p class="posts-list__item__desc transition5">{{ post.excerpt | strip_html | strip }}</p>
                 <div class="posts-list__item__act">
                     <!-- <span class="posts-list__item__act__comment mdi" data-mdi="comment-processing">留言</span> -->
                     <span class="posts-list__item__act__collect mdi" data-mdi="star-face" href="javascript:void(0);" onClick="addFavorite('{{ post.url }}', '{{ post.title }}')">收藏</span>
@@ -53,38 +52,39 @@ class: index
                     <span class="mdi" data-mdi="calendar-month">{{ post.date | date: "%Y/%m/%d" }}</span>
                 </p>
             </li>
-            <div class="repo-filler"> </div>
             {% endfor %}
         </ol>
-        <div class="pagination text-align" style="text-align: center; margin:0px auto">
-            <div class="btn-group">
-                {% if paginator.previous_page %}
-                {% if paginator.previous_page == 1 %}
-                <a href="/" class="btn btn-outline">&laquo;</a>
+
+        {% if paginator.previous_page %}
+            {% if paginator.previous_page == 1 %}
+                {%- assign lastUrl = '/' -%}
+            {% else %}
+                {%- assign lastUrl = "/page" | append: paginator.previous_page -%}
+            {% endif %}
+        {%- else -%}
+            {%- assign lastUrl = 'javascript:void(0);' -%}
+        {% endif %}
+        {%- if paginator.next_page -%}
+            {%- assign nextUrl = '/page' | append: paginator.next_page -%}
+        {%- else -%}
+            {%- assign nextUrl = 'javascript:void(0);' -%}
+        {%- endif -%}
+
+        <div class="paginator text-unselectable">
+            <a class="paginator__item--last transition3 mdi" href="{{ lastUrl }}" data-mdi="chevron-left" data-page="{{ lastUrl }}"></a>
+            {% for page in (1..paginator.total_pages) %}
+                {% if page == paginator.page %}
+                    <a class="paginator__item--active transition3" href="javascript:void(0);" data-page="javascript:void(0);">{{ page }}</a>
                 {% else %}
-                <a href="/page{{paginator.previous_page}}" class="btn btn-outline">&laquo;</a>
+                    {%- if page == 1 -%}
+                        {%- assign pageUrl = '/' -%}
+                    {%- else -%}
+                        {%- assign pageUrl = '/page' | append: page -%}
+                    {%- endif -%}
+                    <a class="paginator__item--other transition3" href="{{ pageUrl }}">{{ page }}</a>
                 {% endif %}
-                {% else %}
-                <button disabled="disabled" href="javascript:;" class="btn btn-outline">&laquo;</button>
-                {% endif %}
-                {% if paginator.page == 1 %}
-                <a href="javascript:;" class="active btn btn-outline">1</a>
-                {% else %}
-                <a href="/" class="btn btn-outline">1</a>
-                {% endif %}
-                {% for count in (2..paginator.total_pages) %}
-                {% if count == paginator.page %}
-                <a href="javascript:;" class="active btn btn-outline">{{count}}</a>
-                {% else %}
-                <a href="/page{{count}}" class="btn btn-outline">{{count}}</a>
-                {% endif %}
-                {% endfor %}
-                {% if paginator.next_page %}
-                <a href="/page{{paginator.next_page}}" class="btn btn-outline">&raquo;</a>
-                {% else %}
-                <button disabled="disabled" href="javascript:;" class="btn btn-outline">&raquo;</button>
-                {% endif %}
-            </div>
+            {% endfor %}
+            <a class="paginator__item--next transition3 mdi" href="{{ nextUrl }}" data-mdi="chevron-right" data-page="{{ nextUrl }}"></a>
         </div>
     </div>
     <div class="sidebar">
