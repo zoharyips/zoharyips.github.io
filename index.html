@@ -1,6 +1,7 @@
 ---
 layout: default
 class: index
+search: true
 ---
 
 <section class="banner">
@@ -20,16 +21,17 @@ class: index
     </div>
 </section>
 
-
-
 <div class="container container--main-body">
-    
     <div class="content">
+        {%- assign topPosts = paginator.posts | where:"top", "true" -%}
+        {%- for post in topPosts -%}
+            {{ post.title }}
+        {%- endfor -%}
         <ol class="posts-list">
             {% for post in paginator.posts %}
-            <li class="posts-list__item transition5">
+            <li class="posts-list__item transition3">
                 <div class="posts-list__item__title-row">
-                    <h3 class="posts-list__item__title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
+                    <h3 class="posts-list__item__title"><a class="transition5" href="{{ post.url }}">{{ post.title }}</a></h3>
                     <p class="posts-list__item__langs">
                         {% for lang in post.lang %}
                             <span class="lang" data-lang="{{ lang }}" title="{{ lang }}"></span>
@@ -49,7 +51,7 @@ class: index
                     {% for category in post.categories %}
                         <a class="mdi" href="/categories/#{{ category }}" data-mdi="folder-open">{{ category }}</a>
                     {% endfor %}
-                    <span class="mdi" data-mdi="calendar-month">{{ post.date | date: "%Y/%m/%d" }}</span>
+                    <span class="mdi" data-mdi="calendar-month">{{ post.date | date_to_string: "ordinal", "US" }}</span>
                 </p>
             </li>
             {% endfor %}
@@ -87,17 +89,5 @@ class: index
             <a class="paginator__item--next transition3 mdi" href="{{ nextUrl }}" data-mdi="chevron-right" data-page="{{ nextUrl }}"></a>
         </div>
     </div>
-    <div class="sidebar">
-        <div class="sidebar-item">
-            <!-- klfjsdklfsdjkfjsdlkfdjsklf -->
-        </div>
-    </div>
-</div>
-<div class="container">
-    <!-- Main Session -->
-    <section class="container content">
-        
-        {% include sidebar-search.html %}
-    </section>
-    <!-- /Main Session -->
+    {%- include sidebar.html -%}
 </div>

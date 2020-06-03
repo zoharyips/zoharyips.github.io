@@ -7,9 +7,9 @@
     --z-index-page-after:          -100;
     --color-bg:                  #f6f6f6;
     --color-bg-active:           #fcfcfc;
-    --color-primary-dark:        #689F38;
-    --color-primary:             #8BC34A;
-    --color-primary-light:       #DCEDC8;
+    --color-primary-dark:        #1976D2;
+    --color-primary:             #0084FF;
+    --color-primary-light:       #E5F2FF;
     --color-accent:              #CDDC39;
     --color-text-light-primary:  #FFFFFF;
     --color-text-light-secondary:#DBDBDB;
@@ -28,7 +28,7 @@
     --emoji-algorithm:             '📉';
     --emoji-design-pattern:        '⚖️';
     --emoji-source-code:           '🔣';
-    --emoji-computer:                    '🖥️';
+    --emoji-computer:              '🖥️';
     --emoji-architecture:          '📐';
 }
 html, body {
@@ -85,8 +85,10 @@ header {
     left: 0;
     z-index: var(--z-index-header);
     color: var(--color-text-light-primary);
-    background: linear-gradient(to right, #827100, #5c862d, #057748, #065279, #4a4266) left center/400% 400%;
+    background: linear-gradient(to right, #5c862d, #057748, #0A5178, #065279, #4a4266) left center/400% 400%;
     animation: move-header-background 15s infinite;
+    -webkit-box-shadow: 0 1px 3px rgba(26,26,26,.2);
+    box-shadow: 0 1px 3px rgba(26,26,26,.2)
 }
 header .container {
     display: flex;
@@ -347,7 +349,7 @@ footer .container {
 /* Index */
 .index .banner {
     color: var(--color-text-light-primary);
-    background: linear-gradient(to right, #827100, #5c862d, #057748, #065279, #4a4266) left center/400% 400%;
+    background: linear-gradient(to right, #5c862d, #057748, #0A5178, #065279, #4a4266) left center/400% 400%;
     animation: move-header-background 15s infinite;
 }
 .index .banner__title {
@@ -390,15 +392,17 @@ footer .container {
     width: 100%;
     height: fit-content;
     list-style: none;
+    -webkit-box-shadow: 0 1px 3px rgba(26,26,26,.1);
+    box-shadow: 0 1px 3px rgba(26,26,26,.1);
 }
 .posts-list__item {
-    margin: 0 0 1rem 0;
-    padding: 0.5rem 1rem;
-    width: 100%;
+    position: relative;
+    margin: 0;
+    padding: 1rem 2rem;
     height: fit-content;
     display: grid;
     grid-template-columns: 192px 1fr;
-    grid-template-rows: 32px 108px 42px;
+    grid-template-rows: 32px 108px 32px;
     grid-row-gap: 6px;
     grid-column-gap: 12px;
     -ms-grid-column-align: 12px;
@@ -411,11 +415,25 @@ footer .container {
     align-items: center;
     justify-content: stretch;
     align-content: center;
+    border-radius: 1px;
+}
+.posts-list__item:not(:last-child)::after {
+    position: absolute;
+    content: '';
+    display: block;
+    height: 1px;
+    width: 98%;
+    bottom: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(202,202,202,.3);
 }
 .posts-list__item:hover {
+    margin: 0 -0.2rem;
+    padding: 1rem 2.2rem;
     background: var(--color-bg-active);
-    -webkit-box-shadow: 0 1px 3px rgba(26,26,26,.1);
-    box-shadow: 0 1px 3px rgba(26,26,26,.1);
+    -webkit-box-shadow: 0 1px 3px rgba(26,26,26,.3);
+    box-shadow: 0 1px 3px rgba(26,26,26,.3);
 }
 .posts-list__item__title-row {
     grid-area: title-row;
@@ -485,9 +503,10 @@ footer .container {
 }
 .posts-list__item__desc {
     margin: 0;
+    color: #363636;
 }
 .posts-list__item:hover .posts-list__item__desc {
-    color: #223513;
+    color: var(--color-text-dark-primary);
 }
 .posts-list__item__act span {
     margin-right: 0.5rem;
@@ -545,18 +564,32 @@ footer .container {
     border-radius: 4px;
 }
 a.paginator__item--active {
-    color: var(--color-text-dark-primary);
-    background: var(--color-accent);
+    color: var(--color-primary);
+    background: var(--color-primary-light);
 }
 .paginator a:hover {
-    color: var(--color-text-dark-primary);
-    background: var(--color-accent);
+    color: var(--color-primary);
+    background: var(--color-primary-light);
     -webkit-box-shadow: 0 1px 3px rgba(26,26,26,.1);
     box-shadow: 0 1px 3px rgba(26,26,26,.1);
 }
-.paginator a[data-page="javascript:void(0);"]:hover {
+.paginator a[data-page="javascript:void(0);"]:not(.paginator__item--active):hover {
     color: var(--color-text-dark-thirdary);
     background-color: var(--color-bg-active);
+}
+
+/* Side Bar */
+.sidebar-item {
+    margin: 1rem 0;
+    padding: 0.8rem 0.8rem;
+    -webkit-box-shadow: 0 1px 3px rgba(26,26,26,.1);
+    box-shadow: 0 1px 3px rgba(26,26,26,.1);
+    border-radius: 2px;
+}
+.sidebar-item:hover {
+    background: var(--color-bg-active);
+    -webkit-box-shadow: 0 1px 3px rgba(26,26,26,.3);
+    box-shadow: 0 1px 3px rgba(26,26,26,.3);
 }
 
 /* Material Design Icon */

@@ -7,7 +7,7 @@
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
 
 class Dot {
-    static COLOR_SELF = 'rgba(221,221,221,1)';
+    static COLOR_SELF = 'rgb(25,118,210,0.2)';
     static COLOR_LINE = 'rgba(221,221,221,0.3)';
     /**
      * 创建一个 Dot 实例
@@ -106,22 +106,22 @@ class Dot {
      * 根据屏幕大小生成合适的点数量
      **/
     static getAppropriateCount() {
-        let factor = 0.00002;
-        if (document.body.offsetWidth < 1600) { factor = 0.000025; }
-        if (document.body.offsetWidth < 1500) { factor = 0.000030; }
-        if (document.body.offsetWidth < 1400) { factor = 0.000035; }
-        if (document.body.offsetWidth < 1300) { factor = 0.000040; }
-        if (document.body.offsetWidth < 1200) { factor = 0.000045; }
-        if (document.body.offsetWidth < 1100) { factor = 0.000050; }
-        if (document.body.offsetWidth < 1000) { factor = 0.000055; }
-        if (document.body.offsetWidth < 900)  { factor = 0.000060; }
-        if (document.body.offsetWidth < 800)  { factor = 0.000065; }
-        if (document.body.offsetWidth < 700)  { factor = 0.000070; }
-        if (document.body.offsetWidth < 600)  { factor = 0.000078; }
-        if (document.body.offsetWidth < 500)  { factor = 0.000086; }
-        if (document.body.offsetWidth < 400)  { factor = 0.000094; }
-        if (document.body.offsetWidth < 300)  { factor = 0.000102; }
-        if (document.body.offsetWidth < 200)  { factor = 0.000110; }
+        let factor = 0.000040;
+        if (document.body.offsetWidth < 1600) { factor = 0.000045; }
+        if (document.body.offsetWidth < 1500) { factor = 0.000050; }
+        if (document.body.offsetWidth < 1400) { factor = 0.000055; }
+        if (document.body.offsetWidth < 1300) { factor = 0.000060; }
+        if (document.body.offsetWidth < 1200) { factor = 0.000065; }
+        if (document.body.offsetWidth < 1100) { factor = 0.000070; }
+        if (document.body.offsetWidth < 1000) { factor = 0.000075; }
+        if (document.body.offsetWidth < 900)  { factor = 0.000080; }
+        if (document.body.offsetWidth < 800)  { factor = 0.000085; }
+        if (document.body.offsetWidth < 700)  { factor = 0.000090; }
+        if (document.body.offsetWidth < 600)  { factor = 0.000098; }
+        if (document.body.offsetWidth < 500)  { factor = 0.000106; }
+        if (document.body.offsetWidth < 400)  { factor = 0.000114; }
+        if (document.body.offsetWidth < 300)  { factor = 0.000122; }
+        if (document.body.offsetWidth < 200)  { factor = 0.000130; }
         return document.body.offsetHeight * document.body.offsetWidth * factor;
     }
 }

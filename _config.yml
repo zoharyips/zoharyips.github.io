@@ -92,10 +92,6 @@ navs:
 
 subscribe_rss       : /feed.xml
 
-# 站内搜索
-simple_jekyll_search:
-  fulltext          : false
-
 # leanCloud 访问统计
 leancloud:
   enable: true
