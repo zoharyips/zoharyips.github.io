@@ -23,37 +23,41 @@ search: true
 
 <div class="container container--main-body">
     <div class="content">
-        {%- assign topPosts = paginator.posts | where:"top", "true" -%}
-        {%- for post in topPosts -%}
-            {{ post.title }}
-        {%- endfor -%}
         <ol class="posts-list">
-            {% for post in paginator.posts %}
-            <li class="posts-list__item transition3">
-                <div class="posts-list__item__title-row">
+            {%- assign topPosts = site.documents | where:"top", "true" -%}
+            {%- assign pagePosts = paginator.posts -%}
+            {%- for post in topPosts -%}
+                {%- assign pagePosts = pagePosts | where_exp:"item", "item.title != post.title" -%}
+                <li class="posts-list__item transition3">
                     <h3 class="posts-list__item__title"><a class="transition5" href="{{ post.url }}">{{ post.title }}</a></h3>
-                    <p class="posts-list__item__langs">
-                        {% for lang in post.lang %}
-                            <span class="lang" data-lang="{{ lang }}" title="{{ lang }}"></span>
+                    <div class="posts-list__item__img">
+                        <div class="posts-list__item__img__content transition5" style="background-image: url('{{ post.image }}');"></div>
+                    </div>
+                    <p class="posts-list__item__desc transition5">{{ post.excerpt | strip_html | strip }}</p>
+                    <div class="posts-list__item__mark">TOP</div>
+                    <p class="posts-list__item__metas">
+                        {% for category in post.categories %}
+                            <a class="mdi" href="/categories/#{{ category }}" data-mdi="folder-open">{{ category }}</a>
                         {% endfor %}
+                        <span class="mdi" data-mdi="calendar-month">{{ post.date | date_to_string: "ordinal", "US" }}</span>
                     </p>
-                </div>
-                <div class="posts-list__item__img">
-                    <div class="posts-list__item__img__content transition5" style="background-image: url('{{ post.image }}');"></div>
-                </div>
-                <p class="posts-list__item__desc transition5">{{ post.excerpt | strip_html | strip }}</p>
-                <div class="posts-list__item__act">
-                    <!-- <span class="posts-list__item__act__comment mdi" data-mdi="comment-processing">留言</span> -->
-                    <span class="posts-list__item__act__collect mdi" data-mdi="star-face" href="javascript:void(0);" onClick="addFavorite('{{ post.url }}', '{{ post.title }}')">收藏</span>
-                    <span class="posts-list__item__act__share mdi" data-mdi="send">分享</span>
-                </div>
-                <p class="posts-list__item__metas">
-                    {% for category in post.categories %}
-                        <a class="mdi" href="/categories/#{{ category }}" data-mdi="folder-open">{{ category }}</a>
-                    {% endfor %}
-                    <span class="mdi" data-mdi="calendar-month">{{ post.date | date_to_string: "ordinal", "US" }}</span>
-                </p>
-            </li>
+                </li>
+            {%- endfor -%}
+            {% for post in pagePosts %}
+                <li class="posts-list__item transition3">
+                    <h3 class="posts-list__item__title"><a class="transition5" href="{{ post.url }}">{{ post.title }}</a></h3>
+                    <div class="posts-list__item__img">
+                        <div class="posts-list__item__img__content transition5" style="background-image: url('{{ post.image }}');"></div>
+                    </div>
+                    <p class="posts-list__item__desc transition5">{{ post.excerpt | strip_html | strip }}</p>
+                    <div class="posts-list__item__mark">{{ post.mark }}</div>
+                    <p class="posts-list__item__metas">
+                        {% for category in post.categories %}
+                            <a class="mdi" href="/categories/#{{ category }}" data-mdi="folder-open">{{ category }}</a>
+                        {% endfor %}
+                        <span class="mdi" data-mdi="calendar-month">{{ post.date | date_to_string: "ordinal", "US" }}</span>
+                    </p>
+                </li>
             {% endfor %}
         </ol>
 
