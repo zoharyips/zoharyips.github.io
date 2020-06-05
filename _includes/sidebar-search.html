@@ -2,7 +2,13 @@
 <h2 class="sidebar-item__title transition3">Search Articles</h2>
 <div class="sidebar__search__input-wrapper mdi">
     <input class="sidebar__search__input" id="sidebar__search__input" type="text" maxlength="20" placeholder="looking for something?"/>
-    <div class="sidebar__search__res transition5" id="sidebar__search__res"></div>
+    <div class="sidebar__search__res transition5">
+        <div class="sidebar__search__res__container" id="sidebar__search__res"></div>
+        <div class="sidebar__search__res__widget" data-widget="top-left"></div>
+        <div class="sidebar__search__res__widget" data-widget="top-right"></div>
+        <div class="sidebar__search__res__widget" data-widget="bottom-left"></div>
+        <div class="sidebar__search__res__widget" data-widget="bottom-right"></div>
+    </div>
 </div>
 
 <script type="text/javascript">
@@ -39,7 +45,7 @@
         limit: 10,
         fuzzy: false,
         exclude: ['Welcome'],
-        noResultsText: 'Sorry! No result.',
+        noResultsText: '<a class="sidebar__search__res__item sidebar__search__res__item--fail" href="javascript:void(0)" title="no result">Sorry! No result.</a>',
         searchInput: document.getElementById('sidebar__search__input'),
         resultsContainer: document.getElementById('sidebar__search__res'),
         searchResultTemplate: '<a class="sidebar__search__res__item" href="{url}" title="{desc}">{title}</a>',

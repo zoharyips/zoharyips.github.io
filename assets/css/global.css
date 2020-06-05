@@ -468,7 +468,6 @@ footer .container {
 .posts-list__item__title,
 .posts-list__item__title a {
     font-size: 1rem;
-    line-height: 1rem;
     overflow: hidden;
     white-space: nowrap;
     text-decoration: none;
@@ -598,7 +597,7 @@ a.paginator__item--active {
 }
 .sidebar__search__input {
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 0.5rem;
     width: 95%;
     height: 1.5rem;
     font-size: 0.9rem;
@@ -624,17 +623,87 @@ a.paginator__item--active {
     border-bottom-right-radius: 4px;
 }
 .sidebar__search__res {
+    position: relative;
     min-height: 1rem;
     height: 1rem;
-    border: 1px solid var(--color-divider-secondary);
     opacity: 0;
 }
+.sidebar__search__res__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
 .sidebar__search__input:focus + .sidebar__search__res {
-    margin: 0.5rem 0.1rem 0;
     opacity: 0.8;
     height: 12rem;
-    border: 1px solid var(--color-divider-secondary);
-    border-radius: 8px;
+}
+.sidebar__search__res__widget {
+    position: absolute;
+    width: 3px;
+    height: 0.8rem;
+    background: var(--color-primary);
+}
+.sidebar__search__res__widget::before {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 0.8rem;
+    height: 3px;
+    background: var(--color-primary);
+}
+.sidebar__search__res__widget[data-widget="top-left"] {
+    height: 0.5rem;
+    width: 1px;
+    top: 0;
+    left: 4px;
+}
+.sidebar__search__res__widget[data-widget="top-right"] {
+    height: 0.5rem;
+    width: 1px;
+    top: 0;
+    right: 4px;
+}
+.sidebar__search__res__widget[data-widget="bottom-left"] {
+    bottom: 0;
+    left: 4px;
+}
+.sidebar__search__res__widget[data-widget="bottom-right"] {
+    bottom: 0;
+    right: 4px;
+}
+.sidebar__search__res__widget[data-widget="top-left"]::before {
+    height: 1px;
+    width: 0.5rem;
+}
+.sidebar__search__res__widget[data-widget="top-right"]::before {
+    height: 1px;
+    width: 0.5rem;
+    top: 0;
+    right: 0;
+}
+.sidebar__search__res__widget[data-widget="bottom-left"]::before {
+    bottom: 0;
+    left: 0;
+}
+.sidebar__search__res__widget[data-widget="bottom-right"]::before {
+    bottom: 0;
+    right: 0;
+}
+.sidebar__search__res__item {
+    display: block;
+    text-decoration: none;
+    margin: 0.2rem 1rem 0;
+    height: 1rem;
+    font-size: 0.9rem;
+    line-height: 1rem;
+    overflow: hidden;
+    color: var(--color-text-dark-secondary);
+}
+.sidebar__search__res__item:hover {
+    color: var(--color-primary);
+}
+.sidebar__search__res__item--fail:hover {
+    color: var(--color-text-dark-secondary);
 }
 
 /* Material Design Icon */
