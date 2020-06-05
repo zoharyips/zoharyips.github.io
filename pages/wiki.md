@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Wiki
-description: 人越学越觉得自己无知，这里存放了许多琐碎的知识点，食之无味弃之可惜
+description: 琐碎的知识点很多，但是值得一记
 repositories: false
 share: false
 comments: false

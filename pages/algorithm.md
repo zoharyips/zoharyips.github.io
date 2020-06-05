@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Links
-description: 没有链接的博客是孤独的
+title: 算法
+description: 这是程序的本质，也是一个工程师最核心的素养
 comments: false
 canvas: true
 permalink: /algorithm

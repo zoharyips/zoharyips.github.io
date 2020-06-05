@@ -1,7 +1,9 @@
 <!-- 搜索框 -->
-<input class="serach__input" id="search-input" type="text" maxlength="20"/>
-<div id="search-res-container"></div>
-
+<h2 class="sidebar-item__title transition3">Search Articles</h2>
+<div class="sidebar__search__input-wrapper mdi">
+    <input class="sidebar__search__input" id="sidebar__search__input" type="text" maxlength="20" placeholder="looking for something?"/>
+    <div class="sidebar__search__res transition5" id="sidebar__search__res"></div>
+</div>
 
 <script type="text/javascript">
     const searchData = `[
@@ -38,8 +40,8 @@
         fuzzy: false,
         exclude: ['Welcome'],
         noResultsText: 'Sorry! No result.',
-        searchInput: document.getElementById('search-input'),
-        resultsContainer: document.getElementById('search-res-container'),
-        searchResultTemplate: '<a class="search__result__item" href="{url}" title="{desc}">{title}</a>',
+        searchInput: document.getElementById('sidebar__search__input'),
+        resultsContainer: document.getElementById('sidebar__search__res'),
+        searchResultTemplate: '<a class="sidebar__search__res__item" href="{url}" title="{desc}">{title}</a>',
     })
 </script>

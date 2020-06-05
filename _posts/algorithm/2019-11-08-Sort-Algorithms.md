@@ -6,6 +6,7 @@ keywords: Algorithm
 myCollection: algorithm
 permalink: /algorithm/:title.html
 image: /images/posts/algorithm/2019-11-08-sort-algorithms/random_quick_sort.gif
+top: 2
 lang: java
 mathjax: true
 prism: [java]

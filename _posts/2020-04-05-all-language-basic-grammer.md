@@ -4,7 +4,7 @@ title: 主流语言的学习与对比
 categories: Computer
 keywords: Computer
 date: 2020-04-28
-top: true
+top: 1
 myCollection: posts
 image: images/wallpaper/think_twice_code_once.png
 lang: [go, javascript, php, java]
