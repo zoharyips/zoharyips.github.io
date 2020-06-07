@@ -706,6 +706,34 @@ a.paginator__item--active {
     color: var(--color-text-dark-secondary);
 }
 
+/* Qr code */
+.sidebar__qrcode {
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+    height: 128px;
+    background: url(/images/wechat-qrcode.png) no-repeat center center;
+    background-size: contain;
+}
+#qrcode-toggler {
+    display: none;
+}
+.sidebar__qrcode--full {
+    position: fixed;
+    z-index: var(--z-index-page-before);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -150%);
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.3) no-repeat center center;
+    background-image: url(/images/wechat-qrcode-square.jpg);
+}
+#qrcode-toggler:checked + .sidebar__qrcode--full {
+    animation: drop-down-qrcode 1.2s;
+    transform: translate(-50%, -50%);
+}
+
 /* Material Design Icon */
 @font-face {
     font-family: "Material Design Icons";
@@ -722,6 +750,26 @@ a.paginator__item--active {
     }
     50% {
         background-position-x: right;
+    }
+}
+@keyframes drop-down-qrcode {
+    0% {
+        transform: translate(-50%, -150%);
+    }
+    35% {
+        transform: translate(-50%, -50%);
+    }
+    55% {
+        transform: translate(-50%, -70%);
+    }
+    75% {
+        transform: translate(-50%, -50%);
+    }
+    88% {
+        transform: translate(-50%, -60%);
+    }
+    100% {
+        transform: translate(-50%, -50%);
     }
 }
 
@@ -798,6 +846,9 @@ a.paginator__item--active {
 }
 .mdi[data-mdi="chevron-right"]::before {
     content: "\F0142";
+}
+.mdi[data-mdi="alert-circle-outline"]::before {
+    content: "\F05D6";
 }
 
 /* Language icons */

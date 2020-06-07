@@ -1,40 +1,7 @@
-<!-- 二维码显示 -->
-<style>
-  .qrcode {
-    height:120px;
-    width:120px;
-    margin-left: 50%;
-    margin-right: auto;
-    transform: translate(-50%, 0%)
-  }
-  .qrcode-shade {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 2000;
-    width: 100%;
-    height: 100%;
-    display: none;
-  }
-  .qrcode-shade img {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    width: 430px;
-    border: 5px solid rgb(255, 255, 255);
-  }
-  @media (max-width:50em) {
-    .qrcode-shade img {
-      width: 60%;
-    }
-  }
-</style>
-<h3>Contact Me</h3>
-<div>
-  <img class='qrcode' src="/images/wechat-transparency.png" alt="zohar's wechat" onclick="$('.qrcode-shade').fadeIn('fast')" />
-</div>
-<div class="qrcode-shade" onclick="$('.qrcode-shade').fadeOut('fast');">
-  <img src="/images/wechat.png" alt="wechat QRcode">
+<!-- 二维码 -->
+<h2 class="sidebar-item__title transition3">Wechat</h2>
+<div class="">
+  <label class="sidebar__qrcode" for="qrcode-toggler" title="zohar's wechat"></label>
+  <input id="qrcode-toggler" type="checkbox"/>
+  <label class="sidebar__qrcode--full transition3" for="qrcode-toggler" title="zohar's wechat"></label>
 </div>

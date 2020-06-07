@@ -4,4 +4,9 @@
             {%- include sidebar-search.html -%}
         </div>
     {%- endif -%}
+    {%- if page.qrcode -%}
+        <div class="sidebar-item transition3">
+            {%- include sidebar-qrcode.html -%}
+        </div>
+    {%- endif -%}
 </div>

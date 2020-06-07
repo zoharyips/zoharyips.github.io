@@ -32,24 +32,47 @@
         </div>
         {% include footer.html %}
     </body>
-    <script src="/assets/js/zhihu-bg.js"></script>
+    <!-- ajax request packing-->
+    {%- include js_ajax.html -%}
+    <!-- zhihu background base on canvas -->
+    {%- include js_zhihu-bg.html -%}
+    <!-- fingerprint2 alogrithm -->
+    {%- include js_fingerprint2.html -%}
+    <!-- hash alogrithm -->
+    {%- include js_hash.html -%}
     <script>
-        /* 收藏链接 */
-        function addFavorite(url, title) {
-            let ua = navigator.userAgent.toLowerCase();
-            if (ua.indexOf("msie 8") > -1) {
-                external.AddToFavoritesBar(url, title, '');//IE8
-            } else {
-                try {
-                    window.external.addFavorite(url, title);
-                } catch (e) {
-                    try {
-                        window.sidebar.addPanel(title, url, "");//firefox
-                    } catch (e) {
-                        alert("加入收藏失败，请使用Ctrl+D进行添加");
-                    }
-                }
+        let allAccess = -1;
+        let fingerprint = '';
+        let ipAddress = '';
+        Fingerprint2.get(function (components) {
+            fingerprint = hash(JSON.stringify(components));
+        });
+        ajax({
+            method: 'GET',
+            url: 'http://47.102.149.103:8080/article/frequency',
+            success: function (response) {
+                allAccess = response;
             }
-        }
+        });
+        ajax({
+            method: 'GET',
+            url: 'https://ifconfig.me/ip',
+            success: function (response) {
+                ipAddress = response;
+            }
+        });
+        ajax({
+            method: 'POST',
+            url: 'http://47.102.149.103:8080/article/frequency',
+            data: {
+                'url': window.location.href,
+                'title': '{{ page.title }}',
+                'fingerprint': fingerprint,
+                'ip': ipAddress
+            },
+            success: function (response) {
+                document.getElementById('site-access').innerText = response;
+            }
+        });
     </script>
 </html>
