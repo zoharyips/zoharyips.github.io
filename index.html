@@ -16,7 +16,7 @@ qrcode: true
             </div>
             <div class="banner__meta__item">
                 <span class="banner__meta__item__title mdi" data-mdi="pulse">Site access</span>
-                <span class="banner__meta__item__content" id="site-access"></span>
+                <span class="banner__meta__item__content" id="site-access">∞</span>
             </div>
         </div>
     </div>
@@ -24,6 +24,15 @@ qrcode: true
 
 <div class="container container--main-body">
     <div class="content">
+        {%- assign notification = site.data.notification | sample -%}
+        <div class="notification">
+            <div class="notification__content mdi" data-mdi="alert-circle-outline">
+                {{ notification.content }}
+            </div>
+            <span class="notification__time">
+                {{ notification.time }}
+            </span>
+        </div>
         <ol class="posts-list">
             {%- assign topPosts = site.documents | where_exp:"item", "item.top > 0" | sort: "top" -%}
             {%- assign pagePosts = paginator.posts -%}
