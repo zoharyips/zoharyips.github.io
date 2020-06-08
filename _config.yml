@@ -6,7 +6,7 @@
 # `jekyll serve`. If you change this file, please restart the server process.
 
 # Site Settings
-baseurl:
+# baseurl:
 # It will redirect your site to this url
 url                 : https://zoharyip.club
 title               : Zohar's blog
@@ -91,14 +91,6 @@ navs:
     label           : 关于
 
 subscribe_rss       : /feed.xml
-
-# leanCloud 访问统计
-leancloud:
-  enable: true
-  app_id: 7EiyLoiTRMpJGKx5Jyy6FV0S-gzGzoHsz
-  app_key: 0l02blBLDj6noCkLMoF76LD8
-  data_class_name: visited_times
-  ip_class_name: visiting_ip
 
 # 谷歌分析
 google:

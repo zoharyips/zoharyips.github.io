@@ -111,7 +111,7 @@ header .container {
     content: '';
     position: absolute;
     top: 50%;
-    left: 0%;
+    left: 0;
     transform: translate(-110%, -50%);
     font-size: 2.5rem;
 }
@@ -402,7 +402,7 @@ footer .container {
 }
 .notification__content::before {
     margin-right: 0.5rem;
-    line-height: 1.2 rem;
+    line-height: 1.2rem;
     color: var(--color-text-dark-thirdary);
     font-size: 1.2rem;
 }
@@ -425,8 +425,6 @@ footer .container {
     grid-template-rows: 1rem 1fr 0.8rem;
     grid-row-gap: 0.8rem;
     grid-column-gap: 1rem;
-    -ms-grid-row-align: 0.8rem;
-    -ms-grid-column-align: 1rem;
     grid-template-areas:
                         'img title mark'
                         'img desc desc'
@@ -626,7 +624,6 @@ a.paginator__item--active {
     width: 95%;
     height: 1.5rem;
     font-size: 0.9rem;
-    border: none;
     outline: none;
     border: 3px solid var(--color-primary);
     border-radius: 4px;
@@ -751,8 +748,7 @@ a.paginator__item--active {
     transform: translate(-50%, -150%);
     height: 100%;
     width: 100%;
-    background: rgba(255, 255, 255, 0.3) no-repeat center center;
-    background-image: url(/images/wechat-qrcode-square.jpg);
+    background: rgba(255, 255, 255, 0.3) url(/images/wechat-qrcode-square.jpg) no-repeat center center;
 }
 #qrcode-toggler:checked + .sidebar__qrcode--full {
     animation: drop-down-qrcode 1.2s;
@@ -837,7 +833,7 @@ a.paginator__item--active {
 }
 /* Mdi ICONS */
 .mdi {
-    font-family: "Material Design Icons";
+    font-family: "Material Design Icons", sans-serif;
 }
 .mdi[data-mdi="github"]::before {
     content: "\F02A4";
