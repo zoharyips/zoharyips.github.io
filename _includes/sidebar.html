@@ -9,4 +9,9 @@
             {%- include sidebar-qrcode.html -%}
         </div>
     {%- endif -%}
+    {%- if page.catalogue -%}
+        <div class="sidebar-item transition3">
+            {%- include sidebar-catalogue.html -%}
+        </div>
+    {%- endif -%}
 </div>

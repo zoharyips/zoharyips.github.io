@@ -1,51 +1,29 @@
 ---
 layout: default
-gotop: false
 ---
-<!-- 文章显示页面 -->
-<div id="fixed_title" class="fix-title" hidden=true>
-  <h3 onclick="titleBackToTop()">{{ page.title }}</h3>
-</div>
-<section id="origin_title" class="collection-head small geopattern" data-pattern-id="{{ page.title | truncate: 15, ''}}">
-  <div class="container">
-    <div class="columns">
-      <div class="column three-fourths">
-        <div class="collection-title">
-          <h1 class="collection-header">{{ page.title }}</h1>
+
+<section class="banner">
+    <div class="container">
+        <h1 class="banner__title">{{ page.title }}</h1>
+        <h2 class="banner__subtitle">{{ site.subtitle }}</h2>
+        <div class="banner__meta">
+            <div class="banner__meta__item">
+                <span class="banner__meta__item__title mdi" data-mdi="map-marker-radius-outline">Address</span>
+                <span class="banner__meta__item__content">{{ page.date | date: "%Y/%m/%d" }}</span>
+            </div>
+            <div class="banner__meta__item">
+                <span class="banner__meta__item__title mdi" data-mdi="pulse">Site access</span>
+                <span class="banner__meta__item__content" id="site-access">∞</span>
+            </div>
         </div>
-        <div class="collection-info">
-          {% if page.modify %}
-            <span class="meta-info">
-              <span class="octicon octicon-pencil"></span>
-              {{ page.modify }}
-            </span>
-          {% endif %}
-          {% if page.date %}
-            <span class="meta-info">
-              <span class="octicon octicon-calendar"></span>
-              {{ page.date | date: "%Y/%m/%d" }}
-            </span>
-          {% endif %}
-          {% for cat in page.categories %}
-            <span class="meta-info">
-              <span class="octicon octicon-file-directory"></span>
-              <a href="{{ site.url }}/categories/#{{ cat }}" title="{{ cat }}">{{ cat }}</a>
-            </span>
-          {% endfor %}
-        </div>
-      </div>
     </div>
-  </div>
 </section>
-<!-- / .banner -->
-<section class="container content">
-<div class="columns">
-  <div class="column three-fourths" >
-    <article class="article-content markdown-body">
-      {{ content }}
-    </article>
-  </div>
+
+<div class="container container--main-body">
+    <div class="content">
+        <article>            
+            {{ content }}
+        </article>
+    </div>
+    {%- include sidebar.html -%}
 </div>
-</section>
-<!-- /section.content -->
-<script src="/assets/js/fixed_title.js"></script>
