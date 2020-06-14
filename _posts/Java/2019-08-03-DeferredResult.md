@@ -4,14 +4,10 @@ title: 使用 DeferredResult 模拟消息队列
 categories: J2ee Java
 keywords: Spring
 prism: [java]
+search: true
+qrcode: true
+description: 使用 DeferredResult 可以为主线程提供异步生成返回值的功能，而其特点是可以在两个完全不相干的进程间实现通信
 ---
-
-使用 DeferredResult 可以为主线程提供异步生成返回值的功能，而其特点是可以在两个完全不相干的进程间实现通信
-
-**目录**
-
-* TOC
-{:toc}
 
 # 开发过程
 

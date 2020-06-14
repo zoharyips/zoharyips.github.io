@@ -10,12 +10,10 @@ lang: [bash, lua]
 sequence: true
 date: 2019-11-27 09:02:00
 prism: [bash, clike]
+search: true
+qrcode: true
+description: Zookeeper 是 Apache 的一个软件方案，它为大型分散式计算提供开源的分散式状态设定服务、同步服务和命名注册。
 ---
-
-Zookeeper 是 Apache 的一个软件方案，它为大型分散式计算提供开源的分散式状态设定服务、同步服务和命名注册。
-
-* TOC
-{:toc}
 
 ## 是什么
 

@@ -4,14 +4,13 @@ title: vim 笔记 - 插件管理
 categories: Vim
 keywords: Vim
 prism: [bash]
+image: https://zoharyips.github.io/images/posts/my_vim_workspace.png
+search: true
+qrcode: true
+description: 
 ---
 
 vim 并没有自带的插件管理模块, 所有插件散乱地散布在 `.vim` 文件夹中, 本篇介绍了如何使用 **Vundle** 对 vim 插件进行管理, 借鉴于文章: [vim 插件管理器](https://blog.csdn.net/zhangpower1993/article/details/52184581)
-
-**目录**
-
-* TOC
-{:toc}
 
 ![个人 vim 使用界面](https://zoharyips.github.io/images/posts/my_vim_workspace.png)
 

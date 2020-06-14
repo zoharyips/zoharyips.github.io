@@ -4,14 +4,10 @@ title: SpringBoot Security 多模块聚合工程搭建
 categories: J2ee Java
 keywords: Spring
 prism: [java]
+search: true
+qrcode: true
+description: IDEA Spring Security 多模块聚合工程最基本的搭建过程
 ---
-
-IDEA Spring Security 多模块聚合工程最基本的搭建过程
-
-**目录**
-
-* TOC
-{:toc}
 
 # 项目结构
 

@@ -3,17 +3,12 @@ layout: post
 title: vim 笔记 - Vim 实用技巧
 categories: Vim
 keywords: Vim
+search: true
+qrcode: true
+description: vim 实用技巧， 按照一个个技巧的方式来讲述如何使用 vim，其教学方法独特而有效，学习一门工具，应该先学习怎么用，而非关心整个工具如何系统工作以及其所有功能，循序渐进才是王道。
 ---
 
-vim 实用技巧， 按照一个个技巧的方式来讲述如何使用 vim，其教学方法独特而有效，学习一门工具，
-应该先学习怎么用，而非关心整个工具如何系统工作以及其所有功能，循序渐进才是王道。
-
 > 像 vim 高手一样思考问题
-
-**目录**
-
-* TOC
-{:toc}
 
 # Vim 解决问题的方式
 

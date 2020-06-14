@@ -4,13 +4,10 @@ title: JavaScript - 类和对象
 categories: JavaScript
 keywords: JavaScript
 prism: [javascript]
+search: true
+qrcode: true
+description: 本文记录了 js 中类和对象创建的各种方式，同时探究了类和对象的实现
 ---
-本文记录了 js 中类和对象创建的各种方式，同时探究了类和对象的实现
-
-**目录**
-
-* TOC
-{:toc}
 
 ## 原始方式
 

@@ -4,14 +4,10 @@ title: 计算机组成 - 概念
 categories: Computer
 keywords: Computer
 permalink: /computer/:title.html
+search: true
+qrcode: true
+description: 计算机系统由硬件和软件两部分组成，软件系统是面向人类的，硬件系统是搭载软件的实体，软件和硬件在逻辑上是等效的，但并不相等，本文记述了关于计算机组成与系统原理的大部分概念
 ---
-
-计算机系统由硬件和软件两部分组成，软件系统是面向人类的，硬件系统是搭载软件的实体，软件和硬件在逻辑上是等效的，但并不相等，本文记述了关于计算机组成与系统原理的大部分概念
-
-**目录**
-
-* TOC
-{:toc}
 
 # 计算机发展
 

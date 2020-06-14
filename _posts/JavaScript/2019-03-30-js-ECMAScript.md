@@ -4,13 +4,10 @@ title: JavaScript - ECMAScript
 categories: JavaScript
 keywords: JavaScript
 prism: [javascript]
+search: true
+qrcode: true
+description: JavaScript 之 ECMAScript
 ---
-JavaScript 之 ECMAScript
-
-**目录**
-
-* TOC
-{:toc}
 
 ## 注释
 

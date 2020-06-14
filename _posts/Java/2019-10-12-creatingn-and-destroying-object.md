@@ -7,12 +7,10 @@ myCollection: posts
 image: /images/posts/java/effective_java_creating_and_destroying_objects.png
 lang: java
 prism: [java]
+search: true
+qrcode: true
+description: 在 Java 中，一切皆对象，如何处理对象的生死问题，是一个贯穿一切的问题
 ---
-
-在 Java 中，一切皆对象，如何处理对象的生死问题，是一个贯穿一切的问题
-
-* TOC
-{:toc}
 
 ## 1. 使用完全构造方法
 

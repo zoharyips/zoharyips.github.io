@@ -7,16 +7,10 @@ myCollection: posts
 image: /images/posts/vscode/vscode_remote.png
 lang: [yaml, bash]
 prism: [yaml, bash]
+search: true
+qrcode: true
+description: VSCode 的远程开发模式可以实现将一个容器、远程主机或者是 WSL 子系统作为一个完备的开发环境，而本地 VSCode 客户端仅负责显示和编辑的功能
 ---
-
-VSCode 的远程开发模式可以实现将一个容器、远程主机或者是 WSL 子系统作为一个完备的开发环境，而本地 VSCode 客户端仅负责显示和编辑的功能
-
-**目录**
-
-* TOC
-{:toc}
-
-# Remote
 
 ## 是什么
 
@@ -47,8 +41,6 @@ VSCode 的远程开发模式可以实现将一个容器、远程主机或者是 
 在目标机器上运行 VSCode Server，文件、编译、运行在目标机器上执行，本地的 VS 仅负责处理 UI 相关的事务。
 
 本地服务器和远程服务器使用 SSH 进行连接
-
-# Windows 下配置
 
 ## Remote-SSH
 

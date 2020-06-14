@@ -6,14 +6,10 @@ keywords: Computer
 myCollection: computer
 permalink: /computer/:title.html
 image: /images/posts/computer/operating_system.jpg
+search: true
+qrcode: true
+description: 本文叙述了操作系统的基本概念、目标、作用即设计方法等...
 ---
-
-本文叙述了操作系统的基本概念、目标、作用即设计方法等...
-
-**目录**
-
-* TOC
-{:toc}
 
 ## 基本概念
 
