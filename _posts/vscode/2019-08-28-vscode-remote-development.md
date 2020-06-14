@@ -3,7 +3,6 @@ layout: post
 title: Windows 配置 Vscode remote development
 categories: vscode
 keywords: vscode
-myCollection: posts
 image: /images/posts/vscode/vscode_remote.png
 lang: [yaml, bash]
 prism: [yaml, bash]

@@ -3,7 +3,6 @@ layout: post
 title: Zookeeper 笔记
 categories: MicroService
 keywords: MicroService
-myCollection: architecture
 permalink: /architecture/:title.html
 image: /images/posts/architecture/zookeeper/zookeeper.jpg
 lang: [bash, lua]

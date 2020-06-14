@@ -3,7 +3,6 @@ layout: post
 title: 操作系统 - 导论
 categories: Computer
 keywords: Computer
-myCollection: computer
 permalink: /computer/:title.html
 image: /images/posts/computer/operating_system.jpg
 search: true

@@ -67,7 +67,13 @@ qrcode: true
                     <div class="posts-list__item__img">
                         <div class="posts-list__item__img__content transition5" style="background-image: url('{{ post.image }}');"></div>
                     </div>
-                    <p class="posts-list__item__desc transition5">{{ post.excerpt | strip_html | strip }}</p>
+                    <p class="posts-list__item__desc transition5">
+                        {%- if post.description -%}
+                            {{ post.description }}
+                        {%- else -%}
+                            {{ post.excerpt | strip_html | strip }}
+                        {%- endif -%}
+                    </p>
                     <div class="posts-list__item__mark">{{ post.mark }}</div>
                     <p class="posts-list__item__metas">
                         {% for category in post.categories %}

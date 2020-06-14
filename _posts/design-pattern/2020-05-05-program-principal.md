@@ -1,6 +1,7 @@
 ---
 layout: wiki
 title: 软件设计原则
+image: /images/posts/cartton.gif
 search: true
 qrcode: true
 description: 行之有效的方法论，不懈追求的编程艺术，最喜欢的软件设计之道

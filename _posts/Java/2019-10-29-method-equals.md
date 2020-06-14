@@ -3,7 +3,6 @@ layout: post
 title: Java - 军规：请这样改写 equals()
 categories: Java
 keywords: Java
-myCollection: posts
 image: /images/posts/java/effective_java_equals.png
 lang: java
 prism: [java]

@@ -3,7 +3,6 @@ layout: post
 title: 微服务架构笔记
 categories: MicroService
 keywords: MicroService
-myCollection: architecture
 permalink: /architecture/:title.html
 image: /images/posts/architecture/microservice.jpg
 date: 2019-11-12 16:57:00

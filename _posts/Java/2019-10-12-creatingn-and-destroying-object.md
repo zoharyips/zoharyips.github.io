@@ -3,7 +3,6 @@ layout: post
 title: Java - 军规：创建和销毁对象
 categories: Java
 keywords: Java
-myCollection: posts
 image: /images/posts/java/effective_java_creating_and_destroying_objects.png
 lang: java
 prism: [java]
