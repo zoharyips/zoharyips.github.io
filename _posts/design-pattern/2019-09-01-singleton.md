@@ -1,5 +1,5 @@
 ---
-layout: wiki
+layout: post
 title: Singleton
 search: true
 qrcode: true

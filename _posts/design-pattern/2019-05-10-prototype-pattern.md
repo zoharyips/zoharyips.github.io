@@ -1,5 +1,5 @@
 ---
-layout: wiki
+layout: post
 title: Prototype pattern
 search: true
 qrcode: true

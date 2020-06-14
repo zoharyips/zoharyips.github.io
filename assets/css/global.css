@@ -678,7 +678,9 @@ body.page {
 /* Meta Info */
 .meta-info {
     margin-right: 1rem;
+    margin-block-start: 1em;
     padding: 0.2rem 0.7rem;
+    display: inline-block;
     font-size: 0.8rem;
     color: var(--color-primary);
     text-decoration: none;

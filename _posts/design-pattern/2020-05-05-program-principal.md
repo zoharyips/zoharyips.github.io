@@ -1,5 +1,5 @@
 ---
-layout: wiki
+layout: post
 title: 软件设计原则
 image: /images/posts/cartton.gif
 search: true
