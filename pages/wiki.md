@@ -2,13 +2,10 @@
 layout: page
 title: Wiki
 description: 琐碎的知识点很多，但是值得一记
-repositories: false
-share: false
-comments: false
-categories: true
-calendar: true
-canvas: true
 permalink: /wiki
+banner: /images/page/wiki.png
+search: true
+qrcode: true
 ---
 
 {% assign sorted_categories = site.wiki | map: "categories" | sort | uniq %}

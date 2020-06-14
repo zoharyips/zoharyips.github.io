@@ -2,26 +2,22 @@
 layout: default
 ---
 
-<section class="banner">
-    <div class="container">
-        <h1 class="banner__title">{{ page.title }}</h1>
-        <h2 class="banner__subtitle">{{ site.subtitle }}</h2>
-        <div class="banner__meta">
-            <div class="banner__meta__item">
-                <span class="banner__meta__item__title mdi" data-mdi="map-marker-radius-outline">Address</span>
-                <span class="banner__meta__item__content">{{ page.date | date: "%Y/%m/%d" }}</span>
-            </div>
-            <div class="banner__meta__item">
-                <span class="banner__meta__item__title mdi" data-mdi="pulse">Site access</span>
-                <span class="banner__meta__item__content" id="site-access">∞</span>
-            </div>
-        </div>
-    </div>
-</section>
-
 <div class="container container--main-body">
     <div class="content">
-        <article>            
+        <h1 class="post_title">{{ page.title }}</h1>
+        {%- if page.top -%}
+            <span class="meta-info transition3" data-meta="top">TOP</span>
+        {%- endif -%}
+        {%- for category in page.categories -%}
+            <a class="meta-info transition3" data-meta="category" href="/categories/#{{ category }}">{{ category }}</a>
+        {%- endfor -%}
+        {%- for keyword in page.keywords -%}
+            <span class="meta-info transition3" data-meta="keyword" title="keyword-{{ keyword }}">{{ keyword }}</span>
+        {%- endfor -%}
+        {%- if page.description -%}
+            <p class="post_description">{{ page.description }}</p>
+        {%- endif -%}
+        <article>
             {{ content }}
         </article>
     </div>

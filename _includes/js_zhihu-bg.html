@@ -204,7 +204,7 @@
         }
         init() {
             /* 将画布拉到屏幕的宽高大小 */
-            this.canvas.width = document.body.scrollWidth;
+            this.canvas.width = document.body.scrollWidth - 1;
             this.canvas.height = document.body.scrollHeight;
             this.dotsNum = Dot.getAppropriateCount();
             for (let i = 0; i < this.dotsNum; i++) {

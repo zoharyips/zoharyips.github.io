@@ -3,12 +3,10 @@ layout: page
 title: Categories
 description: 哈哈，你找到了我的文章基因库。
 keywords: 分类
-comments: false
-share: false
-repositories: false
-categories: true
-canvas: true
 permalink: /categories
+banner: /images/page/categories.png
+search: true
+qrcode: true
 ---
 
 <div>

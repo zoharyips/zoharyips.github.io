@@ -24,7 +24,7 @@
         <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="{{ site.title }}">
         <link rel="stylesheet" type="text/css" href="/assets/css/global.css">
     </head>
-    <body class="{{ page.class }}" data-page="{{ page.class }}">
+    <body class="{%- if page.class -%}{{ page.class }} {%- else -%} {{ page.layout }}{%- endif -%}">
         <canvas id="zhi-hu-background"></canvas>
         {% include header.html %}
         <div class="main">

@@ -87,8 +87,8 @@ header {
     color: var(--color-text-light-primary);
     background: linear-gradient(to right, #5c862d, #057748, #0A5178, #065279, #4a4266) left center/400% 400%;
     animation: move-header-background 15s infinite;
-    -webkit-box-shadow: 0 1px 3px rgba(26,26,26,.2);
-    box-shadow: 0 1px 3px rgba(26,26,26,.2)
+    -webkit-box-shadow: 0 1px 3px rgba(26,26,26,.8);
+    box-shadow: 0 1px 3px rgba(26,26,26,.8)
 }
 header .container {
     display: flex;
@@ -347,6 +347,10 @@ footer .container {
 }
 
 /* Index */
+.index header {
+    -webkit-box-shadow: 0 1px 3px rgba(26,26,26,.2);
+    box-shadow: 0 1px 3px rgba(26,26,26,.2)
+}
 .index .banner {
     color: var(--color-text-light-primary);
     background: linear-gradient(to right, #5c862d, #057748, #0A5178, #065279, #4a4266) left center/400% 400%;
@@ -579,6 +583,249 @@ a.paginator__item--active {
 .paginator a[data-page="javascript:void(0);"]:not(.paginator__item--active):hover {
     color: var(--color-text-dark-thirdary);
     background-color: var(--color-bg-active);
+}
+
+/* Page */
+.page .banner {
+    background: -webkit-gradient(linear, left, right, from(#333333), to(#1A1A1A));
+    background: -webkit-linear-gradient(to right, #333333, #1A1A1A);
+    background: -o-linear-gradient(to right, #333333, #1A1A1A);
+    background: linear-gradient(to right, #333333, #1A1A1A);
+    background-size: cover;
+}
+.page .banner .container {
+    height: 200px;
+    display: flex;
+    align-items: center;
+}
+.page .banner .banner__text-wrapper {
+    flex: 1 0 auto;
+}
+.page .banner .banner__img {
+    flex: 0 0 auto;
+    width: 256px;
+    height: 80%;
+    background: rgba(255, 255, 255, 0) no-repeat center center;
+    background-size: contain;
+}
+.page .banner h1 {
+    margin: 0;
+    padding: 1.5em 0;
+    color: var(--color-text-light-primary);
+    font-size: 2rem;
+    letter-spacing: 2px;
+    text-shadow: 0 1px 8px var(--color-text-dark-primary);
+}
+.page .banner h1[data-page="/categories"]::before {
+    content: var(--emoji-categories);
+}
+.page .banner h1[data-page="/algorithm"]::before {
+    content: var(--emoji-algorithm);
+}
+.page .banner h1[data-page="/design-pattern"]::before {
+    content: var(--emoji-design-pattern);
+}
+.page .banner h1[data-page="/source-code"]::before {
+    content: var(--emoji-source-code);
+}
+.page .banner h1[data-page="/computer"]::before {
+    content: var(--emoji-computer);
+}
+.page .banner h1[data-page="/architecture"]::before {
+    content: var(--emoji-architecture);
+}
+.page .banner h1[data-page="/quest"]::before {
+    content: var(--emoji-quest);
+}
+.page .banner h1[data-page="/wiki"]::before {
+    content: var(--emoji-wiki);
+}
+.page .banner h1[data-page="/about"]::before {
+    content: var(--emoji-about);
+}
+.page .banner p {
+    margin: 0 2rem 1.5rem 0;
+    width: 100%;
+    text-align: right;
+    font-size: 1.2rem;
+    color: var(--color-text-light-secondary);
+}
+
+/* Post */
+body.post,
+body.page {
+    background: #f6f6f6;
+}
+.post .content,
+.page .content {
+    padding: 0 1rem;
+    -webkit-box-shadow: 0 1px 3px rgba(26,26,26,.1);
+    box-shadow: 0 1px 3px rgba(26,26,26,.1);
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.7);
+}
+.post h1 {
+    font-size: 1.4rem;
+}
+.post_description {
+    margin: 1rem 0;
+    color: var(--color-text-dark-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+
+}
+
+/* Meta Info */
+.meta-info {
+    margin-right: 1rem;
+    padding: 0.2rem 0.7rem;
+    font-size: 0.8rem;
+    color: var(--color-primary);
+    text-decoration: none;
+    border-radius: 100px;
+    background: #f4f4f4;
+    border: 1px solid rgba(0,161,214, 0);
+}
+.meta-info:hover {
+    cursor: pointer;
+    border: 1px solid rgba(0,161,214, 1);
+}
+.meta-info[data-meta="top"] {
+    border-radius: 4px;
+    font-weight: bold;
+    background: var(--color-primary-light);
+}
+.meta-info[data-meta="top"] {
+    cursor: auto;
+    border: 1px solid var(--color-primary-light);
+}
+.meta-info[data-meta="keyword"] {
+    color: #505050;
+    border: 1px solid #f4f4f4;
+}
+.meta-info[data-meta="keyword"]:hover {
+    cursor: text;
+    color: var(--color-primary);
+    background: #f4f4f4;;
+    border: 1px solid #f4f4f4;;
+}
+.meta-info::before {
+    margin-right: 0.5rem;
+}
+.meta-info[data-meta="category"]::before {
+    content: var(--emoji-categories);
+}
+
+/* Aritcle */
+/* 请不要在文章中使用 h1 级标签 */
+article {
+    --color-text-primary: rgb(26,26,26);
+    --color-text-secondary: #757575;
+    position: relative;
+    color: rgb(26,26,26);
+    font-size: 0.9rem;
+}
+article h2 {
+    font-size: 1.2rem;
+}
+article h3 {
+    font-size: 1rem;
+}
+article h4 {
+    font-size: 0.9rem;
+}
+article em {
+    margin-left: 0.3em;
+    margin-right: 0.3em;
+}
+article strong {
+    margin-left: 0.3em;
+    margin-right: 0.3em;
+    font-weight: bolder;
+}
+article img,
+article code {
+    max-width: 100%;
+    white-space: pre-line;
+    word-break: break-word;
+}
+article blockquote {
+    margin: 0;
+    padding: 0.2rem 0.5rem;
+    color: var(--color-text-secondary);
+    background: #f2f2f2;
+}
+article blockquote p {
+    margin: 0;
+}
+article blockquote p::before,
+article blockquote p::after {
+    font-family: "Material Design Icons", sans-serif;
+}
+article blockquote p::before {
+    margin-right: 0.5em;
+    content: "\F11A7";
+}
+article blockquote p::after {
+    margin-left: 0.5em;
+    content: "\F11A8";
+}
+article p code,
+article table code,
+article a code {
+    margin: 0px 2px;
+    padding: 2px 4px;
+    font-weight: bold;
+    font-family: monospace;
+    color: rgb(84, 110, 122);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(236, 239, 241);
+    border-image: initial;
+    background: rgb(247, 249, 250);
+    border-radius: 3px;
+}
+article a {
+    text-decoration: none;
+    color: var(--color-primary);
+}
+article a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: var(--color-primary-dark);
+}
+article a:active {
+    color: var(--color-primary-light);
+}
+article table {
+    border-collapse: collapse;
+}
+article table thead {
+    background: var(--color-primary-light);
+}
+article table tfoot {
+    background: #f5f7ff;
+}
+article table td,
+article table th {
+    padding: 0.4em 0.8em;
+    border: 1px solid var(--color-divider-secondary);
+}
+article .task-list {
+    list-style: none;
+    padding-left: 2em;
+}
+article del {
+    color: var(--color-text-dark-thirdary);
+}
+
+/* 目录 */
+#markdown-toc {
+    font-size: 0.8rem;
+}
+#markdown-toc a {
+    color: var(--color-text-dark-secondary);
+    text-decoration: none;
 }
 
 /* Side Bar */

@@ -2,31 +2,22 @@
 layout: default
 ---
 
-<section id="fix_title" class="collection-head small geopattern" data-pattern-id="{{ page.title | truncate: 15 }}">
+
+<section class="banner">
   <div class="container">
-    <div class="collection-title">
-      <h1 class="collection-header">{{ page.title }}</h1>
-      {% if page.description %}
-      <div class="collection-info">
-        <span class="meta-info">
-          {{ page.description }}
-        </span>
-      </div>
-      {% endif %}
+    <div class="banner__text-wrapper">
+      <h1 class="banner__title" data-page="{{ page.permalink }}">{{ page.title }}</h1>
+      <p class="banner__description">{{ page.description }}</p>
     </div>
+      <div class="banner__img" style="background-image: url('{{ page.banner }}');"></div>
   </div>
 </section>
-<!-- / .banner -->
-<section class="container content">
-  <div class="columns">
-    <div class="column two-thirds">
-      <article class="article-content markdown-body">
-        {{ content }}
+
+<div class="container container--main-body">
+  <div class="content">
+      <article>
+          {{ content }}
       </article>
-    </div>
-    <div class="column one-third">
-      <h3>Search</h3>
-    </div>
   </div>
-</section>
-<!-- /section.content -->
+  {%- include sidebar.html -%}
+</div>
