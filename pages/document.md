@@ -7,7 +7,7 @@ comments: false
 share: false
 canvas: true
 menu: 文档
-permalink: /doc/
+permalink: /doc.html
 ---
 
 **目录**

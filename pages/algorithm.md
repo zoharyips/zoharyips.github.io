@@ -2,7 +2,7 @@
 layout: page
 title: 算法
 description: 这是程序的本质，也是一个工程师最核心的素养
-permalink: /algorithm
+permalink: /algorithm.html
 banner: /images/page/algorithm.png
 search: true
 qrcode: true

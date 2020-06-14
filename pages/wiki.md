@@ -2,7 +2,7 @@
 layout: page
 title: Wiki
 description: 琐碎的知识点很多，但是值得一记
-permalink: /wiki
+permalink: /wiki.html
 banner: /images/page/wiki.png
 search: true
 qrcode: true

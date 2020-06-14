@@ -56,38 +56,38 @@ navs:
     label           : 首页
 
   -
-    href            : /categories
+    href            : /categories.html
     label           : 分类
 
   -
     label           : 探索
     sub-navs:
     -
-      href          : /algorithm
+      href          : /algorithm.html
       label         : 算法
     -
-      href          : /design-pattern
+      href          : /design-pattern.html
       label         : 设计模式
     -
-      href          : /source-code
+      href          : /source-code.html
       label         : 源码
     -
-      href          : /computer
+      href          : /computer.html
       label         : 操作系统
     -
-      href          : /architecture
+      href          : /architecture.html
       label         : 架构
 
   -
-    href            : /quest
+    href            : /quest.html
     label           : 解惑
 
   -
-    href            : /wiki
+    href            : /wiki.html
     label           : Wiki
 
   -
-    href            : /about
+    href            : /about.html
     label           : 关于
 
 subscribe_rss       : /feed.xml

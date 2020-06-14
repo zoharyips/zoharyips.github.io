@@ -2,7 +2,7 @@
 layout: page
 title: About
 description: 既然选择远方，便只顾风雨兼程。哈... 我又肚子饿了
-permalink: /about
+permalink: /about.html
 banner: /images/page/about.png
 search: true
 qrcode: true

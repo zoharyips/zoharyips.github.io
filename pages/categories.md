@@ -3,7 +3,7 @@ layout: page
 title: Categories
 description: 哈哈，你找到了我的文章基因库。
 keywords: 分类
-permalink: /categories
+permalink: /categories.html
 banner: /images/page/categories.png
 search: true
 qrcode: true
