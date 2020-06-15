@@ -15,7 +15,7 @@ layout: default
             <span class="meta-info transition3" data-meta="keyword" title="keyword-{{ keyword }}">{{ keyword }}</span>
         {%- endfor -%}
         {%- if page.description -%}
-            <p class="post_description">{{ page.description }}</p>
+            <p class="post_description">{{ page.description | markdownify | strip_html }}</p>
         {%- endif -%}
         <article>
             {{ content }}

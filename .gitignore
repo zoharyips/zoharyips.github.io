@@ -8,6 +8,7 @@ vendor/*
 *~
 .DS_Store
 .idea
+.jekyll-metadata
 Gemfile.lock
 desktop.ini
 sitemap.xml

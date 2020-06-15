@@ -71,7 +71,10 @@
                 'ip': ipAddress
             },
             success: function (response) {
-                document.getElementById('site-access').innerText = response;
+                let siteAccess = document.getElementById('site-acccess');
+                if (siteAccess) {
+                    siteAccess.innerText = response;
+                }
             }
         });
     </script>

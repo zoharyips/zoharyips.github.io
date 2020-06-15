@@ -1,1 +1,37 @@
 <h2 class="sidebar-item__title transition3">Catalogue</h2>
+<div></div>
+<script>
+    let article = document.getElementsByTagName('article')[0];
+    console.log(article);
+    let elements = article.children;
+    let titles = new Array();
+    let currentH2Index = currentH3Index = -1;
+    for (let index = 0; index < elements.length; index++) {
+        const element = elements[index];
+        const tagName = element.localName.toLowerCase();
+        switch (tagName) {
+            case 'h2':
+                currentH2Index++;
+                currentH3Index = -1;
+                titles.push([[element]]);
+                // titles[++currentH2Index][++currentH3Index][++currentH4Index] = element;
+                break;
+            case 'h3':
+                currentH3Index++;
+                console.log(titles[currentH2Index]);
+                
+                titles[currentH2Index].push([element]);
+                // titles[currentH2Index][++currentH3Index][++currentH4Index] = element;
+                break;
+            case 'h4': 
+                console.log(titles[currentH2Index][currentH3Index]);
+                titles[currentH2Index][currentH3Index].push(element);
+                // titles[currentH2Index][currentH3Index][++currentH4Index] = element;
+                break;
+            default:
+                break;
+        }
+        
+    }
+    
+</script>

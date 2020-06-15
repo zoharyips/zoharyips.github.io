@@ -24,14 +24,19 @@ qrcode: true
 
 <div class="container container--main-body">
     <div class="content">
-        {%- assign notification = site.data.notification | sample -%}
-        <div class="notification">
-            <div class="notification__content mdi" data-mdi="alert-circle-outline">
-                {{ notification.content }}
+        <div class="notification mdi" data-mdi="alert-circle-outline">
+            <div class="notification__list transition3">
+                {%- for notification in site.data.notification -%}
+                    <div class="notification__list__item">
+                        <div class="notification__list__item--content">
+                            {{ notification.content }}
+                        </div>
+                        <span class="notification__list__item--time">
+                            {{ notification.time }}
+                        </span>
+                    </div>
+                {%- endfor -%}
             </div>
-            <span class="notification__time">
-                {{ notification.time }}
-            </span>
         </div>
         <ol class="posts-list">
             {%- assign topPosts = site.documents | where_exp:"item", "item.top > 0" | sort: "top" -%}
@@ -39,22 +44,22 @@ qrcode: true
             {%- if paginator.page == 1 -%}
                 {%- for post in topPosts -%}
                     {%- assign pagePosts = pagePosts | where_exp:"item", "item.title != post.title" -%}
-                    <li class="posts-list__item transition3">
+                    <li class="posts-list__item">
                         <h3 class="posts-list__item__title"><a class="transition5" href="{{ post.url }}">{{ post.title }}</a></h3>
                         <div class="posts-list__item__img">
                             <div class="posts-list__item__img__content transition5" style="background-image: url('{{ post.image }}');"></div>
                         </div>
                         <p class="posts-list__item__desc transition5">
                             {%- if post.description -%}
-                                {{ post.description }}
+                                {{ post.description | markdownify | strip_html  }}
                             {%- else -%}
-                                {{ post.excerpt | strip_html | strip }}
+                                {{ post.excerpt | markdownify | strip | strip_html }}
                             {%- endif -%}
                         </p>
                         <div class="posts-list__item__mark text-unselectable" data-mark-type="top-{% increment topIncerment %}">TOP</div>
                         <p class="posts-list__item__metas">
                             {% for category in post.categories %}
-                                <a class="mdi" href="/categories/#{{ category }}" data-mdi="folder-open">{{ category }}</a>
+                                <a class="mdi" href="/categories.html/#{{ category }}" data-mdi="folder-open">{{ category }}</a>
                             {% endfor %}
                             <span class="mdi" data-mdi="calendar-month">{{ post.date | date_to_string: "ordinal", "US" }}</span>
                         </p>
@@ -69,15 +74,15 @@ qrcode: true
                     </div>
                     <p class="posts-list__item__desc transition5">
                         {%- if post.description -%}
-                            {{ post.description }}
+                            {{ post.description | markdownify | strip_html  }}
                         {%- else -%}
-                            {{ post.excerpt | strip_html | strip }}
+                            {{ post.excerpt | markdownify | strip | strip_html }}
                         {%- endif -%}
                     </p>
                     <div class="posts-list__item__mark">{{ post.mark }}</div>
                     <p class="posts-list__item__metas">
                         {% for category in post.categories %}
-                            <a class="mdi" href="/categories/#{{ category }}" data-mdi="folder-open">{{ category }}</a>
+                            <a class="mdi" href="/categories.html/#{{ category }}" data-mdi="folder-open">{{ category }}</a>
                         {% endfor %}
                         <span class="mdi" data-mdi="calendar-month">{{ post.date | date_to_string: "ordinal", "US" }}</span>
                     </p>
