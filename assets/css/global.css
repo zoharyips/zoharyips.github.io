@@ -77,6 +77,9 @@ header .container, .main .container, footer .container {
     left: 0;
     z-index: var(--z-index-page-after);
 }
+body code {
+    font-family: JetBrainsMono!important;
+}
 
 /* Header */
 header {
@@ -677,20 +680,19 @@ body.page {
     background: rgba(255, 255, 255, 0.7);
 }
 .post h1 {
-    font-size: 1.4rem;
+    font-size: 1.8  rem;
 }
 .post_description {
-    margin: 1rem 0;
+    margin: 0 0 1rem 0;
     color: var(--color-text-dark-secondary);
     font-size: 0.9rem;
     line-height: 1.5rem;
-
 }
 
 /* Meta Info */
 .meta-info {
     margin-right: 1rem;
-    margin-block-start: 1em;
+    margin-block-end: 1em;
     padding: 0.2rem 0.7rem;
     display: inline-block;
     font-size: 0.8rem;
@@ -740,13 +742,18 @@ article {
     font-size: 0.9rem;
 }
 article h2 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 article h3 {
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 article h4 {
-    font-size: 0.9rem;
+    font-size: 1rem;
+}
+article h2,
+article h3,
+article h4 {
+    margin-bottom: 0;
 }
 article em {
     margin-left: 0.3em;
@@ -831,6 +838,10 @@ article .task-list {
 }
 article del {
     color: var(--color-text-dark-thirdary);
+}
+article sup,
+article sub {
+    font-size: 0.6rem;
 }
 
 /* 目录 */
@@ -989,7 +1000,7 @@ article del {
     color: var(--color-text-dark-secondary);
 }
 
-/* Qr code */
+/* Sidebar - Qr code */
 .sidebar__qrcode {
     margin: 0 auto;
     display: block;
@@ -1016,10 +1027,41 @@ article del {
     transform: translate(-50%, -50%);
 }
 
+/* Sidebar - Catalogue */
+.catalogue ul {
+    padding-left: 2em;
+    list-style: none;
+}
+.catalogue li {
+    font-size: 0.8rem;
+}
+.catalogue li::before {
+    line-height: 1.2em;
+    margin-right: 0.5em;
+    color: var(--color-divider);
+}
+.catalogue a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+.catalogue li:hover > a {
+    cursor: pointer;
+    color: var(--color-primary-dark);
+}
+.catalogue__list {
+    padding-left: 0!important;
+}
+
 /* Material Design Icon */
 @font-face {
     font-family: "Material Design Icons";
     src: url("../fonts/materialdesignicons-webfont.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "JetBrainsMono";
+    src: url("../fonts/JetBrainsMono-Regular.woff2") format("woff2");
     font-weight: normal;
     font-style: normal;
 }
@@ -1148,6 +1190,15 @@ article del {
 }
 .mdi[data-mdi="alert-circle-outline"]::before {
     content: "\F05D6";
+}
+.mdi[data-mdi="format-header-2"]::before {
+    content: "\F026C";
+}
+.mdi[data-mdi="format-header-3"]::before {
+    content: "\F026D";
+}
+.mdi[data-mdi="format-header-4"]::before {
+    content: "\F026E";
 }
 
 /* Language icons */

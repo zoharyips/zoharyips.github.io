@@ -25,6 +25,16 @@ Vundle 是 Vim bundle 的简称, 是一个 vim 的插件管理器, 其功能包�
 4. 通过插件名称搜索Vim scripts中的插件
 5. 清理未使用的插件
 
+### ceshi
+
+#### ceshi??
+
+### 测试一下
+
+#### 好的
+
+#### 行吧
+
 ## 安装 Vundle
 
 安装在 $HOME/.vim/bundle/ 目录下, 文件名为 Vundle.vim, 使用 Vundle 管理的所有插件都将自动安装在 `.vim/bundle` 目录下

@@ -1,37 +1,75 @@
 <h2 class="sidebar-item__title transition3">Catalogue</h2>
-<div></div>
+<div class="catalogue" id="catalogue">
+    <p class="catalogue__page-title">{{ page.title }}</p>
+    <ul class="catalogue__list"></ul>
+</div>
 <script>
+    class Title {
+        static LEVEL_H1 = 1;
+        static LEVEL_H2 = 2;
+        static LEVEL_H3 = 3;
+        static LEVEL_H4 = 4;
+
+        constructor(element, level) {
+            this.element = element;
+            this.level = level;
+            this.subTitles = new Array();
+        }
+
+        static generateCatalogue (title, parentElement) {
+            if (title === null) {
+                return;
+            }
+            let ul = parentElement;
+            if (title.level !== Title.LEVEL_H1) {
+                let li = document.createElement("li");
+                li.setAttribute('class', 'mdi');
+                li.setAttribute('data-mdi', 'format-header-' + title.level);
+                li.innerHTML = '<a href="javascript:window.scrollTo({top:' + document.getElementById(title.element.getAttribute('id')).offsetTop + ', behavior: \'smooth\'})">' + title.element.innerText + '</a>'
+                parentElement.appendChild(li);
+                ul = document.createElement("ul");
+                parentElement.appendChild(ul);
+            }
+            for (const subTitle of title.subTitles) {
+                Title.generateCatalogue(subTitle, ul);
+            }
+        }
+
+        addSubTitle(element, level) {
+            let newChild = new Title(element, level);
+            this.subTitles.push(newChild);
+            return newChild;
+        }
+    }
     let article = document.getElementsByTagName('article')[0];
-    console.log(article);
     let elements = article.children;
-    let titles = new Array();
-    let currentH2Index = currentH3Index = -1;
+    Title.rootTitle = new Title(document.getElementsByTagName('h1')[0], Title.LEVEL_H1);
+    let currentH2 = currentH3 = null;
     for (let index = 0; index < elements.length; index++) {
         const element = elements[index];
         const tagName = element.localName.toLowerCase();
         switch (tagName) {
             case 'h2':
-                currentH2Index++;
-                currentH3Index = -1;
-                titles.push([[element]]);
-                // titles[++currentH2Index][++currentH3Index][++currentH4Index] = element;
+                currentH2 = Title.rootTitle.addSubTitle(element, Title.LEVEL_H2);
                 break;
             case 'h3':
-                currentH3Index++;
-                console.log(titles[currentH2Index]);
-                
-                titles[currentH2Index].push([element]);
-                // titles[currentH2Index][++currentH3Index][++currentH4Index] = element;
+                currentH3 = currentH2.addSubTitle(element, Title.LEVEL_H3);
                 break;
             case 'h4': 
-                console.log(titles[currentH2Index][currentH3Index]);
-                titles[currentH2Index][currentH3Index].push(element);
-                // titles[currentH2Index][currentH3Index][++currentH4Index] = element;
+                currentH3.addSubTitle(element, Title.LEVEL_H4);
                 break;
             default:
                 break;
         }
-        
     }
+    // 遍历树，输出标题
+    let catalogue = document.getElementsByClassName('catalogue__list')[0];
+    Title.generateCatalogue(Title.rootTitle, catalogue);
     
+    const catalogueSection = document.getElementById('sidebar-catalogue');
+    window.onscroll = function() {
+        if (document.documentElement.scrollTop - catalogueSection.offsetTop > 0) {
+            console.log("funny");                
+        }
+    }
 </script>
