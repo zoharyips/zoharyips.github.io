@@ -23,6 +23,7 @@
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="{{ site.title }}">
         <link rel="stylesheet" type="text/css" href="/assets/css/global.css">
+        <link rel="stylesheet" type="text/css" href="/assets/vender/prism/prism.css">
     </head>
     <body class="{%- if page.class -%}{{ page.class }} {%- else -%} {{ page.layout }}{%- endif -%}">
         <canvas id="zhi-hu-background"></canvas>
@@ -77,5 +78,15 @@
                 }
             }
         });
+    </script>
+    <!-- Prism -->
+    <script src="/assets/vender/prism/prism.js"></script>
+    <script>
+        let pres = document.getElementsByTagName('pre');
+        for (const pre of pres) {
+            pre.classList.add('line-numbers');
+            pre.classList.add('match-braces');
+            pre.classList.add('rainbow-braces');
+        }
     </script>
 </html>

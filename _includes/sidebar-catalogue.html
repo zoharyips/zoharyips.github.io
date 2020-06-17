@@ -67,9 +67,13 @@
     Title.generateCatalogue(Title.rootTitle, catalogue);
     
     const catalogueSection = document.getElementById('sidebar-catalogue');
+    // Offset Top 是相对于父元素顶部距离
+    const catalogueOffsetTop = catalogueSection.offsetTop;
     window.onscroll = function() {
-        if (document.documentElement.scrollTop - catalogueSection.offsetTop > 0) {
-            console.log("funny");                
+        if (document.documentElement.scrollTop - catalogueOffsetTop > 0) {
+            catalogueSection.classList.add('float-catalogue');
+        } else {
+            catalogueSection.classList.remove('float-catalogue');
         }
     }
 </script>

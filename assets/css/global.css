@@ -1028,12 +1028,22 @@ article sub {
 }
 
 /* Sidebar - Catalogue */
+.float-catalogue {
+    position: fixed;
+    top: 64px;
+}
+.catalogue__page-title {
+    width: 260px;
+    font-size: 0.9rem;
+    color: var(--color-text-dark-secondary);
+}
 .catalogue ul {
     padding-left: 2em;
     list-style: none;
 }
 .catalogue li {
     font-size: 0.8rem;
+    margin-bottom: 0.5em;
 }
 .catalogue li::before {
     line-height: 1.2em;
@@ -1052,6 +1062,47 @@ article sub {
     padding-left: 0!important;
 }
 
+/* Prism */
+pre[class*="language-"] {
+    border-radius: 0.5rem;
+}
+code[class*="language-"], pre[class*="language-"] {
+    /* color: #687F8A!important; */
+    font-size: 0.8rem!important;
+    line-height: 1.5em!important;
+}
+:not(pre) > code[class*="language-"], pre[class*="language-"] {
+    background: #323b45!important;
+}
+div.code-toolbar > .toolbar .toolbar-item {
+    margin: 0 0.5em;
+}
+span.token.content {
+    background: none;
+}
+div.code-toolbar > .toolbar a, div.code-toolbar > .toolbar button, div.code-toolbar > .toolbar span {
+    border-radius: 0!important;
+    box-shadow: none!important;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -ms-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+}
+div.code-toolbar > .toolbar a:hover,
+div.code-toolbar > .toolbar button:hover,
+div.code-toolbar > .toolbar span:hover {
+    color: var(--color-primary)!important;
+}
+div.code-toolbar > .toolbar span:hover {
+    cursor: auto;
+}
+div.code-toolbar > .toolbar button:hover {
+    cursor: pointer;
+}
+.line-numbers .line-numbers-rows {
+    color: #687F8A!important;
+}
 /* Material Design Icon */
 @font-face {
     font-family: "Material Design Icons";
