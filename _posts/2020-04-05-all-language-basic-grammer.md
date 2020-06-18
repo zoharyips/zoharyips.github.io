@@ -2,10 +2,9 @@
 layout: post
 title: 主流语言的学习与对比
 categories: [Java, Go, Php, Javascript]
-keywords: [languages, programming, comparision]
+keywords: [languages, programming, language comparision]
 top: 1
 image: images/wallpaper/think_twice_code_once.png
-prism: [javascript, java, php, go, markup]
 catalogue: true
 search: true
 qrcode: true
@@ -368,7 +367,7 @@ description: 在对编程的学习过程中，使用通过对比各语言差异�
 
 判断控制对于所有语言而言差不多都是如此：
 
-```markup
+```c
 if(expression)
     /* ... */
 else if(expression)

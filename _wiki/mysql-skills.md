@@ -4,11 +4,9 @@ title: MySQL - 独门秘技
 description: 有时候你想破头都不知道这条 SQL 该怎么写
 date: 2020-04-16
 categories: MySQL
-prism: [sql, bash, php]
+search: true
+catalogue: true
 ---
-
-* TOC
-{:toc}
 
 ## 表操作
 

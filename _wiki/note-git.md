@@ -4,13 +4,9 @@ title: Git
 description: 一些常用 git 命令的记录, 以备查阅 ^_^
 date: 2020-04-10
 categories: Note
-prism: [bash]
+search: true
+catalogue: true
 ---
-
-**目录**
-
-* TOC
-{:toc}
 
 ## Git 工作流
 

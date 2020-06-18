@@ -4,7 +4,8 @@ title: Java 之避阱入坑
 description: WTF?? 谁 TM 写的代码
 date: 2020-04-26
 categories: Java
-prism: [java]
+search: true
+catalogue: true
 ---
 
 ## OOP

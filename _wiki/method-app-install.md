@@ -4,13 +4,9 @@ title: 软件安装
 description: 在此汇总各种行之有效的软件安装方案
 date: 2019-12-08
 categories: Method
-prism: [bash, powershell]
+search: true
+catalogue: true
 ---
-
-**目录**
-
-* TOC
-{:toc}
 
 # 常识
 

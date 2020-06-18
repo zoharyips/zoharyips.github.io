@@ -4,11 +4,9 @@ title: Java 之奇淫技巧
 description: 聪明的你总是能想出一些非常奇妙的方法
 date: 2019-10-25
 categories: Java
-prism: [java]
+search: true
+catalogue: true
 ---
-
-* TOC
-{:toc}
 
 ## 源码中的奇淫技巧
 

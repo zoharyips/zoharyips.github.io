@@ -2,13 +2,12 @@
 layout: post
 title: 各大排序算法的比较、研究与实现
 categories: Algorithm
-keywords: Algorithm
+keywords: [alogrithm, sort, fast sort, sort alogrithm, alogrithm analize]
 image: /images/posts/algorithm/2019-11-08-sort-algorithms/random_quick_sort.gif
 top: 2
-lang: java
-prism: [java]
 search: true
 qrcode: true
+catalogue: true
 description: 算法是程序最核心的东西啦，很多时候你不知道算法有什么用，这样跟你说吧，你平时用的库函数、方法，大部分都是封装好的算法实现哈哈哈
 ---
 

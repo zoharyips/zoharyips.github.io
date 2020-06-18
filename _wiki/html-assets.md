@@ -4,10 +4,9 @@ title: HTML 之样式博物馆
 description: 聪明的你总是能想出一些非常奇妙的方法
 date: 2020-03-03
 categories: Html
+search: true
+catalogue: true
 ---
-
-* TOC
-{:toc}
 
 Tips：最好使用 Chromium 内核浏览器浏览本页面
 

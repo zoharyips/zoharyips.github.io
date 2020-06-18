@@ -4,12 +4,9 @@ title: 计算机的专业术语
 description: 了解一些缩略词或者术语的由来, 有利于深刻理解, 如果不明白其中含义的话, 必定是懵懵懂懂, 一知半解
 date: 2019-03-26
 categories: Computer
+search: true
+catalogue: true
 ---
-
-**目录**
-
-* TOC
-{:toc}
 
 # 计算机
 

@@ -4,12 +4,9 @@ title: IDEA ★
 description: IDEA 与 Eclipse 的区别，应该是智能与自动的区别
 date: 2019-07-22
 categories: Note
+search: true
+catalogue: true
 ---
-
-**目录**
-
-* TOC
-{:toc}
 
 ## 快捷键
 

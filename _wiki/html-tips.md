@@ -4,11 +4,9 @@ title: HTML 之奇淫技巧
 description: 聪明的你总是能想出一些非常奇妙的方法
 date: 2020-02-28
 categories: Html
-prism: [css, javascript, markup]
+search: true
+catalogue: true
 ---
-
-* TOC
-{:toc}
 
 ## 整体页面
 

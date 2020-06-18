@@ -4,13 +4,9 @@ title: Nginx
 description: 一些 Nginx 命令与配置，脑容量太小了下次换个 256GB 的
 date: 2020-04-28
 categories: Note
-prism: [bash]
+search: true
+catalogue: true
 ---
-
-**目录**
-
-* TOC
-{:toc}
 
 ### Http 重定向至 Https
 

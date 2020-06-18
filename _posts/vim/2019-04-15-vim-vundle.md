@@ -2,8 +2,7 @@
 layout: post
 title: vim 笔记 - 插件管理
 categories: Vim
-keywords: Vim
-prism: [bash]
+keywords: [vim, vim bundle, vim 插件]
 image: /images/posts/my_vim_workspace.png
 search: true
 qrcode: true
@@ -24,16 +23,6 @@ Vundle 是 Vim bundle 的简称, 是一个 vim 的插件管理器, 其功能包�
 3. 更新特定格式插件
 4. 通过插件名称搜索Vim scripts中的插件
 5. 清理未使用的插件
-
-### ceshi
-
-#### ceshi??
-
-### 测试一下
-
-#### 好的
-
-#### 行吧
 
 ## 安装 Vundle
 
@@ -78,7 +67,6 @@ call vundle#end()
 ```
 
 ### 插件安装
-
 
 将所需使用的插件在注册在 `call vundle#begin()` 与 `call vundle#end()` 中, 并在底线模式使用 `:PluginInstall` 命令安装所有插件
 
@@ -125,8 +113,7 @@ call vundle#end()
 4. 进入 `.vimrc` 文件, 使用 `:PluginInstall` 进行插件安装
 5. 若代码补全模块无法使用, 进入 `/home/zohar/.vim/bundle/YouCompleteMe/` 目录, 使用 `./install.py` 进行修复安装(需 python2.7 以上环境, 若 python 环境依赖缺失, 重新安装 python 即可)
 
-```vimrc 
-
+```vimrc
 """"""""""""""""""""""""""" tips """""""""""""""""""""""""""""
 " in most cases, some settings will reset other settings     "
 " if you notice that some options doesn't work, please check "

@@ -4,11 +4,9 @@ title: Php 之切问近思
 description: 时常发问，时常解答，高中生就是这么学习的，难道连提出问题都不会了？
 date: 2019-03-09
 categories: Php
-prism: [Php, bash]
+search: true
+catalogue: true
 ---
-
-* TOC
-{:toc}
 
 ### self 关键字与 static 关键字的区别
 

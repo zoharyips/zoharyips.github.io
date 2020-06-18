@@ -4,13 +4,9 @@ title: Redis
 description: 基础 redis 语法集合
 date: 2019-07-26
 categories: Note
-prism: [bash]
+search: true
+catalogue: true
 ---
-
-**目录**
-
-* TOC
-{:toc}
 
 # 基本操作
 

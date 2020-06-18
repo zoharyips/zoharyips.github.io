@@ -8,6 +8,7 @@ image: /images/posts/architecture/microservice.jpg
 date: 2019-11-12 16:57:00
 search: true
 qrcode: true
+catalogue: true
 description: 微服务架构是一种架构概念，旨在通过将功能分解到各个离散的服务中以实现对解决方案的解耦。它的主要作用是将功能分解到离散的各个服务当中，从而降低系统的耦合性，并提供更加灵活的服务支持。
 ---
 

@@ -4,13 +4,11 @@ title: JS 之 JQuery
 description: jquery 在 js 基础上成长起来啦
 date: 2020-04-04
 categories: JavaScript
-prism: [javascript, markup]
+search: true
+catalogue: true
 ---
 
 全文以 $(JQuery) 表示 JQ 对象噢，写这篇文章是我在打算以后不用 JQuery 后写的 ![bilibili-doge]({{ site.data.bilibili-emoji.doge}} "doge")
-
-* TOC
-{:toc}
 
 ## Ready() 方法
 
@@ -268,7 +266,7 @@ $.ajax({
 
 * 不需要处理响应体
 
-    ```markup
+    ```html
     <form onsubmit="return submitForm()">
     ...
     </form>
@@ -282,7 +280,7 @@ $.ajax({
 
 * 需要处理响应体，使用 ajax 提交
 
-    ```markup
+    ```html
     <form id="form" onsubmit="return submitForm()">
     ...
     </form>

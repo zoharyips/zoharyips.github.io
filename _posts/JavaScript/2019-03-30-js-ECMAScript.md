@@ -2,10 +2,10 @@
 layout: post
 title: JavaScript - ECMAScript
 categories: JavaScript
-keywords: JavaScript
-prism: [javascript]
+keywords: javascript
 search: true
 qrcode: true
+catalogue: true
 description: JavaScript 之 ECMAScript
 ---
 

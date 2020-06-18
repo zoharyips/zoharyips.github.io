@@ -4,13 +4,9 @@ title: Oracle
 description: 基础 oracle 语法集合
 date: 2019-04-12
 categories: Note
-prism: [sql, bash]
+search: true
+catalogue: true
 ---
-
-**目录**
-
-* TOC
-{:toc}
 
 ## oracle 默认信息
 

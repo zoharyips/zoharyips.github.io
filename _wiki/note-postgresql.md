@@ -4,13 +4,9 @@ title: Postgresql
 description: 基础 psql 语法集合
 date: 2019-03-09
 categories: Note
-prism: [sql, bash]
+search: true
+catalogue: true
 ---
-
-**目录**
-
-* TOC
-{:toc}
 
 ## 系统控制台命令
 

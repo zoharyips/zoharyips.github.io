@@ -4,13 +4,11 @@ title: JS 之奇淫技巧
 description: 聪明的你总是能想出一些非常奇妙的方法
 date: 2020-02-19
 categories: JavaScript
-prism: [javascript, markup]
+search: true
+catalogue: true
 ---
 
 基础和文章都放在 Post 列表中，维基只是用来记 api 的噢，以下 api 全都是原生 js 支持的
-
-* TOC
-{:toc}
 
 ## Window 相关
 
@@ -37,7 +35,7 @@ prism: [javascript, markup]
 
 3. 定时刷新页面
 
-    ```markup
+    ```html
     <meta http-equiv="refresh" content="20">                        <!-- 定时刷新 -->
     <meta http-equiv="refresh" content="20;url=http://www.xxx.net"> <!-- 定时跳转 -->
     ```

@@ -2,11 +2,12 @@
 layout: post
 title: 操作系统 - 导论
 categories: Computer
-keywords: Computer
+keywords: [computer]
 permalink: /computer/:title.html
 image: /images/posts/computer/operating_system.jpg
 search: true
 qrcode: true
+catalogue: true
 description: 本文叙述了操作系统的基本概念、目标、作用即设计方法等...
 ---
 

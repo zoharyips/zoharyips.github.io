@@ -4,11 +4,9 @@ title: 搭建 Jekyll 运行环境
 description: 无论是在 Linux 下还是在 Win 下，搭建 jekyll 环境都想让人吐血
 date: 2020-05-26
 categories: Note
-prism: [bash]
+search: true
+catalogue: true
 ---
-
-* TOC
-{:toc}
 
 ## Ubuntu
 

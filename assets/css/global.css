@@ -796,7 +796,7 @@ article table code,
 article a code {
     margin: 0px 2px;
     padding: 2px 4px;
-    font-weight: bold;
+    font-weight: 500;
     font-family: monospace;
     color: rgb(84, 110, 122);
     border-width: 1px;
@@ -1072,7 +1072,8 @@ code[class*="language-"], pre[class*="language-"] {
     line-height: 1.5em!important;
 }
 :not(pre) > code[class*="language-"], pre[class*="language-"] {
-    background: #323b45!important;
+    background: rgba(50,59,69,0.9)!important;
+    /* background: #323b45!important; */
 }
 div.code-toolbar > .toolbar .toolbar-item {
     margin: 0 0.5em;

@@ -4,12 +4,9 @@ title: 通用的语言知识
 description: 分散的知识点慢慢聚集起来会是什么情景呢?
 date: 2019-04-05
 categories: Others
+search: true
+catalogue: true
 ---
-
-**目录**
-
-* TOC
-{:toc}
 
 ## 通用
 

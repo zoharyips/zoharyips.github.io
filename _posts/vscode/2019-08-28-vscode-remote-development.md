@@ -1,13 +1,12 @@
 ---
 layout: post
 title: Windows 配置 Vscode remote development
-categories: vscode
-keywords: vscode
+categories: Vscode
+keywords: [vscode, remote develop]
 image: /images/posts/vscode/vscode_remote.png
-lang: [yaml, bash]
-prism: [yaml, bash]
 search: true
 qrcode: true
+catalogue: true
 description: VSCode 的远程开发模式可以实现将一个容器、远程主机或者是 WSL 子系统作为一个完备的开发环境，而本地 VSCode 客户端仅负责显示和编辑的功能
 ---
 

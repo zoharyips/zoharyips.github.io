@@ -4,10 +4,9 @@ title: Linux 之指令合集
 description: 简单记录一些 linux 常用命令
 date: 2019-10-28
 categories: Linux
+search: true
+catalogue: true
 ---
-
-* TOC
-{:toc}
 
 ## 命令组合
 

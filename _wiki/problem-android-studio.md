@@ -4,13 +4,9 @@ title: Android 之问题合集
 description: 记录 android studio 使用中遇到的各种小问题
 date: 2019-01-06
 categories: Android
-prism: [bash, markup]
+search: true
+catalogue: true
 ---
-
-**目录**
-
-* TOC
-{:toc}
 
 ## gradle sync failed
 
@@ -94,7 +90,7 @@ dependencies {
 再在 AndroidManifest 文件中的 `<application>` 标签中增加这一属性:  
 `android:networkSecurityConfig="@xml/***.xml"`
 
-```markup
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
 	<base-config cleartextTrafficPermitted="true" />

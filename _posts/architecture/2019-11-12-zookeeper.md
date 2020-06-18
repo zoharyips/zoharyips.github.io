@@ -5,12 +5,11 @@ categories: MicroService
 keywords: MicroService
 permalink: /architecture/:title.html
 image: /images/posts/architecture/zookeeper/zookeeper.jpg
-lang: [bash, lua]
-sequence: true
 date: 2019-11-27 09:02:00
-prism: [bash, clike]
+sequence: true
 search: true
 qrcode: true
+catalogue: true
 description: Zookeeper 是 Apache 的一个软件方案，它为大型分散式计算提供开源的分散式状态设定服务、同步服务和命名注册。
 ---
 
@@ -104,8 +103,7 @@ ZooKeeper is a centralized service for maintaining configuration information, na
 
     使用 Lua 脚本保证查找删除的原子性，同时保证无法误删锁。
 
-    ```clike
-    // lua language
+    ```lua
     if redis.call("get",keys[1]) == service_ID 
         then return redis.call("del",keys[1])
     else return 0
