@@ -1,8 +1,8 @@
 ---
 layout: post
 title: SpringBoot Security 多模块聚合工程搭建
-categories: J2ee Java
-keywords: Spring
+categories: [Java]
+keywords: [spring, spring security]
 search: true
 qrcode: true
 catalogue: true

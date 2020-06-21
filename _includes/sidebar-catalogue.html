@@ -49,6 +49,9 @@
         const element = elements[index];
         const tagName = element.localName.toLowerCase();
         switch (tagName) {
+            case 'ul':
+            case 'ol':
+                break;
             case 'h2':
                 currentH2 = Title.rootTitle.addSubTitle(element, Title.LEVEL_H2);
                 break;

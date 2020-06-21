@@ -1,8 +1,8 @@
 ---
 layout: post
-title: JavaScript - 类和对象
-categories: JavaScript
-keywords: javascript
+title: Javascript - 类和对象
+categories: Javascript
+keywords: [javascript, class, object]
 search: true
 qrcode: true
 catalogue: true

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 软件设计原则
+categories: [Design Pattern]
 image: /images/posts/cartton.gif
 search: true
 qrcode: true

@@ -1,23 +1,36 @@
 ---
 layout: page
+class: algorithm
 title: 算法
 description: 这是程序的本质，也是一个工程师最核心的素养
 permalink: /algorithm.html
 banner: /images/page/algorithm.png
 search: true
 qrcode: true
+catalogue: true
 ---
 
 {% assign privious_type = 'none' %}
-{% for alogrithm in site.data.algorithms %}
-{% if alogrithm.type != privious_type %}
-## {{ alogrithm.type }}
-{{ alogrithm.typeinfo }}
-{% assign privious_type = alogrithm.type %}
+{% for algorithm in site.data.algorithms %}
+{% if algorithm.type != privious_type %}
+## {{ algorithm.type }}
+> {{ algorithm.typeinfo }}
+{% assign privious_type = algorithm.type %}
 {% endif %}
-* **[{{ alogrithm.title }}]({{ alogrithm.url }})**  
-    {{ alogrithm.description }}
-{% if alogrithm.image %}
-    <img src="{{ alogrithm.image }}" alt="{{ alogrithm.title }}" height="100px"/>
-{% endif %}
+
+<div class="algorithm__item" id="#{{ algorithm.title }}">
+    <div class="algorithm__item--left-wrapper">
+        <h3 class="algorithm__item__title">
+            <a href="{{ algorithm.url }}">
+                {{ algorithm.title }}
+            </a>
+        </h3>
+        <p class="algorithm__item__description">
+            {{ algorithm.description }}
+        </p>
+    </div>
+    {% if algorithm.image %}
+    <img class="algorithm__item__img" src="{{ algorithm.image }}" alt="{{ algorithm.title }}"/>
+    {% endif %}
+</div>
 {% endfor %}

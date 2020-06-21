@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Zookeeper 笔记
-categories: MicroService
-keywords: MicroService
+categories: [Micro Service, Architecture]
+keywords: [zookeeper, micro service]
 permalink: /architecture/:title.html
 image: /images/posts/architecture/zookeeper/zookeeper.jpg
 date: 2019-11-27 09:02:00

@@ -1,0 +1,142 @@
+-
+  title: 软件设计原则
+  href: /posts/program-principal.html
+  description: 
+
+- title: 设计模式怎样解决设计问题
+  href: 
+  description: 
+
+- 
+  title: 创建型模式
+  href: 
+  description: 
+  patterns: 
+    -
+      title: 单例模式
+      en: Singleton
+      href: /posts/singleton.html
+      description:
+    -
+      title: 原型模式
+      en: Prototype
+      href: /posts/prototype.html
+      description: 
+    -
+      title: 生成器模式
+      en: Builder
+      href: 
+      description: 
+    -
+      title: 工厂方法
+      en: Factory Method
+      href: 
+      description: 
+    -
+      title: 抽象工厂模式
+      en: Abstract Factory
+      href: 
+      description: 
+
+-
+  title: 结构型模式
+  href: 
+  description: 
+  patterns:
+    -
+      title: 适配器模式
+      en: Adapter
+      href: 
+      description: 
+    -
+      title: 桥接模式
+      en: Bridge
+      href: 
+      description: 
+    -
+      title: 组合模式
+      en: Composite
+      href: 
+      description: 
+    -
+      title: 装饰模式
+      en: Decorator
+      href: 
+      description: 
+    -
+      title: 外观模式
+      en: Facade
+      href: 
+      description: 
+    -
+      title: 享元模式
+      en: Flyweight
+      href: 
+      description: 
+    -
+      title: 代理模式
+      en: Proxy
+      href: 
+      description: 
+
+-
+  title: 行为型模式
+  href: 
+  description: 
+  patterns:
+    -
+      title: 责任链模式
+      en: Chain of Responsibility
+      href: 
+      description: 
+    -
+      title: 命令模式
+      en: Command
+      href: 
+      description: 
+    -
+      title: 解释器模式
+      en: Interpreter
+      href: 
+      description: 
+    -
+      title: 迭代器模式
+      en: Iterator
+      href: 
+      description: 
+    -
+      title: 中介模式
+      en: Mediator
+      href: 
+      description: 
+    -
+      title: 备忘录模式
+      en: Memento
+      href: 
+      description: 
+    -
+      title: 观察者模式
+      en: Observer
+      href: 
+      description: 
+    -
+      title: 状态模式
+      en: State
+      href: 
+      description: 
+    -
+      title: 策略模式
+      en: Strategy
+      href: 
+      description: 
+    -
+      title: 模板方法模式
+      en: Template Method
+      href: 
+      description: 
+    -
+      title: 访问者模式
+      en: Visitor
+      href: 
+      description: 
+

@@ -631,31 +631,31 @@ a.paginator__item--active {
     letter-spacing: 2px;
     text-shadow: 0 1px 8px var(--color-text-dark-primary);
 }
-.page .banner h1[data-page="/categories"]::before {
+.page .banner h1[data-page="/categories.html"]::before {
     content: var(--emoji-categories);
 }
-.page .banner h1[data-page="/algorithm"]::before {
+.page .banner h1[data-page="/algorithm.html"]::before {
     content: var(--emoji-algorithm);
 }
-.page .banner h1[data-page="/design-pattern"]::before {
+.page .banner h1[data-page="/design-pattern.html"]::before {
     content: var(--emoji-design-pattern);
 }
-.page .banner h1[data-page="/source-code"]::before {
+.page .banner h1[data-page="/source-code.html"]::before {
     content: var(--emoji-source-code);
 }
-.page .banner h1[data-page="/computer"]::before {
+.page .banner h1[data-page="/computer.html"]::before {
     content: var(--emoji-computer);
 }
-.page .banner h1[data-page="/architecture"]::before {
+.page .banner h1[data-page="/architecture.html"]::before {
     content: var(--emoji-architecture);
 }
-.page .banner h1[data-page="/quest"]::before {
+.page .banner h1[data-page="/quest.html"]::before {
     content: var(--emoji-quest);
 }
-.page .banner h1[data-page="/wiki"]::before {
+.page .banner h1[data-page="/wiki.html"]::before {
     content: var(--emoji-wiki);
 }
-.page .banner h1[data-page="/about"]::before {
+.page .banner h1[data-page="/about.html"]::before {
     content: var(--emoji-about);
 }
 .page .banner p {
@@ -665,6 +665,88 @@ a.paginator__item--active {
     font-size: 1.2rem;
     color: var(--color-text-light-secondary);
 }
+
+/* Categories */
+.category__title::before {
+    margin-right: .5em;
+    font-weight: normal;
+    color: var(--color-primary);
+}
+.categories {
+    padding-left: 1.45rem;
+    list-style: none;
+}
+.categories__item {
+    padding: 0.3rem 0.8rem;
+    margin-bottom: .3em;
+    overflow: hidden;
+    font-size: 0.9rem;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-radius: 3px;
+}
+.categories__item__title {
+    margin: 0;
+    color: #586069!important;
+    text-decoration: none;
+}
+.categories__item__meta {
+    margin-right: 1em;
+    color: var(--color-text-dark-thirdary);
+}
+.design-pattern .categories__item__title {
+    width: 100%;
+    display: flex;
+}
+.design-pattern .categories__item__title__content {
+    flex: 1 0 auto;
+}
+.design-pattern .categories__item__meta {
+    flex: 0 0 auto;
+}
+.categories__item:hover {
+    text-decoration: none;
+    background-color: #eaecef;
+}
+.categories__item:hover .categories__item__title {
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--color-primary)!important;
+}
+
+/* Algorithm */
+.algorithm__item {
+    margin: 0 0 1rem 2rem;
+    padding-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--color-divider);
+}
+.algorithm__item--left-wrapper {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.algorithm__item__img {
+    flex: 0 1 auto;
+    max-height: 100px;
+    width: 161px;
+    object-fit: contain;
+}
+.algorithm__item__title {
+    flex: 1 1 auto;
+    margin: 0;
+}
+.algorithm__item__description {
+    margin-bottom: 0;
+    flex: 0 1 auto;
+    font-size: 0.9rem;
+    font-weight: normal;
+    color: var(--color-text-dark-thirdary);
+}
+
 
 /* Post */
 body.post,
@@ -771,7 +853,8 @@ article code {
     word-break: break-word;
 }
 article blockquote {
-    margin: 0;
+    margin-left: 0;
+    margin-right: 0;
     padding: 0.2rem 0.5rem;
     color: var(--color-text-secondary);
     background: #f2f2f2;
@@ -1251,6 +1334,82 @@ div.code-toolbar > .toolbar button:hover {
 }
 .mdi[data-mdi="format-header-4"]::before {
     content: "\F026E";
+}
+/* 自定义的 Mdi 图标映射 */
+.mdi[data-mdi-custom="docker"]::before {
+    content: "\F0868";
+}
+.mdi[data-mdi-custom="markdown"]::before {
+    content: "\F0354";
+}
+.mdi[data-mdi-custom="java"]::before {
+    content: "\F0B37";
+}
+.mdi[data-mdi-custom="c"]::before {
+    content: "\F0671";
+}
+.mdi[data-mdi-custom="c++"]::before {
+    content: "\F0672";
+}
+.mdi[data-mdi-custom="c#"]::before {
+    content: "\F031B";
+}
+.mdi[data-mdi-custom="html"]::before {
+    content: "\F031D";
+}
+.mdi[data-mdi-custom="css"]::before {
+    content: "\F031C";
+}
+.mdi[data-mdi-custom="javascript"]::before {
+    content: "\F031E";
+}
+.mdi[data-mdi-custom="go"]::before {
+    content: "\F07D3";
+}
+.mdi[data-mdi-custom="lua"]::before {
+    content: "\F08B1";
+}
+.mdi[data-mdi-custom="php"]::before {
+    content: "\F031F";
+}
+.mdi[data-mdi-custom="python"]::before {
+    content: "\F0320";
+}
+.mdi[data-mdi-custom="linux"]::before {
+    content: "\F033D";
+}
+.mdi[data-mdi-custom="computer"]::before {
+    content: "\F07C0";
+}
+.mdi[data-mdi-custom="algorithm"]::before {
+    content: "\F0E92";
+}
+.mdi[data-mdi-custom="architecture"]::before {
+    content: "\F04AA";
+}
+.mdi[data-mdi-custom="vim"]::before {
+    content: "\F0577";
+}
+.mdi[data-mdi-custom="vscode"]::before {
+    content: "\F0A1E";
+}
+.mdi[data-mdi-custom="micro service"]::before {
+    content: "\F07B5";
+}
+.mdi[data-mdi-custom="message queue"]::before {
+    content: "\F056B";
+}
+.mdi[data-mdi-custom="android"]::before {
+    content: "\F0032";
+}
+.mdi[data-mdi-custom="method"]::before {
+    content: "\F1064";
+}
+.mdi[data-mdi-custom="note"]::before {
+    content: "\F082E";
+}
+.mdi[data-mdi-custom="others"]::before {
+    content: "\F10B7";
 }
 
 /* Language icons */

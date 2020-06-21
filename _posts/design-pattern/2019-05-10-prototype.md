@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Prototype pattern
+categories: [Design Pattern]
 search: true
 qrcode: true
 catalogue: true

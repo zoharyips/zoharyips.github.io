@@ -1,8 +1,8 @@
 ---
 layout: post
 title: 使用 DeferredResult 模拟消息队列 
-categories: J2ee Java
-keywords: Spring
+categories: [Java]
+keywords: [java, deffered result]
 search: true
 qrcode: true
 catalogue: true

@@ -1,8 +1,8 @@
 ---
 layout: post
-title: JavaScript - ECMAScript
-categories: JavaScript
-keywords: javascript
+title: Javascript - ECMAScript
+categories: Javascript
+keywords: [javascript, ECMA, ECMAScript]
 search: true
 qrcode: true
 catalogue: true

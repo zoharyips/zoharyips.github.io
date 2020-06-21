@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Singleton
+categories: [Design Pattern]
 search: true
 qrcode: true
 catalogue: true

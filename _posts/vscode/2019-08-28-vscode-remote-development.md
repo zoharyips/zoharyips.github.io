@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Windows 配置 Vscode remote development
-categories: Vscode
+categories: VSCode
 keywords: [vscode, remote develop]
 image: /images/posts/vscode/vscode_remote.png
 search: true
