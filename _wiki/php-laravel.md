@@ -6,6 +6,7 @@ date: 2020-04-09
 categories: Php
 search: true
 catalogue: true
+prism: true
 ---
 
 ### Blade 模板

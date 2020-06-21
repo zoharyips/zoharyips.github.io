@@ -6,6 +6,7 @@ date: 2020-04-26
 categories: Linux
 search: true
 catalogue: true
+prism: true
 ---
 
 ### 非 sudo 用户

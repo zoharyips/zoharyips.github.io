@@ -6,6 +6,7 @@ date: 2019-12-08
 categories: Method
 search: true
 catalogue: true
+prism: true
 ---
 
 # 常识

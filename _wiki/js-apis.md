@@ -6,6 +6,7 @@ date: 2020-02-19
 categories: JavaScript
 search: true
 catalogue: true
+prism: true
 ---
 
 基础和文章都放在 Post 列表中，维基只是用来记 api 的噢，以下 api 全都是原生 js 支持的

@@ -3,7 +3,7 @@ layout: post
 title: 解析 ls -l 显示列表含义
 categories: Linux
 keywords: Linux
-prism: [bash]
+prism: true
 search: true
 qrcode: true
 description: 

@@ -6,6 +6,7 @@ date: 2020-04-04
 categories: JavaScript
 search: true
 catalogue: true
+prism: true
 ---
 
 全文以 $(JQuery) 表示 JQ 对象噢，写这篇文章是我在打算以后不用 JQuery 后写的 ![bilibili-doge]({{ site.data.bilibili-emoji.doge}} "doge")

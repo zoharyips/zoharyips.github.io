@@ -6,6 +6,7 @@ date: 2020-03-03
 categories: Html
 search: true
 catalogue: true
+prism: true
 ---
 
 Tips：最好使用 Chromium 内核浏览器浏览本页面

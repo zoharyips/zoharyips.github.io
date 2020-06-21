@@ -6,6 +6,7 @@ date: 2019-03-09
 categories: Php
 search: true
 catalogue: true
+prism: true
 ---
 
 ### self 关键字与 static 关键字的区别

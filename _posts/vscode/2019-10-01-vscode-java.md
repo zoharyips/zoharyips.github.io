@@ -7,6 +7,7 @@ image: /images/posts/vscode/vscode_java.jpg
 search: true
 qrcode: true
 catalogue: true
+prism: true
 description: 电脑坏了，只能用舍友的电脑😞，之前一直使用 IDEA，偶尔使用 Eclipse 打 Java，但答应舍友只安装 VSCode 这一个软件，那就试一下使用 VSCode 来打 Java 吧
 ---
 

@@ -6,6 +6,7 @@ date: 2019-10-28
 categories: Linux
 search: true
 catalogue: true
+prism: true
 ---
 
 ## 命令组合

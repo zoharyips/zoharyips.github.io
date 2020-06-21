@@ -6,10 +6,11 @@ keywords: [zookeeper, micro service]
 permalink: /architecture/:title.html
 image: /images/posts/architecture/zookeeper/zookeeper.jpg
 date: 2019-11-27 09:02:00
-sequence: true
 search: true
 qrcode: true
 catalogue: true
+prism: true
+sequence: true
 description: Zookeeper 是 Apache 的一个软件方案，它为大型分散式计算提供开源的分散式状态设定服务、同步服务和命名注册。
 ---
 

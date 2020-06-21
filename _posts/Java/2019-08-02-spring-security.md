@@ -6,6 +6,7 @@ keywords: [spring, spring security]
 search: true
 qrcode: true
 catalogue: true
+prism: true
 description: IDEA Spring Security 多模块聚合工程最基本的搭建过程
 ---
 

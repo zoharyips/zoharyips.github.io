@@ -8,6 +8,7 @@ image: images/wallpaper/think_twice_code_once.png
 catalogue: true
 search: true
 qrcode: true
+prism: true
 description: 在对编程的学习过程中，使用通过对比各语言差异的方式来理解语言的设计目标与设计思想是非常有益的。
 ---
 

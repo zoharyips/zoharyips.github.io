@@ -6,6 +6,7 @@ keywords: [javascript, ECMA, ECMAScript]
 search: true
 qrcode: true
 catalogue: true
+prism: true
 description: JavaScript 之 ECMAScript
 ---
 

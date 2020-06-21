@@ -6,6 +6,7 @@ date: 2019-04-12
 categories: Note
 search: true
 catalogue: true
+prism: true
 ---
 
 ## oracle 默认信息

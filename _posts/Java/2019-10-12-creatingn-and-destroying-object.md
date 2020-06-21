@@ -8,6 +8,7 @@ lang: java
 search: true
 qrcode: true
 catalogue: true
+prism: true
 description: 在 Java 中，一切皆对象，如何处理对象的生死问题，是一个贯穿一切的问题
 ---
 

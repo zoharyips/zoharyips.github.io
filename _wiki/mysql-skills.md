@@ -6,6 +6,7 @@ date: 2020-04-16
 categories: MySQL
 search: true
 catalogue: true
+prism: true
 ---
 
 ## 表操作

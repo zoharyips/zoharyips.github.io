@@ -7,6 +7,7 @@ image: /images/posts/my_vim_workspace.png
 search: true
 qrcode: true
 catalogue: true
+prism: true
 description: vim 并没有自带的插件管理模块, 所有插件散乱地散布在 **.vim** 文件夹中, 本篇介绍了如何使用 **Vundle** 对 vim 插件进行管理。
 ---
 
@@ -38,7 +39,7 @@ $ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 示例: 
 
-```vimrc
+```vim
 """""" Vundle 设置 """""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 filetype off                                " 检测文件类型, 使用 vnudle 需关闭
@@ -113,7 +114,7 @@ call vundle#end()
 4. 进入 `.vimrc` 文件, 使用 `:PluginInstall` 进行插件安装
 5. 若代码补全模块无法使用, 进入 `/home/zohar/.vim/bundle/YouCompleteMe/` 目录, 使用 `./install.py` 进行修复安装(需 python2.7 以上环境, 若 python 环境依赖缺失, 重新安装 python 即可)
 
-```vimrc
+```vim
 """"""""""""""""""""""""""" tips """""""""""""""""""""""""""""
 " in most cases, some settings will reset other settings     "
 " if you notice that some options doesn't work, please check "

@@ -8,6 +8,7 @@ lang: java
 search: true
 qrcode: true
 catalogue: true
+prism: true
 description: 在 Java 中，一切皆对象，一切类型都有一个公用的父类 Object；该类为我们预留了大部分每个类都需要用到的方法，其中就包含了这一方法。
 ---
 

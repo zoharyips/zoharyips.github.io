@@ -6,6 +6,7 @@ date: 2020-05-26
 categories: Note
 search: true
 catalogue: true
+prism: true
 ---
 
 ## Ubuntu

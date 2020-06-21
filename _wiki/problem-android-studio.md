@@ -6,6 +6,7 @@ date: 2019-01-06
 categories: Android
 search: true
 catalogue: true
+prism: true
 ---
 
 ## gradle sync failed

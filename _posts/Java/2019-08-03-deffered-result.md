@@ -6,6 +6,7 @@ keywords: [java, deffered result]
 search: true
 qrcode: true
 catalogue: true
+prism: true
 description: 使用 DeferredResult 可以为主线程提供异步生成返回值的功能，而其特点是可以在两个完全不相干的进程间实现通信
 ---
 

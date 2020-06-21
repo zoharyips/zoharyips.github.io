@@ -6,6 +6,7 @@ date: 2019-03-09
 categories: Note
 search: true
 catalogue: true
+prism: true
 ---
 
 ## 系统控制台命令
