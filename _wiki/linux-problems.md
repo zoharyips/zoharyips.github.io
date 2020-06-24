@@ -9,6 +9,8 @@ catalogue: true
 prism: true
 ---
 
+## 用户管理
+
 ### 非 sudo 用户
 
 `xxx is not in the sudoers file.  This incident will be reported`
@@ -31,7 +33,9 @@ prism: true
 
 4. 保存并退出即可生效
 
-### Ali 软件源
+## 软件配置
+
+### Apt 软件源
 
 #### Ubuntu
 

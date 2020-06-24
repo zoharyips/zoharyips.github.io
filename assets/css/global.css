@@ -750,18 +750,21 @@ a.paginator__item--active {
 
 /* Post */
 body.post,
-body.page {
+body.page,
+body.wiki {
     background: #f6f6f6;
 }
 .post .content,
-.page .content {
-    padding: 0 1rem;
+.page .content,
+.wiki .content {
+    padding: 0 1rem 1rem;
     -webkit-box-shadow: 0 1px 3px rgba(26,26,26,.1);
     box-shadow: 0 1px 3px rgba(26,26,26,.1);
     border-radius: 2px;
     background: rgba(255, 255, 255, 0.7);
 }
-.post h1 {
+.post h1,
+.wiki h1 {
     font-size: 1.8  rem;
 }
 .post_description {
@@ -810,8 +813,11 @@ body.page {
 .meta-info::before {
     margin-right: 0.5rem;
 }
-.meta-info[data-meta="category"]::before {
+.meta-info[data-meta="categories"]::before {
     content: var(--emoji-categories);
+}
+.meta-info[data-meta="wiki"]::before {
+    content: var(--emoji-wiki);
 }
 
 /* Aritcle */
@@ -878,8 +884,10 @@ article p code,
 article table code,
 article a code {
     margin: 0px 2px;
-    padding: 2px 4px;
+    padding: 1px 4px;
     font-weight: 500;
+    font-size: 0.8em;
+    letter-spacing: 1px;
     font-family: monospace;
     color: rgb(84, 110, 122);
     border-width: 1px;
@@ -888,6 +896,9 @@ article a code {
     border-image: initial;
     background: rgb(247, 249, 250);
     border-radius: 3px;
+}
+article p {
+    line-height: 1.4em;
 }
 article a {
     text-decoration: none;
@@ -1125,8 +1136,9 @@ article sub {
     list-style: none;
 }
 .catalogue li {
-    font-size: 0.8rem;
     margin-bottom: 0.5em;
+    max-width: 220px;
+    font-size: 0.8rem;
 }
 .catalogue li::before {
     line-height: 1.2em;
@@ -1411,7 +1423,15 @@ div.code-toolbar > .toolbar button:hover {
 .mdi[data-mdi-custom="others"]::before {
     content: "\F10B7";
 }
-
+.mdi[data-mdi-custom="automated testing"]::before {
+    content: "\F0862";
+}
+.mdi[data-mdi-custom="design pattern"]::before {
+    content: "\F0F40";
+}
+.mdi[data-mdi-custom="mysql"]::before {
+    content: "\F01BC";
+}
 /* Language icons */
 .lang::before {
     content: url(../svg/lang/unknown.svg);

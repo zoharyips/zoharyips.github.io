@@ -1,36 +1,25 @@
 ---
 layout: default
 ---
-<!-- 维基页面 -->
-<div id="fixed_title" class="fix-title" hidden=true>
-  <h3 onclick="titleBackToTop()">{{ page.title }}</h3>
-</div>
-<section id="origin_title" class="collection-head small geopattern" data-pattern-id="{{ page.title | truncate: 15, ''}}">
-  <div class="container">
-    <div class="columns">
-      <div class="column three-fourths">
-        <div class="collection-title">
-          <h1 class="collection-header">{{ page.title }}</h1>
-        </div>
-        {% if page.description %}
-        <div class="collection-info">
-          <span class="meta-info">
-            {{ page.description }}
-          </span>
-        </div>
-        {% endif %}
-      </div>
-    </div>
+
+<div class="container container--main-body">
+  <div class="content">
+      <h1 class="post_title">{{ page.title }}</h1>
+      {%- if page.top -%}
+          <span class="meta-info transition3" data-meta="top">TOP</span>
+      {%- endif -%}
+      {%- for category in page.categories -%}
+          <a class="meta-info transition3" data-meta="wiki" href="/wiki.html/#{{ category }}">{{ category }}</a>
+      {%- endfor -%}
+      {%- for keyword in page.keywords -%}
+          <span class="meta-info transition3" data-meta="keyword" title="keyword-{{ keyword }}">{{ keyword }}</span>
+      {%- endfor -%}
+      {%- if page.description -%}
+          <p class="post_description">{{ page.description | markdownify | strip_html }}</p>
+      {%- endif -%}
+      <article>
+          {{ content }}
+      </article>
   </div>
-</section>
-<!-- / .banner -->
-<section class="container content">
-<div class="columns">
-  <div class="column three-fourths" >
-    <article class="article-content markdown-body">
-    {{ content }}
-    </article>
-  </div>
+  {%- include sidebar.html -%}
 </div>
-</section>
-<!-- /section.content -->

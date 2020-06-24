@@ -13,7 +13,7 @@ prism: true
 
 ### 1. 使用最新阿里云镜像源
 
-请确保使用最新的[阿里云镜像源](https://zoharyip.club/wiki/problem-linux/#2-%E9%85%8D%E7%BD%AE-ali-%E8%BD%AF%E4%BB%B6%E6%BA%90)，否则将出现无法安装 ruby-dev 的情况，因为使用旧版软件源，软件列表上的依赖关系是老版本的，而内核版本却是最新的，因此 ruby-dev 的依赖会与内核版本冲突，会发生类似下方描述得错误
+请确保使用最新的[阿里云镜像源](/wiki/linux-problems.html#apt-软件源)，否则将出现无法安装 ruby-dev 的情况，因为使用旧版软件源，软件列表上的依赖关系是老版本的，而内核版本却是最新的，因此 ruby-dev 的依赖会与内核版本冲突，会发生类似下方描述得错误
 
 ```bash
 下列软件包有未满足的依赖关系：
@@ -44,7 +44,7 @@ sudo apt-get install ruby-full
 ### 3. 安装所需构建工具及依赖
 
 ```bash
-apt-get install make gcc g++ libxslt-dev libxml2-dev build-essential -y
+sudo apt-get install make gcc g++ libxslt-dev libxml2-dev build-essential -y
 ```
 
 ### 4. 更新 Gem 软件源
@@ -54,23 +54,19 @@ zohar@Titan:~$ gem source -l
 *** CURRENT SOURCES ***
 
 https://rubygems.org/
-zohar@Titan:~$ gem source -r
-ERROR:  While executing gem ... (OptionParser::MissingArgument)
-    missing argument: -r
+zohar@Titan:~$
 zohar@Titan:~$ gem source -r 'https://rubygems.org/'
 https://rubygems.org/ removed from sources
-zohar@Titan:~$ gem source -l
-*** CURRENT SOURCES ***
-
+zohar@Titan:~$
 zohar@Titan:~$ gem source --add https://gems.ruby-china.com
 https://gems.ruby-china.com added to sources
 ```
 
 * `gem source -l` 可以查看已有的软件源
 
-* `gem source -r 'https://rubygems.org/'` 移除默认境外软件源
+* `gem source -r '[url]'` 移除指定软件源
 
-* `gem source --add https://gems.ruby-china.com` 设置默认软件源为国内镜像地址
+* `gem source --add [url]` 添加软件源
 
 
 ### 4. 安装 bundler
@@ -131,7 +127,7 @@ root@hostname:/opt/metasploit-framework#
 
 成功运行😎
 
-![successfully_running](/images/posts/jekyll-success.png "成功运行")
+![successfully_running](/images/wiki/jekyll-success.png "成功运行")
 
 直接访问 `http://127.0.0.1:4000` 即可直接浏览博客，这是即时更新的，因此非常利于修改博客
 
