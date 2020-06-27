@@ -9,6 +9,7 @@ search: true
 qrcode: true
 catalogue: true
 prism: true
+mathjax: true
 description: 算法是程序最核心的东西啦，很多时候你不知道算法有什么用，这样跟你说吧，你平时用的库函数、方法，大部分都是封装好的算法实现哈哈哈
 ---
 
