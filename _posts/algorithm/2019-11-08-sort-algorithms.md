@@ -3,6 +3,7 @@ layout: post
 title: 各大排序算法的比较、研究与实现
 categories: [Algorithm]
 keywords: [alogrithm, sort, fast sort, sort alogrithm, alogrithm analize]
+permalink: /algorithm/:title.html
 image: /images/posts/algorithm/2019-11-08-sort-algorithms/heap_sort.gif
 top: 2
 search: true

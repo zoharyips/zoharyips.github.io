@@ -136,3 +136,11 @@
   type: 字符串匹配
   image: /images/posts/KMP-alogrithm/sunday-algorithm.gif
   typeinfo: 
+
+-
+  title: 求最大公约数
+  description: 最大公因数，也称最大公约数、最大公因子，指两个或多个整数共有约数中最大的一个。
+  url: /algorithm/arithmetic.html
+  type: 算术
+  image: 
+  typeinfo: 算术是所有其他算法的根基，加减乘除，取反求模，取幂对偶，这才是真正的数字魔法

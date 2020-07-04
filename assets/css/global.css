@@ -716,6 +716,9 @@ a.paginator__item--active {
 }
 
 /* Algorithm */
+.algorithm blockquote {
+    margin: 1rem 0 1rem 2rem!important;
+}
 .algorithm__item {
     margin: 0 0 1rem 2rem;
     padding-bottom: 1rem;
@@ -727,7 +730,6 @@ a.paginator__item--active {
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 .algorithm__item__img {
     flex: 0 1 auto;
@@ -736,8 +738,10 @@ a.paginator__item--active {
     object-fit: contain;
 }
 .algorithm__item__title {
-    flex: 1 1 auto;
     margin: 0;
+}
+.algorithm__item__title a:hover {
+    text-decoration: none;
 }
 .algorithm__item__description {
     margin-bottom: 0;
