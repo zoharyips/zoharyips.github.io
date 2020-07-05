@@ -2,7 +2,7 @@
 layout: post
 title: 软件设计原则
 categories: [Design Pattern]
-image: /images/posts/cartton.gif
+image: /images/wallpaper/minecraft.jpg
 search: true
 qrcode: true
 catalogue: true
