@@ -34,7 +34,9 @@
         <div class="main">
             {{ content }}
         </div>
-        {% include footer.html %}
+        {% if page.footer != false %}
+            {% include footer.html %}
+        {% endif %}
     </body>
     <!-- ajax request packing-->
     {%- include js_ajax.html -%}

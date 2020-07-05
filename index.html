@@ -59,7 +59,7 @@ qrcode: true
                         <div class="posts-list__item__mark text-unselectable" data-mark-type="top-{% increment topIncerment %}">TOP</div>
                         <p class="posts-list__item__metas">
                             {% for category in post.categories %}
-                                <a class="mdi" href="/categories.html/#{{ category }}" data-mdi="folder-open">{{ category }}</a>
+                                <a class="mdi" href="/categories.html#{{ category }}" data-mdi="folder-open">{{ category }}</a>
                             {% endfor %}
                             <span class="mdi" data-mdi="calendar-month">{{ post.date | date_to_string: "ordinal", "US" }}</span>
                         </p>
@@ -82,7 +82,7 @@ qrcode: true
                     <div class="posts-list__item__mark">{{ post.mark }}</div>
                     <p class="posts-list__item__metas">
                         {% for category in post.categories %}
-                            <a class="mdi" href="/categories.html/#{{ category }}" data-mdi="folder-open">{{ category }}</a>
+                            <a class="mdi" href="/categories.html#{{ category }}" data-mdi="folder-open">{{ category }}</a>
                         {% endfor %}
                         <span class="mdi" data-mdi="calendar-month">{{ post.date | date_to_string: "ordinal", "US" }}</span>
                     </p>

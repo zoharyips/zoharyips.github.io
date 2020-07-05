@@ -984,6 +984,17 @@ article sub {
 }
 
 /* Sidebar - Search Bar */
+#sidebar-search {
+    width: 260px;
+}
+.page.categories {
+    padding-left: 0;
+}
+.categories .float-search {
+    position: fixed;
+    top: 64px;
+    margin-top: 0.5rem;
+}
 .sidebar__search__input-wrapper {
     position: relative;
     display: block;

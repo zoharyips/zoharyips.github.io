@@ -4,7 +4,7 @@ title: 主流语言的学习与对比
 categories: [Java, Go, Php, Javascript]
 keywords: [languages, programming, language comparision]
 top: 1
-image: images/wallpaper/think_twice_code_once.png
+image: images/wallpaper/markdown.png
 catalogue: true
 search: true
 qrcode: true

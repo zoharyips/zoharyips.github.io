@@ -1,11 +1,11 @@
 <div class="sidebar">
     {%- if page.search -%}
-        <div class="sidebar-item transition3">
+        <div class="sidebar-item transition3" id="sidebar-search">
             {%- include sidebar-search.html -%}
         </div>
     {%- endif -%}
     {%- if page.qrcode -%}
-        <div class="sidebar-item transition3">
+        <div class="sidebar-item transition3" id="sidebar-qrcode">
             {%- include sidebar-qrcode.html -%}
         </div>
     {%- endif -%}

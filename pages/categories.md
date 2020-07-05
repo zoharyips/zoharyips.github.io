@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Categories
+class: categories
 description: 这里汇集了本站的所有文章，但是不包含 📁Wiki 中的文章哦
 keywords: 分类
 permalink: /categories.html

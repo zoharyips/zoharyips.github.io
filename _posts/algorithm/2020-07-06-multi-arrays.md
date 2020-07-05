@@ -4,7 +4,7 @@ title: 多数组操作，你觉得计算机能不能一目十行？
 categories: [Algorithm]
 keywords: [alogrithm, multi arrays, arrays, array]
 permalink: /algorithm/:title.html
-image: /images/wallpaper/arithmetic.jpg
+image: images/wallpaper/multi-arrays.png
 search: true
 catalogue: true
 prism: true

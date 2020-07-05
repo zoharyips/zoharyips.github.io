@@ -50,4 +50,20 @@
         resultsContainer: document.getElementById('sidebar__search__res'),
         searchResultTemplate: '<a class="sidebar__search__res__item" href="{url}" title="{desc}">{title}</a>',
     })
+
+
+    const searchSection = document.getElementById('sidebar-search');
+    let qrcodeSection = null;
+    let qrcodeOffsetTop = 0;
+    window.onload = function() {
+        qrcodeSection = document.getElementById('sidebar-qrcode');
+        qrcodeOffsetTop = qrcodeSection.offsetTop;
+    }
+    window.onscroll = function() {
+        if (document.documentElement.scrollTop - qrcodeOffsetTop > 0) {
+            searchSection.classList.add('float-search');
+        } else {
+            searchSection.classList.remove('float-search');
+        }
+    }
 </script>

@@ -11,14 +11,13 @@
 url                 : https://zoharyip.club
 title               : Zohar's blog
 name                : zohar's blog
-subtitle            : "Chinese by birth, Programmer by choice"
-description         : "The personal blog of zohar, a ascetic on the road to programming."
+subtitle            : Chinese by birth, Programmer by choice
+description         : The personal blog of zohar, a ascetic on the road to programming.
 repository          : zoharyips/zoharyips.github.io
-keywords            : zohar, zohar Yip, Zohar' Blog, 叶卓豪, zohar_Yip, zoharyips, 博客, Java, 开发
+keywords            : zohar, zohar Yip, Zohar' Blog, 叶卓豪, zohar_Yip, zoharyips, 博客, 后端开发工程师, 后端, 开发
 date_format         : "ordinal"
 timezone            : Asia/Shanghai
 encoding            : "utf-8"
-side_bar_repo_limit : 3
 
 author              : zohar
 github_username     : zoharyips
