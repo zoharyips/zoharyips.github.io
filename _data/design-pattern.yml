@@ -1,6 +1,6 @@
 -
   title: 软件设计原则
-  href: /posts/program-principal.html
+  href: /design-pattern/program-principal.html
   description: 
 
 - title: 设计模式怎样解决设计问题
@@ -15,12 +15,12 @@
     -
       title: 单例模式
       en: Singleton
-      href: /posts/singleton.html
+      href: /design-pattern/singleton.html
       description:
     -
       title: 原型模式
       en: Prototype
-      href: /posts/prototype.html
+      href: /design-pattern/prototype.html
       description: 
     -
       title: 生成器模式

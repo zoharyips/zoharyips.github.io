@@ -2,7 +2,7 @@
 layout: post
 title: 计算机组成 - 概念
 categories: Computer
-keywords: [computer]
+keywords: [computer, computer history]
 permalink: /computer/:title.html
 search: true
 qrcode: true

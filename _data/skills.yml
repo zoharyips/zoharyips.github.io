@@ -1,25 +1,40 @@
 -
   name: Software Engineer
   keywords:
-    - Java
-    - Go
-    - C/C++
+    - java
+    - go
+    - c
+    - c++
+    - python
+    - php
+
+-
+  name: Framework
+  keywords:
+    - spring
+    - springboot
+    - springsecurity
+    - netty
+    - laravel
 
 -
   name: Web Developer
   keywords:
-    - JavaScript
-    - Php
-    - JQuery
+    - html
+    - css
+    - javascript
+    - vue
+    - angular
 
 -
   name: Mobile Developer
   keywords:
-    - Android
-    - Wechat
+    - andorid
+    - wecaht applet
 
 -
-  name: Operations Engineer
+  name: System
   keywords:
-    - CentOS
-    - Ubuntu
+    - docker
+    - centos
+    - ubuntu

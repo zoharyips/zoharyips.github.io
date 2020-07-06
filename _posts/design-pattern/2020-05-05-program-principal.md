@@ -2,6 +2,8 @@
 layout: post
 title: 软件设计原则
 categories: [Design Pattern]
+keywords: [design pattern, program principal]
+permalink: /design-pattern/:title.html
 image: /images/wallpaper/minecraft.jpg
 search: true
 qrcode: true

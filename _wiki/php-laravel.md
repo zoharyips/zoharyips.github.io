@@ -9,6 +9,8 @@ catalogue: true
 prism: true
 ---
 
+## MVC
+
 ### Blade 模板
 
 * 变量输出
@@ -55,9 +57,7 @@ prism: true
     </form>
     ```
 
-### MVC
-
-#### Validator
+### Validator
 
 ```php
 $validateRules = [
@@ -91,13 +91,13 @@ if ($validator->fails()) {
 
 * [Validator 验证规则](/assets/html/laravel-validator.html)
 
-#### 分页对象
+### 分页对象
 
 ```php
 $pagination = Pagination::paginate($count, $data, $limit, 'page', $pageNumber);
 ```
 
-#### 默认 404 页面
+### 默认 404 页面
 
 ```php
 view()->replaceNamespace('errors', [
@@ -107,11 +107,13 @@ view()->replaceNamespace('errors', [
 return response()->view("errors::{$status}";
 ```
 
-#### JsonResponse
+### JsonResponse
 
 ```php
 return response()->json(['code' => '1', 'msg' => 'Subscribe successfully']);
 ```
+
+## DB
 
 ### Eloquent 模型
 
@@ -301,7 +303,6 @@ return response()->json(['code' => '1', 'msg' => 'Subscribe successfully']);
 
     访问 `http://localhost/horizon` 即可访问仪表盘
 
-
 #### 使用 Redis 缓存
 
 1. 修改配置文件
@@ -339,9 +340,9 @@ if (Cache::has($key)) {
 }
 ```
 
-### HTTP
+## HTTP
 
-#### HTTP 客户端
+### HTTP 客户端
 
 * php-curl-class
 
@@ -369,7 +370,7 @@ if (Cache::has($key)) {
     $data = json_decode((string)$response->getBody(), true);
     ```
 
-### Composer
+## Composer
 
 * Composer 换源
 

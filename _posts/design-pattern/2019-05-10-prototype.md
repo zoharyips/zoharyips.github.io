@@ -2,6 +2,8 @@
 layout: post
 title: Prototype pattern
 categories: [Design Pattern]
+keywords: [design pattern, prototype]
+permalink: /design-pattern/:title.html
 search: true
 qrcode: true
 catalogue: true

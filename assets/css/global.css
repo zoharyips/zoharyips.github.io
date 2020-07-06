@@ -751,6 +751,38 @@ a.paginator__item--active {
     color: var(--color-text-dark-thirdary);
 }
 
+/* About Me */
+.contact__info-list {
+    line-height: 3rem;
+    list-style: none;
+}
+.contact__info-list__item--img {
+    margin-right: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    vertical-align: middle;
+}
+.contact__info-list__item--name {
+    display: inline-block;
+    width: 5em;
+}
+.contact__skill-btn {
+    margin: 1rem 1rem 0 0;
+    padding: 0.5rem 1.5rem;
+    color: var(--color-text-light-primary);
+    border: none;
+    outline: none;
+    background: var(--color-primary);
+    border-radius: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    cursor: pointer;
+    box-shadow: 0 6px 30px -10px #4a74c9;
+    transition: background 498ms cubic-bezier(0.63, 0.01, 0.26, 1);
+}
+.contact__skill-btn::after {
+    content: var();
+}
 
 /* Post */
 body.post,
@@ -1531,4 +1563,58 @@ div.code-toolbar > .toolbar button:hover {
 }
 .lang[data-lang="vue"]::before {
     content: url(../svg/lang/vue.svg);
+}
+.skill-btn[data-skill="java"]::after {
+    content: "\F06CA";
+}
+.skill-btn[data-skill="go"]::after {
+    content: "\F07D3";
+}
+.skill-btn[data-skill="c"]::after {
+    content: "\F0671";
+}
+.skill-btn[data-skill="c++"]::after {
+    content: "\F0672";
+}
+.skill-btn[data-skill="python"]::after {
+    content: "\F0320";
+}
+.skill-btn[data-skill="php"]::after {
+    content: "\F031F";
+}
+.skill-btn[data-skill="spring"]::after {
+    content: "\XE600";
+}
+.skill-btn[data-skill="springboot"]::after {
+    content: "";
+}
+.skill-btn[data-skill="springsecurity"]::after {
+    content: "";
+}
+.skill-btn[data-skill="netty"]::after {
+    content: "";
+}
+.skill-btn[data-skill="laravel"]::after {
+    content: "\F0AD0";
+}
+.skill-btn[data-skill="html"]::after {
+    content: "\F031D";
+}
+.skill-btn[data-skill="css"]::after {
+    content: "\F031C";
+}
+.skill-btn[data-skill="javascript"]::after {
+    content: "\F031E";
+}
+.skill-btn[data-skill="vue"]::after {
+    content: "\F0844";
+}
+.skill-btn[data-skill="angular"]::after {
+    content: "\F06BF";
+}
+.skill-btn[data-skill="android"]::after {
+    content: "\F0032";
+}
+.skill-btn[data-skill="wechat applet"]::after {
+    content: "\F0611";
 }

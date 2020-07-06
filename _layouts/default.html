@@ -38,6 +38,43 @@
             {% include footer.html %}
         {% endif %}
     </body>
+    <!-- active nav bar title for articles -->
+    <script>
+        let navCollection = document.getElementById('nav-collections');
+        let navMenusItems = document.getElementsByClassName('menus__item');
+        let path = window.location.pathname;
+        // 获取一级路径
+        let dirs = path.split('/');
+        switch (dirs[1]) {
+            case 'algorithm':
+                navCollection.classList.add('active');
+                navCollection.firstElementChild.children[0].classList.add('active');
+                break;
+            case 'design-pattern':
+                navCollection.classList.add('active');
+                navCollection.firstElementChild.children[1].classList.add('active');
+                break;
+            case 'source-code':
+                navCollection.classList.add('active');
+                navCollection.firstElementChild.children[2].classList.add('active');
+                break;
+            case 'computer':
+                navCollection.classList.add('active');
+                navCollection.firstElementChild.children[3].classList.add('active');
+                break;
+            case 'architecture':
+                navCollection.classList.add('active');
+                navCollection.firstElementChild.children[4].classList.add('active');
+                break;
+            case 'wiki':
+                navMenusItems[4].classList.add('active');
+                break;
+            case 'quest':
+                navMenusItems[3].classList.add('active');
+            default:
+                break;
+        }
+    </script>
     <!-- ajax request packing-->
     {%- include js_ajax.html -%}
     <!-- zhihu background base on canvas -->

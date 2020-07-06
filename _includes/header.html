@@ -13,7 +13,7 @@
                                 {% assign isInCollection = true %}
                             {% endif %}
                         {% endfor %}
-                        <div class="menus__item {% if isInCollection == true %} active {% endif %}">{{ nav.label }}
+                        <div class="menus__item {% if isInCollection == true %} active {% endif %}" id="nav-collections">{{ nav.label }}
                             <div class="menus__item__sub-menu transition5">
                                 {% for collection in nav.sub-navs %}
                                     <a class="menus__item__sub-menu__item transition5 {% if page.permalink == collection.href %} active {% endif %}" href="{{ collection.href }}">{{ collection.label }}</a>
