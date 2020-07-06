@@ -1,9 +1,9 @@
 ---
 layout: wiki
-title: IDEA ★
-description: IDEA 与 Eclipse 的区别，应该是智能与自动的区别
+title: IDEA 使用手册
+description: 没错，一个 IDE 强大到要让我们记笔记👍👍👍
 date: 2019-07-22
-categories: Note
+categories: IDE
 search: true
 catalogue: true
 ---

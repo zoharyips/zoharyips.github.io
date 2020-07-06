@@ -3,7 +3,7 @@ layout: wiki
 title: Window 笔记
 description: 记录一些比较复杂，网络上写的乱七八糟的问题的解决方案
 date: 2020-03-13
-categories: Note
+categories: Computer
 search: true
 catalogue: true
 ---

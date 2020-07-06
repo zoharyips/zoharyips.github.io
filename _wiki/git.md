@@ -1,9 +1,9 @@
 ---
 layout: wiki
-title: Git
+title: Git 笔记
 description: 一些常用 git 命令的记录, 以备查阅 ^_^
 date: 2020-04-10
-categories: Note
+categories: Tools
 search: true
 catalogue: true
 prism: true

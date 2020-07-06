@@ -1,9 +1,9 @@
 ---
 layout: wiki
-title: MySQL - 独门秘技
+title: MySQL SQL 秘笈
 description: 有时候你想破头都不知道这条 SQL 该怎么写
 date: 2020-04-16
-categories: MySQL
+categories: Sql
 search: true
 catalogue: true
 prism: true

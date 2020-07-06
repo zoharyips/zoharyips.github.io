@@ -46,6 +46,9 @@ collections:
   wiki:
     output          : true
     permalink       : /wiki/:path.html
+  quest:
+    output          : true
+    permalink       : /quest/:path.html
 
 
 # 导航

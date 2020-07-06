@@ -1,9 +1,9 @@
 ---
 layout: wiki
-title: MySQL - 设计规范
+title: MySQL 设计规范
 description: 有时候你想破头把 SQL 写出来还不如但是表建得好一点
 date: 2020-04-30
-categories: MySQL
+categories: Sql
 search: true
 catalogue: true
 prism: true

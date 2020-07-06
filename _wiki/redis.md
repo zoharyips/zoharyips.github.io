@@ -3,7 +3,7 @@ layout: wiki
 title: Redis
 description: 基础 redis 语法集合
 date: 2019-07-26
-categories: Note
+categories: NoSql
 search: true
 catalogue: true
 prism: true

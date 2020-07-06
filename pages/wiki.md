@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Wiki
-description: 琐碎的知识点很多，但是值得一记
+description: 琐碎的知识点，系统的笔记，就放在这里吧
 permalink: /wiki.html
 banner: /images/page/wiki.png
 search: true

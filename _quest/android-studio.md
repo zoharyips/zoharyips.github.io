@@ -1,6 +1,6 @@
 ---
 layout: wiki
-title: Android 之问题合集
+title: Android Studio
 description: 记录 android studio 使用中遇到的各种小问题
 date: 2019-01-06
 categories: Android

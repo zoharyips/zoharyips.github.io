@@ -13,7 +13,6 @@
   keywords:
     - spring
     - springboot
-    - springsecurity
     - netty
     - laravel
 
@@ -29,8 +28,8 @@
 -
   name: Mobile Developer
   keywords:
-    - andorid
-    - wecaht applet
+    - android
+    - wechat applet
 
 -
   name: System

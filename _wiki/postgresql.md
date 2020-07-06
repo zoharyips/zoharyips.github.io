@@ -3,7 +3,7 @@ layout: wiki
 title: Postgresql
 description: 基础 psql 语法集合
 date: 2019-03-09
-categories: Note
+categories: Sql
 search: true
 catalogue: true
 prism: true

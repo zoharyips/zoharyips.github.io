@@ -1,6 +1,6 @@
 ---
 layout: wiki
-title: Linux 之疑难杂症
+title: Linux
 description: 简单记录一些 linux 常见问题及其解决办法
 date: 2020-04-26
 categories: Linux

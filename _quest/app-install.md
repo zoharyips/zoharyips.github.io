@@ -1,7 +1,7 @@
 ---
 layout: wiki
 title: 软件安装
-description: 在此汇总各种行之有效的软件安装方案
+description: 软件安装有时候非常烦人，哈哈哈，主要还是这让我们又爱又恨的高墙啊
 date: 2019-12-08
 categories: Method
 search: true

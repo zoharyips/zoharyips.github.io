@@ -1,6 +1,6 @@
 ---
 layout: wiki
-title: JS 之 JQuery
+title: JQuery 笔记
 description: jquery 在 js 基础上成长起来啦
 date: 2020-04-04
 categories: JavaScript

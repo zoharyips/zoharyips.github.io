@@ -3,7 +3,7 @@ layout: wiki
 title: Nginx
 description: 一些 Nginx 命令与配置，脑容量太小了下次换个 256GB 的
 date: 2020-04-28
-categories: Note
+categories: Tools
 search: true
 catalogue: true
 prism: true

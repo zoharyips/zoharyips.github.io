@@ -1,6 +1,6 @@
 ---
 layout: wiki
-title: Java 之骑驴找马
+title: Java API 手册
 description: 重复造轮子的时候，是否会感到力不从心呢？
 date: 2019-10-28
 categories: Java
@@ -28,5 +28,3 @@ Collections.reverse(List<?> list);
 ```java
 fill(Object[] a, object val);
 ```
-
-备注：尚未分析

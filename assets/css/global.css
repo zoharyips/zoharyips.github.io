@@ -823,6 +823,12 @@ body.wiki {
     background: #f4f4f4;
     border: 1px solid rgba(0,161,214, 0);
 }
+.contact-me .meta-info {
+    margin: 0.5rem;
+    padding: 0.4em 1.2em;
+    font-size: 1rem;
+}
+
 .meta-info:hover {
     cursor: pointer;
     border: 1px solid rgba(0,161,214, 1);
@@ -855,7 +861,6 @@ body.wiki {
 .meta-info[data-meta="wiki"]::before {
     content: var(--emoji-wiki);
 }
-
 /* Aritcle */
 /* 请不要在文章中使用 h1 级标签 */
 article {
@@ -1476,8 +1481,17 @@ div.code-toolbar > .toolbar button:hover {
 .mdi[data-mdi-custom="design pattern"]::before {
     content: "\F0F40";
 }
-.mdi[data-mdi-custom="mysql"]::before {
+.mdi[data-mdi-custom="sql"]::before {
     content: "\F01BC";
+}
+.mdi[data-mdi-custom="nosql"]::before {
+    content: "\F0877";
+}
+.mdi[data-mdi-custom="tools"]::before {
+    content: "\F1064";
+}
+.mdi[data-mdi-custom="ide"]::before {
+    content: "\F0ECE";
 }
 /* Language icons */
 .lang::before {
