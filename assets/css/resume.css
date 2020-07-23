@@ -171,6 +171,7 @@ header p {
     right: 0;
 }
 .box__content__row__title--time {
+    min-width: 7.5em;
     text-align: left;
     font-family: monospace, sans-serif;
 }

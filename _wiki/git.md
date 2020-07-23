@@ -103,6 +103,10 @@ prism: true
 
     `git push --delete origin <remoteBranchName>`
 
+* 显示远程与本地差异
+
+    `git log master..origin/master`
+
 ### 隐藏修改切换分支
 
 将当前修改隐藏，不暂存或提交当前修改而切换至其他分支，注意，隐藏区的修改独立于分支，可从其他分支取出当前分支隐藏的修改
@@ -112,6 +116,12 @@ prism: true
 * 查看隐藏列表： `git list`
 
 * 取出隐藏： `git stash pop` 或 `git stash apply <stashId>`
+
+## Git Diff
+
+* 统计分支间文件改动
+
+    `git diff --stat master origin/master`
 
 ## 创建仓库
 
