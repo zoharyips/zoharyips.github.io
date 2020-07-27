@@ -7,3 +7,15 @@ banner: /images/page/architecture.png
 search: true
 qrcode: true
 ---
+
+{% assign computer_pages = site.posts | where_exp:"item", "item.categories contains 'Architecture'" %}
+
+<ul class="categories">
+  {% for article in computer_pages %}     
+    <li class="categories__item">
+      <a class="categories__item__title" href="{{ article.url }}">
+        {{ article.title }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>

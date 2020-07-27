@@ -1,5 +1,5 @@
 # 本数据源用于保存本站算法索引地址
-# 
+#
 # 格式
 # -
 #  title: 算法标题
@@ -23,7 +23,7 @@
   url: /algorithm/sort-algorithms.html#希尔排序
   type: 排序
   image: /images/posts/algorithm/2019-11-08-sort-algorithms/shell_sort.gif
-  typeinfo: 
+  typeinfo:
 
 -
   title: 选择排序
@@ -31,7 +31,7 @@
   url: /algorithm/sort-algorithms.html#选择排序
   type: 排序
   image: /images/posts/algorithm/2019-11-08-sort-algorithms/selection_sort.gif
-  typeinfo: 
+  typeinfo:
 
 -
   title: 堆排序
@@ -39,7 +39,7 @@
   url: /algorithm/sort-algorithms.html#堆排序
   type: 排序
   image: /images/posts/algorithm/2019-11-08-sort-algorithms/heap_sort.gif
-  typeinfo: 
+  typeinfo:
 
 -
   title: 冒泡排序
@@ -47,7 +47,7 @@
   url: /algorithm/sort-algorithms.html#冒泡排序
   type: 排序
   image: /images/posts/algorithm/2019-11-08-sort-algorithms/bubble_sort.gif
-  typeinfo: 
+  typeinfo:
 
 -
   title: 鸡尾酒排序（双向冒泡排序）
@@ -55,7 +55,7 @@
   url: /algorithm/sort-algorithms.html#鸡尾酒排序（双向冒泡排序）
   type: 排序
   image: /images/posts/algorithm/2019-11-08-sort-algorithms/cocktail_sort.gif
-  typeinfo: 
+  typeinfo:
 
 -
   title: 快速排序
@@ -63,7 +63,7 @@
   url: /algorithm/sort-algorithms.html#快速排序
   type: 排序
   image: /images/posts/algorithm/2019-11-08-sort-algorithms/fast_sort.gif
-  typeinfo: 
+  typeinfo:
 
 -
   title: 归并排序
@@ -71,7 +71,7 @@
   url: /algorithm/sort-algorithms.html#归并排序
   type: 排序
   image: /images/posts/algorithm/2019-11-08-sort-algorithms/merge_sort.gif
-  typeinfo: 
+  typeinfo:
 
 -
   title: 基数排序
@@ -79,47 +79,55 @@
   url: /algorithm/sort-algorithms.html#基数排序
   type: 排序
   image: /images/posts/algorithm/2019-11-08-sort-algorithms/radix_sort.gif
-  typeinfo: 
+  typeinfo:
 
 -
   title: A* 算法
   description: 通过启发函数引导算法的搜索方向，以求解两点间最短的有效路径
   url: https://www.cnblogs.com/21207-iHome/p/6048969.html
-  type: 最短路径
-  image: 
+  type: 图
+  image:
   typeinfo: 最短路径是计算某一节点到其他节点的最短距离，单一节点到其他节点的最短路径称为“单源最短路径”，任意节点到其他节点的最短路径称为“多源最短路径”。
 
 -
   title: Dijkstra 算法
   description: 以起始点为中心向外层层扩展，直到扩展到终点为止
   url: https://baike.baidu.com/item/迪克斯特拉算法
-  type: 最短路径
-  image: 
-  typeinfo: 
+  type: 图
+  image:
+  typeinfo:
 
 -
   title: Floyd 算法
   description: 利用动态规划的思想寻找给定的加权图中多源点之间最短路径
   url: https://baike.baidu.com/item/Floyd算法
-  type: 最短路径
-  image: 
-  typeinfo: 
+  type: 图
+  image:
+  typeinfo:
 
 -
   title: Prim 算法
   description: 寻找与已生成的局部最小生成树所连通的路径权值最小的点，并将其加入最小生成树中
   url: https://baike.baidu.com/item/prim
-  type: 最小生成树
-  image: 
+  type: 图
+  image:
   typeinfo: 最小生成树指一个连通图的**最小权重生成树**，即原图的极小连通子图，且包含原图中的所有结点，并且有保持图连通的最少的边，且这些边的权值的和最小。
 
 -
   title: Kruskal 算法
   description: 将权值最小的边一一连接起来，成环则换下一条
   url: https://baike.baidu.com/item/克鲁斯卡尔算法
-  type: 最小生成树
-  image: 
-  typeinfo: 
+  type: 图
+  image:
+  typeinfo:
+
+-
+  title: 拓扑排序
+  description:
+  url:
+  type: 图
+  image:
+  typeinfo:
 
 -
   title: KMP 算法
@@ -135,14 +143,110 @@
   url: https://baike.baidu.com/item/sunday%20算法
   type: 字符串匹配
   image: /images/posts/KMP-alogrithm/sunday-algorithm.gif
-  typeinfo: 
+  typeinfo:
+
+-
+  title: 栈
+  description: 我们在寻找客栈时，数据同样寻求一个能够暂时栖息的地方，所以有了栈
+  url: /algorithm/stack.html
+  type: 数据结构
+  image:
+  typeinfo: 为了解决问题，我们创造了各式各样的工具。但学习、进步的过程并不是要有问题的时候才来学些使用工具，而是在问题到来时，我们早已能够选择并使用恰当的工具来解决问题
+
+-
+  title: 队列
+  description: 数据可比人类文明多了，只要你创造出队列，能破坏秩序的人就只有你自己
+  url: /algorithm/queue.html
+  type: 数据结构
+  image:
+  typeinfo:
+
+-
+  title: 散列表
+  description: 因为你在这个世界中独一无二，所以我才能在这片汪洋中一样就看到你
+  url:
+  type: 数据结构
+  image:
+  typeinfo:
+
+-
+  title: 双端队列
+  description: 当一辆无尽的列车直直地驶向镜子，在碰到镜子之后，它是穿过去了，还是离去了？
+  url:
+  type: 数据结构
+  image:
+  typeinfo:
+
+-
+  title: 堆
+  description: 身在谷底，依然希望一眼阅群山
+  url:
+  type: 数据结构
+  image:
+  typeinfo:
+
+-
+  title: 优先队列
+  description: 计算机世界里的数据也懂得老弱病残孕优先的道理呢
+  url:
+  type: 数据结构
+  image:
+  typeinfo:
+
+-
+  title: 二叉搜索树
+  description:
+  url:
+  type: 数据结构
+  image:
+  typeinfo:
+
+-
+  title: 二叉平衡搜索树
+  description:
+  url:
+  type: 数据结构
+  image:
+  typeinfo:
+
+-
+  title: 平衡树
+  description:
+  url:
+  type: 数据结构
+  image:
+  typeinfo:
+
+-
+  title: 单词查找树
+  description:
+  url:
+  type: 数据结构
+  image:
+  typeinfo:
+
+-
+  title: 哈夫曼树
+  description:
+  url:
+  type: 数据结构
+  image:
+  typeinfo:
+
+-
+  title: B+ 树
+  description:
+  url:
+  type: 数据结构
+  image:
+  typeinfo:
 
 -
   title: 质数
   description: 孤独的质数循环又无期，在世界的尽头等待偶遇
   url: /algorithm/arithmetic.html#质数
   type: 算术
-  image: 
+  image:
   typeinfo: 算术是所有其他算法的根基，加减乘除，取反求模，取幂对偶，这才是真正的数字魔法
 
 -
@@ -150,5 +254,5 @@
   description: 最大公因数，也称最大公约数、最大公因子，指两个或多个整数共有约数中最大的一个。
   url: /algorithm/arithmetic.html#最大公约数
   type: 算术
-  image: 
-  typeinfo: 
+  image:
+  typeinfo:

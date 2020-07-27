@@ -850,7 +850,7 @@ body.wiki {
     cursor: text;
     color: var(--color-primary);
     background: #f4f4f4;;
-    border: 1px solid #f4f4f4;;
+    border: 1px solid rgba(0,161,214, 1);;
 }
 .meta-info::before {
     margin-right: 0.5rem;
@@ -954,6 +954,7 @@ article a:active {
     color: var(--color-primary-light);
 }
 article table {
+    margin: 1rem auto;
     border-collapse: collapse;
 }
 article table thead {
@@ -964,7 +965,7 @@ article table tfoot {
 }
 article table td,
 article table th {
-    padding: 0.4em 0.8em;
+    padding: 0.6em 1em;
     border: 1px solid var(--color-divider-secondary);
 }
 article .task-list {
