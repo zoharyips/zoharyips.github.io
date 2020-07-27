@@ -71,8 +71,8 @@
                 break;
             case 'quest':
                 navMenusItems[3].classList.add('active');
-            default:
                 break;
+            default:
         }
     </script>
     <!-- ajax request packing-->
@@ -85,16 +85,23 @@
     {%- include js_hash.html -%}
     <script>
         let allAccess = -1;
+        let href = '';
         let fingerprint = '';
         let ipAddress = '';
+        href = window.location.href;
+        href = href.substring(0, href.indexOf('#') === -1 ? href.length : href.indexOf('#'));
         Fingerprint2.get(function (components) {
             fingerprint = hash(JSON.stringify(components));
         });
         ajax({
             method: 'GET',
-            url: 'http://47.102.149.103:8080/article/frequency',
+            url: 'https://zoharyip.club/article/frequency',
             success: function (response) {
                 allAccess = response;
+                let siteAccess = document.getElementById('site-access');
+                if (siteAccess) {
+                    siteAccess.innerText = allAccess;
+                }
             }
         });
         ajax({
@@ -104,22 +111,21 @@
                 ipAddress = response;
             }
         });
-        ajax({
-            method: 'POST',
-            url: 'http://47.102.149.103:8080/article/frequency',
-            data: {
-                'url': window.location.href,
-                'title': '{{ page.title }}',
-                'fingerprint': fingerprint,
-                'ip': ipAddress
-            },
-            success: function (response) {
-                let siteAccess = document.getElementById('site-acccess');
-                if (siteAccess) {
-                    siteAccess.innerText = response;
+        window.setTimeout(function () {
+            ajax({
+                method: 'POST',
+                url: 'https://zoharyip.club/article/frequency',
+                data: {
+                    'url': href,
+                    'title': '{{ page.title }}',
+                    'fingerprint': fingerprint,
+                    'ip': ipAddress
+                },
+                success: function (response) {
+                    console.log("更新页面信息：" + response);
                 }
-            }
-        });
+            });
+        }, 1000);
     </script>
     <!-- Prism -->
     {%- if page.prism -%}
