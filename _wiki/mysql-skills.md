@@ -2,75 +2,12 @@
 layout: wiki
 title: MySQL SQL 秘笈
 description: 有时候你想破头都不知道这条 SQL 该怎么写
-date: 2020-04-16
+date: 2020-07-27
 categories: Sql
 search: true
 catalogue: true
 prism: true
 ---
-
-## 表操作
-
-### 设置 create_time 与 update_time 字段
-
-* 数据类型：TIMESTAMP（格式为Y-m-d H:i:s），范围：1970 ~ 2037；
-
-* create_time
-
-    ```sql
-    ALTER TABLE [table]
-        MODIFY created_at TIMESTAMP
-        DEFAULT CURRENT_TIMESTAMP NOT NULL;
-    ALTER TABLE [table]
-        MODIFY updated_at TIMESTAMP
-        DEFAULT CURRENT_TIMESTAMP
-        ON UPDATE CURRENT_TIMESTAMP NOT NULL;
-    ```
-
-## 写操作
-
-### 插入千万级数据
-
-* 使用 insert 的多条模式，一个 sql 语句插入多条数据：
-
-    ```sql
-    INSERT INTO table (field1,field2,field3) VALUES ('a','b','c'), ('a','b','c'),('a','b','c');
-    ```
-
-* MySql 会为单一条 sql 语句执行事务操作，因此逐条执行 sql 插入时事务操作会占用很多时间，因此我们可以对 sql 插入进行批处理，处理前开启事务，处理后提交事务。
-
-    ```sql
-    begin transaction;
-    insert ...
-    ...
-    insert ...
-    commit transaction;
-    ```
-
-* 示例：
-
-    ```php
-    $faker = Factory::create('zh_CN');
-    for ($i = 0; $i < 10; $i++) {
-        DB::beginTransaction();
-        try {
-            for ($j = 0; $j < 10; $j++) {
-                $sql = "insert into customer (name, birthday, gender, mobile) values ('你好', '1993-03-17 08:00:00', 1 , 12345678901)";
-                for ($record = 0; $record < 100000; $record++) {
-                    $sql .= ", ('". $faker->name . "', '" . $faker->dateTime->format('Y-m-d H:i:s') . "', " . $faker->numberBetween(1, 3) . ', ' . $faker->phoneNumber . ')';
-                }
-                DB::insert($sql);
-            }
-            DB::commit();
-        } catch(QueryException $ex) {
-            DB::rollback();
-        }
-    }
-    ```
-
-* `bulk_insert_buffer_size` 这个参数仅作用于使用 MyISAM 存储引擎，用来缓存批量插入数据的时候临时缓存写入数据，默认值为 8M，如果需要更快的批量处理，我们可以把它调整到 32M 甚至更大。
-
-* `max_allowed_packet` 参数会限制 MySql 服务器接受的数据包大小。此时太大的插入和更新会受 max_allowed_packet 参数限制。
 
 ## 查询
 
@@ -281,3 +218,117 @@ prism: true
     SELECT c.`id`, c.`name`, IFNULL(w.`level`, 0) as level 
         FROM customer c LEFT JOIN white_list w ON c.`id` = w.`customer_id` LIMIT 5;
     ```
+  
+### 基础查询
+
+#### 版本
+
+~~~sql
+SELECT version();
+~~~
+
+#### 查询数据库各表记录数
+
+~~~sql
+USE information_schema;
+SELECT table_name,table_rows FROM TABLES WHERE TABLE_SCHEMA = '[databese]' ORDER BY table_rows DESC;
+~~~
+
+## 表操作
+
+### 设置 create_time 与 update_time 字段
+
+* 数据类型：TIMESTAMP（格式为Y-m-d H:i:s），范围：1970 ~ 2037；
+
+* create_time
+
+    ```sql
+    ALTER TABLE [table]
+        MODIFY created_at TIMESTAMP
+        DEFAULT CURRENT_TIMESTAMP NOT NULL;
+    ALTER TABLE [table]
+        MODIFY updated_at TIMESTAMP
+        DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP NOT NULL;
+    ```
+  
+## 字符集
+
+### 查看字符集
+
+* 查看数据库编码：
+
+    ~~~sql
+    SHOW CREATE DATABASE [database];
+    ~~~
+
+* 查看表编码：
+
+    ~~~sql
+    SHOW CREATE TABLE [table];
+    ~~~
+
+* 查看字段编码：
+
+    ~~~sql
+    SHOW FULL COLUMNS FROM [table];
+    ~~~
+
+### 修改表字符集
+
+1. 设置表的编码
+
+    ~~~sql
+    ALTER TABLE [table] CHARACTER SET utf8mb4;
+    ~~~
+  
+2. 修改表字段的字符集
+
+    ~~~sql
+    ALTER TABLE [table] CONVERT TO CHARACTER SET utf8mb4;
+    ~~~
+
+## 写操作
+
+### 插入千万级数据
+
+* 使用 insert 的多条模式，一个 sql 语句插入多条数据：
+
+    ```sql
+    INSERT INTO table (field1,field2,field3) VALUES ('a','b','c'), ('a','b','c'),('a','b','c');
+    ```
+
+* MySql 会为单一条 sql 语句执行事务操作，因此逐条执行 sql 插入时事务操作会占用很多时间，因此我们可以对 sql 插入进行批处理，处理前开启事务，处理后提交事务。
+
+    ```sql
+    begin transaction;
+    insert ...
+    ...
+    insert ...
+    commit transaction;
+    ```
+
+* 示例：
+
+    ```php
+    $faker = Factory::create('zh_CN');
+    for ($i = 0; $i < 10; $i++) {
+        DB::beginTransaction();
+        try {
+            for ($j = 0; $j < 10; $j++) {
+                $sql = "insert into customer (name, birthday, gender, mobile) values ('你好', '1993-03-17 08:00:00', 1 , 12345678901)";
+                for ($record = 0; $record < 100000; $record++) {
+                    $sql .= ", ('". $faker->name . "', '" . $faker->dateTime->format('Y-m-d H:i:s') . "', " . $faker->numberBetween(1, 3) . ', ' . $faker->phoneNumber . ')';
+                }
+                DB::insert($sql);
+            }
+            DB::commit();
+        } catch(QueryException $ex) {
+            DB::rollback();
+        }
+    }
+    ```
+
+* `bulk_insert_buffer_size` 这个参数仅作用于使用 MyISAM 存储引擎，用来缓存批量插入数据的时候临时缓存写入数据，默认值为 8M，如果需要更快的批量处理，我们可以把它调整到 32M 甚至更大。
+
+* `max_allowed_packet` 参数会限制 MySql 服务器接受的数据包大小。此时太大的插入和更新会受 max_allowed_packet 参数限制。

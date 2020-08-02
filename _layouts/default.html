@@ -84,33 +84,28 @@
     <!-- hash algorithm -->
     {%- include js_hash.html -%}
     <script>
-        let allAccess = -1;
-        let href = '';
-        let fingerprint = '';
-        let ipAddress = '';
-        href = window.location.href;
-        href = href.substring(0, href.indexOf('#') === -1 ? href.length : href.indexOf('#'));
+        let fingerprint = 'not generated';
         Fingerprint2.get(function (components) {
-            fingerprint = hash(JSON.stringify(components));
+            let values = components.map(function (component) {
+                return component.value;
+            });
+            fingerprint = Fingerprint2.x64hash128(values.join(''), 31);
         });
+
         ajax({
             method: 'GET',
             url: 'https://zoharyip.club/article/frequency',
             success: function (response) {
-                allAccess = response;
-                let siteAccess = document.getElementById('site-access');
-                if (siteAccess) {
-                    siteAccess.innerText = allAccess;
+                let siteAccessElement = document.getElementById('site-access');
+                if (siteAccessElement) {
+                    siteAccessElement.innerText = response;
                 }
             }
         });
-        ajax({
-            method: 'GET',
-            url: 'https://ifconfig.me/ip',
-            success: function (response) {
-                ipAddress = response;
-            }
-        });
+
+        let href = window.location.href;
+        href = href.substring(0, href.indexOf('#') === -1 ? href.length : href.indexOf('#'));
+
         window.setTimeout(function () {
             ajax({
                 method: 'POST',
@@ -118,14 +113,12 @@
                 data: {
                     'url': href,
                     'title': '{{ page.title }}',
-                    'fingerprint': fingerprint,
-                    'ip': ipAddress
+                    'fingerprint': fingerprint
                 },
                 success: function (response) {
                     console.log("更新页面信息：" + response);
                 }
-            });
-        }, 1000);
+        })}, 1500);
     </script>
     <!-- Prism -->
     {%- if page.prism -%}
