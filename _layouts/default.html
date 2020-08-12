@@ -26,6 +26,17 @@
         {%- if page.prism -%}
             <link rel="stylesheet" type="text/css" href="/assets/vender/prism/prism.css">
         {%- endif -%}
+
+        <!-- Baidu Statistics -->
+        <script>
+            var _hmt = _hmt || []
+            (function() {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?456103b2fcc2e865ad0109066ec2a125";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
     </head>
     {%- assign whitespace = ' ' -%}
     <body class="{%- if page.class -%}{{ page.class }}{%- endif -%}{%- if page.layout -%}{{ whitespace }}{{ page.layout }}{%- endif -%}">
