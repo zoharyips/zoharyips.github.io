@@ -2,7 +2,7 @@
 layout: post
 title: 字符串算法 - 反复横跳的回文串
 categories: [Algorithm]
-keywords: [alogrithm, palindrome, palindrome string, string algorithm, string]
+keywords: [algorithm, palindrome, palindrome string, string algorithm, string]
 permalink: /algorithm/:title.html
 image: images/wallpaper/sunset.jpg
 search: true

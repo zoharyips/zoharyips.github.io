@@ -332,3 +332,47 @@ SELECT table_name,table_rows FROM TABLES WHERE TABLE_SCHEMA = '[databese]' ORDER
 * `bulk_insert_buffer_size` 这个参数仅作用于使用 MyISAM 存储引擎，用来缓存批量插入数据的时候临时缓存写入数据，默认值为 8M，如果需要更快的批量处理，我们可以把它调整到 32M 甚至更大。
 
 * `max_allowed_packet` 参数会限制 MySql 服务器接受的数据包大小。此时太大的插入和更新会受 max_allowed_packet 参数限制。
+
+### 插入数据唯一性约束
+
+1. **insert ignore into ...**: 若有重复数据，不进行插入
+
+    前提：建立唯一索引，如需要对下表 username 和 mobile 建立唯一索引
+    
+    ~~~sql
+    insert ignore into user(username, mobile, address) 
+        values("Lillian", 2147483647, "Beijing");
+    ~~~
+
+2. **on duplicate key update**：若有重复数据，不进行插入，但对数据指定字段进行更新
+
+    前提：建立唯一索引，如需要对下表 username 和 mobile 建立唯一索引
+    
+    ~~~sql
+    insert into user(username, mobile, address) 
+        values("Lillian", 2147483647, "Beijing") 
+        on duplicate key update address="Beijing";
+    ~~~
+   
+3. **replace into**：若有重复数据，删除旧数据，插入新数据
+
+    前提：建立唯一索引，如需要对下表 username 和 mobile 建立唯一索引
+
+    ~~~sql
+    replace into user(username, mobile, address)
+        values("Lillian", 2147483647, "Beijing");
+    ~~~
+   
+4. **insert if not exists**：若有重复数据，不进行插入
+
+    前提：无，适用于不建立唯一索引的表
+    
+    使用方法：select 中每一个值对应 insert 的每一个字段，where exists 子查询中的搜索条件为唯一性约束条件
+    
+    ~~~sql
+    insert into user(username, mobile, address)
+        select "Lillian", 2147483647, "Beijing" from user
+        where not exists (
+            select username, mobile from user where username="Lillian" and mobile=2147483647
+        );
+    ~~~
