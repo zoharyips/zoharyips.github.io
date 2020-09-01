@@ -31,10 +31,13 @@
     --emoji-computer:              '🖥️';
     --emoji-architecture:          '📐';
 }
-html, body {
+html {
     margin: 0;
     width: 100%;
     height: 100%;
+}
+body {
+    margin: 0;
 }
 body {
     display: flex;
@@ -52,9 +55,11 @@ header, .mian, footer {
 footer {
     flex: 0 0 auto;
 }
-header .container, .main .container, footer .container {
+.container, .main .container, footer .container {
     margin: 0 auto;
     max-width: 1020px;
+}
+.container {
     min-width: 850px;
 }
 .container--main-body {
@@ -882,7 +887,16 @@ article h4 {
 article h2,
 article h3,
 article h4 {
+    margin-top: 1.8em;
     margin-bottom: 0;
+}
+article h1 abbr[title],
+article h2 abbr[title],
+article h3 abbr[title],
+article h4 abbr[title],
+article h5 abbr[title],
+article h6 abbr[title] {
+    text-decoration: none;
 }
 article em {
     margin-left: 0.3em;
@@ -923,8 +937,9 @@ article blockquote p::after {
 }
 article p code,
 article table code,
+article li code,
 article a code {
-    margin: 0px 2px;
+    margin: 0 2px;
     padding: 1px 4px;
     font-weight: 500;
     font-size: 0.8em;
@@ -939,7 +954,7 @@ article a code {
     border-radius: 3px;
 }
 article p {
-    line-height: 1.4em;
+    line-height: 1.8em;
 }
 article a {
     text-decoration: none;
@@ -968,6 +983,13 @@ article table th {
     padding: 0.6em 1em;
     border: 1px solid var(--color-divider-secondary);
 }
+article td strong {
+    white-space: nowrap;
+}
+article li {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
 article .task-list {
     list-style: none;
     padding-left: 2em;
@@ -979,6 +1001,19 @@ article sup,
 article sub {
     font-size: 0.6rem;
 }
+article .footnotes ol {
+    padding-inline-start: 1em;
+    font-family: 宋体, serif;
+}
+article a.footnote::before {
+    content: "[";
+}
+article a.footnote::after {
+    content: "]";
+}
+article .footnotes ol li, article .footnotes ol p {
+    margin: 0.3em;
+}
 
 /* 目录 */
 #markdown-toc {
@@ -987,6 +1022,9 @@ article sub {
 #markdown-toc a {
     color: var(--color-text-dark-secondary);
     text-decoration: none;
+}
+#markdown-toc li {
+    margin: 0.5em 0;
 }
 
 /* Side Bar */
@@ -1493,91 +1531,6 @@ div.code-toolbar > .toolbar button:hover {
 }
 .mdi[data-mdi-custom="ide"]::before {
     content: "\F0ECE";
-}
-/* Language icons */
-.lang::before {
-    content: url(../svg/lang/unknown.svg);
-}
-.lang[data-lang="c"]::before {
-    content: url(../svg/lang/c.svg);
-}
-.lang[data-lang="cpp"]::before {
-    content: url(../svg/lang/cpp.svg);
-}
-.lang[data-lang="csharp"]::before {
-    content: url(../svg/lang/csharp.svg);
-}
-.lang[data-lang="css"]::before {
-    content: url(../svg/lang/css.svg);
-}
-.lang[data-lang="fortran"]::before {
-    content: url(../svg/lang/fortran.svg);
-}
-.lang[data-lang="go"]::before {
-    content: url(../svg/lang/go.svg);
-}
-.lang[data-lang="haskell"]::before {
-    content: url(../svg/lang/haskell.svg);
-}
-.lang[data-lang="html"]::before {
-    content: url(../svg/lang/html.svg);
-}
-.lang[data-lang="java"]::before {
-    content: url(../svg/lang/java.svg);
-}
-.lang[data-lang="javascript"]::before {
-    content: url(../svg/lang/javascript.svg);
-}
-.lang[data-lang="kotlin"]::before {
-    content: url(../svg/lang/kotlin.svg);
-}
-.lang[data-lang="lua"]::before {
-    content: url(../svg/lang/lua.svg)
-}
-.lang[data-lang="markdown"]::before {
-    content: url(../svg/lang/markdown.svg)
-}
-.lang[data-lang="php"]::before {
-    content: url(../svg/lang/php.svg)
-}
-.lang[data-lang="python"]::before {
-    content: url(../svg/lang/python.svg)
-}
-.lang[data-lang="r"]::before {
-    content: url(../svg/lang/r.svg);
-}
-.lang[data-lang="ruby"]::before {
-    content: url(../svg/lang/ruby.svg);
-}
-.lang[data-lang="swift"]::before {
-    content: url(../svg/lang/swift.svg);
-}
-.lang[data-lang="typescript"]::before {
-    content: url(../svg/lang/typescript.svg);
-}
-.lang[data-lang="xaml"]::before {
-    content: url(../svg/lang/xaml.svg);
-}
-.lang[data-lang="angular"]::before {
-    content: url(../svg/lang/angular.svg);
-}
-.lang[data-lang="powershell"]::before {
-    content: url(../svg/lang/powershell.svg);
-}
-.lang[data-lang="bash"]::before {
-    content: url(../svg/lang/bash.svg);
-}
-.lang[data-lang="latex"]::before {
-    content: url(../svg/lang/latex.svg);
-}
-.lang[data-lang="yaml"]::before {
-    content: url(../svg/lang/yaml.svg);
-}
-.lang[data-lang="vim"]::before {
-    content: url(../svg/lang/vim.svg);
-}
-.lang[data-lang="vue"]::before {
-    content: url(../svg/lang/vue.svg);
 }
 .skill-btn[data-skill="java"]::after {
     content: "\F06CA";
