@@ -136,7 +136,9 @@ prism: true
     SELECT ifnull ((SELECT data FROM [table] GROUP BY data DESC LIMIT 1, 1), null) AS max;
     ```
 
-### 行列转换：将多行数据转换成多列数据
+### 行列转换
+
+#### 将多行数据转换成多列数据
 
 * 效果：
 
@@ -174,6 +176,14 @@ prism: true
     FROM test 
     GROUP BY class;
     ```
+  
+#### 将多行数据转换为单列数据
+
+* 效果：
+
+* 使用 `GROUP_CONCAT()` 函数
+
+    `GROUP_CONCAT()` 函数可以将多行中同一列的数据拼接起来，可以指定分隔符和指定合并时排序的顺序。
 
 ### 最大值：单行多列数据取最大值
 

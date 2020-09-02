@@ -937,7 +937,7 @@ article blockquote p::after {
 }
 article p code,
 article table code,
-article li code,
+article li code:not([class]),
 article a code {
     margin: 0 2px;
     padding: 1px 4px;
@@ -985,10 +985,6 @@ article table th {
 }
 article td strong {
     white-space: nowrap;
-}
-article li {
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
 }
 article .task-list {
     list-style: none;
