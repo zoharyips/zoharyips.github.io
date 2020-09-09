@@ -122,6 +122,85 @@ prism: true
 * 统计分支间文件改动
 
     `git diff --stat master origin/master`
+    
+## Git Log
+
+* 指定 Log 次数：`git log -<num>`，如：`git log -2`
+
+* 单行模式
+
+    * 简略：`git log --oneline`
+    * 完整：`git log --pretty=oneline`
+    
+* 代码审查：`git log -p`
+
+* 统计行数变换：`git log --stat`
+
+### Pretty
+
+#### 默认格式
+
+* `--pretty=oneline`：单行显示，仅显示完整 Commit ID 与 Commit Message
+
+* `--pretty=short`：增加显示 Author 信息
+
+* `--pretty=full`：增加显示 Commit 用户信息
+
+* `--pretty=fuller`：增加显示时间相关信息
+
+#### 定制格式
+
+## 打标签
+
+### 查询操作
+
+* 列出标签 `git tag`
+
+* 匹配模式列出标签 `git tag -l <pattern>`
+
+    * 支持前缀匹配：`git tag -l *_2020.01.01.01`
+    * 支持后缀匹配：`git tag -l app_2020.*`
+    * 支持同时匹配：`git tag -l *_2020.*`
+
+* 查看标签详细信息与提交信息 `git show`
+
+* 校验标签信息，仅对附注标签有效 `git tag -v <tagName>`
+
+* 按行查看提交备注信息 `git tag -n <lineNumber> <tagName>`
+
+### 添加标签
+
+#### 轻量标签
+
+将提交信息校验和存储到一个文件中，不保存任何其他信息，也就是说**仅有标签名**，没有其他任何信息。它的创建不得包含 `-a`、`-m` 与 `-s` 选项
+
+* 创建轻量标签 `git tag <tagName>`
+
+* 查看轻量标签，可以看到，除了标注该提交上有 tag name，没有其他任何关于 tag 的信息
+
+    ```bash
+    zohar@LAPTOP-FC5I09PK:~/zoharyips.github.io$ git show lig_weight_tag
+    commit c819f38d0ded8411d0c427896530f83f10b3639c (HEAD -> master, tag: lig_weight_tag, origin/master, origin/HEAD)
+    Author: zoharyips <zoharyips@outlook.com>
+    Date:   Wed Sep 2 18:39:20 2020 +0800
+    
+        fix a bug
+    
+    diff --git a/_wiki/mysql-skills.md b/_wiki/mysql-skills.md
+    index e67329f..6f00866 100644
+    --- a/_wiki/mysql-skills.md
+    +++ b/_wiki/mysql-skills.md
+    @@ -136,7 +136,9 @@ prism: true
+         SELECT ifnull ((SELECT data FROM [table] GROUP BY data DESC LIMIT 1, 1), null) AS max;
+         ```
+    ```
+  
+#### 附注标签
+
+
+* 添加标签 `git tag -a <tagName> -m <message>`
+
+* 推送标签 `git push origin <tagName>`
 
 ## 创建仓库
 
