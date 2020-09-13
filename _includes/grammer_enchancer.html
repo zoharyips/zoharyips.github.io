@@ -1,0 +1,15 @@
+<script>
+    /**
+     * ruby 标注语法生成
+     *
+     * @param str
+     * @returns {*}
+     */
+    function rubyFormatter(str) {
+        return str.replace(/{([^{}()]+)}\(([^{}()]+)\)/g, function(match, $1, $2) {
+            return '<ruby>' + $1 + '<rt>' + $2 + '</rt></ruby>';
+        });
+    }
+    let rubyArt = document.getElementsByTagName('article')[0];
+    rubyArt.innerHTML = rubyFormatter(rubyArt.innerHTML);
+</script>

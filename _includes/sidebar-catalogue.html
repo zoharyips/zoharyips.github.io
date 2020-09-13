@@ -13,7 +13,7 @@
         constructor(element, level) {
             this.element = element;
             this.level = level;
-            this.subTitles = new Array();
+            this.subTitles = [];
         }
 
         static generateCatalogue (title, parentElement) {
@@ -58,7 +58,7 @@
             case 'h3':
                 currentH3 = currentH2.addSubTitle(element, Title.LEVEL_H3);
                 break;
-            case 'h4': 
+            case 'h4':
                 currentH3.addSubTitle(element, Title.LEVEL_H4);
                 break;
             default:
@@ -68,7 +68,7 @@
     // 遍历树，输出标题
     let catalogue = document.getElementsByClassName('catalogue__list')[0];
     Title.generateCatalogue(Title.rootTitle, catalogue);
-    
+
     const catalogueSection = document.getElementById('sidebar-catalogue');
     // Offset Top 是相对于父元素顶部距离
     const catalogueOffsetTop = catalogueSection.offsetTop;

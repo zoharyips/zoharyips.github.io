@@ -997,6 +997,18 @@ article sup,
 article sub {
     font-size: 0.6rem;
 }
+article ruby {
+    font-size: 0.9em;
+    font-weight: 600;
+}
+article ruby rt {
+    color: rgb(84, 110, 122);
+    font-size: 0.6em;
+    font-family: JetBrainsMono, monospace;
+}
+article ruby rt strong {
+    margin: 0;
+}
 article .footnotes ol {
     padding-inline-start: 1em;
     font-family: 宋体, serif;
