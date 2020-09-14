@@ -873,7 +873,7 @@ article {
     --color-text-secondary: #757575;
     position: relative;
     color: rgb(26,26,26);
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 article h2 {
     font-size: 1.5rem;
@@ -1003,7 +1003,7 @@ article ruby {
 }
 article ruby rt {
     color: rgb(84, 110, 122);
-    font-size: 0.6em;
+    font-size: 0.7em;
     font-family: JetBrainsMono, monospace;
 }
 article ruby rt strong {
