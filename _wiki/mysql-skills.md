@@ -231,6 +231,12 @@ prism: true
   
 ### 基础查询
 
+#### 运行线程
+
+~~~sql
+show processlist;
+~~~
+
 #### 版本
 
 ~~~sql
