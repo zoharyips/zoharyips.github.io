@@ -6,12 +6,13 @@ keywords: [computer, number coding, Sign-Magnitude, Ones's Complement,
           Two's-complement, Integer, Floating Point Number, Offset binary,
           计算机组成, 数的编码, 原码, 反码, 补码, 整数, 浮点数, 移码, 偏置码]
 permalink: /computer/:title.html
+image: images/wallpaper/binary.jpg
 search: true
 qrcode: true
 catalogue: true
 mathjax: true
 prism: true
-description: MBR Sector (Master Boot Record Sector) 是主引导记录扇区, 是硬盘上的第一个分区, 独立于其他文件系统。MBR 扇区 在磁盘上出现得比较多, 随着固件和硬件的发展, 将逐步被淘汰
+description: 对于拥有十只手指的人类而言，十进制是理所当然的存在。但对于计算机而言，二进制是最优雅最无可挑剔的存在。或许转向二进制，是人类世界的下一次革命
 ---
 
 ## 信息存储

@@ -26,7 +26,8 @@ qrcode: true
     <div class="content">
         <div class="notification mdi" data-mdi="alert-circle-outline">
             <div class="notification__list transition3">
-                {%- for notification in site.data.notification -%}
+                {%- assign notifications = site.data.notification | sample: 8 -%}
+                {%- for notification in notifications -%}
                     <div class="notification__list__item">
                         <div class="notification__list__item--content">
                             {{ notification.content }}

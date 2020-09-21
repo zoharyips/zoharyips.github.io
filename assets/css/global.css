@@ -401,7 +401,7 @@ footer .container {
 /* Index */
 .notification {
     position: relative;
-    height: 1.5rem;
+    height: 2.5rem;
     overflow: hidden;
     color: var(--color-text-dark-secondary);
     background-color: #edf2f9;
@@ -416,10 +416,10 @@ footer .container {
 }
 .notification__list {
     margin-left: 3rem;
-    animation: vertical-scrolling 25s infinite;
+    animation: vertical-scrolling 50s infinite;
 }
 .notification__list__item {
-    height: 1.5rem;
+    height: 2.5rem;
     width: 100%;
     display: flex;
     align-items: center;
@@ -431,6 +431,7 @@ footer .container {
 .notification__list__item--time {
     margin-right: 1.5rem;
     font-size: 1rem;
+    white-space: nowrap;
     color: var(--color-text-dark-thirdary);
 }
 .posts-list {
@@ -806,7 +807,7 @@ body.wiki {
 }
 .post h1,
 .wiki h1 {
-    font-size: 1.8  rem;
+    font-size: 1.8rem;
 }
 .post_description {
     margin: 0 0 1rem 0;
@@ -1323,20 +1324,29 @@ div.code-toolbar > .toolbar button:hover {
     }
 }
 @keyframes vertical-scrolling {
-    0%,15%, 100% {
-        transform: translateY(0);
+    0%, 10%, 100% {
+        transform: translateY(0rem);
     }
-    20%,35% {
-        transform: translateY(-1.5rem);
+    12.5%, 22.5% {
+        transform: translateY(-2.5rem);
     }
-    40%, 55% {
-        transform: translateY(-3rem);
+    25%, 35% {
+        transform: translateY(-5rem);
     }
-    60%, 75% {
-        transform: translateY(-4.5rem);
+    37.5%, 47.5% {
+        transform: translateY(-7.5rem);
     }
-    80%, 95% {
-        transform: translateY(-6rem);
+    50%, 60% {
+        transform: translateY(-10rem);
+    }
+    62.5%, 72.5% {
+        transform: translateY(-12.5rem);
+    }
+    75%, 85% {
+        transform: translateY(-15rem);
+    }
+    87.5%, 97.5% {
+        transform: translateY(-17.5rem);
     }
 }
 @keyframes drop-down-qrcode {

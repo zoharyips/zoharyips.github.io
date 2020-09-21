@@ -1,19 +1,31 @@
 -
-  content: 标普 500 指数周三大跌 7% 触发熔断机制，为美股史上第五次熔断
-  time: 2020.03.19
-
-- 
-  content: 现在在进行博客改版，哈哈，你来了真的是蓬荜生辉呢！
-  time: 2020.05.25
+  content: Oak 语言改名为 Java，伴随着“Write Once, Run Anywhere”的口号，Java 1.0 发布
+  time: 1995.05.23
 
 -
-  content: 弗洛伊德之死：美国一黑人男子遭受暴力执法死亡，引发美国多城抗议
-  time: 2020.05.25
+  content: 世界上第一台通用计算机“ENIAC”在美国宾夕法尼亚大学诞生
+  time: 1946.02.14
 
 -
-  content: 网信办依法约谈处罚新浪微博，热搜榜暂停更新一周
-  time: 2020.06.10
+  content: 在 ARPA 协定下，美国四所大学四台主要的计算机联机成功，标志着因特网开始诞生
+  time: 1969 年 12 月
 
 -
-  content: 大和带走了和乌尔提、佩吉万对峙中的路飞，逃跑途中和路飞说自己在等着他
-  time: 2020.06.15
+  content: 一个名为 Linus Torvalds 的年轻芬兰大学生在 comp.os.minix 这个新闻群组上发表了一个帖子，讲他完成的作业系统。从此 Linux 诞生
+  time: 1991.10.5
+
+-
+  content: Intel 发布了新款 16 位微处理器“8086”，也同时开创了一个新时代：x86架构诞生了
+  time: 1978.06.08
+
+-
+  content: JDK 1.0 发布，Java 语言拥有了第一个正式版本的运行环境，这里面自然包含了第一代 JAVA 虚拟机实现：Sun Classic VM
+  time: 1996.01.23
+
+-
+  content: 美国贝尔实验室的 D.M.Ritchie 在 B 语言的基础上最终设计出了一种新的语言，他取了 BCPL 的第二个字母作为这种语言的名字，这就是 C 语言。
+  time: 1972年
+
+-
+  content: Harvard Mark II 计算机因为不明原因停止运作，Grace Brewster Murray 经过仔细检查，发现是一只飞蛾飞进继电器造成短路，她在记录本上写下：发现一个 Bug
+  time: 1944年7月
