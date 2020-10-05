@@ -954,8 +954,15 @@ article a code {
     background: rgb(247, 249, 250);
     border-radius: 3px;
 }
+/*article ul li .MathJax_Display {*/
+/*    text-align: left!important;*/
+/*}*/
 article p {
     line-height: 1.8em;
+}
+article p > img {
+    display: block;
+    margin: 0 auto;
 }
 article a {
     text-decoration: none;
