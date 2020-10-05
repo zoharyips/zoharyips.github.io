@@ -52,7 +52,29 @@ $$1 - \cos x$$ | $$x^2\over 2$$ | $$\tan x - \sin x$$ | $$x^2 \over 2$$
 $$\tan x - x$$ | $$x^3 \over 3$$  | $$x - \arctan x$$ | $$x^3 \over 3$$ 
 $$x - \sin x$$ | $$x^3 \over 6$$ | $$\arcsin x - x$$ | $$x^3 \over 6$$
 
-## 空间
+## 向量代数与空间解析几何
+
+### 向量
+
+* **向量**：既有大小，又有方向的量称为向量，计为 $$\vec a$$，$$\vec {AB}$$。
+
+* **模**：向量的大小为向量的模，记为 $$\| \vec a\| $$，$$\| \vec {AB}\|$$。
+
+* **相等**：大小和方向相同的两个向量相等。
+
+* **单位向量**：模为 1 的向量为单位向量。
+
+* **零向量**：模为 0 的向量为零向量，其方向任意。
+
+### 向量的坐标表示
+
+在空间直角坐标系 Oxyz 中，若 $$\vec a = \vec {OM}$$，点 M 的坐标 (x,y,z) 称为 $$\vec a$$ 的坐标，记为 $$\vec a = (x, y, z)$$，
+
+以坐标方式表示向量间关系，$\vec a = (x_a, y_a, z_a), \vec b = (x_b, y_b, z_b)$$：
+
+* 向量相等：$$\vec a = \vec b \Leftrightarrow x_a = x_b,\quad y_a = y_b,\quad y_a = y_b$$ 
+
+* 向量平行：$$\vec a // \vec b \Leftrightarrow {x_a \over x_b} = {y_a \over y_b} = {z_a \over z_b}$$
 
 ### 平面
 
