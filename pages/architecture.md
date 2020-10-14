@@ -8,11 +8,12 @@ search: true
 qrcode: true
 ---
 
-{% assign computer_pages = site.posts | where_exp:"item", "item.categories contains 'Architecture'" %}
+{% assign architecture_pages = site.posts | where_exp:"item", "item.categories contains 'Architecture'" %}
 
 <ul class="categories">
-  {% for article in computer_pages %}     
+  {% for article in architecture_pages %}     
     <li class="categories__item">
+      <span class="categories__item__meta">{{ article.date | date:"%Y-%m-%d" }}</span>
       <a class="categories__item__title" href="{{ article.url }}">
         {{ article.title }}
       </a>

@@ -13,6 +13,7 @@ banner: /images/page/computer.png
 <ul class="categories">
   {% for article in computer_pages %}     
     <li class="categories__item">
+      <span class="categories__item__meta">{{ article.date | date:"%Y-%m-%d" }}</span>
       <a class="categories__item__title" href="{{ article.url }}">
         {{ article.title }}
       </a>

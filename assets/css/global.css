@@ -30,8 +30,10 @@
     --emoji-source-code:           '🔣';
     --emoji-computer:              '🖥️';
     --emoji-architecture:          '📐';
+    --emoji-database:              '⏳';
 }
 html {
+    min-width: 1020px;
     margin: 0;
     width: 100%;
     height: 100%;
@@ -40,6 +42,7 @@ body {
     margin: 0;
 }
 body {
+    height: 100%;
     display: flex;
     flex-direction: column;
     background: var(--color-bg);
@@ -127,7 +130,6 @@ header .container {
     position: relative;
     display: flex;
     width: fit-content;
-    margin-right: -2rem;
 }
 .menus__item {
     position: relative;
@@ -231,6 +233,9 @@ header .container {
 }
 .menus__item__sub-menu__item:nth-child(5):before {
     content: var(--emoji-architecture);
+}
+.menus__item__sub-menu__item:nth-child(6):before {
+    content: var(--emoji-database);
 }
 .menus__item__sub-menu__item.active,
 .menus__item__sub-menu__item:hover {
@@ -654,6 +659,9 @@ a.paginator__item--active {
 }
 .page .banner h1[data-page="/architecture.html"]::before {
     content: var(--emoji-architecture);
+}
+.page .banner h1[data-page="/database.html"]::before {
+    content: var(--emoji-database);
 }
 .page .banner h1[data-page="/quest.html"]::before {
     content: var(--emoji-quest);
@@ -1557,57 +1565,6 @@ div.code-toolbar > .toolbar button:hover {
 .mdi[data-mdi-custom="ide"]::before {
     content: "\F0ECE";
 }
-.skill-btn[data-skill="java"]::after {
-    content: "\F06CA";
-}
-.skill-btn[data-skill="go"]::after {
-    content: "\F07D3";
-}
-.skill-btn[data-skill="c"]::after {
-    content: "\F0671";
-}
-.skill-btn[data-skill="c++"]::after {
-    content: "\F0672";
-}
-.skill-btn[data-skill="python"]::after {
-    content: "\F0320";
-}
-.skill-btn[data-skill="php"]::after {
-    content: "\F031F";
-}
-.skill-btn[data-skill="spring"]::after {
-    content: "\XE600";
-}
-.skill-btn[data-skill="springboot"]::after {
-    content: "";
-}
-.skill-btn[data-skill="springsecurity"]::after {
-    content: "";
-}
-.skill-btn[data-skill="netty"]::after {
-    content: "";
-}
-.skill-btn[data-skill="laravel"]::after {
-    content: "\F0AD0";
-}
-.skill-btn[data-skill="html"]::after {
-    content: "\F031D";
-}
-.skill-btn[data-skill="css"]::after {
-    content: "\F031C";
-}
-.skill-btn[data-skill="javascript"]::after {
-    content: "\F031E";
-}
-.skill-btn[data-skill="vue"]::after {
-    content: "\F0844";
-}
-.skill-btn[data-skill="angular"]::after {
-    content: "\F06BF";
-}
-.skill-btn[data-skill="android"]::after {
-    content: "\F0032";
-}
-.skill-btn[data-skill="wechat applet"]::after {
-    content: "\F0611";
+.mdi[data-mdi-custom="math"]::before {
+    content: "\F0628";
 }

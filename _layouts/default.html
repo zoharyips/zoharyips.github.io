@@ -26,17 +26,6 @@
         {%- if page.prism -%}
             <link rel="stylesheet" type="text/css" href="/assets/vender/prism/prism.css">
         {%- endif -%}
-
-        <!-- Baidu Statistics -->
-        <script>
-            var _hmt = _hmt || []
-            (function() {
-                var hm = document.createElement("script");
-                hm.src = "https://hm.baidu.com/hm.js?456103b2fcc2e865ad0109066ec2a125";
-                var s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(hm, s);
-            })();
-        </script>
     </head>
     {%- assign whitespace = ' ' -%}
     <body class="{%- if page.class -%}{{ page.class }}{%- endif -%}{%- if page.layout -%}{{ whitespace }}{{ page.layout }}{%- endif -%}">
@@ -77,6 +66,10 @@
                 navCollection.classList.add('active');
                 navCollection.firstElementChild.children[4].classList.add('active');
                 break;
+            case 'database':
+                navCollection.classList.add('active');
+                navCollection.firstElementChild.children[5].classList.add('active');
+                break;
             case 'wiki':
                 navMenusItems[4].classList.add('active');
                 break;
@@ -88,8 +81,6 @@
     </script>
     <!-- ajax request packing-->
     {%- include js_ajax.html -%}
-    <!-- zhihu background base on canvas -->
-    {%- include js_zhihu-bg.html -%}
     <!-- fingerprint2 algorithm -->
     {%- include js_fingerprint2.html -%}
     <!-- hash algorithm -->
@@ -132,28 +123,51 @@
         })}, 1500);
     </script>
 
+    {%- if page.bg != false -%}
+    <!-- zhihu background base on canvas -->
+    {%- include js_zhihu-bg.html -%}
+    {%- endif -%}
+
     <!-- 语法增强器-->
-    {%- include grammer_enchancer.html -%}
+    {%- if page.grammar_enhancer != false -%}
+        {%- include grammar_enhancer.html -%}
+    {%- endif -%}
 
     <!-- Prism -->
     {%- if page.prism -%}
-        <script src="/assets/vender/prism/prism.js"></script>
-        <script>
-            let pres = document.getElementsByTagName('pre');
-            for (const pre of pres) {
-                pre.classList.add('line-numbers');
-                pre.classList.add('match-braces');
-                pre.classList.add('rainbow-braces');
-            }
-        </script>
+    <script src="/assets/vender/prism/prism.js"></script>
+    <script>
+        let pres = document.getElementsByTagName('pre');
+        for (const pre of pres) {
+            pre.classList.add('line-numbers');
+            pre.classList.add('match-braces');
+            pre.classList.add('rainbow-braces');
+        }
+    </script>
     {%- endif -%}
     <!-- MathJax -->
     {%- if page.mathjax -%}
-        {%- include js_mathjax.html -%}
+    {%- include js_mathjax.html -%}
     {%- endif -%}
     <!-- Mermaid -->
     {%- if page.mermaid -%}
-        <script src="/assets/vender/mermaid/mermaid.min.js"></script>
-        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="/assets/vender/mermaid/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     {%- endif -%}
+
+    <!-- 百度自动推送页面 -->
+    <script>
+        (function(){
+            let bp = document.createElement('script');
+            let curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            let s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
 </html>

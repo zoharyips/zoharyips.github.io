@@ -80,6 +80,10 @@ navs:
       href          : /architecture.html
       label         : 架构
 
+    -
+      href          : /database.html
+      label         : 数据库
+
   -
     href            : /quest.html
     label           : 解惑
