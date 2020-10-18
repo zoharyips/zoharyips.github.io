@@ -926,23 +926,27 @@ article blockquote {
     margin-left: 0;
     margin-right: 0;
     padding: 0.2rem 0.5rem;
+    font-size: 0.88rem;
     color: var(--color-text-secondary);
-    background: #f2f2f2;
+    background: rgba(229,242,255, 0.3);
 }
 article blockquote p {
+    position: relative;
+    padding: 0 1rem;
     margin: 0;
 }
 article blockquote p::before,
 article blockquote p::after {
+    position: absolute;
+    color: var(--color-primary);
     font-family: "Material Design Icons", sans-serif;
 }
 article blockquote p::before {
-    margin-right: 0.5em;
-    content: "\F11A7";
+    left: 0;
+    content: "\F0757";
 }
 article blockquote p::after {
-    margin-left: 0.5em;
-    content: "\F11A8";
+    content: "\F027E";
 }
 article p code,
 article table code,
@@ -985,6 +989,7 @@ article a:active {
     color: var(--color-primary-light);
 }
 article table {
+    font-size: 0.9rem;
     margin: 1rem auto;
     border-collapse: collapse;
 }
@@ -998,6 +1003,9 @@ article table td,
 article table th {
     padding: 0.6em 1em;
     border: 1px solid var(--color-divider-secondary);
+}
+article table td {
+    font-size: 0.95em;
 }
 article td strong {
     white-space: nowrap;
@@ -1037,6 +1045,9 @@ article a.footnote::after {
 }
 article .footnotes ol li, article .footnotes ol p {
     margin: 0.3em;
+}
+article .mermaid {
+    overflow: auto;
 }
 
 /* 目录 */
