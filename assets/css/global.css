@@ -60,7 +60,7 @@ footer {
 }
 .container, .main .container, footer .container {
     margin: 0 auto;
-    max-width: 1020px;
+    max-width: 1200px;
 }
 .container {
     min-width: 850px;
@@ -71,13 +71,13 @@ footer {
 }
 .container--main-body .content {
     flex: 0 0 auto;
-    margin: 2rem 1%;
-    width: 68%;
+    margin: 32px 16px 32px 0;
+    width: 860px;
 }
 .container--main-body .sidebar {
     flex: 0 0 auto;
-    margin: 2rem 1%;
-    width: 28%;
+    margin: 32px 0;
+    width: 292px;
 }
 #zhi-hu-background {
     position: absolute;
@@ -807,7 +807,7 @@ body.wiki {
 .post .content,
 .page .content,
 .wiki .content {
-    padding: 0 1rem 1rem;
+    padding: 0 16px 16px;
     -webkit-box-shadow: 0 1px 3px rgba(26,26,26,.1);
     box-shadow: 0 1px 3px rgba(26,26,26,.1);
     border-radius: 2px;
@@ -1095,9 +1095,6 @@ article .mermaid {
 }
 
 /* Sidebar - Search Bar */
-#sidebar-search {
-    width: 260px;
-}
 .page.categories {
     padding-left: 0;
 }
