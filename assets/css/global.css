@@ -836,13 +836,16 @@ body.wiki {
     border-radius: 100px;
     background: #f4f4f4;
     border: 1px solid rgba(0,161,214, 0);
+    outline: none;
 }
 .contact-me .meta-info {
     margin: 0.5rem;
     padding: 0.4em 1.2em;
     font-size: 1rem;
 }
-
+.meta-info:active {
+    outline: none;
+}
 .meta-info:hover {
     cursor: pointer;
     border: 1px solid rgba(0,161,214, 1);
@@ -886,6 +889,7 @@ article {
 }
 article h2 {
     font-size: 1.5rem;
+    border-bottom: 1px solid #ececec;
 }
 article h3 {
     font-size: 1.2rem;

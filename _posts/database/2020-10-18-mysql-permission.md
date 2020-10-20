@@ -3,7 +3,7 @@ layout: post
 title: MySql 中的权限
 categories: Database
 keywords: [Database, MySql]
-image: images/wallpaper/markdown.png
+image: images/wallpaper/mysql_permission.png
 search: true
 qrcode: true
 catalogue: true

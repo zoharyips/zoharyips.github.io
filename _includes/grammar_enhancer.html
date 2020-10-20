@@ -11,5 +11,7 @@
         });
     }
     let rubyArt = document.getElementsByTagName('article')[0];
-    rubyArt.innerHTML = rubyFormatter(rubyArt.innerHTML);
+    if (rubyArt != null) {
+        rubyArt.innerHTML = rubyFormatter(rubyArt.innerHTML);
+    }
 </script>
