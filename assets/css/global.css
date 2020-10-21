@@ -980,6 +980,16 @@ article p > img {
     display: block;
     margin: 0 auto;
 }
+article .img-note {
+    width: fit-content;
+    text-align: center;
+    display: block;
+    padding: 10px;
+    margin: 0 auto;
+    border-bottom: 1px solid #eee;
+    font-size: 13px;
+    color: #999;
+}
 article a {
     text-decoration: none;
     color: var(--color-primary);

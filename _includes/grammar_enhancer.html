@@ -1,4 +1,5 @@
 <script>
+
     /**
      * ruby 标注语法生成
      *
@@ -10,8 +11,21 @@
             return '<ruby>' + $1 + '<rt>' + $2 + '</rt></ruby>';
         });
     }
-    let rubyArt = document.getElementsByTagName('article')[0];
-    if (rubyArt != null) {
-        rubyArt.innerHTML = rubyFormatter(rubyArt.innerHTML);
+
+    const ARTICLE = document.getElementsByTagName('article')[0];
+
+    if (ARTICLE != null) {
+        ARTICLE.innerHTML = rubyFormatter(ARTICLE.innerHTML);
+    }
+
+    /* 所有 img 后添加标题 */
+    if (ARTICLE != null) {
+        let imgs = ARTICLE.getElementsByTagName('img');
+        for (let i = 0; i < imgs.length; i++) {
+            let imgNote = document.createElement('span');
+            imgNote.classList.add('img-note')
+            imgNote.innerHTML = imgs[i].alt;
+            imgs[i].parentNode.insertBefore(imgNote, imgs[i].nextSibling);
+        }
     }
 </script>

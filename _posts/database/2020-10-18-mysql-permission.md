@@ -1,16 +1,22 @@
 ---
 layout: post
-title: MySql 中的权限
+title: MySql 中的权限认证机制
 categories: Database
-keywords: [Database, MySql]
+keywords: [Database, MySql, Authentication]
 image: images/wallpaper/mysql_permission.png
 search: true
 qrcode: true
 catalogue: true
 prism: true
 mermaid: true
-description: 记录 MySql 中的权限设计
+description: MySql 中的权限认证机制非常简单高效，相较于老一辈数据 Oracle，这一代数据库更注重性能与设计。
 ---
+
+MySql 万事一张图：
+
+![MySql 逻辑架构](/images/posts/mysql/architecture-comic.png)
+
+权限认证机制位于 MySql 服务器层最上端的连接层，虽不核心，但非常重要。
 
 ## 权限管理结构
 

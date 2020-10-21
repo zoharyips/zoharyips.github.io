@@ -59,12 +59,12 @@ Your MySQL connection id is 42
 
 * 退出：
 
-    ~~~mysql
+    ~~~sql
     exit;
     Bye
     ~~~
 
-    ~~~mysql
+    ~~~sql
     quit;
     Bye
     ~~~
@@ -73,7 +73,7 @@ Your MySQL connection id is 42
 
 * 查询当前数据库版本与时间：
 
-    ~~~mysql
+    ~~~sql
     mysql> SELECT VERSION(), CURRENT_DATE, current_date;
     +-----------+--------------+--------------+
     | VERSION() | CURRENT_DATE | current_date |
@@ -95,7 +95,7 @@ Your MySQL connection id is 42
 
 * 进行数学运算
 
-    ~~~mysql
+    ~~~sql
     mysql> SELECT SIN(PI()/2), 2147483647 + 1;
     +-------------+----------------+
     | SIN(PI()/2) | 2147483647 + 1 |
@@ -107,7 +107,7 @@ Your MySQL connection id is 42
 
 * 一行多个查询：
 
-    ~~~mysql
+    ~~~sql
     mysql> SELECT VERSION(); select CURRENT_date();
     +-----------+
     | VERSION() |
@@ -126,7 +126,7 @@ Your MySQL connection id is 42
 
 * 多行一个查询：
 
-    ~~~mysql
+    ~~~sql
     mysql> SELECT
         -> user()
         -> ,
@@ -152,7 +152,7 @@ Your MySQL connection id is 42
 
     如果在多行输入中想终止本次查询输入，可以输入 `\c` 然后直接回车，或者是直接按下 <kbd>crtl</kbd> + <kbd>c</kbd>，则可以终止本次输入：
 
-    ~~~mysql
+    ~~~sql
     mysql> SELECT
         -> user()
         -> ,
@@ -166,7 +166,7 @@ Your MySQL connection id is 42
 
 * 查询所有数据库
 
-    ~~~mysql
+    ~~~sql
     mysql> show databases;
     +--------------------+
     | Database           |
@@ -179,14 +179,14 @@ Your MySQL connection id is 42
 
 * 使用指定数据库
 
-    ~~~mysql
+    ~~~sql
     mysql> use testdb;
     Database changed
     ~~~
 
 * 查看当前数据库
 
-    ~~~mysql
+    ~~~sql
     mysql> select database();
     +------------+
     | database() |
@@ -198,7 +198,7 @@ Your MySQL connection id is 42
 
 * 查看数据建库语句
 
-    ~~~mysql
+    ~~~sql
     mysql> show create database testdb;
     +----------+--------------------------------------------------------------------+
     | Database | Create Database                                                    |
@@ -210,7 +210,7 @@ Your MySQL connection id is 42
 
 * 创建数据库
 
-    ~~~mysql
+    ~~~sql
     mysql> CREATE DATABASE `testdb2` charset utf8mb4;
     Query OK, 1 row affected (0.00 sec)
     ~~~
@@ -219,7 +219,7 @@ Your MySQL connection id is 42
 
     1. 执行
 
-        ~~~mysql
+        ~~~sql
         mysql> DROP DATABASE `testdb2`;
         Query OK, 0 rows affected (0.00 sec)
         ~~~
@@ -227,3 +227,61 @@ Your MySQL connection id is 42
     2. 跑路
 
 ### 数据表
+
+* 查看表结构
+
+    ~~~sql
+    mysql> desc columns_priv;
+    +-------------+----------------------------------------------+------+-----+-------------------+-----------------------------+
+    | Field       | Type                                         | Null | Key | Default           | Extra                       |
+    +-------------+----------------------------------------------+------+-----+-------------------+-----------------------------+
+    | Host        | char(60)                                     | NO   | PRI |                   |                             |
+    | Db          | char(64)                                     | NO   | PRI |                   |                             |
+    | User        | char(32)                                     | NO   | PRI |                   |                             |
+    | Table_name  | char(64)                                     | NO   | PRI |                   |                             |
+    | Column_name | char(64)                                     | NO   | PRI |                   |                             |
+    | Timestamp   | timestamp                                    | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
+    | Column_priv | set('Select','Insert','Update','References') | NO   |     |                   |                             |
+    +-------------+----------------------------------------------+------+-----+-------------------+-----------------------------+
+    ~~~
+
+* 查看建表语句
+
+    ~~~sql
+    mysql> show create table COLUMNS;
+    +-------------+----------------------------------------------------------------+
+    | Table       | Create Table                                                   |
+    +-------------+----------------------------------------------------------------+
+    | Columns     | CREATE TEMPORARY TABLE `COLUMNS` (                             |
+    |             |   `TABLE_CATALOG` varchar(512) NOT NULL DEFAULT '',            |
+    |             |   `TABLE_SCHEMA` varchar(64) NOT NULL DEFAULT '',              |
+    |             |   `TABLE_NAME` varchar(64) NOT NULL DEFAULT '',                |
+    |             |   `COLUMN_NAME` varchar(64) NOT NULL DEFAULT '',               |
+    |             |   `ORDINAL_POSITION` bigint(21) unsigned NOT NULL DEFAULT '0', |
+    |             |   `COLUMN_DEFAULT` longtext,                                   |
+    |             |   `IS_NULLABLE` varchar(3) NOT NULL DEFAULT '',                |
+    |             |   `DATA_TYPE` varchar(64) NOT NULL DEFAULT '',                 |
+    |             |   `CHARACTER_MAXIMUM_LENGTH` bigint(21) unsigned DEFAULT NULL, |
+    |             |   `CHARACTER_OCTET_LENGTH` bigint(21) unsigned DEFAULT NULL,   |
+    |             |   `NUMERIC_PRECISION` bigint(21) unsigned DEFAULT NULL,        |
+    |             |   `NUMERIC_SCALE` bigint(21) unsigned DEFAULT NULL,            |
+    |             |   `DATETIME_PRECISION` bigint(21) unsigned DEFAULT NULL,       |
+    |             |   `CHARACTER_SET_NAME` varchar(32) DEFAULT NULL,               |
+    |             |   `COLLATION_NAME` varchar(32) DEFAULT NULL,                   |
+    |             |   `COLUMN_TYPE` longtext NOT NULL,                             |
+    |             |   `COLUMN_KEY` varchar(3) NOT NULL DEFAULT '',                 |
+    |             |   `EXTRA` varchar(30) NOT NULL DEFAULT '',                     |
+    |             |   `PRIVILEGES` varchar(80) NOT NULL DEFAULT '',                |
+    |             |   `COLUMN_COMMENT` varchar(1024) NOT NULL DEFAULT '',          |
+    |             |   `GENERATION_EXPRESSION` longtext NOT NULL                    |
+    |             | ) ENGINE=InnoDB DEFAULT CHARSET=utf8                           |
+    +-------------+----------------------------------------------------------------+
+    ~~~
+
+* 创建数据表，参照上方建表语句
+
+### 重要变量
+
+| 变量名    | 值   | 描述               |
+|:----------|:-----|:-------------------|
+| `datadir` | Path | MySql 物理存储路径 |
