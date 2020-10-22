@@ -889,6 +889,7 @@ article {
 }
 article h2 {
     font-size: 1.5rem;
+    padding-bottom: 12px;
     border-bottom: 1px solid #ececec;
 }
 article h3 {
