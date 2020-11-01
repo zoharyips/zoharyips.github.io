@@ -63,7 +63,7 @@ footer {
     max-width: 1200px;
 }
 .container {
-    min-width: 850px;
+    min-width: 1200px;
 }
 .container--main-body {
     display: flex;
@@ -888,21 +888,22 @@ article {
     font-size: 1rem;
 }
 article h2 {
-    font-size: 1.5rem;
+    margin: 1.8em 0 0 0;
+    font-size: 1.6rem;
     padding-bottom: 12px;
     border-bottom: 1px solid #ececec;
 }
 article h3 {
-    font-size: 1.2rem;
+    margin: 1.6em 0 0 0;
+    font-size: 1.3rem;
 }
 article h4 {
+    margin: 1.4em 0 0 0;
+    font-size: 1.1rem;
+}
+article h5 {
+    margin: 1.2em 0 0 0;
     font-size: 1rem;
-}
-article h2,
-article h3,
-article h4 {
-    margin-top: 1.8em;
-    margin-bottom: 0;
 }
 article h1 abbr[title],
 article h2 abbr[title],
@@ -978,8 +979,12 @@ article p {
     line-height: 1.8em;
 }
 article p > img {
+    max-height: 531px; /* 以 Article 为宽度，乘以 0.618 */
     display: block;
     margin: 0 auto;
+}
+article li li p {
+    margin: 0.5em 0;
 }
 article .img-note {
     width: fit-content;
