@@ -1053,6 +1053,11 @@ article ruby rt {
 article ruby rt strong {
     margin: 0;
 }
+article .warning {
+    color: rgb(208,2,27);
+    font-size: 0.8em;
+    line-height: 1px;
+}
 article .footnotes ol {
     padding-inline-start: 1em;
     font-family: 宋体, serif;

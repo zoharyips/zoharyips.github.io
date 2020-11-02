@@ -12,10 +12,19 @@
         });
     }
 
+    function warningFormatter(str) {
+        return str.replace(/!!!(.*)?!!!/g, function(match, $1) {
+            return '<span class="warning">' + $1 + '</span>';
+        });
+    }
+
     const ARTICLE = document.getElementsByTagName('article')[0];
 
     if (ARTICLE != null) {
-        ARTICLE.innerHTML = rubyFormatter(ARTICLE.innerHTML);
+        let tmp = ARTICLE.innerHTML;
+        tmp = rubyFormatter(tmp);
+        tmp = warningFormatter(tmp);
+        ARTICLE.innerHTML = tmp;
     }
 
     /* 所有 img 后添加标题 */
@@ -28,4 +37,6 @@
             imgs[i].parentNode.insertBefore(imgNote, imgs[i].nextSibling);
         }
     }
+
+    /**/
 </script>

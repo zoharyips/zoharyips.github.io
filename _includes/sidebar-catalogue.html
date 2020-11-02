@@ -25,7 +25,7 @@
                 let li = document.createElement("li");
                 li.setAttribute('class', 'mdi');
                 li.setAttribute('data-mdi', 'format-header-' + title.level);
-                li.innerHTML = '<a href="javascript:window.scrollTo({top:' + document.getElementById(title.element.getAttribute('id')).offsetTop + ', behavior: \'smooth\'})">' + title.element.innerText + '</a>'
+                li.innerHTML = '<a href="javascript:scrollToTitle(\'' + title.element.getAttribute('id') + '\')">' + title.element.innerText + '</a>'
                 parentElement.appendChild(li);
                 ul = document.createElement("ul");
                 parentElement.appendChild(ul);
@@ -70,13 +70,28 @@
     Title.generateCatalogue(Title.rootTitle, catalogue);
 
     const catalogueSection = document.getElementById('sidebar-catalogue');
-    // Offset Top 是相对于父元素顶部距离
     const catalogueOffsetTop = catalogueSection.offsetTop;
+
     window.onscroll = function() {
+        
+        // 控制侧边栏悬浮
         if (document.documentElement.scrollTop - catalogueOffsetTop > 0) {
             catalogueSection.classList.add('float-catalogue');
         } else {
             catalogueSection.classList.remove('float-catalogue');
         }
+
+        // 控制当前目录指示
+
+    }
+
+    // 根据标题 ID 实时计算该标题距离浏览器顶部的距离，再进行窗口滑动，因为页面初始化时计算可能后面元素加载使得高度不准确
+    function scrollToTitle(id) {
+        let title = document.getElementById(id);
+        let scrollToY = title.offsetTop + title.offsetParent.offsetTop - 8;
+        window.scrollTo({
+            top: scrollToY, 
+            behavior: 'smooth'
+        });
     }
 </script>
