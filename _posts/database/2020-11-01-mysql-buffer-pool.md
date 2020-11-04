@@ -36,16 +36,16 @@ InnoDB 1.0.x 版本开始，缓冲池可以分为多个{缓冲池实例}(Buffer 
 ~~~c
 struct buf_pool_t {
     ...
-    ulint                           instance_no;    // 缓冲池实例编号
-    ulint                           curr_pool_size; // 缓冲池实例大小
-    buf_chunk_t                     *chunks;        // 缓冲池实例的物理块列表
-    hash_table_t                    *page_hash;     // 页哈希表
-    UT_LIST_BASE_NODE_T(buf_page_t) free;           // 空闲链表
-    UT_LIST_BASE_NODE_T(buf_page_t) LRU;            // LRU 链表
-    UT_LIST_BASE_NODE_T(buf_page_t) flush_list;     // Flush 链表
-    BufListMutex                    free_mutex;     // 空闲链表的互斥锁
-    BufListMutex                    lru_mutex;      // LRU 链表的互斥锁
-    BufListMutex                    flush_mutex;    // Flush 链表的互斥锁
+    ulint                           instance_no;       // 缓冲池实例编号
+    ulint                           curr_pool_size;    // 缓冲池实例大小
+    buf_chunk_t                     *chunks;           // 缓冲池实例的物理块列表
+    hash_table_t                    *page_hash;        // 页哈希表
+    UT_LIST_BASE_NODE_T(buf_page_t) free;              // 空闲链表
+    UT_LIST_BASE_NODE_T(buf_page_t) LRU;               // LRU 链表
+    UT_LIST_BASE_NODE_T(buf_page_t) flush_list;        // Flush 链表
+    BufListMutex                    free_list_mutex;   // 空闲链表的互斥锁
+    BufListMutex                    LRU_list_mutex;    // LRU 链表的互斥锁
+    BufListMutex                    flush_state_mutex; // Flush 链表的互斥锁
     ...
 }
 ~~~
@@ -62,25 +62,23 @@ struct buf_pool_t {
 
 每个数据页都会有与之对应的数据页控制体，用于存储数据页相关的各项数据和指向数据页的指针，数据页控制体由两种数据结构一起组成，分别为 `buf_page_t` 和 `buf_block_t`。
 
-!!!由于空闲链表、LRU 链表、Flush 链表这些逻辑链表的节点都是 `buf_page_t`，所以不可能是数据页放在这些链表中，但是我们习惯说“某数据页在某链表里”这样的话来表示“某数据页的控制块在某逻辑链表中”的意思，因此，本文所有类似于说“空闲数据页会被放到空闲链表里”这样的话，实际上指的都是数据页的 `buf_page_t` 数据库。!!!
-
 #### buf_block_t
 
 ~~~c
 struct buf_block_t {
-    buf_page_t page;   // 另一个控制块 buf_page_t 的指针，必需作为第一个成员函数以保证可以和 buf_page_t 相互转换
+    buf_page_t page;   // 另一个控制块 buf_page_t 的指针，必须作为第一个数据成员
     byte       *frame; // 数据页指针，指向真正的的数据页
     BPageMutex mutex;  // 页锁
     ...
 }
 ~~~
 
-数据页的控制体之一，描述少量数据页的信息。第一个数据成员就是另一个数据页控制块指针，用于随时转换成另一个数据页控制块。第二个数据成员 `frame` 是指向所属数据页的指针。
+数据页的控制体之一，描述少量数据页的信息。第一个数据成员就是另一个数据页控制块指针，必须作为第一个数据成员以随时转换成另一个数据页控制块。第二个数据成员 `frame` 是指向所属数据页的指针。
 
 #### buf_page_t
 
 ~~~c
-class buf_page_t {
+struct buf_page_t {
     ...
     page_id_t      id;                  // page id
     page_size_t    size;                // page 大小
@@ -95,44 +93,169 @@ class buf_page_t {
 
 缓冲池中每一个数据页都会有一个块与之对应的 `buf_page_t` 数据结构，称为数据页控制体。该控制体存储了绝大部分数据页信息，包括页 ID、页大小、页状态、最新 lsn、最老 lsn 以及压缩页的所有信息等。压缩页信息包括压缩页大小、压缩页指针。
 
-`page_state` 描述了数据页的八种状态，分别为：
-
-* `BUF_BLOCK_NOT_USED`：
-
-    标识该数据页空间是空闲的。空闲列表中的页都处于此状态。
-
-* `BUF_BLOCK_FILE_PAGE`：
-
-    标识该数据页是正常使用的数据页，被解压后的压缩页自身也将转换为此状态。LRU 列表中大部分页处于该状态。
-
-* `BUF_BLOCK_MEMORY`：
-
-    标识该数据页用于存储系统信息，如 InnoDB 行锁、自适应哈希索引或者是压缩页的数据等。处于此状态的数据页不存在于任何逻辑链表中。
-
-* `BUF_BLOCK_READY_FOR_USE`：
-
-    标识该数据页刚从空闲列表中被取出，是一个极短暂的临时状态。处于此状态的数据页不存在于任何逻辑链表中。
-
-* `BUF_BLOCK_REMOVE_HASH`：
-
-    标识该数据页即将被放入空闲列表中，此时页的 page hash 已经被移除，但仍未放到空闲列表中，是一个极短暂的状态。处于此状态的数据页不存在于任何逻辑链表中。
-
-* `BUF_BLOCK_ZIP_PAGE`：
-
-    标识该数据页是未被解压的压缩页，包括两种情况：一是刚从磁盘读取的压缩页，二是已解压过但是解压页被驱逐且不是脏页的压缩页；还有一种特殊情况，如果 `BUF_BLOCK_POOL_WATCH` 类型的数据页被 purge 线程使用，则将会转换为此状态。前两种情况的数据页都在 LRU 列表中，最后一种情况下该数据页结构体没有指向任何数据页，`frame` 指针指向空。
-
-* `BUF_BLOCK_ZIP_DIRTY`：
-
-    标识该数据页是解压页被驱逐的脏压缩页，是一个较短暂的临时状态，如果该页再次被解压则将重新转换为 `BUF_BLOCK_FILE_PAGE` 类型数据页。处于此状态的数据页都存在于 Flush List 中。
-
-* `BUF_BLOCK_POOL_WATCH`：
-    
-    标志该数据页是 `buf_pool_t::watch` 数组中的空闲控制块。`buf_pool_t::watch` 数组是专门提供给 purge 线程充当哨兵使用的控制块数组，每个缓冲池中哨兵池的大小为 purge 线程的个数以保证并发工作。purge 线程利用该控制块来判断数据页是否有其他线程在读取。
 
 ### Buffer Chunk
 
 Buffer Chunk 就是每个缓冲池实例中的**物理块**，是缓冲池中最小的物理存储单位。一个缓冲池实例中存在至少一个物理块，物理块的默认大小为 128MB，因此默认缓冲池大小最小同样为 128MB，物理块最小为 1MB，且在 MySql 8.0 中物理块大小可以动态调整生效。物理块在引擎启动阶段申请完毕，直到数据库关闭才会完全释放。
 
+> 页是 InnoDB 内存最小的数据管理单位，但连续的内存存储单位是物理块。
+
+每块数据块包含两个区域，一个是以 `buf_block_t` 为元素的控制块数组，另一个是以数据页为元素的数据页数组，控制块数组占用 Chunk 前部分，数据页数组占用 Chunk 后部分。每个数据页必定存在与之对应的控制块，但控制块不一定有与之对应的数据页。数据块中几乎包含所有数据页，仅有 `BUF_BLOCK_ZIP_PAGE` 和 `BUF_BLOCK_ZIP_DIRTY` 类型数据页除外。数据页并不都是存储用户数据，控制信息、行锁、自适应哈希也存在于数据页中。
+
+### 逻辑链表
+
+逻辑链表的节点是 `buf_page_t` 控制体，引入各类型逻辑链表使得数据页的管理更方便系统。
+
+#### Free List
+
+{空闲链表}(Free List)是由所有未使用的数据页构成的链表，在数据块分配内存的时候予以初始化，所有数据页都是空闲页。缓冲池中如果需要引入新的数据页，则直接从空闲链表中获取即可。InnoDB 会保证存在足够的 Free List 节点以供使用，空闲节点不足时将从 LRU List 和 Flush List 中淘汰一定量的节点以补充库存。
+
+#### LRU List
+
+LRU List 是缓冲池中最重要的数据结构，基本所有读入的数据页都缓冲于其上。LRU 链表顾名思义根据{最近最少使用算法}(Least Recently Used)对节点进行淘汰，但在这里所使用的是优化后的 LRU 算法。
+
+#### Flush List
+
+缓冲池中所有脏页都会挂载在 Flush List 中，以等待数据落盘。LRU List 中的页被修改后也会被放入 Flush List 中，被修改过后的压缩页也会被放入 Flush List 中。在数据更改被刷入磁盘前，数据很有可能会被修改多次，在数据页控制体中记录了最新修改的 lsn（`newset_modification`） 和最老修改的 lsn（`newest_modification`）。进入 Flush list 的节点按照进入的顺序进行排序，最新加入的数据页放在链表头部。数据页在进入 Flush List 时对 Flush List 加锁以保证节点进入的顺序。刷数据时从链表尾开始写入。
+
+#### Unzip LRU List
+
+与 LRU 链表类似，但是是专门用于存储压缩页解压而出的解压页。
+
+#### Zip Clean List
+
+Debug 模式下才有，专门用于存储压缩页。正常模式下压缩页存放在 LRU 链表中。
+
+#### Zip Free
+
+是由 5 个链表构成的二维数组，分别是 1K、2K、4K、8K 和 16K 的碎片链表，专门用于存储从磁盘读入的压缩页。由于数据页固定为 16K 而压缩页大小却参差不齐，InnoDB 采用了类似内存管理的伙伴系统专门来管理压缩页，根据压缩页大小分配到相应的碎片链表中去，然后再将碎片交给控制块的 `frame` 指针。如果该链表中的碎片块不足，如 8K 链表中找不到碎片存储 8K 的数据页，就会去 16K 链表中获取碎片，然后分裂成两个 8K 碎片并挂入 8K 链表中。
+
+### Mutex
+
+在 `buf_pool_t` 中为几个逻辑链表维护了几个互斥锁，用来保护各链表的并发访问：
+
+| mutex              | 目标       |
+|:-------------------|:-----------|
+| `free_list_mutex`  | Free List  |
+| `lru_list_mutex`   | LRU List   |
+| `flush_list_mutex` | Flush List |
+
+### Page Hash 与 Zip Hash
+
+读入缓冲池的页面由 LRU 链表串联起来，但如果每次查询页面都去遍历 LRU 链表的话是不可想象的。利用哈希表在 O(1) 时间复杂度查询和定位数据的特性，InnoDB 为每个缓冲池实例维护了页哈希表，通过 `space_id` 和 `page_id` 来定位与读取数据。
+
+LRU 列表中的数据页将被添加到 Page Hash 中，Unzip LRU List 列表中的数据页将被添加到 Zip Hash 中。
+
+## PAGE_STATE
+
+`buf_page_t` 中的 `state` 字段定义了数据页的八种状态，理解这八种状态对于缓冲池内数据页的管理和变化非常重要。八种状态分别为：
+
+!!! `buf_page_t` 逻辑上存在的意义是等同于数据页的，从逻辑角度甚至可以理解为数据页的指针。因此我们在说“某数据页在某链表里”时是表示“某数据页的控制块在某逻辑链表中”，我们在说“该数据页”时可能是指数据页本身，也可能是指数据页控制块，尽管基本上都是指控制块。但要注意的是，并不是每个控制块都有对应的数据页，有的控制块的 `frame` 指针是指向空的，因此在说到这种类型的控制块的时候，我不会将它笼统的说成是数据页。!!!
+
+* **BUF_BLOCK_NOT_USED**：
+
+    标识该数据页是空闲的。该状态数据页只存在于空闲列表中，且空闲列表中只有这种类型的页。
+
+* **BUF_BLOCK_FILE_PAGE**：
+
+    标识该数据页是正常使用的数据页，被解压后的压缩页自身也将转换为此状态。该状态数据页只存在于 LRU 列表中。
+
+* **BUF_BLOCK_MEMORY**：
+
+    标识该数据页用于存储系统信息，如 InnoDB 行锁、自适应哈希索引或者是压缩页的数据等。该状态数据页不存在于任何逻辑链表中。
+
+* **BUF_BLOCK_READY_FOR_USE**：
+
+    标识该数据页刚从空闲列表中被取出，是一个极短暂的临时状态。该状态数据页不存在于任何逻辑链表中。
+
+* **BUF_BLOCK_REMOVE_HASH**：
+
+    标识该数据页即将被放入空闲列表中，此时该数据页已经从页哈希表中移除，但还未放入空闲列表，是一个极短暂的状态。该状态数据页不存在于任何逻辑链表中。
+
+* **BUF_BLOCK_POOL_WATCH**：
+
+    标志这个控制块是 `buf_pool_t::watch` 数组中空闲的数据页控制块。`buf_pool_t::watch` 数组是专门提供给 purge 线程充当哨兵使用的控制块数组，每个缓冲池中哨兵池的大小都和 purge 线程的个数相同以保证并发工作。purge 线程利用该控制块来判断数据页是否有其他线程在读取。
+
+* **BUF_BLOCK_ZIP_PAGE**：
+
+    标识该数据页是未被解压的压缩页，或者是 `watch` 数组中的哨兵。包括三种情况：一是刚从磁盘读取还未解压的压缩页；二是解压过但解压页被驱逐，且不是脏页的压缩页；三是被 purge 线程使用了的 `BUF_BLOCK_POOL_WATCH` 控制块会转换为此状态。前两种情况都在 LRU 列表中，最后一种情况下该数据页控制块没有指向任何数据页，`frame` 指针指向空。
+
+* **BUF_BLOCK_ZIP_DIRTY**：
+
+    标识该数据页是解压页被驱逐的脏压缩页，是一个较短暂的临时状态，如果该页再次被解压则将重新转换为 `BUF_BLOCK_FILE_PAGE` 类型数据页。该状态数据页只存在于 Flush 列表中。
+
+![innodb page status -- Zohar Yip](/images/posts/mysql/innodb-page-status.png)
+
+## Buffer Pool 初始化
+
+缓冲池的内存初始化，主要是物理块的内存初始化，多个缓冲池实例则轮流初始化。先使用 `os_mem_alloc_large` 为 chunk 分配内存，然后使用核心函数为 `buf_chunk_init` 初始化 Chunk，接着初始化不属于 Chunk 的 `BUF_BLOCK_POOL_WATCH` 类型数据页控制块、Page Hash 和 Zip Hash。
+
+### 分配内存
+
+从操作系统分配内存有两种方式，一种是 HugeTLB，另一种是传统的 MMap 来分配。
+
+* HugeTLB
+
+    HugeTLB 是大内存块分配管理技术。HugeTLB 把操作系统页大小提高到 2M 甚至更多。程序传送给 cpu 都是虚拟内存地址，cpu 必须通过快表来映射到真正的物理内存地址。快表的全集放在内存中，部分热点内存页可以放在 cpu cache 中，从而提高内存访问效率。但内存页变大也必定会导致更多的页内的碎片，如果用到 swap 分区虚拟内存同样会变慢。
+
+    仅在启动 MySql 时指定 `super-large-pages` 参数才会使用该模式分配内存。
+
+* MMap
+
+    MMap 可用于为多个进程分配共享内存，且分配的内存都是虚存，只有内存真正使用到才真正分配。`malloc` 在分配超过 `MMAP_THRESHOLD=128K` 的时候也是调用 MMap 分配内存。
+
+### Chunk init
+
+调用 `buf_chunk_init` 函数为 Chunk 分配内存：
+
+1. 先将整个 Chunk 初始化为连续的 16K 页数组，并将数组长度赋予整型变量 `size`，后面会将 `size` 转化为数据页数组的长度。
+
+2. 设置一个 `frame` 指针指向 Chunk 头部，后面会拿它当作第一个数据页的指针。
+
+3. 通过循环，不断地往后移动 `frame` 指针，并计算 `frame` 之前空间中控制块的数量是否足够供 `frame` 后面的所有数据页使用，如果不够则 `size--` 并将 `frame` 往后移动一页，如果足够则跳出循环，此时 `size` 为数据页数量，`frame` 为第一个数据页指针。
+
+4. 利用 `frame` 指针，初始化所有的控制块，将所有控制块的 `frame` 指针指向对应的数据页，同时将所有控制块都丢入空闲列表中。
 
 ![Buffer Pool 逻辑结构图 -- MySql Doc](/images/posts/mysql/innodb-buffer-pool-list.png)
 
+## 相关历史
+
+* Before MySql 5.5
+
+    仅能有一个缓冲池实例，刷脏由主线程承担，拓展性差。
+
+* MySql 5.5
+
+    允许设置多个缓冲池实例，但刷脏仍由主线程负责。
+
+* MySql 5.6
+
+    引入缓冲池 `page_id` 转储和导入特性，可以随时把 `page_no` 保存在文件里，重启后再根据 `page_id` 把这些 page 加载在内存里保持热状态。
+
+    引入 page cleaner，可以将刷脏工作转移到其他线程中。
+
+* MySql 5.7
+
+    发布 Online buffer pool resize 功能，但在 resize 过程中需要使用缓冲池级别的锁，挂起服务器事实上和 Offline 相差不大。
+
+    引入 multiple page cleaner，可以多个后台线程并发刷脏，并提供更好的刷脏性能，有效避免用户进入 single page flush，但用户线程依旧有机会进入 single page flush：
+
+    * 在高负载情况下，redo log 产生过快而 page flush 无法跟上，导致 checkpoint 无法推进，此时 redu log 空间不足用户进程会进入 single page flush。
+
+    * 如果服务器不支持原子写操作，则必须打开双写缓冲。落盘时先将数据写入系统表空间固定区域，分为两个部分：`single page flush` 和 `batch flush`。即使分成多个 page cleaner，最终单点瓶颈依旧在双写缓冲上。
+
+    * 没有 lru evict 线程，当缓冲池满时，page cleaner 可能忙于刷脏，但是用户线程却得不到空闲页，此时用户线程陷入 single page flush。
+
+* MySql 8.0
+
+    将全局大锁 `buf_pool_mutex` 拆分为各具体模块的锁：
+
+    ~~~c
+    struct buf_pool_t{
+        BufListMutex    LRU_list_mutex; /*!< LRU list mutex */
+        BufListMutex    free_list_mutex;/*!< free and withdraw list mutex */
+        BufListMutex    zip_free_mutex; /*!< buddy allocator mutex */
+        BufListMutex    zip_hash_mutex; /*!< zip_hash mutex */
+        ib_mutex_t      flush_state_mutex;/*!< Flush state protection mutex */
+    }
+    ~~~

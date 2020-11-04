@@ -905,6 +905,44 @@ article h5 {
     margin: 1.2em 0 0 0;
     font-size: 1rem;
 }
+article h2::after,
+article h3::after,
+article h4::after,
+article h5::after,
+article h6::after {
+    margin-left: 6px;
+    color: #ffffff;
+    font-family: "Material Design Icons", sans-serif;
+    vertical-align: super;
+    font-size: 0.7em;
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+}
+article h2:hover::after,
+article h3:hover::after,
+article h4:hover::after,
+article h5:hover::after,
+article h6:hover::after {
+    color: #96bdc9;
+}
+article h2::after {
+    content: "\F026C";
+}
+article h3::after {
+    content: "\F026D";
+}
+article h4::after {
+    content: "\F026E";
+}
+article h5::after {
+    content: "\F026F";
+}
+article h6::after {
+    content: "\F0270";
+}
 article h1 abbr[title],
 article h2 abbr[title],
 article h3 abbr[title],
@@ -918,8 +956,6 @@ article em {
     margin-right: 0.3em;
 }
 article strong {
-    margin-left: 0.3em;
-    margin-right: 0.3em;
     font-weight: bolder;
 }
 article img,
@@ -958,16 +994,15 @@ article p code,
 article table code,
 article li code:not([class]),
 article a code {
-    margin: 0 2px;
-    padding: 1px 4px;
-    font-weight: 500;
+    padding: 1px 4px 0;
+    font-weight: 600;
     font-size: 0.8em;
     letter-spacing: 1px;
     font-family: monospace;
     color: rgb(84, 110, 122);
     border-width: 1px;
     border-style: solid;
-    border-color: rgb(236, 239, 241);
+    border-color: rgb(220 230 236);
     border-image: initial;
     background: rgb(247, 249, 250);
     border-radius: 3px;
@@ -976,15 +1011,18 @@ article a code {
 /*    text-align: left!important;*/
 /*}*/
 article p {
-    line-height: 1.8em;
+    line-height: 1.4em;
 }
 article p > img {
     max-height: 531px; /* 以 Article 为宽度，乘以 0.618 */
     display: block;
     margin: 0 auto;
 }
-article li li p {
-    margin: 0.5em 0;
+article li {
+    margin: 1.5rem 0;
+}
+article li p {
+    margin: 0.5rem 0;
 }
 article .img-note {
     width: fit-content;
@@ -1046,8 +1084,9 @@ article ruby {
     font-weight: 600;
 }
 article ruby rt {
-    color: rgb(84, 110, 122);
-    font-size: 0.7em;
+    font-weight: 600;
+    color: #1990b8;
+    font-size: 0.6em;
     font-family: JetBrainsMono, monospace;
 }
 article ruby rt strong {
@@ -1073,6 +1112,22 @@ article .footnotes ol li, article .footnotes ol p {
 }
 article .mermaid {
     overflow: auto;
+}
+article .notice {
+    position: relative;
+    padding: 0.5em 0.5em 0.5em 3em;
+    font-size: 0.88rem;
+    color: var(--color-text-secondary);
+    background: rgba(229,242,255, 0.3);
+    border-radius: 4px;
+}
+article .notice::before {
+    position: absolute;
+    font-size: 1.5em;
+    color: var(--color-primary);
+    top: 50%;
+    left: 1em;
+    transform: translate(-50%, -50%);
 }
 
 /* 目录 */
@@ -1318,6 +1373,9 @@ code[class*="language-"], pre[class*="language-"] {
     background: rgba(50,59,69,0.9)!important;
     /* background: #323b45!important; */
 }
+div.code-toolbar {
+    margin: 16px 0;
+}
 div.code-toolbar > .toolbar .toolbar-item {
     margin: 0 0.5em;
 }
@@ -1503,6 +1561,15 @@ div.code-toolbar > .toolbar button:hover {
 }
 .mdi[data-mdi="format-header-4"]::before {
     content: "\F026E";
+}
+.mdi[data-mdi="format-header-5"]::before {
+    content: "\F026F";
+}
+.mdi[data-mdi="format-header-6"]::before {
+    content: "\F0270";
+}
+.mdi[data-mdi="timeline-alert-outline"]::before {
+    content: "\F0F98";
 }
 /* 自定义的 Mdi 图标映射 */
 .mdi[data-mdi-custom="docker"]::before {

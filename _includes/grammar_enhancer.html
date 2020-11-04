@@ -14,7 +14,7 @@
 
     function warningFormatter(str) {
         return str.replace(/!!!(.*)?!!!/g, function(match, $1) {
-            return '<span class="warning">' + $1 + '</span>';
+            return '<p class="notice mdi" data-mdi="alert-circle-outline">' + $1 + '</p>';
         });
     }
 
