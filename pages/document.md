@@ -6,6 +6,7 @@ keywords: 文档
 comments: false
 share: false
 canvas: true
+bg: true
 menu: 文档
 permalink: /doc.html
 ---

@@ -5,6 +5,7 @@ description:
 permalink: /computer.html
 search: true
 qrcode: true
+bg: true
 banner: /images/page/computer.png
 ---
 

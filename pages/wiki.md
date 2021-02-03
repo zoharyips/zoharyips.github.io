@@ -6,6 +6,7 @@ permalink: /wiki.html
 banner: /images/page/wiki.png
 search: true
 qrcode: true
+bg: true
 ---
 
 {% assign sorted_categories = site.wiki | map: "categories" | sort | uniq %}

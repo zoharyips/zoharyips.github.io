@@ -5,6 +5,7 @@ description: 当你解开世界上的一个个谜题，你就会知道为什么�
 permalink: /quest.html
 search: true
 qrcode: true
+bg: true
 banner: /images/page/quest.png
 ---
 

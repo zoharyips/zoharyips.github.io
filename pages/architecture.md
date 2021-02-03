@@ -6,6 +6,7 @@ permalink: /architecture.html
 banner: /images/page/architecture.png
 search: true
 qrcode: true
+bg: true
 ---
 
 {% assign architecture_pages = site.posts | where_exp:"item", "item.categories contains 'Architecture'" %}

@@ -7,6 +7,7 @@ permalink: /about.html
 banner: /images/page/about.png
 search: true
 qrcode: true
+bg: true
 ---
 
 <script src="/assets/js/iconfont.js"></script>

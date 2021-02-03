@@ -8,6 +8,7 @@ banner: /images/page/algorithm.png
 search: true
 qrcode: true
 catalogue: true
+bg: true
 ---
 
 {% assign privious_type = 'none' %}

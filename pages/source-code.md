@@ -5,6 +5,7 @@ description: 向优秀的代码学习！模仿、思考、创作、超越！
 permalink: /source-code.html
 search: true
 qrcode: true
+bg: true
 banner: /images/page/source-code.png
 ---
 

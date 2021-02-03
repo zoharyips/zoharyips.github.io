@@ -5,6 +5,7 @@ description:
 permalink: /database.html
 search: true
 qrcode: true
+bg: true
 banner: images/page/database.png
 ---
 

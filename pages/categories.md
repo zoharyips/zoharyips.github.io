@@ -8,6 +8,7 @@ permalink: /categories.html
 banner: /images/page/categories.png
 search: true
 qrcode: true
+bg: true
 ---
 
 {% assign sorted_categories = site.categories | sort %}

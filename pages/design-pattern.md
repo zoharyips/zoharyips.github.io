@@ -8,6 +8,7 @@ banner: /images/page/design-pattern.png
 search: true
 qrcode: true
 catalogue: true
+bg: true
 ---
 
 {% for category in site.data.design-pattern %}
