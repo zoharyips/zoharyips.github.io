@@ -1,13 +1,35 @@
 ---
 layout: wiki
-title: Linux 笔记
-description: 简单记录一些 linux 常用命令
-date: 2019-10-28
+title: Linux 命令笔记
+description: 记录一些 linux 常用命令
+date: 2021-03-02
 categories: Computer
 search: true
 catalogue: true
 prism: true
 ---
+
+
+{% comment %}
+
+
+## 用户与权限
+
+### 用户管理
+
+#### 查看用户
+
+* 通过 `/etc/passwd` 文件
+
+    
+
+#### 创建用户
+
+* `useradd`：
+
+    * `-D`：查看或修改新用户默认配置
+
+
 
 ## 命令组合
 
@@ -73,3 +95,5 @@ prism: true
 远程连接 | `ssh USER@IP -p PORT`
 推送文件 | `scp PATH USER@IP:PATH`
 下载文件 | `scp USER@IP:PATH PATH`
+
+{% endcomment %}

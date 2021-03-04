@@ -4,23 +4,15 @@
 
 Record what I learn & what I think
 
+记录学习的东西，顺便与有缘人分享~
+
 ## Func
 
-* Article post
+待添加功能：
 
-* Wiki articles
-
-* Article archive by time
-
-* Atricle sort by categories
-
-* Share articles
-
-* Search articles
-
-* Search by articles content
-
-* Links
+- [ ] 每篇文章统计
+- [ ] 评论功能
+- [ ] 订阅功能
 
 * Comments
 
