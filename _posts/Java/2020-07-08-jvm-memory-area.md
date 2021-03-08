@@ -4,7 +4,7 @@ title: Java - 虚拟机：Java 内存模型
 categories: Java
 keywords: [java, jvm, java memory model]
 date: 2021-03-04 17:18:00
-image: /images/wallpaper/Java_JVM.png
+image: /images/wallpaper/java_jvm_jmm.jpg
 lang: java
 search: true
 qrcode: true
