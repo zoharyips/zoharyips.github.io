@@ -33,6 +33,14 @@ prism: true
 
 4. 保存并退出即可生效
 
+## 软件使用
+
+### 链接失效
+
+`too many levels of symbolic links`
+
+解决办法：建立链接时请使用绝对路径。
+
 ## 软件配置
 
 ### Apt 软件源
